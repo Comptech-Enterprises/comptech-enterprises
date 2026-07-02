@@ -1,65 +1,72 @@
 "use client";
 
 import Link from "next/link";
-import { Mail, Phone, MapPin, Linkedin, Twitter, Youtube, ArrowRight } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Twitter, Youtube } from "lucide-react";
 import { COMPANY } from "@/lib/constants";
-import { Logo } from "@/components/ui/Logo";
+
+const SERVICES = [
+  { label: "Enterprise Infrastructure", href: "/services/infrastructure" },
+  { label: "End User Computing",        href: "/services/euc" },
+  { label: "AI Solutions",              href: "/ai-solutions" },
+  { label: "Data Centre Solutions",     href: "/services/datacenter" },
+  { label: "Networking",                href: "/services/networking" },
+  { label: "CCTV & Security",           href: "/services/security" },
+  { label: "Cloud Solutions",           href: "/services/cloud" },
+  { label: "AMC",                       href: "/services/amc" },
+];
+
+const COMPANY_LINKS = [
+  { label: "About Us",     href: "/about" },
+  { label: "Partners",     href: "/partners" },
+  { label: "Case Studies", href: "/case-studies" },
+  { label: "Blog",         href: "/blog" },
+  { label: "Careers",      href: "#" },
+];
+
+const SOCIALS = [
+  { Icon: Linkedin, href: "#", label: "LinkedIn" },
+  { Icon: Twitter,  href: "#", label: "Twitter" },
+  { Icon: Youtube,  href: "#", label: "YouTube" },
+];
 
 export function Footer() {
   return (
-    <footer className="bg-gray-900 text-white" role="contentinfo">
-      {/* Main footer */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
-          {/* Brand */}
-          <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-5">
-              <Logo className="w-11 h-11" />
-              <span className="font-display font-extrabold text-xl text-white leading-none tracking-tight">
-                Comptech<span className="text-[#5C0F26]">.</span>
-              </span>
-            </Link>
-            <p className="text-gray-400 text-sm leading-relaxed mb-6">
-              India's trusted enterprise IT solutions partner since 2008. Certified Dell, HP, Lenovo, and Microsoft partner.
-            </p>
-            <div className="flex gap-3">
-              {[
-                { Icon: Linkedin, href: "#", label: "LinkedIn" },
-                { Icon: Twitter, href: "#", label: "Twitter" },
-                { Icon: Youtube, href: "#", label: "YouTube" },
-              ].map(({ Icon, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  aria-label={label}
-                  className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center hover:bg-[#5C0F26] transition-colors duration-200"
-                >
-                  <Icon size={16} />
-                </a>
-              ))}
-            </div>
-          </div>
+    <footer className="bg-[#0A0A0C] text-white" role="contentinfo">
+
+      {/* Big brand display */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-20 pb-10">
+        <p className="text-xs font-semibold uppercase tracking-widest text-white/30 mb-4">
+          Enterprise IT Solutions — Since 2008
+        </p>
+        <h2
+          className="font-display font-extrabold text-white leading-none tracking-tighter"
+          style={{ fontSize: "clamp(3.5rem, 10vw, 8rem)" }}
+        >
+          Comptech
+          <span style={{ color: "#5C0F26" }}>.</span>
+        </h2>
+        <p className="mt-4 text-white/40 text-base max-w-md leading-relaxed">
+          India's trusted enterprise IT partner. Certified Dell, HP, Lenovo, Microsoft, and NVIDIA partner serving 200+ organizations.
+        </p>
+      </div>
+
+      {/* Divider */}
+      <div className="border-t border-white/[0.07]" />
+
+      {/* Links grid */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-14">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
 
           {/* Services */}
-          <div>
-            <h3 className="text-sm font-bold uppercase tracking-widest text-gray-400 mb-5">Services</h3>
-            <nav className="flex flex-col gap-3">
-              {[
-                { label: "Enterprise Infrastructure", href: "/services/infrastructure" },
-                { label: "End User Computing",        href: "/services/euc" },
-                { label: "AI Solutions",              href: "/ai-solutions" },
-                { label: "Data Centre Solutions",     href: "/services/datacenter" },
-                { label: "Networking",                href: "/services/networking" },
-                { label: "CCTV & Security",           href: "/services/security" },
-                { label: "Cloud Solutions",           href: "/services/cloud" },
-                { label: "AMC",                       href: "/services/amc" },
-              ].map(({ label, href }) => (
+          <div className="col-span-2 md:col-span-1">
+            <h3 className="text-[11px] font-bold uppercase tracking-widest text-white/30 mb-5">Services</h3>
+            <nav className="flex flex-col gap-2.5">
+              {SERVICES.map(({ label, href }) => (
                 <Link
                   key={href}
                   href={href}
-                  className="text-sm text-gray-400 hover:text-white transition-colors duration-150 flex items-center gap-1.5 group"
+                  className="text-sm text-white/50 hover:text-white transition-colors duration-150"
                 >
-                  <span className="w-0 group-hover:w-3 h-px bg-[#5C0F26] transition-all duration-200 overflow-hidden" />
                   {label}
                 </Link>
               ))}
@@ -68,97 +75,78 @@ export function Footer() {
 
           {/* Company */}
           <div>
-            <h3 className="text-sm font-bold uppercase tracking-widest text-gray-400 mb-5">Company</h3>
-            <nav className="flex flex-col gap-3">
-              {[
-                { label: "About Us",       href: "/about" },
-                { label: "Partners",       href: "/partners" },
-                { label: "Case Studies",   href: "/case-studies" },
-                { label: "Blog",           href: "/blog" },
-                { label: "Careers",        href: "#" },
-                { label: "Privacy Policy", href: "#" },
-                { label: "Terms of Use",   href: "#" },
-              ].map(({ label, href }) => (
+            <h3 className="text-[11px] font-bold uppercase tracking-widest text-white/30 mb-5">Company</h3>
+            <nav className="flex flex-col gap-2.5">
+              {COMPANY_LINKS.map(({ label, href }) => (
                 <Link
                   key={label}
                   href={href}
-                  className="text-sm text-gray-400 hover:text-white transition-colors duration-150 flex items-center gap-1.5 group"
+                  className="text-sm text-white/50 hover:text-white transition-colors duration-150"
                 >
-                  <span className="w-0 group-hover:w-3 h-px bg-[#5C0F26] transition-all duration-200 overflow-hidden" />
                   {label}
                 </Link>
               ))}
             </nav>
           </div>
 
-          {/* Contact + Newsletter */}
+          {/* Contact */}
           <div>
-            <h3 className="text-sm font-bold uppercase tracking-widest text-gray-400 mb-5">Contact</h3>
-            <div className="flex flex-col gap-3 mb-8">
-              <a href={`tel:${COMPANY.phone}`} className="flex items-center gap-3 text-sm text-gray-400 hover:text-white transition-colors">
-                <Phone size={15} className="text-[#5C0F26] shrink-0" />
+            <h3 className="text-[11px] font-bold uppercase tracking-widest text-white/30 mb-5">Contact</h3>
+            <div className="flex flex-col gap-3.5">
+              <a href={`tel:${COMPANY.phone}`} className="flex items-center gap-2.5 text-sm text-white/50 hover:text-white transition-colors">
+                <Phone size={14} className="shrink-0" style={{ color: "#1D4ED8" }} />
                 {COMPANY.phone}
               </a>
-              <a href={`mailto:${COMPANY.email}`} className="flex items-center gap-3 text-sm text-gray-400 hover:text-white transition-colors">
-                <Mail size={15} className="text-[#5C0F26] shrink-0" />
+              <a href={`mailto:${COMPANY.email}`} className="flex items-center gap-2.5 text-sm text-white/50 hover:text-white transition-colors">
+                <Mail size={14} className="shrink-0" style={{ color: "#1D4ED8" }} />
                 {COMPANY.email}
               </a>
-              <div className="flex items-start gap-3 text-sm text-gray-400">
-                <MapPin size={15} className="text-[#5C0F26] shrink-0 mt-0.5" />
+              <div className="flex items-start gap-2.5 text-sm text-white/50">
+                <MapPin size={14} className="shrink-0 mt-0.5" style={{ color: "#1D4ED8" }} />
                 {COMPANY.address}
               </div>
             </div>
-
-            {/* Newsletter */}
-            <h4 className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">Newsletter</h4>
-            <form onSubmit={(e) => e.preventDefault()} className="flex gap-2">
-              <input
-                type="email"
-                placeholder="Work email"
-                required
-                className="flex-1 bg-white/10 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-[#5C0F26] transition-colors"
-              />
-              <button
-                type="submit"
-                className="w-10 h-10 bg-[#5C0F26] rounded-xl flex items-center justify-center hover:bg-[#3F0A1A] transition-colors shrink-0"
-                aria-label="Subscribe"
-              >
-                <ArrowRight size={16} />
-              </button>
-            </form>
           </div>
-        </div>
-      </div>
 
-      {/* Partners strip */}
-      <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6">
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
-            <span className="text-xs font-semibold text-gray-500 uppercase tracking-widest">OEM Partners</span>
-            {["Dell", "HP", "Lenovo", "Microsoft", "Intel", "NVIDIA", "Canon"].map((name) => (
-              <span key={name} className="text-sm font-bold text-gray-500 hover:text-gray-300 transition-colors cursor-default">
-                {name}
-              </span>
-            ))}
+          {/* Socials */}
+          <div>
+            <h3 className="text-[11px] font-bold uppercase tracking-widest text-white/30 mb-5">Follow Us</h3>
+            <div className="flex flex-col gap-3">
+              {SOCIALS.map(({ Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  className="flex items-center gap-3 text-sm text-white/50 hover:text-white transition-colors duration-150 group"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-white/5 group-hover:bg-white/10 flex items-center justify-center transition-colors">
+                    <Icon size={15} />
+                  </div>
+                  {label}
+                </a>
+              ))}
+            </div>
           </div>
+
         </div>
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-white/10">
+      <div className="border-t border-white/[0.07]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-white/25">
             © {new Date().getFullYear()} {COMPANY.name}. All rights reserved.
           </p>
           <div className="flex gap-6">
             {["Privacy Policy", "Terms of Use", "Sitemap"].map((item) => (
-              <a key={item} href="#" className="text-xs text-gray-500 hover:text-gray-300 transition-colors">
+              <a key={item} href="#" className="text-xs text-white/25 hover:text-white/60 transition-colors">
                 {item}
               </a>
             ))}
           </div>
         </div>
       </div>
+
     </footer>
   );
 }
