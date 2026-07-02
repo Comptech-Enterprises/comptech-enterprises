@@ -1,0 +1,31 @@
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
+import { Hero } from "@/components/home/Hero";
+import { PartnersStrip } from "@/components/home/PartnersStrip";
+import { ServicesSection } from "@/components/home/ServicesSection";
+import { StatsSection } from "@/components/home/StatsSection";
+import { AISection } from "@/components/home/AISection";
+import { IndustriesSection } from "@/components/home/IndustriesSection";
+import { CaseStudiesSection } from "@/components/home/CaseStudiesSection";
+import { Testimonials } from "@/components/home/Testimonials";
+import { CTABanner } from "@/components/home/CTABanner";
+
+export default function HomePage() {
+  return (
+    <>
+      <Navbar transparent />
+      <main>
+        <Hero />
+        <PartnersStrip />
+        <ServicesSection />
+        <StatsSection />
+        <AISection />
+        <IndustriesSection />
+        <CaseStudiesSection />
+        <Testimonials />
+        <CTABanner />
+      </main>
+      <Footer />
+    </>
+  );
+}

@@ -1,0 +1,439 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ================================================================
+   CSS CUSTOM PROPERTIES — Design Tokens
+   ================================================================ */
+:root {
+  /* Brand - aligned to Burgundy/Black logo */
+  --color-primary:       #5C0F26; /* Burgundy Maroon */
+  --color-primary-dark:  #3F0A1A;
+  --color-primary-light: #FDF4F6;
+  --color-accent:        #6B122D;
+  --color-accent-dark:   #4E0D21;
+  --color-text:          #1A1D23;
+  --color-text-muted:    #5C6270;
+  --color-border:        #D8DDE5;
+  --color-bg-alt:        #FDF8F9;
+
+  /* Spacing */
+  --nav-height: 76px;
+
+  /* Effects */
+  --shadow-blue: 0 4px 20px rgba(92, 15, 38, 0.08), 0 1px 3px rgba(92, 15, 38, 0.04);
+  --shadow-red:  0 4px 16px rgba(107, 18, 45, 0.12);
+}
+
+/* ================================================================
+   BASE RESETS
+   ================================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-inter, 'Inter', system-ui, sans-serif);
+  color: var(--color-text);
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ================================================================
+   TYPOGRAPHY UTILITIES
+   ================================================================ */
+.font-display {
+  font-family: var(--font-manrope, 'Manrope', system-ui, sans-serif);
+}
+
+.text-balance { text-wrap: balance; }
+
+/* ================================================================
+   SECTION LABEL
+   ================================================================ */
+.section-label {
+  @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest mb-4;
+  color: #5C0F26;
+}
+
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 2px;
+  background: #5C0F26;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.section-label.light {
+  color: rgba(255,255,255,0.7);
+}
+.section-label.light::before {
+  background: rgba(255,255,255,0.5);
+}
+
+/* ================================================================
+   CARD HOVER LIFT
+   ================================================================ */
+.card-lift {
+  @apply transition-all duration-300 ease-out;
+}
+.card-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+/* ================================================================
+   ANIMATED BACKGROUND GRID (RESTORED FOR PREMIUM TECH AESTHETIC)
+   ================================================================ */
+.bg-grid-lines {
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 97, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 97, 255, 0.05) 1px, transparent 1px);
+}
+
+.bg-grid-purple {
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(139, 92, 246, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(139, 92, 246, 0.06) 1px, transparent 1px);
+}
+
+/* ================================================================
+   GRADIENT TEXT (RESTORED FOR PREMIUM DESIGN FEEL)
+   ================================================================ */
+.text-gradient-blue {
+  background: linear-gradient(135deg, #0052D4 0%, #4364F7 50%, #6FB1FC 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-purple {
+  background: linear-gradient(135deg, #8A2387 0%, #E94057 50%, #F27121 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ================================================================
+   GLASSMORPHISM & PREMIUM GLOW CARD EFFECTS
+   ================================================================ */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.04);
+}
+
+.dark-glass-panel {
+  background: rgba(10, 12, 16, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.glow-card {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  background: #ffffff;
+}
+
+.glow-card::before {
+  content: '';
+  position: absolute;
+  inset: -1.5px;
+  background: linear-gradient(135deg, #0066FF, #E31E24);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease, filter 0.4s ease;
+}
+
+.glow-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 61, 165, 0.1);
+}
+
+.glow-card:hover::before {
+  opacity: 1;
+  filter: blur(1px);
+}
+
+
+/* ================================================================
+   MARQUEE ANIMATIONS
+   ================================================================ */
+@keyframes marquee-ltr {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+@keyframes marquee-rtl {
+  0%   { transform: translateX(-33.333%); }
+  100% { transform: translateX(0); }
+}
+
+/* ================================================================
+   SCROLLBAR HIDE
+   ================================================================ */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+/* ================================================================
+   PROGRESS BAR
+   ================================================================ */
+.progress-bar {
+  @apply h-1.5 bg-gray-100 rounded-full overflow-hidden;
+}
+.progress-fill {
+  @apply h-full rounded-full bg-gradient-to-r from-blue-700 to-blue-400;
+  transition: width 1.2s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+/* ================================================================
+   BUTTON BASE
+   ================================================================ */
+.btn {
+  @apply inline-flex items-center justify-center gap-2 font-semibold rounded-xl transition-all duration-300 whitespace-nowrap cursor-pointer select-none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.08);
+  opacity: 0;
+  transition: opacity 150ms;
+}
+
+.btn:hover::after { opacity: 1; }
+
+.btn-primary {
+  @apply btn bg-blue-700 text-white px-7 py-3 text-sm shadow-blue;
+}
+.btn-primary:hover { background: #002B8A; transform: translateY(-1px); }
+
+.btn-accent {
+  @apply btn text-white px-7 py-3 text-sm;
+  background: #5C0F26;
+  box-shadow: 0 4px 16px rgba(92, 15, 38, 0.25);
+}
+.btn-accent:hover { background: #3F0A1A; transform: translateY(-1px); }
+
+.btn-outline {
+  @apply btn border-[1.5px] border-blue-700 text-blue-700 px-7 py-3 text-sm bg-transparent;
+}
+.btn-outline:hover { @apply bg-blue-50; transform: translateY(-1px); }
+
+.btn-outline-white {
+  @apply btn border-[1.5px] border-white/50 text-white px-7 py-3 text-sm bg-transparent;
+}
+.btn-outline-white:hover { background: rgba(255,255,255,0.1); border-color: white; }
+
+.btn-lg { @apply px-9 py-4 text-base rounded-2xl; }
+.btn-sm { @apply px-5 py-2 text-xs rounded-xl; }
+
+/* Arrow animation inside buttons */
+.btn-arrow {
+  transition: transform 300ms cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+.btn:hover .btn-arrow { transform: translateX(3px); }
+
+/* ================================================================
+   SERVICE CARD TOP BORDER ANIMATION
+   ================================================================ */
+.service-card-top {
+  position: relative;
+  overflow: hidden;
+}
+.service-card-top::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #5C0F26, #9B1840);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 400ms cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+.service-card-top:hover::before { transform: scaleX(1); }
+
+/* ================================================================
+   HUMAN TRUST CARD
+   ================================================================ */
+.trust-card {
+  background: #ffffff;
+  border: 1px solid rgba(92, 15, 38, 0.08);
+  box-shadow: 0 2px 12px rgba(92, 15, 38, 0.06), 0 1px 3px rgba(0,0,0,0.04);
+  border-radius: 16px;
+  transition: box-shadow 300ms ease, transform 300ms ease;
+}
+.trust-card:hover {
+  box-shadow: 0 8px 28px rgba(92, 15, 38, 0.1), 0 2px 6px rgba(0,0,0,0.05);
+  transform: translateY(-2px);
+}
+
+/* ================================================================
+   TESTIMONIAL QUOTE
+   ================================================================ */
+.testimonial-quote::before {
+  content: '\201C';
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  font-size: 6rem;
+  font-family: Georgia, serif;
+  color: #E6EEFF;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* ================================================================
+   NAVBAR
+   ================================================================ */
+.navbar-transparent { background: transparent; }
+.navbar-solid {
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid #D8DDE5;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+/* ================================================================
+   LOGO MARK
+   ================================================================ */
+.logo-mark {
+  @apply w-10 h-10 bg-blue-700 rounded-xl flex items-center justify-center font-display font-extrabold text-lg text-white;
+  position: relative;
+  overflow: hidden;
+}
+.logo-mark::after {
+  content: '';
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 12px; height: 12px;
+  background: #E31E24;
+  border-radius: 3px 0 0 0;
+}
+
+/* ================================================================
+   STAT CARD BOTTOM LINE
+   ================================================================ */
+.stat-card-line {
+  position: relative;
+  overflow: hidden;
+}
+.stat-card-line::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: 2px;
+  background: #5C0F26;
+  border-radius: 2px 2px 0 0;
+  transition: width 400ms cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+.stat-card-line:hover::after { width: 80%; }
+
+/* ================================================================
+   FLOATING ACTIONS
+   ================================================================ */
+.floating-btn {
+  @apply flex items-center gap-3 font-semibold text-sm rounded-full text-white cursor-pointer;
+  padding: 0.625rem 1.25rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  transition: transform 200ms ease-out, box-shadow 200ms ease-out;
+  border: none;
+}
+.floating-btn:hover { transform: translateX(-4px) scale(1.02); }
+
+/* ================================================================
+   MOBILE NAV
+   ================================================================ */
+.mobile-nav {
+  @apply fixed top-0 left-0 right-0 bottom-0 bg-white z-[998] overflow-y-auto;
+  transform: translateX(100%);
+  transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  padding-top: var(--nav-height);
+}
+.mobile-nav.open { transform: translateX(0); }
+
+/* ================================================================
+   CTA BANNER
+   ================================================================ */
+.cta-banner-bg {
+  background: linear-gradient(135deg, #3F0A1A 0%, #5C0F26 60%, #7A1535 100%);
+  position: relative;
+  overflow: hidden;
+}
+.cta-banner-bg::before {
+  content: '';
+  position: absolute;
+  top: -50%; right: -10%;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 60%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* ================================================================
+   AI CARD HOVER
+   ================================================================ */
+.ai-card-hover {
+  position: relative;
+  overflow: hidden;
+}
+.ai-card-hover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(139,92,246,0.15) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 400ms;
+}
+.ai-card-hover:hover::before { opacity: 1; }
+
+/* ================================================================
+   PAGE HERO
+   ================================================================ */
+.page-hero-bg {
+  background: linear-gradient(145deg, #3F0A1A 0%, #5C0F26 100%);
+  position: relative;
+  overflow: hidden;
+}
+.page-hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+}
+
+/* ================================================================
+   PARTNER LOGO CARD
+   ================================================================ */
+.partner-logo-card {
+  @apply opacity-40 grayscale transition-all duration-500;
+}
+.partner-logo-card:hover { @apply opacity-90 grayscale-0; }

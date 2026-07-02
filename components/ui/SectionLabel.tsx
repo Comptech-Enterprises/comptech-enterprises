@@ -1,0 +1,10 @@
+import { ReactNode } from "react";
+import { clsx } from "clsx";
+
+export function SectionLabel({ children, className, light }: { children: ReactNode; className?: string; light?: boolean }) {
+  return (
+    <div className={clsx("section-label", light && "light", className)}>
+      {children}
+    </div>
+  );
+}
