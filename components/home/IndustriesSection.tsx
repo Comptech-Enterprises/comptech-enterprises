@@ -22,7 +22,7 @@ export function IndustriesSection() {
     <section className="py-24 lg:py-32 bg-white" aria-labelledby="industries-title">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <RevealWrapper className="text-center mb-14">
-          <SectionLabel className="justify-center">Industries Served</SectionLabel>
+          <SectionLabel className="justify-center" blue>Industries Served</SectionLabel>
           <h2
             id="industries-title"
             className="font-display font-extrabold text-gray-900 text-balance max-w-2xl mx-auto"

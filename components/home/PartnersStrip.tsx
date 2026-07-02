@@ -1,36 +1,40 @@
-import { PARTNERS } from "@/lib/constants";
+const PARTNERS = [
+  { name: "Dell",      color: "#007DB8" },
+  { name: "HP",        color: "#0096D6" },
+  { name: "Lenovo",    color: "#E1251B" },
+  { name: "Microsoft", color: "#00A4EF" },
+  { name: "Intel",     color: "#0071C5" },
+  { name: "NVIDIA",    color: "#76B900" },
+  { name: "Canon",     color: "#CC0000" },
+  { name: "Samsung",   color: "#1428A0" },
+  { name: "Epson",     color: "#009AC7" },
+  { name: "Sony",      color: "#003087" },
+];
 
 export function PartnersStrip() {
-  const doubled = [...PARTNERS, ...PARTNERS];
+  const items = [...PARTNERS, ...PARTNERS];
 
   return (
-    <section className="bg-white border-b border-gray-100 py-10" aria-label="Technology partners">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <p className="text-center text-xs text-gray-400 uppercase tracking-widest mb-8">
-          Trusted Technology Partners
-        </p>
-      </div>
+    <section className="bg-white border-y border-gray-100 py-10" aria-label="Technology partners">
+      <p className="text-center text-[11px] font-semibold uppercase tracking-widest text-gray-400 mb-8">
+        Trusted Technology Partners
+      </p>
 
-      {/* Marquee */}
       <div className="overflow-hidden">
         <div
           className="flex items-center"
           style={{ animation: "marquee 30s linear infinite", width: "max-content" }}
         >
-          {doubled.map((p, i) => (
+          {items.map((p, i) => (
             <div
               key={i}
-              className="partner-logo-card flex-shrink-0 px-10 flex items-center justify-center"
-              style={
-                {
-                  "--partner-color": p.color,
-                } as React.CSSProperties
-              }
+              className="flex-shrink-0 px-10 flex items-center gap-2.5 opacity-50 hover:opacity-100 transition-opacity duration-300"
             >
               <span
-                className="font-display font-bold text-xl select-none"
-                title={p.name}
-              >
+                className="w-2 h-2 rounded-full shrink-0"
+                style={{ background: p.color }}
+              />
+              <span className="font-display font-bold text-lg text-gray-800 select-none whitespace-nowrap">
                 {p.name}
               </span>
             </div>

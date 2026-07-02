@@ -8,7 +8,7 @@ export function StatsSection() {
     <section className="py-24 lg:py-32 bg-gray-50" aria-labelledby="stats-title">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <RevealWrapper className="text-center mb-14">
-          <SectionLabel className="justify-center">Why Choose Comptech</SectionLabel>
+          <SectionLabel className="justify-center" blue>Why Choose Comptech</SectionLabel>
           <h2
             id="stats-title"
             className="font-display font-extrabold text-gray-900 text-balance"

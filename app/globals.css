@@ -17,6 +17,11 @@
   --color-border:        #D8DDE5;
   --color-bg-alt:        #FDF8F9;
 
+  /* Secondary — Blue */
+  --color-blue:          #1D4ED8;
+  --color-blue-dark:     #1E3A8A;
+  --color-blue-light:    #EFF6FF;
+
   /* Spacing */
   --nav-height: 76px;
 
@@ -78,6 +83,13 @@ body {
 }
 .section-label.light::before {
   background: rgba(255,255,255,0.5);
+}
+
+.section-label.blue {
+  color: var(--color-blue);
+}
+.section-label.blue::before {
+  background: var(--color-blue);
 }
 
 /* ================================================================

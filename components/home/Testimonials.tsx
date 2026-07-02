@@ -9,9 +9,9 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 const AVATAR_COLORS = [
   "#5C0F26",
   "#1D4ED8",
-  "#047857",
-  "#C2410C",
-  "#7C3AED",
+  "#5C0F26",
+  "#1D4ED8",
+  "#5C0F26",
 ];
 
 export function Testimonials() {
@@ -92,7 +92,7 @@ export function Testimonials() {
                   {/* Stars */}
                   <div className="ml-auto flex gap-0.5">
                     {Array(5).fill(null).map((_, s) => (
-                      <svg key={s} width="11" height="11" viewBox="0 0 24 24" fill="#F59E0B">
+                      <svg key={s} width="11" height="11" viewBox="0 0 24 24" fill="#1D4ED8">
                         <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
                       </svg>
                     ))}

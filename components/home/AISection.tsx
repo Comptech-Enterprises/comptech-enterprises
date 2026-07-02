@@ -25,16 +25,16 @@ const AI_CARDS = [
     title: "No-Code AI Platform",
     desc: "Deploy a private, self-hosted no-code AI builder inside your network so business teams can build secure local chatbots.",
     badge: "Private Software",
-    accent: "#7C3AED",
-    bg: "#F5F3FF",
+    accent: "#1D4ED8",
+    bg: "#EFF6FF",
   },
   {
     Icon: LineChart,
     title: "Document Intelligence",
     desc: "Deploy intelligent search, OCR, data extraction, and workflow automation solutions directly integrated with local databases.",
     badge: "Business Automation",
-    accent: "#047857",
-    bg: "#ECFDF5",
+    accent: "#5C0F26",
+    bg: "#FDF4F6",
   },
 ];
 
