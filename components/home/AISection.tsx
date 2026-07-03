@@ -1,101 +1,114 @@
+"use client";
+
 import Link from "next/link";
-import { ArrowRight, BrainCircuit, GraduationCap, Blocks, LineChart } from "lucide-react";
-import { RevealWrapper } from "@/components/ui/RevealWrapper";
+import { ArrowRight, BrainCircuit, GraduationCap, Blocks, LineChart, CheckCircle2 } from "lucide-react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
-const AI_CARDS = [
-  {
-    Icon: BrainCircuit,
-    title: "NVIDIA GPU Infrastructure",
-    desc: "OEM-certified GPU server configurations (Dell PowerEdge, HPE ProLiant) for enterprise machine learning, deep learning, and inference.",
-    badge: "Hardware & Compute",
-    accent: "#1D4ED8",
-    bg: "#EFF6FF",
-  },
-  {
-    Icon: GraduationCap,
-    title: "AI Enablement Workshops",
-    desc: "Hands-on, custom technical and leadership programs to train your workforce on LLMs, RAG, and AI agent frameworks.",
-    badge: "Consulting & Training",
-    accent: "#5C0F26",
-    bg: "#FDF4F6",
-  },
-  {
-    Icon: Blocks,
-    title: "No-Code AI Platform",
-    desc: "Deploy a private, self-hosted no-code AI builder inside your network so business teams can build secure local chatbots.",
-    badge: "Private Software",
-    accent: "#1D4ED8",
-    bg: "#EFF6FF",
-  },
-  {
-    Icon: LineChart,
-    title: "Document Intelligence",
-    desc: "Deploy intelligent search, OCR, data extraction, and workflow automation solutions directly integrated with local databases.",
-    badge: "Business Automation",
-    accent: "#5C0F26",
-    bg: "#FDF4F6",
-  },
+const AI_FEATURES = [
+  { Icon: BrainCircuit, title: "NVIDIA GPU Infrastructure",  desc: "OEM-certified GPU servers for ML, deep learning, and inference workloads." },
+  { Icon: GraduationCap, title: "AI Enablement Workshops",   desc: "Train your teams on LLMs, RAG, and AI agent frameworks." },
+  { Icon: Blocks,        title: "No-Code AI Platform",       desc: "Private, self-hosted AI builder — secure chatbots inside your network." },
+  { Icon: LineChart,     title: "Document Intelligence",     desc: "OCR, data extraction, and workflow automation on your local data." },
+];
+
+const STATS = [
+  { value: "50+",  label: "AI Projects" },
+  { value: "400+", label: "Hours Saved/mo" },
+  { value: "100%", label: "On-Premise" },
+  { value: "24/7", label: "AI Support" },
+];
+
+const BULLETS = [
+  "Fully private — your data never leaves your network",
+  "Certified NVIDIA infrastructure partners",
+  "Custom AI workshops for leadership & engineering",
+  "Deployed in 200+ enterprise environments",
 ];
 
 export function AISection() {
   return (
-    <section
-      className="py-24 lg:py-32 bg-white"
-      aria-labelledby="ai-title"
-    >
+    <section className="py-24 lg:py-32 bg-white" aria-labelledby="ai-title">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <RevealWrapper className="mb-14 md:flex md:items-end md:justify-between gap-8">
-          <div className="max-w-xl">
-            <SectionLabel>AI Division</SectionLabel>
+
+        {/* Top label */}
+        <SectionLabel className="mb-4">AI Division</SectionLabel>
+
+        {/* Main split layout */}
+        <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+
+          {/* Left — text */}
+          <div>
             <h2
               id="ai-title"
-              className="font-display font-extrabold text-gray-900 text-balance"
-              style={{ fontSize: "clamp(1.9rem, 3.5vw, 2.8rem)" }}
+              className="font-display font-extrabold text-gray-900 tracking-tight mb-5"
+              style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)" }}
             >
-              AI that works inside your walls
+              Enterprise AI,{" "}
+              <span style={{ color: "#1D4ED8" }}>built for India.</span>
             </h2>
-            <p className="mt-4 text-base text-gray-500 leading-relaxed">
-              We help Indian enterprises adopt Generative AI and machine learning securely — inside your own network, with your own data. From hardware to team enablement.
+            <p className="text-gray-500 text-base leading-relaxed mb-8 max-w-lg">
+              We help enterprises adopt Generative AI and machine learning securely — inside your own network, with your own data. From GPU hardware to team enablement.
             </p>
-          </div>
-          <div className="mt-6 md:mt-0 flex-shrink-0">
-            <Link href="/ai-solutions" className="btn-accent btn btn-lg inline-flex">
-              View AI Platform <ArrowRight size={18} className="btn-arrow" />
+
+            <ul className="flex flex-col gap-3 mb-10">
+              {BULLETS.map((b) => (
+                <li key={b} className="flex items-start gap-3 text-sm text-gray-700">
+                  <CheckCircle2 size={17} className="shrink-0 mt-0.5" style={{ color: "#1D4ED8" }} />
+                  {b}
+                </li>
+              ))}
+            </ul>
+
+            <Link
+              href="/ai-solutions"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-white transition-all duration-200 hover:opacity-90"
+              style={{ background: "#1D4ED8" }}
+            >
+              Explore AI Solutions <ArrowRight size={15} />
             </Link>
           </div>
-        </RevealWrapper>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {AI_CARDS.map(({ Icon, title, desc, badge, accent, bg }, i) => (
-            <RevealWrapper key={title} delay={i * 80}>
+          {/* Right — feature cards 2x2 */}
+          <div className="grid grid-cols-2 gap-4">
+            {AI_FEATURES.map(({ Icon, title, desc }, i) => (
               <div
-                className="rounded-2xl bg-white p-6 h-full flex flex-col transition-all duration-300 hover:shadow-md"
+                key={title}
+                className="rounded-2xl p-5 flex flex-col gap-3 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5"
                 style={{
-                  border: "1px solid rgba(0,0,0,0.07)",
-                  boxShadow: "0 1px 4px rgba(0,0,0,0.04)",
+                  background: i % 2 === 0 ? "#EFF6FF" : "#F5F7FA",
+                  border: "1px solid #E5E7EB",
                 }}
               >
-                <span
-                  className="self-start text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md mb-6"
-                  style={{ background: bg, color: accent }}
-                >
-                  {badge}
-                </span>
-
                 <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
-                  style={{ background: bg }}
+                  className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                  style={{ background: "#1D4ED8" }}
                 >
-                  <Icon size={20} style={{ color: accent }} />
+                  <Icon size={18} className="text-white" />
                 </div>
-
-                <h3 className="font-display font-bold text-[15px] text-gray-900 mb-2">{title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed flex-1">{desc}</p>
+                <h3 className="font-display font-bold text-gray-900 text-sm leading-snug">{title}</h3>
+                <p className="text-xs text-gray-500 leading-relaxed">{desc}</p>
               </div>
-            </RevealWrapper>
+            ))}
+          </div>
+        </div>
+
+        {/* Stats bar */}
+        <div
+          className="grid grid-cols-2 md:grid-cols-4 rounded-2xl overflow-hidden"
+          style={{ background: "#1D4ED8" }}
+        >
+          {STATS.map(({ value, label }, i) => (
+            <div
+              key={label}
+              className="px-8 py-7 text-center"
+              style={{ borderRight: i < STATS.length - 1 ? "1px solid rgba(255,255,255,0.15)" : "none" }}
+            >
+              <p className="font-display font-extrabold text-white text-3xl mb-1">{value}</p>
+              <p className="text-xs font-medium text-white/60 uppercase tracking-widest">{label}</p>
+            </div>
           ))}
         </div>
+
       </div>
     </section>
   );
