@@ -91,10 +91,13 @@ export function Navbar({ transparent = false }: NavbarProps) {
                   key={link.label}
                   className="relative"
                   ref={dropdownRef}
-                  onMouseEnter={() => { setDropdownOpen(true); setHoveredGroup(link.groups![0].label); }}
-                  onMouseLeave={() => { setDropdownOpen(false); setHoveredGroup(null); }}
                 >
                   <button
+                    onClick={() => {
+                      const next = !dropdownOpen;
+                      setDropdownOpen(next);
+                      setHoveredGroup(next ? link.groups![0].label : null);
+                    }}
                     className={clsx(
                       `flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${hoverBg}`,
                       textColor,
