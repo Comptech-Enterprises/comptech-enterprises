@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, X, Menu, ArrowRight } from "lucide-react";
+import { ChevronDown, ChevronRight, X, Menu, ArrowRight } from "lucide-react";
 import { clsx } from "clsx";
 import { NAV_LINKS } from "@/lib/constants";
 import { Logo } from "@/components/ui/Logo";
@@ -12,10 +12,18 @@ interface NavbarProps {
   transparent?: boolean;
 }
 
+type NavLink = {
+  label: string;
+  href: string;
+  groups?: { label: string; items: { label: string; href: string }[] }[];
+  children?: { label: string; href: string }[];
+};
+
 export function Navbar({ transparent = false }: NavbarProps) {
   const [solid, setSolid] = useState(!transparent);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [hoveredGroup, setHoveredGroup] = useState<string | null>(null);
   const pathname = usePathname();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -29,12 +37,14 @@ export function Navbar({ transparent = false }: NavbarProps) {
   useEffect(() => {
     setMobileOpen(false);
     setDropdownOpen(false);
+    setHoveredGroup(null);
   }, [pathname]);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
         setDropdownOpen(false);
+        setHoveredGroup(null);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -47,10 +57,10 @@ export function Navbar({ transparent = false }: NavbarProps) {
   }, [mobileOpen]);
 
   const isTransparent = transparent && !solid;
-  const textColor      = isTransparent ? "text-white/90"  : "text-gray-700";
-  const logoTextColor  = isTransparent ? "text-white"     : "text-gray-900";
-  const activeColor    = isTransparent ? "text-white font-semibold" : "text-[#5C0F26] font-semibold";
-  const hoverBg        = isTransparent ? "hover:bg-white/10" : "hover:bg-gray-100";
+  const textColor     = isTransparent ? "text-white/90"  : "text-gray-700";
+  const logoTextColor = isTransparent ? "text-white"     : "text-gray-900";
+  const activeColor   = isTransparent ? "text-white font-semibold" : "text-[#5C0F26] font-semibold";
+  const hoverBg       = isTransparent ? "hover:bg-white/10" : "hover:bg-gray-100";
 
   return (
     <>
@@ -64,51 +74,82 @@ export function Navbar({ transparent = false }: NavbarProps) {
         aria-label="Main navigation"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8 h-full flex items-center justify-between gap-8">
+
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 shrink-0">
             <Logo className="w-11 h-11" />
             <span className={clsx("font-display font-extrabold text-xl leading-none tracking-tight transition-colors duration-300", logoTextColor)}>
-              Comptech<span className="text-[#5C0F26]">.</span>
+              Comptech Enterprises<span className="text-[#5C0F26]">.</span>
             </span>
           </Link>
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-1">
-            {NAV_LINKS.map((link) =>
-              link.children ? (
-                <div key={link.label} className="relative" ref={dropdownRef}>
+            {(NAV_LINKS as NavLink[]).map((link) =>
+              link.groups ? (
+                <div
+                  key={link.label}
+                  className="relative"
+                  ref={dropdownRef}
+                  onMouseEnter={() => { setDropdownOpen(true); setHoveredGroup(link.groups![0].label); }}
+                  onMouseLeave={() => { setDropdownOpen(false); setHoveredGroup(null); }}
+                >
                   <button
                     className={clsx(
                       `flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${hoverBg}`,
                       textColor,
                       pathname.startsWith(link.href) && activeColor
                     )}
-                    onClick={() => setDropdownOpen((v) => !v)}
                     aria-expanded={dropdownOpen}
                     aria-haspopup="true"
                   >
                     {link.label}
-                    <ChevronDown
-                      size={14}
-                      className={clsx("transition-transform duration-200", dropdownOpen && "rotate-180")}
-                    />
+                    <ChevronDown size={14} className={clsx("transition-transform duration-200", dropdownOpen && "rotate-180")} />
                   </button>
 
                   {dropdownOpen && (
-                    <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-2xl shadow-xl border border-gray-100 py-2 z-50 animate-fade-in">
-                      {link.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          className={clsx(
-                            "flex items-center gap-2 px-4 py-3 text-sm text-gray-700 hover:bg-[#FDF4F6] hover:text-[#5C0F26] transition-colors duration-150",
-                            pathname === child.href && "text-[#5C0F26] font-semibold bg-[#FDF4F6]"
-                          )}
-                        >
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#5C0F26]/30 flex-shrink-0" />
-                          {child.label}
-                        </Link>
-                      ))}
+                    <div className="absolute top-full left-0 mt-2 bg-white rounded-2xl shadow-xl border border-gray-100 z-50 flex overflow-hidden min-w-[480px]">
+                      {/* Group list */}
+                      <div className="w-44 border-r border-gray-100 py-2">
+                        {link.groups.map((group) => (
+                          <button
+                            key={group.label}
+                            onMouseEnter={() => setHoveredGroup(group.label)}
+                            className={clsx(
+                              "w-full flex items-center justify-between px-4 py-3 text-sm font-semibold transition-colors duration-150",
+                              hoveredGroup === group.label
+                                ? "bg-[#FDF4F6] text-[#5C0F26]"
+                                : "text-gray-700 hover:bg-gray-50"
+                            )}
+                          >
+                            {group.label}
+                            <ChevronRight size={14} className="text-gray-400" />
+                          </button>
+                        ))}
+                      </div>
+
+                      {/* Items panel */}
+                      <div className="flex-1 py-2">
+                        {link.groups.map((group) =>
+                          hoveredGroup === group.label ? (
+                            <div key={group.label}>
+                              {group.items.map((item) => (
+                                <Link
+                                  key={item.href}
+                                  href={item.href}
+                                  className={clsx(
+                                    "flex items-center gap-2 px-5 py-3 text-sm text-gray-700 hover:bg-[#FDF4F6] hover:text-[#5C0F26] transition-colors duration-150",
+                                    pathname === item.href && "text-[#5C0F26] font-semibold bg-[#FDF4F6]"
+                                  )}
+                                >
+                                  <span className="w-1.5 h-1.5 rounded-full bg-[#5C0F26]/30 flex-shrink-0" />
+                                  {item.label}
+                                </Link>
+                              ))}
+                            </div>
+                          ) : null
+                        )}
+                      </div>
                     </div>
                   )}
                 </div>
@@ -162,12 +203,9 @@ export function Navbar({ transparent = false }: NavbarProps) {
       </nav>
 
       {/* Mobile Nav */}
-      <div
-        className={clsx("mobile-nav", mobileOpen && "open")}
-        aria-hidden={!mobileOpen}
-      >
+      <div className={clsx("mobile-nav", mobileOpen && "open")} aria-hidden={!mobileOpen}>
         <div className="p-6 flex flex-col gap-1">
-          {NAV_LINKS.map((link) => (
+          {(NAV_LINKS as NavLink[]).map((link) => (
             <div key={link.label}>
               <Link
                 href={link.href}
@@ -181,16 +219,24 @@ export function Navbar({ transparent = false }: NavbarProps) {
                 {link.label}
                 <ArrowRight size={16} className="text-gray-400" />
               </Link>
-              {link.children && (
-                <div className="ml-4 mt-1 flex flex-col gap-0.5 mb-2">
-                  {link.children.map((child) => (
-                    <Link
-                      key={child.href}
-                      href={child.href}
-                      className="px-4 py-2.5 text-sm text-gray-600 hover:text-[#5C0F26] hover:bg-[#FDF4F6] rounded-lg transition-colors"
-                    >
-                      {child.label}
-                    </Link>
+
+              {link.groups && (
+                <div className="ml-4 mt-1 mb-2 flex flex-col gap-0.5">
+                  {link.groups.map((group) => (
+                    <div key={group.label}>
+                      <p className="px-4 pt-3 pb-1 text-[10px] font-bold uppercase tracking-widest text-gray-400">
+                        {group.label}
+                      </p>
+                      {group.items.map((item) => (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          className="px-4 py-2.5 text-sm text-gray-600 hover:text-[#5C0F26] hover:bg-[#FDF4F6] rounded-lg transition-colors block"
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
                   ))}
                 </div>
               )}

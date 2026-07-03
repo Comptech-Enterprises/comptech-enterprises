@@ -9,25 +9,32 @@ export const COMPANY = {
 };
 
 export const NAV_LINKS = [
-  { label: "Home",      href: "/" },
-  { label: "About",     href: "/about" },
+  { label: "Home",  href: "/" },
+  { label: "AI",    href: "/ai-solutions" },
   {
-    label: "Services",
+    label: "Services & Products",
     href: "/services",
-    children: [
-      { label: "Enterprise Infrastructure", href: "/services/infrastructure" },
-      { label: "End User Computing",        href: "/services/euc" },
-      { label: "Data Centre Solutions",     href: "/services/datacenter" },
-      { label: "Networking",                href: "/services/networking" },
-      { label: "CCTV & Security",           href: "/services/security" },
-      { label: "Cloud Solutions",           href: "/services/cloud" },
-      { label: "AMC",                       href: "/services/amc" },
+    groups: [
+      {
+        label: "Services",
+        items: [
+          { label: "AMC",                     href: "/services/amc" },
+          { label: "General Repair Service",  href: "/services/repair" },
+          { label: "Networking Service",      href: "/services/networking" },
+        ],
+      },
+      {
+        label: "Products",
+        items: [
+          { label: "Printers",  href: "/products/printers" },
+          { label: "CCTV",      href: "/products/cctv" },
+          { label: "Others",    href: "/products/others" },
+        ],
+      },
     ],
   },
-  { label: "AI",        href: "/ai-solutions" },
-  { label: "Partners",  href: "/partners" },
-  { label: "Resources", href: "/case-studies" },
-  { label: "Contact",   href: "/contact" },
+  { label: "Contact", href: "/contact" },
+  { label: "About",   href: "/about" },
 ];
 
 export const PARTNERS = [
