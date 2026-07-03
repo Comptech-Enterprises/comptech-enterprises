@@ -1,114 +1,93 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { TESTIMONIALS } from "@/lib/constants";
-import { RevealWrapper } from "@/components/ui/RevealWrapper";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
-const AVATAR_COLORS = [
-  "#5C0F26",
-  "#1D4ED8",
-  "#5C0F26",
-  "#1D4ED8",
-  "#5C0F26",
-];
+const AVATAR_COLORS = ["#5C0F26", "#1D4ED8", "#5C0F26", "#1D4ED8", "#5C0F26", "#1D4ED8"];
 
 export function Testimonials() {
   const [active, setActive] = useState(0);
+  const [direction, setDirection] = useState(1);
   const count = TESTIMONIALS.length;
 
-  const prev = useCallback(() => setActive((c) => (c - 1 + count) % count), [count]);
-  const next = useCallback(() => setActive((c) => (c + 1) % count), [count]);
+  const go = useCallback((dir: number) => {
+    setDirection(dir);
+    setActive((c) => (c + dir + count) % count);
+  }, [count]);
 
   useEffect(() => {
-    const timer = setInterval(next, 6000);
-    return () => clearInterval(timer);
-  }, [next]);
+    const t = setInterval(() => go(1), 6000);
+    return () => clearInterval(t);
+  }, [go]);
 
-  const visibleIndices = [
-    (active) % count,
-    (active + 1) % count,
-    (active + 2) % count,
-  ];
+  const t = TESTIMONIALS[active];
 
   return (
-    <section className="py-24 lg:py-32 bg-[#FDF8F9]" aria-labelledby="testimonials-title">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <RevealWrapper className="text-center mb-14">
+    <section className="py-24 lg:py-32 bg-white" aria-labelledby="testimonials-title">
+      <div className="max-w-5xl mx-auto px-6 lg:px-8">
+
+        {/* Header */}
+        <div className="text-center mb-16">
           <SectionLabel className="justify-center">Client Stories</SectionLabel>
           <h2
             id="testimonials-title"
-            className="font-display font-extrabold text-gray-900 text-balance"
+            className="font-display font-extrabold text-gray-900 tracking-tight mt-3"
             style={{ fontSize: "clamp(1.9rem, 3.5vw, 2.8rem)" }}
           >
-            What our clients actually say
+            What our clients say
           </h2>
-          <p className="mt-4 text-lg text-gray-500 max-w-xl mx-auto leading-relaxed">
-            We&rsquo;ve been doing this long enough to know that the real measure of our work is how clients feel — not just the uptime numbers.
-          </p>
-        </RevealWrapper>
+        </div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
-          {visibleIndices.map((idx, pos) => {
-            const t = TESTIMONIALS[idx];
-            const avatarColor = AVATAR_COLORS[idx % AVATAR_COLORS.length];
-            const isCenter = pos === 1;
-            return (
-              <div
-                key={`${idx}-${pos}`}
-                className="relative bg-white rounded-3xl p-7 flex flex-col transition-all duration-500"
-                style={{
-                  border: isCenter ? `1.5px solid rgba(92,15,38,0.18)` : "1px solid rgba(0,0,0,0.07)",
-                  boxShadow: isCenter
-                    ? "0 8px 32px rgba(92,15,38,0.1), 0 2px 8px rgba(0,0,0,0.04)"
-                    : "0 1px 4px rgba(0,0,0,0.04)",
-                }}
-              >
-                {/* Quote icon */}
+        {/* Testimonial */}
+        <div className="relative">
+          <AnimatePresence mode="wait" custom={direction}>
+            <motion.div
+              key={active}
+              custom={direction}
+              initial={{ opacity: 0, x: direction > 0 ? 40 : -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: direction > 0 ? -40 : 40 }}
+              transition={{ duration: 0.35, ease: "easeInOut" }}
+              className="text-center"
+            >
+              {/* Stars */}
+              <div className="flex justify-center gap-1 mb-8">
+                {Array(5).fill(null).map((_, i) => (
+                  <Star key={i} size={16} fill="#1D4ED8" stroke="none" />
+                ))}
+              </div>
+
+              {/* Quote */}
+              <p className="text-gray-700 text-xl lg:text-2xl leading-relaxed font-medium max-w-3xl mx-auto mb-10">
+                &ldquo;{t.quote}&rdquo;
+              </p>
+
+              {/* Author */}
+              <div className="flex items-center justify-center gap-3">
                 <div
-                  className="w-9 h-9 rounded-xl flex items-center justify-center mb-5 shrink-0"
-                  style={{ background: "#FDF4F6" }}
+                  className="w-11 h-11 rounded-full flex items-center justify-center text-sm font-bold text-white shrink-0"
+                  style={{ background: AVATAR_COLORS[active % AVATAR_COLORS.length] }}
                 >
-                  <Quote size={16} style={{ color: "#5C0F26" }} />
+                  {t.initials}
                 </div>
-
-                <p className="text-gray-600 text-sm leading-relaxed mb-7 flex-1">
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-
-                <div className="flex items-center gap-3 pt-5" style={{ borderTop: "1px solid rgba(0,0,0,0.06)" }}>
-                  <div
-                    className="w-10 h-10 rounded-full flex items-center justify-center font-display font-bold text-sm text-white shrink-0"
-                    style={{ background: avatarColor }}
-                  >
-                    {t.initials}
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold text-gray-900">{t.name}</div>
-                    <div className="text-xs text-gray-400 mt-0.5">{t.title}</div>
-                  </div>
-                  {/* Stars */}
-                  <div className="ml-auto flex gap-0.5">
-                    {Array(5).fill(null).map((_, s) => (
-                      <svg key={s} width="11" height="11" viewBox="0 0 24 24" fill="#1D4ED8">
-                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                      </svg>
-                    ))}
-                  </div>
+                <div className="text-left">
+                  <p className="text-sm font-semibold text-gray-900">{t.name}</p>
+                  <p className="text-xs text-gray-400 mt-0.5">{t.title}</p>
                 </div>
               </div>
-            );
-          })}
+            </motion.div>
+          </AnimatePresence>
         </div>
 
         {/* Controls */}
-        <div className="flex items-center justify-center gap-4">
+        <div className="flex items-center justify-center gap-6 mt-14">
           <button
-            onClick={prev}
-            className="w-10 h-10 rounded-full border border-gray-200 bg-white flex items-center justify-center hover:border-[#5C0F26] hover:text-[#5C0F26] transition-colors"
-            aria-label="Previous testimonial"
+            onClick={() => go(-1)}
+            className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:border-gray-400 hover:text-gray-700 transition-all"
+            aria-label="Previous"
           >
             <ChevronLeft size={18} />
           </button>
@@ -117,12 +96,12 @@ export function Testimonials() {
             {TESTIMONIALS.map((_, i) => (
               <button
                 key={i}
-                onClick={() => setActive(i)}
+                onClick={() => { setDirection(i > active ? 1 : -1); setActive(i); }}
                 className="rounded-full transition-all duration-300"
                 style={{
-                  width: i === active ? 28 : 8,
+                  width: i === active ? 24 : 8,
                   height: 8,
-                  background: i === active ? "#5C0F26" : "#D1D5DB",
+                  background: i === active ? "#1D4ED8" : "#E5E7EB",
                 }}
                 aria-label={`Go to testimonial ${i + 1}`}
               />
@@ -130,13 +109,14 @@ export function Testimonials() {
           </div>
 
           <button
-            onClick={next}
-            className="w-10 h-10 rounded-full border border-gray-200 bg-white flex items-center justify-center hover:border-[#5C0F26] hover:text-[#5C0F26] transition-colors"
-            aria-label="Next testimonial"
+            onClick={() => go(1)}
+            className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:border-gray-400 hover:text-gray-700 transition-all"
+            aria-label="Next"
           >
             <ChevronRight size={18} />
           </button>
         </div>
+
       </div>
     </section>
   );
