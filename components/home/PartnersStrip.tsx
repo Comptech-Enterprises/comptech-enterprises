@@ -24,7 +24,7 @@ export function PartnersStrip() {
   return (
     <section
       className="py-20"
-      style={{ background: "linear-gradient(180deg, #ffffff 0%, #f8f9ff 40%, #f5f0f2 80%, #ffffff 100%)" }}
+      style={{ background: "linear-gradient(180deg, #ffffff 0%, #f8f9ff 50%, #f5f0f2 85%, #ffffff 100%)" }}
       aria-label="Technology partners"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">

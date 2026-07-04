@@ -50,6 +50,11 @@ export function Hero() {
         className="absolute inset-0"
         style={{ background: "linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.2) 60%, transparent 100%)" }}
       />
+      {/* Bottom fade to white — blends into the next section */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
+        style={{ background: "linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.85) 70%, #ffffff 100%)" }}
+      />
 
       {/* Content */}
       <div
