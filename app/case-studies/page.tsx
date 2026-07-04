@@ -3,7 +3,6 @@ import { Footer } from "@/components/layout/Footer";
 import { PageHero } from "@/components/sections/PageHero";
 import { RevealWrapper } from "@/components/ui/RevealWrapper";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { CTABanner } from "@/components/home/CTABanner";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -226,7 +225,7 @@ export default function CaseStudiesPage() {
           </div>
         </section>
 
-        <CTABanner />
+        
       </main>
       <Footer />
     </>

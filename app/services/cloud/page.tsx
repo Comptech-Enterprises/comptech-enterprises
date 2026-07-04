@@ -6,7 +6,6 @@ import { Footer } from "@/components/layout/Footer";
 import { PageHero } from "@/components/sections/PageHero";
 import { RevealWrapper } from "@/components/ui/RevealWrapper";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { CTABanner } from "@/components/home/CTABanner";
 
 export const metadata: Metadata = {
   title: "Managed Cloud & Hybrid Architecture Solutions",
@@ -150,7 +149,7 @@ export default function CloudSolutionsPage() {
           </div>
         </section>
 
-        <CTABanner />
+        
       </main>
       <Footer />
     </>

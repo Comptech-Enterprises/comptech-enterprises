@@ -6,7 +6,6 @@ import { Footer } from "@/components/layout/Footer";
 import { PageHero } from "@/components/sections/PageHero";
 import { RevealWrapper } from "@/components/ui/RevealWrapper";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { CTABanner } from "@/components/home/CTABanner";
 
 export const metadata: Metadata = {
   title: "End User Computing (EUC) Solutions",
@@ -150,7 +149,7 @@ export default function EUCPage() {
           </div>
         </section>
 
-        <CTABanner />
+        
       </main>
       <Footer />
     </>

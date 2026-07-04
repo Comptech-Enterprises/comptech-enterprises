@@ -6,7 +6,6 @@ import { Footer } from "@/components/layout/Footer";
 import { PageHero } from "@/components/sections/PageHero";
 import { RevealWrapper } from "@/components/ui/RevealWrapper";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { CTABanner } from "@/components/home/CTABanner";
 
 export const metadata: Metadata = {
   title: "Data Centre & Server Room Solutions",
@@ -151,7 +150,7 @@ export default function DatacenterPage() {
           </div>
         </section>
 
-        <CTABanner />
+        
       </main>
       <Footer />
     </>

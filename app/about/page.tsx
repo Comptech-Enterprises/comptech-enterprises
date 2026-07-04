@@ -6,7 +6,6 @@ import { Footer } from "@/components/layout/Footer";
 import { PageHero } from "@/components/sections/PageHero";
 import { RevealWrapper } from "@/components/ui/RevealWrapper";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { CTABanner } from "@/components/home/CTABanner";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -280,7 +279,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <CTABanner />
+        
       </main>
       <Footer />
     </>

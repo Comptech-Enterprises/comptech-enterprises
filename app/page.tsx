@@ -6,7 +6,6 @@ import { ServicesSection } from "@/components/home/ServicesSection";
 import { AISection } from "@/components/home/AISection";
 import { CaseStudiesSection } from "@/components/home/CaseStudiesSection";
 import { Testimonials } from "@/components/home/Testimonials";
-import { CTABanner } from "@/components/home/CTABanner";
 import { ContactSection } from "@/components/home/ContactSection";
 
 export default function HomePage() {
@@ -20,7 +19,7 @@ export default function HomePage() {
         <AISection />
         <CaseStudiesSection />
         <Testimonials />
-        <CTABanner />
+        
         <ContactSection />
       </main>
       <Footer />

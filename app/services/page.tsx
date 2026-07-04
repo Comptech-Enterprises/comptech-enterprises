@@ -8,7 +8,6 @@ import { Footer } from "@/components/layout/Footer";
 import { PageHero } from "@/components/sections/PageHero";
 import { RevealWrapper } from "@/components/ui/RevealWrapper";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { CTABanner } from "@/components/home/CTABanner";
 
 const NAV_ITEMS = [
   { label: "Infrastructure",    href: "#infrastructure" },
@@ -432,7 +431,7 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        <CTABanner />
+        
       </main>
 
       <Footer />
