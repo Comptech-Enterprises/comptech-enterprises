@@ -11,29 +11,6 @@ export const COMPANY = {
 export const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "AI", href: "/ai-solutions" },
-  {
-    label: "Services & Products",
-    href: "/services",
-    groups: [
-      {
-        label: "Services",
-        items: [
-          { label: "AMC", href: "/services/amc" },
-          { label: "General Repair Service", href: "/services/repair" },
-          { label: "Networking Service", href: "/services/networking" },
-        ],
-      },
-      {
-        label: "Products",
-        items: [
-          { label: "Printers", href: "/products/printers" },
-          { label: "CCTV", href: "/products/cctv" },
-          { label: "Others", href: "/products/others" },
-        ],
-      },
-    ],
-  },
-  { label: "Contact", href: "/contact" },
   { label: "About", href: "/about" },
 ];
 
