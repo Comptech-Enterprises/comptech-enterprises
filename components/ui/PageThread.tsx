@@ -42,9 +42,9 @@ export function PageThread() {
           "
           fill="none"
           stroke="url(#threadGrad)"
-          strokeWidth="2"
+          strokeWidth="1.2"
           strokeLinecap="round"
-          opacity="0.35"
+          opacity="0.12"
         />
       </svg>
     </div>
