@@ -3,7 +3,7 @@ export function PageThread() {
     <div
       aria-hidden="true"
       className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden"
-      style={{ zIndex: 0 }}
+      style={{ zIndex: -1 }}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
