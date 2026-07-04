@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, Phone, Mail, MapPin, MessageCircle, Building2, Calendar } from "lucide-react";
+import { ArrowRight, Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 import { COMPANY } from "@/lib/constants";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
@@ -44,42 +44,26 @@ export function ContactSection() {
           </p>
         </div>
 
-        {/* Contact method cards */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
-          {CONTACT_METHODS.map(({ Icon, label, value, sub }) => (
-            <div key={label} className="flex items-center gap-4 p-5 rounded-2xl border border-gray-100 bg-gray-50">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "#EFF6FF" }}>
-                <Icon size={17} style={{ color: "#1D4ED8" }} />
-              </div>
-              <div>
-                <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{label}</p>
-                <p className="text-sm font-semibold text-gray-900 leading-tight">{value}</p>
-                <p className="text-[10px] text-gray-400 mt-0.5">{sub}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
         {/* Form */}
         <div className="grid lg:grid-cols-2 gap-16 items-start">
 
-          {/* Left info */}
+          {/* Left — info + contact methods */}
           <div>
-            <h3 className="font-display font-extrabold text-2xl text-gray-900 mb-4">Request a Custom IT Proposal</h3>
+            <h3 className="font-display font-extrabold text-2xl text-gray-900 mb-3">Request a Custom IT Proposal</h3>
             <p className="text-gray-500 text-base leading-relaxed mb-8">
               Tell us what you need and we'll get back to you within 2 business hours.
             </p>
             <div className="flex flex-col gap-4">
-              {[
-                { Icon: Building2, text: "OEM-certified Dell, HP, Lenovo solutions" },
-                { Icon: Phone,     text: "Dedicated account manager assigned"       },
-                { Icon: Calendar,  text: "Free site assessment available"            },
-              ].map(({ Icon, text }) => (
-                <div key={text} className="flex items-center gap-3 text-sm text-gray-600">
-                  <div className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0" style={{ background: "#EFF6FF" }}>
-                    <Icon size={15} style={{ color: "#1D4ED8" }} />
+              {CONTACT_METHODS.map(({ Icon, label, value, sub }) => (
+                <div key={label} className="flex items-center gap-4 p-4 rounded-2xl border border-gray-100 bg-gray-50">
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "#EFF6FF" }}>
+                    <Icon size={17} style={{ color: "#1D4ED8" }} />
                   </div>
-                  {text}
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{label}</p>
+                    <p className="text-sm font-semibold text-gray-900 leading-tight">{value}</p>
+                    <p className="text-[10px] text-gray-400 mt-0.5">{sub}</p>
+                  </div>
                 </div>
               ))}
             </div>
