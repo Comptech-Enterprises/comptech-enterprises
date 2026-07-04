@@ -41,7 +41,7 @@ export function PartnersStrip() {
               <div className="text-center px-8">
                 <p
                   className="font-display font-extrabold text-2xl leading-none mb-1"
-                  style={{ color: "#1D4ED8" }}
+                  style={{ color: "#5C0F26" }}
                 >
                   {value}
                 </p>

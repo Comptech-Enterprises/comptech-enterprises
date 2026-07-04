@@ -35,7 +35,7 @@ export function ContactSection() {
             style={{ fontSize: "clamp(1.9rem, 3.5vw, 2.8rem)" }}
           >
             Got a project in mind?{" "}
-            <span className="text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(135deg, #1D4ED8, #5C0F26)" }}>
+            <span className="text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(135deg, #5C0F26, #E8435A)" }}>
               Let's talk.
             </span>
           </h2>
@@ -56,8 +56,8 @@ export function ContactSection() {
             <div className="flex flex-col gap-3">
               {CONTACT_METHODS.map(({ Icon, label, value, sub }) => (
                 <div key={label} className="flex items-center gap-4 p-4 rounded-2xl border border-gray-100 bg-gray-50">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "#EFF6FF" }}>
-                    <Icon size={17} style={{ color: "#1D4ED8" }} />
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "#FDF4F6" }}>
+                    <Icon size={17} style={{ color: "#5C0F26" }} />
                   </div>
                   <div>
                     <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{label}</p>
@@ -80,7 +80,7 @@ export function ContactSection() {
                   <div key={step} className="flex items-start gap-4">
                     <span
                       className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0"
-                      style={{ background: "linear-gradient(135deg, #1D4ED8, #5C0F26)" }}
+                      style={{ background: "linear-gradient(135deg, #5C0F26, #E8435A)" }}
                     >
                       {step}
                     </span>
@@ -94,7 +94,7 @@ export function ContactSection() {
           {/* Right form */}
           {submitted ? (
             <div className="flex flex-col items-center justify-center text-center py-20 rounded-3xl border border-gray-100 bg-gray-50">
-              <div className="w-16 h-16 rounded-full flex items-center justify-center mb-5" style={{ background: "#EFF6FF" }}>
+              <div className="w-16 h-16 rounded-full flex items-center justify-center mb-5" style={{ background: "#FDF4F6" }}>
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" strokeWidth="2.5">
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
@@ -172,7 +172,7 @@ export function ContactSection() {
               <button
                 type="submit"
                 className="w-full flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl text-sm font-semibold text-white transition-all duration-200 hover:opacity-90"
-                style={{ background: "#1D4ED8" }}
+                style={{ background: "#5C0F26" }}
               >
                 Send Inquiry <ArrowRight size={15} />
               </button>

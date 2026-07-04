@@ -6,7 +6,7 @@ import { Star, Quote } from "lucide-react";
 import { TESTIMONIALS } from "@/lib/constants";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
-const AVATAR_COLORS = ["#1D4ED8", "#5C0F26", "#1D4ED8", "#5C0F26", "#1D4ED8", "#5C0F26"];
+const AVATAR_COLORS = ["#5C0F26", "#1D4ED8", "#5C0F26", "#1D4ED8", "#5C0F26", "#1D4ED8"];
 const VISIBLE = 3;
 
 function buildQueue(start: number) {
@@ -47,7 +47,7 @@ export function Testimonials() {
               What our{" "}
               <span
                 className="text-transparent bg-clip-text"
-                style={{ backgroundImage: "linear-gradient(135deg, #1D4ED8, #5C0F26)" }}
+                style={{ backgroundImage: "linear-gradient(135deg, #5C0F26, #E8435A)" }}
               >
                 clients say
               </span>
@@ -60,7 +60,7 @@ export function Testimonials() {
             <div className="mt-8 flex items-center gap-3">
               <div className="flex gap-0.5">
                 {Array(5).fill(null).map((_, i) => (
-                  <Star key={i} size={14} fill="#1D4ED8" stroke="none" />
+                  <Star key={i} size={14} fill="#5C0F26" stroke="none" />
                 ))}
               </div>
               <span className="text-sm font-bold text-gray-900">4.8</span>
@@ -76,7 +76,7 @@ export function Testimonials() {
               ].map(({ value, label }) => (
                 <div key={label} className="rounded-2xl border border-gray-100 bg-gray-50 p-4 text-center">
                   <p className="font-display font-extrabold text-xl text-gray-900 leading-none mb-1"
-                    style={{ color: "#1D4ED8" }}>{value}</p>
+                    style={{ color: "#5C0F26" }}>{value}</p>
                   <p className="text-[11px] font-semibold uppercase tracking-widest text-gray-400">{label}</p>
                 </div>
               ))}
@@ -114,7 +114,7 @@ export function Testimonials() {
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex gap-0.5">
                         {Array(5).fill(null).map((_, i) => (
-                          <Star key={i} size={12} fill="#1D4ED8" stroke="none" />
+                          <Star key={i} size={12} fill="#5C0F26" stroke="none" />
                         ))}
                       </div>
                       <Quote size={18} className="text-gray-200" />
