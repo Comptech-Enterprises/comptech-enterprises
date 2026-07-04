@@ -7,14 +7,14 @@ import { motion } from "framer-motion";
 
 const TRUST_ITEMS = [
   { Icon: CheckCircle2, label: "Genuine OEM hardware, every time" },
-  { Icon: Users,        label: "Dedicated engineer for your account" },
-  { Icon: Clock,        label: "24/7 AMC support — zero hold queues" },
+  { Icon: Users, label: "Dedicated engineer for your account" },
+  { Icon: Clock, label: "24/7 AMC support — zero hold queues" },
 ];
 
 const STATS = [
   { value: "200+", label: "Enterprise clients" },
-  { value: "15+",  label: "Years experience" },
-  { value: "50+",  label: "Certified engineers" },
+  { value: "15+", label: "Years experience" },
+  { value: "50+", label: "Certified engineers" },
   { value: "24/7", label: "AMC support" },
 ];
 
@@ -52,18 +52,16 @@ export function Hero() {
       />
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 flex flex-col justify-center" style={{ minHeight: "calc(100vh - var(--nav-height))" }}>
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="max-w-2xl"
-        >
+      <div
+        className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 flex flex-col justify-center"
+        style={{ minHeight: "calc(100vh - var(--nav-height))" }}
+      >
+        <motion.div variants={containerVariants} initial="hidden" animate="visible" className="max-w-2xl">
           {/* Eyebrow */}
           <motion.div variants={itemVariants} className="flex items-center gap-2 mb-7">
             <span className="inline-block w-5 h-[2px] rounded-full bg-white" />
             <span className="text-[11px] font-semibold uppercase tracking-widest text-white">
-              Enterprise IT Partner · Mumbai, India
+              Enterprise IT Partner · Delhi, India
             </span>
           </motion.div>
 
@@ -73,16 +71,15 @@ export function Hero() {
             className="font-display font-extrabold text-white leading-[1.08] tracking-tight mb-6"
             style={{ fontSize: "clamp(2.4rem, 5vw, 4rem)" }}
           >
-            Your IT team&rsquo;s most<br />
+            Your IT team&rsquo;s most
+            <br />
             <span style={{ color: "#FFCDD5" }}>reliable partner.</span>
           </motion.h1>
 
           {/* Subtitle */}
-          <motion.p
-            variants={itemVariants}
-            className="text-lg text-white/90 max-w-lg leading-relaxed mb-9"
-          >
-            We design, supply, deploy, and maintain enterprise IT infrastructure — so your team can focus on the work that matters. Real engineers, genuine OEM parts, honest timelines.
+          <motion.p variants={itemVariants} className="text-lg text-white/90 max-w-lg leading-relaxed mb-9">
+            We design, supply, deploy, and maintain enterprise IT infrastructure — so your team can focus on the work
+            that matters. Real engineers, genuine OEM parts, honest timelines.
           </motion.p>
 
           {/* CTAs */}
@@ -127,9 +124,7 @@ export function Hero() {
                   padding: "0 12px",
                 }}
               >
-                <p className="font-display font-extrabold text-2xl text-white leading-none mb-1">
-                  {value}
-                </p>
+                <p className="font-display font-extrabold text-2xl text-white leading-none mb-1">{value}</p>
                 <p className="text-[11px] text-white/80 leading-tight">{label}</p>
               </div>
             ))}

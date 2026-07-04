@@ -15,7 +15,11 @@ export function PartnersStrip() {
   const items = [...PARTNERS, ...PARTNERS];
 
   return (
-    <section className="bg-white border-y border-gray-100 py-10" aria-label="Technology partners">
+    <section
+      className="py-10"
+      style={{ background: "linear-gradient(180deg, #ffffff 0%, #EFF6FF 50%, #F5F7FA 100%)" }}
+      aria-label="Technology partners"
+    >
       <p className="text-center text-[11px] font-semibold uppercase tracking-widest text-gray-400 mb-8">
         Trusted Technology Partners
       </p>

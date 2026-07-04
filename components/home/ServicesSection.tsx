@@ -17,15 +17,15 @@ const ICONS: Record<string, React.ElementType> = {
   tool:     Wrench,
 };
 
-const SERVICE_META: Record<string, { accent: string; bg: string; vendors: string[]; highlights: string[] }> = {
-  infrastructure: { accent: "#1D4ED8", bg: "#EFF6FF", vendors: ["Dell", "HP", "Lenovo"], highlights: ["Server consolidation", "Virtualisation", "Storage solutions", "Rack & stack deployment"] },
-  euc:            { accent: "#5C0F26", bg: "#FDF4F6", vendors: ["Dell", "HP", "Lenovo"], highlights: ["Desktops & laptops", "Workstations", "Thin clients", "Device management"] },
-  ai:             { accent: "#1D4ED8", bg: "#EFF6FF", vendors: ["NVIDIA", "Intel"],      highlights: ["GPU infrastructure", "AI workshops", "No-code AI builder", "Model deployment"] },
-  datacenter:     { accent: "#5C0F26", bg: "#FDF4F6", vendors: ["Dell", "HP"],           highlights: ["Full DC buildouts", "Power & cooling", "Structured cabling", "Rack architecture"] },
-  networking:     { accent: "#1D4ED8", bg: "#EFF6FF", vendors: ["Cisco", "Juniper", "Aruba"], highlights: ["LAN & SD-WAN", "Wi-Fi 6E", "Campus networking", "Network monitoring"] },
-  security:       { accent: "#5C0F26", bg: "#FDF4F6", vendors: ["Hikvision", "Dahua"],   highlights: ["IP CCTV systems", "Access control", "AI video analytics", "Perimeter security"] },
-  cloud:          { accent: "#1D4ED8", bg: "#EFF6FF", vendors: ["Azure", "AWS", "GCP"],  highlights: ["Cloud migration", "Hybrid architecture", "Managed cloud ops", "Cost optimisation"] },
-  amc:            { accent: "#5C0F26", bg: "#FDF4F6", vendors: ["24/7 SLA"],             highlights: ["Proactive monitoring", "Preventive maintenance", "Rapid response", "Asset management"] },
+const SERVICE_META: Record<string, { accent: string; bg: string; gradient: string; btnGradient: string; vendors: string[]; highlights: string[] }> = {
+  infrastructure: { accent: "#1D4ED8", bg: "#EFF6FF", gradient: "linear-gradient(135deg, #EFF6FF 0%, #F0EEFF 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #7C3AED 100%)", vendors: ["Dell", "HP", "Lenovo"], highlights: ["Server consolidation", "Virtualisation", "Storage solutions", "Rack & stack deployment"] },
+  euc:            { accent: "#5C0F26", bg: "#FDF4F6", gradient: "linear-gradient(135deg, #EFF6FF 0%, #FDF4F6 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #E8435A 100%)", vendors: ["Dell", "HP", "Lenovo"], highlights: ["Desktops & laptops", "Workstations", "Thin clients", "Device management"] },
+  ai:             { accent: "#1D4ED8", bg: "#EFF6FF", gradient: "linear-gradient(135deg, #EFF6FF 0%, #F0EEFF 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #7C3AED 100%)", vendors: ["NVIDIA", "Intel"],      highlights: ["GPU infrastructure", "AI workshops", "No-code AI builder", "Model deployment"] },
+  datacenter:     { accent: "#5C0F26", bg: "#FDF4F6", gradient: "linear-gradient(135deg, #EFF6FF 0%, #FDF4F6 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #E8435A 100%)", vendors: ["Dell", "HP"],           highlights: ["Full DC buildouts", "Power & cooling", "Structured cabling", "Rack architecture"] },
+  networking:     { accent: "#1D4ED8", bg: "#EFF6FF", gradient: "linear-gradient(135deg, #EFF6FF 0%, #F0EEFF 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #7C3AED 100%)", vendors: ["Cisco", "Juniper", "Aruba"], highlights: ["LAN & SD-WAN", "Wi-Fi 6E", "Campus networking", "Network monitoring"] },
+  security:       { accent: "#5C0F26", bg: "#FDF4F6", gradient: "linear-gradient(135deg, #EFF6FF 0%, #FDF4F6 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #E8435A 100%)", vendors: ["Hikvision", "Dahua"],   highlights: ["IP CCTV systems", "Access control", "AI video analytics", "Perimeter security"] },
+  cloud:          { accent: "#1D4ED8", bg: "#EFF6FF", gradient: "linear-gradient(135deg, #EFF6FF 0%, #F0EEFF 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #7C3AED 100%)", vendors: ["Azure", "AWS", "GCP"],  highlights: ["Cloud migration", "Hybrid architecture", "Managed cloud ops", "Cost optimisation"] },
+  amc:            { accent: "#5C0F26", bg: "#FDF4F6", gradient: "linear-gradient(135deg, #EFF6FF 0%, #FDF4F6 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #E8435A 100%)", vendors: ["24/7 SLA"],             highlights: ["Proactive monitoring", "Preventive maintenance", "Rapid response", "Asset management"] },
 };
 
 export function ServicesSection() {
@@ -36,7 +36,7 @@ export function ServicesSection() {
   const Icon = ICONS[current.icon] ?? Server;
 
   return (
-    <section className="py-24 lg:py-32 bg-[#F5F7FA]" aria-labelledby="services-title">
+    <section className="py-24 lg:py-32" style={{ background: "linear-gradient(180deg, #ffffff 0%, #EFF6FF 25%, #F5F7FA 60%, #FDF4F6 85%, #ffffff 100%)" }} aria-labelledby="services-title">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
@@ -75,13 +75,18 @@ export function ServicesSection() {
                   onClick={() => setActive(service.id)}
                   className="flex items-center gap-3 px-5 py-4 text-left transition-all duration-150 shrink-0 lg:shrink relative"
                   style={{
-                    background: isActive ? smeta?.bg ?? "#EFF6FF" : "transparent",
-                    borderRight: isActive ? `3px solid ${smeta?.accent ?? "#1D4ED8"}` : "3px solid transparent",
+                    background: isActive ? (smeta?.gradient ?? "#EFF6FF") : "transparent",
+                    borderRight: isActive
+                      ? `3px solid transparent`
+                      : "3px solid transparent",
+                    borderImage: isActive
+                      ? "linear-gradient(180deg, #1D4ED8, #E8435A) 1"
+                      : "none",
                   }}
                 >
                   <div
                     className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
-                    style={{ background: isActive ? "white" : smeta?.bg ?? "#EFF6FF" }}
+                    style={{ background: smeta?.bg ?? "#EFF6FF" }}
                   >
                     <SIcon size={16} style={{ color: smeta?.accent ?? "#1D4ED8" }} />
                   </div>
