@@ -76,9 +76,9 @@ export function Navbar({ transparent = false }: NavbarProps) {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 h-full flex items-center justify-between gap-8">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 shrink-0">
-            <Logo className="w-11 h-11" />
-            <span className={clsx("font-display font-extrabold text-xl leading-none tracking-tight transition-colors duration-300", logoTextColor)}>
+          <Link href="/" className="flex items-center gap-2.5 shrink-0">
+            <Logo className="w-13 h-13" />
+            <span className={clsx("font-display font-extrabold text-2xl leading-none tracking-tight transition-colors duration-300", logoTextColor)}>
               Comptech Enterprises<span className="text-[#5C0F26]">.</span>
             </span>
           </Link>
@@ -99,7 +99,7 @@ export function Navbar({ transparent = false }: NavbarProps) {
                       setHoveredGroup(next ? link.groups![0].label : null);
                     }}
                     className={clsx(
-                      `flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${hoverBg}`,
+                      `flex items-center gap-1 px-4 py-2 rounded-lg text-[15px] font-medium transition-all duration-200 ${hoverBg}`,
                       textColor,
                       pathname.startsWith(link.href) && activeColor
                     )}
@@ -161,7 +161,7 @@ export function Navbar({ transparent = false }: NavbarProps) {
                   key={link.href}
                   href={link.href}
                   className={clsx(
-                    `px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${hoverBg}`,
+                    `px-4 py-2 rounded-lg text-[15px] font-medium transition-all duration-200 ${hoverBg}`,
                     textColor,
                     pathname === link.href && activeColor
                   )}

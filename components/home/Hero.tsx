@@ -44,11 +44,11 @@ export function Hero() {
         sizes="100vw"
       />
 
-      {/* Dark overlay for text readability */}
-      <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.6)" }} />
+      {/* Subtle overlay — just enough for text legibility */}
+      <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.28)" }} />
       <div
         className="absolute inset-0"
-        style={{ background: "linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.2) 60%, transparent 100%)" }}
+        style={{ background: "linear-gradient(to right, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.08) 60%, transparent 100%)" }}
       />
 
       {/* Content */}
@@ -61,7 +61,7 @@ export function Hero() {
           <motion.div variants={itemVariants} className="flex items-center gap-2 mb-7">
             <span className="inline-block w-5 h-[2px] rounded-full bg-white" />
             <span className="text-[11px] font-semibold uppercase tracking-widest text-white">
-              Enterprise IT Partner · Delhi, India
+              Enterprise IT Partner · Janakpuri, Delhi, India
             </span>
           </motion.div>
 
