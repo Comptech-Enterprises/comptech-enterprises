@@ -44,12 +44,6 @@ export function Hero() {
         sizes="100vw"
       />
 
-      {/* Subtle overlay — just enough for text legibility */}
-      <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.28)" }} />
-      <div
-        className="absolute inset-0"
-        style={{ background: "linear-gradient(to right, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.08) 60%, transparent 100%)" }}
-      />
 
       {/* Content */}
       <div
