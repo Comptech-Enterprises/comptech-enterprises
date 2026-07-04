@@ -26,7 +26,7 @@ export function Testimonials() {
         setQueue(buildQueue(next));
         return next;
       });
-    }, 3200);
+    }, 2100);
     return () => clearInterval(id);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -81,9 +81,9 @@ export function Testimonials() {
                     animate={{ y: 0, opacity: 1, scale: 1 }}
                     exit={{ y: 40, opacity: 0, scale: 0.97 }}
                     transition={{
-                      duration: 0.5,
+                      duration: 0.33,
                       ease: [0.22, 1, 0.36, 1],
-                      delay: isNew ? 0 : pos * 0.06,
+                      delay: isNew ? 0 : pos * 0.04,
                     }}
                     className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm hover:shadow-md transition-shadow duration-300"
                   >
