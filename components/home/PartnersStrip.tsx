@@ -1,16 +1,16 @@
 "use client";
 
 const PARTNERS = [
-  { name: "Dell",      color: "#007DB8", cert: "Gold Partner"      },
-  { name: "HP",        color: "#0096D6", cert: "Authorized Partner" },
-  { name: "Lenovo",    color: "#E1251B", cert: "Platinum Partner"   },
-  { name: "Microsoft", color: "#00A4EF", cert: "CSP Partner"        },
-  { name: "Intel",     color: "#0071C5", cert: "Technology Partner" },
-  { name: "NVIDIA",    color: "#76B900", cert: "Elite Partner"      },
-  { name: "Canon",     color: "#CC0000", cert: "Authorized Reseller"},
-  { name: "Samsung",   color: "#1428A0", cert: "Business Partner"   },
-  { name: "Epson",     color: "#009AC7", cert: "Premium Partner"    },
-  { name: "Sony",      color: "#003087", cert: "Authorized Partner" },
+  { name: "Dell",      cert: "Gold Partner"       },
+  { name: "HP",        cert: "Authorized Partner"  },
+  { name: "Lenovo",    cert: "Platinum Partner"    },
+  { name: "Microsoft", cert: "CSP Partner"         },
+  { name: "Intel",     cert: "Technology Partner"  },
+  { name: "NVIDIA",    cert: "Elite Partner"       },
+  { name: "Canon",     cert: "Authorized Reseller" },
+  { name: "Samsung",   cert: "Business Partner"    },
+  { name: "Epson",     cert: "Premium Partner"     },
+  { name: "Sony",      cert: "Authorized Partner"  },
 ];
 
 const STATS = [
@@ -76,22 +76,18 @@ export function PartnersStrip() {
 
         {/* Partner cards grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
-          {PARTNERS.map(({ name, color, cert }) => (
+          {PARTNERS.map(({ name, cert }) => (
             <div
               key={name}
-              className="group relative rounded-2xl border border-gray-100 bg-white p-5 flex flex-col items-center text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 overflow-hidden"
+              className="group rounded-2xl border border-gray-100 bg-white p-5 flex flex-col items-center text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
             >
-              {/* Color accent bar */}
-              <div
-                className="absolute top-0 left-0 right-0 h-0.5 rounded-t-2xl transition-all duration-300 group-hover:h-1"
-                style={{ background: color }}
-              />
-              {/* Brand initial badge */}
-              <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center text-white font-display font-extrabold text-sm mb-3 transition-transform duration-300 group-hover:scale-110"
-                style={{ background: color }}
-              >
-                {name[0]}
+              {/* Logo placeholder */}
+              <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center mb-3 transition-transform duration-300 group-hover:scale-105">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" strokeWidth="1.5">
+                  <rect x="3" y="3" width="18" height="18" rx="3" />
+                  <circle cx="8.5" cy="8.5" r="1.5" />
+                  <path d="M21 15l-5-5L5 21" />
+                </svg>
               </div>
               <p className="font-display font-bold text-sm text-gray-900 leading-none mb-1.5">{name}</p>
               <p className="text-[10px] text-gray-400 leading-tight">{cert}</p>
