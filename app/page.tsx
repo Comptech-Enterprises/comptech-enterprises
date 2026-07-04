@@ -5,17 +5,18 @@ import { PartnersStrip } from "@/components/home/PartnersStrip";
 import { ServicesSection } from "@/components/home/ServicesSection";
 import { Testimonials } from "@/components/home/Testimonials";
 import { ContactSection } from "@/components/home/ContactSection";
+import { PageThread } from "@/components/ui/PageThread";
 
 export default function HomePage() {
   return (
     <>
       <Navbar transparent />
-      <main>
+      <main className="relative">
+        <PageThread />
         <Hero />
         <PartnersStrip />
         <ServicesSection />
-<Testimonials />
-        
+        <Testimonials />
         <ContactSection />
       </main>
       <Footer />
