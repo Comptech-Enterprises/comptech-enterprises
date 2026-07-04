@@ -68,23 +68,18 @@ export function Testimonials() {
           </div>
 
           {/* ── Right: dropping cards ── */}
-          <div className="flex-1 flex flex-col gap-4 overflow-hidden" style={{ minHeight: 480 }}>
-            <AnimatePresence initial={false}>
-              {queue.map((idx, pos) => {
+          <div className="flex-1 flex flex-col gap-4" style={{ minHeight: 480 }}>
+            <AnimatePresence mode="popLayout" initial={false}>
+              {queue.map((idx) => {
                 const t = TESTIMONIALS[idx];
                 const isNew = !prev.current.includes(idx);
                 return (
                   <motion.div
                     key={idx}
-                    layout
-                    initial={isNew ? { y: -80, opacity: 0, scale: 0.95 } : false}
+                    initial={{ y: isNew ? -70 : 0, opacity: isNew ? 0 : 1, scale: isNew ? 0.96 : 1 }}
                     animate={{ y: 0, opacity: 1, scale: 1 }}
-                    exit={{ y: 40, opacity: 0, scale: 0.97 }}
-                    transition={{
-                      duration: 0.5,
-                      ease: [0.22, 1, 0.36, 1],
-                      delay: isNew ? 0 : pos * 0.06,
-                    }}
+                    exit={{ opacity: 0, scale: 0.96, transition: { duration: 0.2 } }}
+                    transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                     className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm hover:shadow-md transition-shadow duration-300"
                   >
                     {/* Top row */}
