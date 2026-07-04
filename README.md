@@ -10,6 +10,9 @@ A modern, animated enterprise website for Comptech Enterprises, built with Next.
 - **Animations:** Framer Motion
 - **Icons:** Lucide React
 
+
+
+
 ## Getting Started
 
 ```bash
