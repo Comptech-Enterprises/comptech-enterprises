@@ -44,78 +44,88 @@ export function Footer() {
       {/* Divider */}
       <div className="border-t border-gray-300" />
 
-      {/* Links grid */}
+      {/* Links grid + Map */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-14">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
+        <div className="flex flex-col lg:flex-row gap-12">
 
-          {/* Services */}
-          <div className="col-span-2 md:col-span-1">
-            <h3 className="text-[11px] font-bold uppercase tracking-widest text-gray-500 mb-5">Services</h3>
-            <nav className="flex flex-col gap-2.5">
-              {SERVICES.map(({ label, href }) => (
-                <Link
-                  key={href}
-                  href={href}
-                  className="text-sm text-gray-700 hover:text-gray-900 transition-colors duration-150"
-                >
-                  {label}
-                </Link>
-              ))}
-            </nav>
-          </div>
+          {/* Left — links */}
+          <div className="flex-1 grid grid-cols-2 md:grid-cols-3 gap-10">
 
-          {/* Company */}
-          <div>
-            <h3 className="text-[11px] font-bold uppercase tracking-widest text-gray-500 mb-5">Company</h3>
-            <nav className="flex flex-col gap-2.5">
-              {COMPANY_LINKS.map(({ label, href }) => (
-                <Link
-                  key={label}
-                  href={href}
-                  className="text-sm text-gray-700 hover:text-gray-900 transition-colors duration-150"
-                >
-                  {label}
-                </Link>
-              ))}
-            </nav>
-          </div>
+            {/* Services */}
+            <div className="col-span-2 md:col-span-1">
+              <h3 className="text-[11px] font-bold uppercase tracking-widest text-gray-500 mb-5">Services</h3>
+              <nav className="flex flex-col gap-2.5">
+                {SERVICES.map(({ label, href }) => (
+                  <Link key={href} href={href} className="text-sm text-gray-700 hover:text-gray-900 transition-colors duration-150">
+                    {label}
+                  </Link>
+                ))}
+              </nav>
+            </div>
 
-          {/* Contact */}
-          <div>
-            <h3 className="text-[11px] font-bold uppercase tracking-widest text-gray-500 mb-5">Contact</h3>
-            <div className="flex flex-col gap-3.5">
-              <a href={`tel:${COMPANY.phone}`} className="flex items-center gap-2.5 text-sm text-gray-700 hover:text-gray-900 transition-colors">
-                <Phone size={14} className="shrink-0 text-gray-900" />
-                {COMPANY.phone}
-              </a>
-              <a href={`mailto:${COMPANY.email}`} className="flex items-center gap-2.5 text-sm text-gray-700 hover:text-gray-900 transition-colors">
-                <Mail size={14} className="shrink-0 text-gray-900" />
-                {COMPANY.email}
-              </a>
-              <div className="flex items-start gap-2.5 text-sm text-gray-700">
-                <MapPin size={14} className="shrink-0 mt-0.5 text-gray-900" />
-                {COMPANY.address}
+            {/* Company */}
+            <div>
+              <h3 className="text-[11px] font-bold uppercase tracking-widest text-gray-500 mb-5">Company</h3>
+              <nav className="flex flex-col gap-2.5">
+                {COMPANY_LINKS.map(({ label, href }) => (
+                  <Link key={label} href={href} className="text-sm text-gray-700 hover:text-gray-900 transition-colors duration-150">
+                    {label}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+
+            {/* Contact + Socials */}
+            <div className="flex flex-col gap-10">
+              <div>
+                <h3 className="text-[11px] font-bold uppercase tracking-widest text-gray-500 mb-5">Contact</h3>
+                <div className="flex flex-col gap-3.5">
+                  <a href={`tel:${COMPANY.phone}`} className="flex items-center gap-2.5 text-sm text-gray-700 hover:text-gray-900 transition-colors">
+                    <Phone size={14} className="shrink-0 text-gray-900" />
+                    {COMPANY.phone}
+                  </a>
+                  <a href={`mailto:${COMPANY.email}`} className="flex items-center gap-2.5 text-sm text-gray-700 hover:text-gray-900 transition-colors">
+                    <Mail size={14} className="shrink-0 text-gray-900" />
+                    {COMPANY.email}
+                  </a>
+                  <div className="flex items-start gap-2.5 text-sm text-gray-700">
+                    <MapPin size={14} className="shrink-0 mt-0.5 text-gray-900" />
+                    {COMPANY.address}
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-[11px] font-bold uppercase tracking-widest text-gray-500 mb-5">Follow Us</h3>
+                <div className="flex flex-col gap-3">
+                  {SOCIALS.map(({ Icon, href, label }) => (
+                    <a key={label} href={href} aria-label={label}
+                      className="flex items-center gap-3 text-sm text-gray-700 hover:text-gray-900 transition-colors duration-150 group">
+                      <div className="w-8 h-8 rounded-lg bg-gray-300 group-hover:bg-gray-400 flex items-center justify-center transition-colors">
+                        <Icon size={15} className="text-gray-900" />
+                      </div>
+                      {label}
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
+
           </div>
 
-          {/* Socials */}
-          <div>
-            <h3 className="text-[11px] font-bold uppercase tracking-widest text-gray-500 mb-5">Follow Us</h3>
-            <div className="flex flex-col gap-3">
-              {SOCIALS.map(({ Icon, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  aria-label={label}
-                  className="flex items-center gap-3 text-sm text-gray-700 hover:text-gray-900 transition-colors duration-150 group"
-                >
-                  <div className="w-8 h-8 rounded-lg bg-gray-300 group-hover:bg-gray-400 flex items-center justify-center transition-colors">
-                    <Icon size={15} className="text-gray-900" />
-                  </div>
-                  {label}
-                </a>
-              ))}
+          {/* Right — Map */}
+          <div className="lg:w-[380px] shrink-0">
+            <h3 className="text-[11px] font-bold uppercase tracking-widest text-gray-500 mb-5">Our Location</h3>
+            <div className="rounded-2xl overflow-hidden border border-gray-300" style={{ height: 280 }}>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8162.161356476114!2d77.08226761405187!3d28.63043314304227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d05cc68aaffd9%3A0x706a637432a46983!2sComptech%20Enterprises!5e1!3m2!1sen!2sin!4v1783152683613!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+                title="Comptech Enterprises location"
+              />
             </div>
           </div>
 
