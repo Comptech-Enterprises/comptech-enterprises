@@ -11,13 +11,15 @@ export default function HomePage() {
   return (
     <>
       <Navbar transparent />
-      <main className="relative">
-        <PageThread />
+      <main>
         <Hero />
         <PartnersStrip />
         <ServicesSection />
-        <Testimonials />
-        <ContactSection />
+        <div className="relative">
+          <PageThread />
+          <Testimonials />
+          <ContactSection />
+        </div>
       </main>
       <Footer />
     </>
