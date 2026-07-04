@@ -53,7 +53,7 @@ export function ContactSection() {
             <p className="text-gray-500 text-base leading-relaxed mb-8">
               Tell us what you need and we'll get back to you within 2 business hours.
             </p>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-3">
               {CONTACT_METHODS.map(({ Icon, label, value, sub }) => (
                 <div key={label} className="flex items-center gap-4 p-4 rounded-2xl border border-gray-100 bg-gray-50">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "#EFF6FF" }}>
@@ -66,6 +66,28 @@ export function ContactSection() {
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* What happens next */}
+            <div className="mt-8">
+              <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-4">What happens next?</p>
+              <div className="flex flex-col gap-4">
+                {[
+                  { step: "01", text: "We review your inquiry within 2 hours" },
+                  { step: "02", text: "A certified engineer calls to understand your needs" },
+                  { step: "03", text: "You receive a detailed, no-obligation proposal" },
+                ].map(({ step, text }) => (
+                  <div key={step} className="flex items-start gap-4">
+                    <span
+                      className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0"
+                      style={{ background: "linear-gradient(135deg, #1D4ED8, #5C0F26)" }}
+                    >
+                      {step}
+                    </span>
+                    <p className="text-sm text-gray-600 leading-relaxed pt-1">{text}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 

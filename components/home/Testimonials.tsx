@@ -56,14 +56,42 @@ export function Testimonials() {
               Real results from real organizations. From hospitals to retail chains — here's what our partners think.
             </p>
 
-            {/* Trust badge */}
-            <div className="mt-8 inline-flex items-center gap-2.5 px-4 py-2.5 rounded-xl border border-blue-100 bg-blue-50">
+            {/* Rating */}
+            <div className="mt-8 flex items-center gap-3">
               <div className="flex gap-0.5">
                 {Array(5).fill(null).map((_, i) => (
-                  <Star key={i} size={13} fill="#1D4ED8" stroke="none" />
+                  <Star key={i} size={14} fill="#1D4ED8" stroke="none" />
                 ))}
               </div>
-              <span className="text-xs font-semibold text-blue-700">200+ satisfied clients</span>
+              <span className="text-sm font-bold text-gray-900">4.8</span>
+              <span className="text-sm text-gray-400">/ 5 average rating</span>
+            </div>
+
+            {/* Stats grid */}
+            <div className="mt-8 grid grid-cols-3 gap-3">
+              {[
+                { value: "200+", label: "Clients" },
+                { value: "15+",  label: "Years"   },
+                { value: "50+",  label: "Engineers"},
+              ].map(({ value, label }) => (
+                <div key={label} className="rounded-2xl border border-gray-100 bg-gray-50 p-4 text-center">
+                  <p className="font-display font-extrabold text-xl text-gray-900 leading-none mb-1"
+                    style={{ color: "#1D4ED8" }}>{value}</p>
+                  <p className="text-[11px] font-semibold uppercase tracking-widest text-gray-400">{label}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Notable clients */}
+            <div className="mt-8">
+              <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">Trusted by</p>
+              <div className="flex flex-wrap gap-2">
+                {["Apollo Hospitals", "HDFC AMC", "Reliance Retail", "Mumbai University", "Tata Motors"].map((c) => (
+                  <span key={c} className="px-3 py-1 rounded-full border border-gray-200 bg-white text-xs font-medium text-gray-600">
+                    {c}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
 
