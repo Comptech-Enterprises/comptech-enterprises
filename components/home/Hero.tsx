@@ -53,8 +53,8 @@ export function Hero() {
 
       {/* Content */}
       <div
-        className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 flex flex-col justify-center"
-        style={{ minHeight: "calc(100vh - var(--nav-height))" }}
+        className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 flex flex-col justify-start"
+        style={{ minHeight: "calc(100vh - var(--nav-height))", paddingTop: "clamp(3rem, 10vh, 6rem)" }}
       >
         <motion.div variants={containerVariants} initial="hidden" animate="visible" className="max-w-2xl">
           {/* Eyebrow */}
