@@ -20,7 +20,6 @@ export function PartnersStrip() {
       style={{ background: "linear-gradient(180deg, #ffffff 0%, #EFF6FF 50%, #F5F7FA 100%)" }}
       aria-label="Technology partners"
     >
-      <div className="gradient-flow-strip h-[3px] w-full mb-10" />
       <p className="text-center text-[11px] font-semibold uppercase tracking-widest text-gray-400 mb-8">
         Trusted Technology Partners
       </p>
@@ -46,7 +45,6 @@ export function PartnersStrip() {
           ))}
         </div>
       </div>
-      <div className="gradient-flow-strip h-[3px] w-full mt-10" />
     </section>
   );
 }
