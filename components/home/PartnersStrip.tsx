@@ -1,116 +1,105 @@
 "use client";
 
-import { useState } from "react";
-
 const PARTNERS = [
-  { name: "Dell",      color: "#007DB8" },
-  { name: "HP",        color: "#0096D6" },
-  { name: "Lenovo",    color: "#E1251B" },
-  { name: "Microsoft", color: "#00A4EF" },
-  { name: "Intel",     color: "#0071C5" },
-  { name: "NVIDIA",    color: "#76B900" },
-  { name: "Canon",     color: "#CC0000" },
-  { name: "Samsung",   color: "#1428A0" },
-  { name: "Epson",     color: "#009AC7" },
-  { name: "Sony",      color: "#003087" },
+  { name: "Dell",      color: "#007DB8", cert: "Gold Partner"      },
+  { name: "HP",        color: "#0096D6", cert: "Authorized Partner" },
+  { name: "Lenovo",    color: "#E1251B", cert: "Platinum Partner"   },
+  { name: "Microsoft", color: "#00A4EF", cert: "CSP Partner"        },
+  { name: "Intel",     color: "#0071C5", cert: "Technology Partner" },
+  { name: "NVIDIA",    color: "#76B900", cert: "Elite Partner"      },
+  { name: "Canon",     color: "#CC0000", cert: "Authorized Reseller"},
+  { name: "Samsung",   color: "#1428A0", cert: "Business Partner"   },
+  { name: "Epson",     color: "#009AC7", cert: "Premium Partner"    },
+  { name: "Sony",      color: "#003087", cert: "Authorized Partner" },
 ];
 
 const STATS = [
-  { value: "10+",  label: "OEM Partners"      },
-  { value: "15+",  label: "Years Experience"  },
-  { value: "200+", label: "Clients Served"    },
+  { value: "10+",  label: "OEM Partners",      sub: "Tier-1 global brands"       },
+  { value: "15+",  label: "Years Experience",  sub: "Since 2008"                 },
+  { value: "200+", label: "Clients Served",    sub: "Across India"               },
+  { value: "50+",  label: "Certified Engineers",sub: "OEM certified professionals"},
 ];
 
 export function PartnersStrip() {
-  const [paused, setPaused] = useState(false);
-  const [hovered, setHovered] = useState<string | null>(null);
-  const items = [...PARTNERS, ...PARTNERS, ...PARTNERS];
-
   return (
     <section
-      className="py-12"
-      style={{ background: "linear-gradient(180deg, #ffffff 0%, #EFF6FF 50%, #F5F7FA 100%)" }}
+      className="py-20"
+      style={{ background: "linear-gradient(180deg, #ffffff 0%, #f8f9ff 40%, #f5f0f2 80%, #ffffff 100%)" }}
       aria-label="Technology partners"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
-        {/* Stats row */}
-        <div className="flex items-center justify-center gap-0 mb-10">
-          {STATS.map(({ value, label }, i) => (
-            <div key={label} className="flex items-center">
-              <div className="text-center px-8">
-                <p
-                  className="font-display font-extrabold text-2xl leading-none mb-1"
-                  style={{ color: "#5C0F26" }}
-                >
-                  {value}
-                </p>
-                <p className="text-[11px] font-semibold uppercase tracking-widest text-gray-400">
-                  {label}
-                </p>
+        {/* Top: Heading left + Stats right */}
+        <div className="flex flex-col lg:flex-row lg:items-start gap-12 mb-16">
+
+          {/* Left heading */}
+          <div className="lg:w-2/5">
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] mb-3" style={{ color: "#5C0F26" }}>
+              Certified & Trusted
+            </p>
+            <h2 className="font-display font-extrabold text-gray-900 leading-tight mb-4"
+              style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)" }}>
+              15+ Years of{" "}
+              <span className="text-transparent bg-clip-text"
+                style={{ backgroundImage: "linear-gradient(135deg, #5C0F26, #E8435A)" }}>
+                OEM Excellence
+              </span>
+            </h2>
+            <p className="text-gray-500 text-base leading-relaxed max-w-sm">
+              Authorized partner for the world's leading technology brands — bringing certified expertise to every project we deliver.
+            </p>
+          </div>
+
+          {/* Right stats grid */}
+          <div className="flex-1 grid grid-cols-2 gap-4">
+            {STATS.map(({ value, label, sub }) => (
+              <div key={label}
+                className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
+                <p className="font-display font-extrabold text-2xl leading-none mb-1"
+                  style={{ color: "#5C0F26" }}>{value}</p>
+                <p className="text-sm font-semibold text-gray-900 leading-tight">{label}</p>
+                <p className="text-[11px] text-gray-400 mt-1">{sub}</p>
               </div>
-              {i < STATS.length - 1 && (
-                <div className="w-px h-8 bg-gray-200" />
-              )}
-            </div>
-          ))}
+            ))}
+          </div>
+
         </div>
 
-        {/* Divider with label */}
-        <div className="flex items-center gap-4 mb-8">
+        {/* Divider */}
+        <div className="flex items-center gap-4 mb-10">
           <div className="flex-1 h-px bg-gray-200" />
           <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 whitespace-nowrap">
             Trusted Technology Partners
           </p>
           <div className="flex-1 h-px bg-gray-200" />
         </div>
-      </div>
 
-      {/* Marquee */}
-      <div
-        className="overflow-hidden"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => { setPaused(false); setHovered(null); }}
-      >
-        <div
-          className="flex items-center gap-3"
-          style={{
-            animation: "marquee 30s linear infinite",
-            animationPlayState: paused ? "paused" : "running",
-            width: "max-content",
-            paddingLeft: "12px",
-          }}
-        >
-          {items.map((p, i) => (
-            <button
-              key={i}
-              onMouseEnter={() => setHovered(p.name)}
-              onMouseLeave={() => setHovered(null)}
-              className="flex-shrink-0 flex items-center gap-2.5 px-5 py-2.5 rounded-full border font-display font-semibold text-sm transition-all duration-200"
-              style={{
-                borderColor: hovered === p.name ? p.color : "#E5E7EB",
-                color:       hovered === p.name ? p.color : "#6B7280",
-                background:  hovered === p.name ? p.color + "10" : "#ffffff",
-                transform:   hovered === p.name ? "scale(1.06)" : "scale(1)",
-                boxShadow:   hovered === p.name ? `0 4px 14px ${p.color}30` : "none",
-              }}
+        {/* Partner cards grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+          {PARTNERS.map(({ name, color, cert }) => (
+            <div
+              key={name}
+              className="group relative rounded-2xl border border-gray-100 bg-white p-5 flex flex-col items-center text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 overflow-hidden"
             >
-              <span
-                className="w-1.5 h-1.5 rounded-full shrink-0"
-                style={{ background: p.color }}
+              {/* Color accent bar */}
+              <div
+                className="absolute top-0 left-0 right-0 h-0.5 rounded-t-2xl transition-all duration-300 group-hover:h-1"
+                style={{ background: color }}
               />
-              {p.name}
-            </button>
+              {/* Brand initial badge */}
+              <div
+                className="w-10 h-10 rounded-xl flex items-center justify-center text-white font-display font-extrabold text-sm mb-3 transition-transform duration-300 group-hover:scale-110"
+                style={{ background: color }}
+              >
+                {name[0]}
+              </div>
+              <p className="font-display font-bold text-sm text-gray-900 leading-none mb-1.5">{name}</p>
+              <p className="text-[10px] text-gray-400 leading-tight">{cert}</p>
+            </div>
           ))}
         </div>
-      </div>
 
-      {/* Pause hint */}
-      {paused && (
-        <p className="text-center text-[10px] text-gray-300 mt-4 tracking-wide animate-pulse">
-          Paused — move away to resume
-        </p>
-      )}
+      </div>
     </section>
   );
 }
