@@ -187,9 +187,15 @@ body {
 /* ================================================================
    GRADIENT FLOW STRIP
    ================================================================ */
-@keyframes wave-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+@keyframes gradient-flow {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.gradient-flow-strip {
+  background: linear-gradient(90deg, #1D4ED8, #E8435A, #5C0F26, #1D4ED8);
+  background-size: 200% 100%;
+  animation: gradient-flow 4s linear infinite;
 }
 
 /* ================================================================
