@@ -23,11 +23,11 @@ export function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <section id="contact" className="py-24 lg:py-32 bg-white" aria-labelledby="contact-title">
+    <section id="contact" className="py-16 lg:py-20 bg-white" aria-labelledby="contact-title">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
-        <div className="mb-14">
+        <div className="mb-8">
           <SectionLabel>Contact Us</SectionLabel>
           <h2
             id="contact-title"
@@ -45,7 +45,7 @@ export function ContactSection() {
         </div>
 
         {/* Contact method cards */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
           {CONTACT_METHODS.map(({ Icon, label, value, sub }) => (
             <div key={label} className="flex items-center gap-4 p-5 rounded-2xl border border-gray-100 bg-gray-50">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "#EFF6FF" }}>
