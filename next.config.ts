@@ -2,7 +2,12 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    remotePatterns: [],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "logo.clearbit.com",
+      },
+    ],
   },
   experimental: {
     optimizePackageImports: ["lucide-react", "framer-motion"],

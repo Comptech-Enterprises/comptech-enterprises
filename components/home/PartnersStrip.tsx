@@ -1,35 +1,65 @@
 "use client";
 
+import Image from "next/image";
+import { useState } from "react";
+
 const PARTNERS = [
-  { name: "Apple",      cert: "Authorized Reseller"  },
-  { name: "Microsoft",  cert: "CSP Partner"          },
-  { name: "Logitech",   cert: "Authorized Reseller"  },
-  { name: "HP",         cert: "Authorized Partner"   },
-  { name: "Microtek",   cert: "Authorized Partner"   },
-  { name: "Intel",      cert: "Technology Partner"   },
-  { name: "PRAMA",      cert: "Authorized Partner"   },
-  { name: "NVIDIA",     cert: "Preferred Partner"    },
-  { name: "LG",         cert: "Authorized Reseller"  },
-  { name: "AMD",        cert: "Technology Partner"   },
-  { name: "Dell",       cert: "Gold Partner"         },
-  { name: "Samsung",    cert: "Business Partner"     },
-  { name: "Epson",      cert: "Premium Partner"      },
-  { name: "Hikvision",  cert: "Authorized Partner"   },
-  { name: "Canon",      cert: "Authorized Reseller"  },
-  { name: "Sony",       cert: "Authorized Partner"   },
-  { name: "Philips",    cert: "Authorized Reseller"  },
-  { name: "Lenovo",     cert: "Platinum Partner"     },
-  { name: "Tally",      cert: "Authorized Partner"   },
-  { name: "Honeywell",  cert: "Authorized Reseller"  },
-  { name: "Brother",    cert: "Authorized Reseller"  },
+  { name: "Apple",      cert: "Authorized Reseller", domain: "apple.com"             },
+  { name: "Microsoft",  cert: "CSP Partner",         domain: "microsoft.com"         },
+  { name: "Logitech",   cert: "Authorized Reseller", domain: "logitech.com"          },
+  { name: "HP",         cert: "Authorized Partner",  domain: "hp.com"                },
+  { name: "Microtek",   cert: "Authorized Partner",  domain: "microtek.in"           },
+  { name: "Intel",      cert: "Technology Partner",  domain: "intel.com"             },
+  { name: "PRAMA",      cert: "Authorized Partner",  domain: "pramahikvision.com"    },
+  { name: "NVIDIA",     cert: "Preferred Partner",   domain: "nvidia.com"            },
+  { name: "LG",         cert: "Authorized Reseller", domain: "lg.com"                },
+  { name: "AMD",        cert: "Technology Partner",  domain: "amd.com"               },
+  { name: "Dell",       cert: "Gold Partner",        domain: "dell.com"              },
+  { name: "Samsung",    cert: "Business Partner",    domain: "samsung.com"           },
+  { name: "Epson",      cert: "Premium Partner",     domain: "epson.com"             },
+  { name: "Hikvision",  cert: "Authorized Partner",  domain: "hikvision.com"         },
+  { name: "Canon",      cert: "Authorized Reseller", domain: "canon.com"             },
+  { name: "Sony",       cert: "Authorized Partner",  domain: "sony.com"              },
+  { name: "Philips",    cert: "Authorized Reseller", domain: "philips.com"           },
+  { name: "Lenovo",     cert: "Platinum Partner",    domain: "lenovo.com"            },
+  { name: "Tally",      cert: "Authorized Partner",  domain: "tallysolutions.com"    },
+  { name: "Honeywell",  cert: "Authorized Reseller", domain: "honeywell.com"         },
+  { name: "Brother",    cert: "Authorized Reseller", domain: "brother.com"           },
 ];
 
 const STATS = [
-  { value: "20+",  label: "OEM Partners",      sub: "Tier-1 global brands"       },
-  { value: "15+",  label: "Years Experience",  sub: "Since 2008"                 },
-  { value: "200+", label: "Clients Served",    sub: "Across India"               },
-  { value: "50+",  label: "Certified Engineers",sub: "OEM certified professionals"},
+  { value: "20+",  label: "OEM Partners",       sub: "Tier-1 global brands"        },
+  { value: "15+",  label: "Years Experience",   sub: "Since 2008"                  },
+  { value: "200+", label: "Clients Served",     sub: "Across India"                },
+  { value: "50+",  label: "Certified Engineers",sub: "OEM certified professionals" },
 ];
+
+function PartnerLogo({ name, domain }: { name: string; domain: string }) {
+  const [errored, setErrored] = useState(false);
+  const src = `https://logo.clearbit.com/${domain}`;
+
+  if (errored) {
+    return (
+      <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center">
+        <span className="text-[10px] font-bold text-gray-400 text-center leading-tight px-1">{name}</span>
+      </div>
+    );
+  }
+
+  return (
+    <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center overflow-hidden">
+      <Image
+        src={src}
+        alt={`${name} logo`}
+        width={44}
+        height={44}
+        className="object-contain w-11 h-11 transition-transform duration-300 group-hover:scale-105"
+        onError={() => setErrored(true)}
+        unoptimized
+      />
+    </div>
+  );
+}
 
 export function PartnersStrip() {
   return (
@@ -57,7 +87,7 @@ export function PartnersStrip() {
               </span>
             </h2>
             <p className="text-gray-500 text-base leading-relaxed max-w-sm">
-              Authorized partner for the world's leading technology brands — bringing certified expertise to every project we deliver.
+              Authorized partner for the world&apos;s leading technology brands — bringing certified expertise to every project we deliver.
             </p>
           </div>
 
@@ -85,20 +115,15 @@ export function PartnersStrip() {
           <div className="flex-1 h-px bg-gray-200" />
         </div>
 
-        {/* Partner cards — carousel on mobile, grid on desktop */}
+        {/* Partner cards grid */}
         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-3">
-          {PARTNERS.map(({ name, cert }) => (
+          {PARTNERS.map(({ name, cert, domain }) => (
             <div
               key={name}
               className="group rounded-2xl border border-gray-100 bg-white p-4 flex flex-col items-center text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
             >
-              {/* Logo placeholder */}
-              <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center mb-3 transition-transform duration-300 group-hover:scale-105">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" strokeWidth="1.5">
-                  <rect x="3" y="3" width="18" height="18" rx="3" />
-                  <circle cx="8.5" cy="8.5" r="1.5" />
-                  <path d="M21 15l-5-5L5 21" />
-                </svg>
+              <div className="mb-3">
+                <PartnerLogo name={name} domain={domain} />
               </div>
               <p className="font-display font-bold text-sm text-gray-900 leading-none mb-1.5">{name}</p>
               <p className="text-[10px] text-gray-400 leading-tight">{cert}</p>
