@@ -40,14 +40,14 @@ function PartnerLogo({ name, logo, domain }: { name: string; logo: string | null
 
   if (!src || errored) {
     return (
-      <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center">
+      <div className="w-12 h-12 flex items-center justify-center">
         <span className="text-[10px] font-bold text-gray-400 text-center leading-tight px-1">{name}</span>
       </div>
     );
   }
 
   return (
-    <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center overflow-hidden">
+    <div className="w-12 h-12 rounded-xl bg-transparent flex items-center justify-center overflow-hidden">
       <Image
         src={src}
         alt={`${name} logo`}
