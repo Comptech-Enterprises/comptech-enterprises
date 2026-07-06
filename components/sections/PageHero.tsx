@@ -27,7 +27,7 @@ export function PageHero({ badge, title, subtitle, breadcrumbs, actions, dark, b
           src={backgroundImage}
           alt=""
           fill
-          className="object-cover object-center opacity-30 mix-blend-luminosity"
+          className="object-cover object-center opacity-15 mix-blend-luminosity"
           priority
           aria-hidden="true"
         />
