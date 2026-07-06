@@ -3,28 +3,28 @@
 import Image from "next/image";
 import { useState } from "react";
 
-const PARTNERS = [
-  { name: "Apple",      cert: "Authorized Reseller", domain: "apple.com"             },
-  { name: "Microsoft",  cert: "CSP Partner",         domain: "microsoft.com"         },
-  { name: "Logitech",   cert: "Authorized Reseller", domain: "logitech.com"          },
-  { name: "HP",         cert: "Authorized Partner",  domain: "hp.com"                },
-  { name: "Microtek",   cert: "Authorized Partner",  domain: "microtek.in"           },
-  { name: "Intel",      cert: "Technology Partner",  domain: "intel.com"             },
-  { name: "PRAMA",      cert: "Authorized Partner",  domain: "pramahikvision.com"    },
-  { name: "NVIDIA",     cert: "Preferred Partner",   domain: "nvidia.com"            },
-  { name: "LG",         cert: "Authorized Reseller", domain: "lg.com"                },
-  { name: "AMD",        cert: "Technology Partner",  domain: "amd.com"               },
-  { name: "Dell",       cert: "Gold Partner",        domain: "dell.com"              },
-  { name: "Samsung",    cert: "Business Partner",    domain: "samsung.com"           },
-  { name: "Epson",      cert: "Premium Partner",     domain: "epson.com"             },
-  { name: "Hikvision",  cert: "Authorized Partner",  domain: "hikvision.com"         },
-  { name: "Canon",      cert: "Authorized Reseller", domain: "canon.com"             },
-  { name: "Sony",       cert: "Authorized Partner",  domain: "sony.com"              },
-  { name: "Philips",    cert: "Authorized Reseller", domain: "philips.com"           },
-  { name: "Lenovo",     cert: "Platinum Partner",    domain: "lenovo.com"            },
-  { name: "Tally",      cert: "Authorized Partner",  domain: "tallysolutions.com"    },
-  { name: "Honeywell",  cert: "Authorized Reseller", domain: "honeywell.com"         },
-  { name: "Brother",    cert: "Authorized Reseller", domain: "brother.com"           },
+const PARTNERS: { name: string; cert: string; logo: string | null; domain?: string }[] = [
+  { name: "Apple",      cert: "Authorized Reseller", logo: "/logo's/apple.jpg"        },
+  { name: "Microsoft",  cert: "CSP Partner",         logo: "/logo's/microsoft.webp"   },
+  { name: "Logitech",   cert: "Authorized Reseller", logo: "/logo's/logitech.jpg"     },
+  { name: "HP",         cert: "Authorized Partner",  logo: "/logo's/hp.jpg"           },
+  { name: "Microtek",   cert: "Authorized Partner",  logo: "/logo's/microtek.jpg"     },
+  { name: "Intel",      cert: "Technology Partner",  logo: "/logo's/intel.png"        },
+  { name: "PRAMA",      cert: "Authorized Partner",  logo: "/logo's/prama.jpeg"       },
+  { name: "NVIDIA",     cert: "Preferred Partner",   logo: "/logo's/nvida.avif"       },
+  { name: "LG",         cert: "Authorized Reseller", logo: "/logo's/LG.png"           },
+  { name: "AMD",        cert: "Technology Partner",  logo: "/logo's/amd.jpg"          },
+  { name: "Dell",       cert: "Gold Partner",        logo: "/logo's/dell.jpg"         },
+  { name: "Samsung",    cert: "Business Partner",    logo: "/logo's/samsung.webp"     },
+  { name: "Epson",      cert: "Premium Partner",     logo: "/logo's/epson.png"        },
+  { name: "Hikvision",  cert: "Authorized Partner",  logo: null, domain: "hikvision.com"  },
+  { name: "Canon",      cert: "Authorized Reseller", logo: "/logo's/canon.webp"       },
+  { name: "Sony",       cert: "Authorized Partner",  logo: "/logo's/sony.png"         },
+  { name: "Philips",    cert: "Authorized Reseller", logo: "/logo's/phillips.webp"    },
+  { name: "Lenovo",     cert: "Platinum Partner",    logo: "/logo's/lenvo.png"        },
+  { name: "Tally",      cert: "Authorized Partner",  logo: null, domain: "tallysolutions.com" },
+  { name: "Honeywell",  cert: "Authorized Reseller", logo: null, domain: "honeywell.com"    },
+  { name: "Brother",    cert: "Authorized Reseller", logo: null, domain: "brother.com"      },
 ];
 
 const STATS = [
@@ -34,11 +34,11 @@ const STATS = [
   { value: "50+",  label: "Certified Engineers",sub: "OEM certified professionals" },
 ];
 
-function PartnerLogo({ name, domain }: { name: string; domain: string }) {
+function PartnerLogo({ name, logo, domain }: { name: string; logo: string | null; domain?: string }) {
   const [errored, setErrored] = useState(false);
-  const src = `https://logo.clearbit.com/${domain}`;
+  const src = logo ?? (domain ? `https://logo.clearbit.com/${domain}` : null);
 
-  if (errored) {
+  if (!src || errored) {
     return (
       <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center">
         <span className="text-[10px] font-bold text-gray-400 text-center leading-tight px-1">{name}</span>
@@ -72,8 +72,6 @@ export function PartnersStrip() {
 
         {/* Top: Heading left + Stats right */}
         <div className="flex flex-col lg:flex-row lg:items-start gap-12 mb-16">
-
-          {/* Left heading */}
           <div className="lg:w-2/5">
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] mb-3" style={{ color: "#5C0F26" }}>
               Certified & Trusted
@@ -91,19 +89,15 @@ export function PartnersStrip() {
             </p>
           </div>
 
-          {/* Right stats grid */}
           <div className="flex-1 grid grid-cols-2 gap-4">
             {STATS.map(({ value, label, sub }) => (
-              <div key={label}
-                className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
-                <p className="font-display font-extrabold text-2xl leading-none mb-1"
-                  style={{ color: "#5C0F26" }}>{value}</p>
+              <div key={label} className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
+                <p className="font-display font-extrabold text-2xl leading-none mb-1" style={{ color: "#5C0F26" }}>{value}</p>
                 <p className="text-sm font-semibold text-gray-900 leading-tight">{label}</p>
                 <p className="text-[11px] text-gray-400 mt-1">{sub}</p>
               </div>
             ))}
           </div>
-
         </div>
 
         {/* Divider */}
@@ -117,13 +111,13 @@ export function PartnersStrip() {
 
         {/* Partner cards grid */}
         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-3">
-          {PARTNERS.map(({ name, cert, domain }) => (
+          {PARTNERS.map(({ name, cert, logo, domain }) => (
             <div
               key={name}
               className="group rounded-2xl border border-gray-100 bg-white p-4 flex flex-col items-center text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
             >
               <div className="mb-3">
-                <PartnerLogo name={name} domain={domain} />
+                <PartnerLogo name={name} logo={logo} domain={domain} />
               </div>
               <p className="font-display font-bold text-sm text-gray-900 leading-none mb-1.5">{name}</p>
               <p className="text-[10px] text-gray-400 leading-tight">{cert}</p>
