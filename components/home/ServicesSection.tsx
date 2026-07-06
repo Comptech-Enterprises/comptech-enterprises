@@ -87,7 +87,7 @@ export function ServicesSection() {
                     <SIcon size={16} style={{ color: smeta?.accent ?? "#1D4ED8" }} />
                   </div>
                   <span
-                    className="text-sm font-semibold whitespace-nowrap leading-tight"
+                    className="text-sm font-semibold whitespace-nowrap lg:whitespace-normal leading-tight"
                     style={{ color: isActive ? smeta?.accent ?? "#1D4ED8" : "#374151" }}
                   >
                     {service.title}

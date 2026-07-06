@@ -40,36 +40,36 @@ export const SERVICES = [
   {
     id: "euc",
     icon: "monitor",
-    title: "End User Computing",
-    desc: "Desktops, laptops, workstations, and thin clients from tier-1 OEMs with enterprise-grade management.",
+    title: "End User Compute",
+    desc: "From desktops to laptops and mobile devices, our comprehensive offerings ensure that your employees have the tools they need to be productive, whether in the office or on the go.",
     href: "/services/euc",
   },
   {
     id: "ai",
     icon: "cpu",
     title: "AI Solutions",
-    desc: "NVIDIA GPU infrastructure, AI workshops, and enterprise no-code AI builder platform deployment.",
+    desc: "Unlock the potential of AI with our cutting-edge GPUs. We offer the best-in-class graphics processing units for unparalleled performance and innovation.",
     href: "/ai-solutions",
   },
   {
     id: "datacenter",
     icon: "database",
     title: "Data Centre Solutions",
-    desc: "Complete data centre buildouts including racks, power, cooling, cabling, and structured architecture.",
+    desc: "Upgrade your infrastructure with our Data Centre Solutions, including servers, ensuring scalability, reliability, and optimal performance for your business needs.",
     href: "/services/datacenter",
   },
   {
     id: "networking",
     icon: "network",
-    title: "Networking",
-    desc: "Enterprise LAN, SD-WAN, Wi-Fi 6E, and campus networking from Cisco, Juniper, and Aruba.",
+    title: "Network Solutions",
+    desc: "Optimise your connectivity with our Networking Solutions. From robust infrastructure to advanced configurations, we deliver solutions for seamless and efficient networking.",
     href: "/services/networking",
   },
   {
     id: "security",
     icon: "shield",
-    title: "CCTV & Security",
-    desc: "IP CCTV surveillance, access control, AI-powered video analytics, and perimeter security systems.",
+    title: "Security Solutions",
+    desc: "Enhance your security with our CCTV Solutions. We provide advanced surveillance systems for comprehensive monitoring and peace of mind.",
     href: "/services/security",
   },
   {
@@ -82,8 +82,8 @@ export const SERVICES = [
   {
     id: "amc",
     icon: "tool",
-    title: "Annual Maintenance",
-    desc: "24/7 proactive monitoring, preventive maintenance, and rapid response AMC for all enterprise assets.",
+    title: "Annual Maintenance Contracts",
+    desc: "Keep your IT systems running smoothly with our Computer AMC service. We provide comprehensive maintenance and support for smooth operations.",
     href: "/services/amc",
   },
 ];
@@ -182,45 +182,31 @@ export const CASE_STUDIES = [
 export const TESTIMONIALS = [
   {
     quote:
-      "Comptech transformed our IT infrastructure. Their team deployed our entire server environment in under 3 weeks with zero downtime — exceptional execution.",
-    name: "Rajesh Mehta",
-    title: "CTO, Apollo Hospitals Group",
-    initials: "RM",
+      "Comptech Enterprises has transformed our business with their comprehensive Data Center Solutions. Their expertise in scalable infrastructure and reliable support ensure seamless operations, making them an invaluable partner in our success.",
+    name: "Ashiwini Palaha",
+    title: "MD, Fabstract Clothing Pvt. Ltd.",
+    initials: "AP",
   },
   {
     quote:
-      "The Wi-Fi rollout across our 8 campuses was seamless. Comptech's engineers were certified, responsive, and delivered ahead of schedule.",
-    name: "Dr. Priya Nair",
-    title: "IT Director, Mumbai University",
-    initials: "PN",
+      "Comptech Enterprises provides exceptional AMC service for our school's computers, ensuring uninterrupted learning. Their timely maintenance keeps our technology running smoothly. Thank you for your dedication to our school's success.",
+    name: "Saroop Singh",
+    title: "MD, St. Cecilia School",
+    initials: "SS",
   },
   {
     quote:
-      "Best enterprise IT partner we've worked with in 15 years. Their AMC team resolves issues before we even notice them — truly proactive support.",
-    name: "Arun Sharma",
-    title: "CIO, HDFC Asset Management",
-    initials: "AS",
+      "Comptech has truly revolutionized our operations with their exceptional end-user compute solutions. Their timely deliveries ensure uninterrupted workflow, making them our go-to IT partner.",
+    name: "Sanjay Puri",
+    title: "MD, Active Motors",
+    initials: "SP",
   },
   {
     quote:
-      "From procurement to deployment to maintenance — Comptech delivers end-to-end with unmatched expertise. Our go-to partner for all IT needs.",
-    name: "Vikram Singh",
-    title: "VP Technology, Reliance Retail",
-    initials: "VS",
-  },
-  {
-    quote:
-      "Their AI workshop transformed how our team thinks about automation. The no-code platform they deployed has saved us 400+ man-hours per month.",
-    name: "Meera Krishnan",
-    title: "Head of Innovation, Tata Motors",
-    initials: "MK",
-  },
-  {
-    quote:
-      "Government-grade security deployed on time and on budget. Comptech understands the unique requirements of public sector IT procurement.",
-    name: "Suresh Yadav",
-    title: "Director IT, Municipal Corporation",
-    initials: "SY",
+      "Comptech has helped us understand, learn and use AI in the simplest way possible. Their workshops are precise and very informative.",
+    name: "HOD, Data Science",
+    title: "LBSIM",
+    initials: "DS",
   },
 ];
 

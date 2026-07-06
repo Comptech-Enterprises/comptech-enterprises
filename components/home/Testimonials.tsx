@@ -7,7 +7,7 @@ import { TESTIMONIALS } from "@/lib/constants";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
 const AVATAR_COLORS = ["#5C0F26", "#1D4ED8", "#5C0F26", "#1D4ED8", "#5C0F26", "#1D4ED8"];
-const VISIBLE = 3;
+const VISIBLE = 2;
 
 function buildQueue(start: number) {
   return Array.from({ length: VISIBLE }, (_, i) => (start + i) % TESTIMONIALS.length);
@@ -86,7 +86,7 @@ export function Testimonials() {
             <div className="mt-8">
               <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">Trusted by</p>
               <div className="flex flex-wrap gap-2">
-                {["Apollo Hospitals", "HDFC AMC", "Reliance Retail", "Mumbai University", "Tata Motors"].map((c) => (
+                {["Fabstract Clothing", "St. Cecilia School", "Active Motors", "LBSIM"].map((c) => (
                   <span key={c} className="px-3 py-1 rounded-full border border-gray-200 bg-white text-xs font-medium text-gray-600">
                     {c}
                   </span>
