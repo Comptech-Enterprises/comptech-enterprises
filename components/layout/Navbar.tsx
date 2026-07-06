@@ -78,7 +78,7 @@ export function Navbar({ transparent = false }: NavbarProps) {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 h-full flex items-center justify-between gap-8">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 sm:gap-2.5 min-w-0 shrink">
-            <Logo className="w-10 h-10 sm:w-13 sm:h-13 shrink-0" />
+            <Logo className="w-12 h-12 sm:w-16 sm:h-16 shrink-0" />
             <span
               className={clsx(
                 "font-display font-extrabold text-sm sm:text-xl lg:text-2xl leading-none tracking-tight transition-colors duration-300 truncate",
