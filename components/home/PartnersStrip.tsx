@@ -1,20 +1,31 @@
 "use client";
 
 const PARTNERS = [
-  { name: "Dell",      cert: "Gold Partner"       },
-  { name: "HP",        cert: "Authorized Partner"  },
-  { name: "Lenovo",    cert: "Platinum Partner"    },
-  { name: "Microsoft", cert: "CSP Partner"         },
-  { name: "Intel",     cert: "Technology Partner"  },
-  { name: "NVIDIA",    cert: "Elite Partner"       },
-  { name: "Canon",     cert: "Authorized Reseller" },
-  { name: "Samsung",   cert: "Business Partner"    },
-  { name: "Epson",     cert: "Premium Partner"     },
-  { name: "Sony",      cert: "Authorized Partner"  },
+  { name: "Apple",      cert: "Authorized Reseller"  },
+  { name: "Microsoft",  cert: "CSP Partner"          },
+  { name: "Logitech",   cert: "Authorized Reseller"  },
+  { name: "HP",         cert: "Authorized Partner"   },
+  { name: "Microtek",   cert: "Authorized Partner"   },
+  { name: "Intel",      cert: "Technology Partner"   },
+  { name: "PRAMA",      cert: "Authorized Partner"   },
+  { name: "NVIDIA",     cert: "Preferred Partner"    },
+  { name: "LG",         cert: "Authorized Reseller"  },
+  { name: "AMD",        cert: "Technology Partner"   },
+  { name: "Dell",       cert: "Gold Partner"         },
+  { name: "Samsung",    cert: "Business Partner"     },
+  { name: "Epson",      cert: "Premium Partner"      },
+  { name: "Hikvision",  cert: "Authorized Partner"   },
+  { name: "Canon",      cert: "Authorized Reseller"  },
+  { name: "Sony",       cert: "Authorized Partner"   },
+  { name: "Philips",    cert: "Authorized Reseller"  },
+  { name: "Lenovo",     cert: "Platinum Partner"     },
+  { name: "Tally",      cert: "Authorized Partner"   },
+  { name: "Honeywell",  cert: "Authorized Reseller"  },
+  { name: "Brother",    cert: "Authorized Reseller"  },
 ];
 
 const STATS = [
-  { value: "10+",  label: "OEM Partners",      sub: "Tier-1 global brands"       },
+  { value: "20+",  label: "OEM Partners",      sub: "Tier-1 global brands"       },
   { value: "15+",  label: "Years Experience",  sub: "Since 2008"                 },
   { value: "200+", label: "Clients Served",    sub: "Across India"               },
   { value: "50+",  label: "Certified Engineers",sub: "OEM certified professionals"},
@@ -75,11 +86,11 @@ export function PartnersStrip() {
         </div>
 
         {/* Partner cards — carousel on mobile, grid on desktop */}
-        <div className="flex sm:grid sm:grid-cols-3 md:grid-cols-5 gap-3 overflow-x-auto pb-3 sm:pb-0 snap-x snap-mandatory scroll-smooth -mx-6 px-6 sm:mx-0 sm:px-0 scrollbar-hide">
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-3">
           {PARTNERS.map(({ name, cert }) => (
             <div
               key={name}
-              className="group rounded-2xl border border-gray-100 bg-white p-5 flex flex-col items-center text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 snap-start shrink-0 w-36 sm:w-auto"
+              className="group rounded-2xl border border-gray-100 bg-white p-4 flex flex-col items-center text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
             >
               {/* Logo placeholder */}
               <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center mb-3 transition-transform duration-300 group-hover:scale-105">
