@@ -23,7 +23,7 @@ const STATS = [
 export function PartnersStrip() {
   return (
     <section
-      className="py-20"
+      className="pt-16 pb-10 lg:py-20"
       style={{ background: "linear-gradient(180deg, #ffffff 0%, #f8f9ff 50%, #f5f0f2 85%, #ffffff 100%)" }}
       aria-label="Technology partners"
     >
@@ -74,12 +74,12 @@ export function PartnersStrip() {
           <div className="flex-1 h-px bg-gray-200" />
         </div>
 
-        {/* Partner cards grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+        {/* Partner cards — carousel on mobile, grid on desktop */}
+        <div className="flex sm:grid sm:grid-cols-3 md:grid-cols-5 gap-3 overflow-x-auto pb-3 sm:pb-0 snap-x snap-mandatory scroll-smooth -mx-6 px-6 sm:mx-0 sm:px-0 scrollbar-hide">
           {PARTNERS.map(({ name, cert }) => (
             <div
               key={name}
-              className="group rounded-2xl border border-gray-100 bg-white p-5 flex flex-col items-center text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
+              className="group rounded-2xl border border-gray-100 bg-white p-5 flex flex-col items-center text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 snap-start shrink-0 w-36 sm:w-auto"
             >
               {/* Logo placeholder */}
               <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center mb-3 transition-transform duration-300 group-hover:scale-105">

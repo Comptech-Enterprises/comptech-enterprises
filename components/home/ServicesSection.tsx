@@ -36,7 +36,7 @@ export function ServicesSection() {
   const Icon = ICONS[current.icon] ?? Server;
 
   return (
-    <section id="services" className="py-24 lg:py-32" style={{ background: "linear-gradient(180deg, #ffffff 0%, #EFF6FF 25%, #F5F7FA 60%, #FDF4F6 85%, #ffffff 100%)" }} aria-labelledby="services-title">
+    <section id="services" className="py-12 lg:py-32" style={{ background: "linear-gradient(180deg, #ffffff 0%, #EFF6FF 25%, #F5F7FA 60%, #FDF4F6 85%, #ffffff 100%)" }} aria-labelledby="services-title">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
@@ -64,7 +64,7 @@ export function ServicesSection() {
         <div className="flex flex-col lg:flex-row gap-4 rounded-3xl overflow-hidden bg-white shadow-lg border border-gray-100">
 
           {/* Sidebar tabs */}
-          <div className="lg:w-64 shrink-0 flex flex-row lg:flex-col overflow-x-auto lg:overflow-visible border-b lg:border-b-0 lg:border-r border-gray-100">
+          <div className="lg:w-64 shrink-0 flex flex-row lg:flex-col overflow-x-auto lg:overflow-visible border-b lg:border-b-0 lg:border-r border-gray-100 scrollbar-hide">
             {SERVICES.map((service) => {
               const SIcon = ICONS[service.icon] ?? Server;
               const smeta = SERVICE_META[service.id];
@@ -73,25 +73,21 @@ export function ServicesSection() {
                 <button
                   key={service.id}
                   onClick={() => setActive(service.id)}
-                  className="flex items-center gap-3 px-5 py-4 text-left transition-all duration-150 shrink-0 lg:shrink relative"
+                  className="flex items-center gap-3 px-4 lg:px-5 py-3 lg:py-4 text-left transition-all duration-150 shrink-0 lg:shrink relative"
                   style={{
                     background: isActive ? (smeta?.gradient ?? "#EFF6FF") : "transparent",
-                    borderRight: isActive
-                      ? `3px solid transparent`
-                      : "3px solid transparent",
-                    borderImage: isActive
-                      ? "linear-gradient(180deg, #1D4ED8, #E8435A) 1"
-                      : "none",
+                    borderRight: isActive ? `3px solid transparent` : "3px solid transparent",
+                    borderImage: isActive ? "linear-gradient(180deg, #1D4ED8, #E8435A) 1" : "none",
                   }}
                 >
                   <div
-                    className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
+                    className="hidden lg:flex w-8 h-8 rounded-lg items-center justify-center shrink-0"
                     style={{ background: smeta?.bg ?? "#EFF6FF" }}
                   >
                     <SIcon size={16} style={{ color: smeta?.accent ?? "#1D4ED8" }} />
                   </div>
                   <span
-                    className="text-sm font-semibold whitespace-nowrap lg:whitespace-normal leading-tight"
+                    className="text-sm font-semibold whitespace-nowrap leading-tight"
                     style={{ color: isActive ? smeta?.accent ?? "#1D4ED8" : "#374151" }}
                   >
                     {service.title}
@@ -102,7 +98,7 @@ export function ServicesSection() {
           </div>
 
           {/* Detail panel */}
-          <div className="flex-1 p-8 lg:p-12 flex flex-col justify-between gap-8">
+          <div className="flex-1 p-5 lg:p-12 flex flex-col justify-between gap-6 lg:gap-8">
             <div>
               {/* Icon + title */}
               <div className="flex items-start gap-5 mb-6">
@@ -157,10 +153,10 @@ export function ServicesSection() {
             <div>
               <Link
                 href={current.href}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-white transition-all duration-200 hover:opacity-90"
+                className="inline-flex items-center justify-center gap-2 w-full lg:w-auto px-6 py-3 rounded-xl text-sm font-semibold text-white transition-all duration-200 hover:opacity-90"
                 style={{ background: meta.accent }}
               >
-                Learn more about {current.title} <ArrowRight size={15} />
+                Learn more <ArrowRight size={15} className="shrink-0" />
               </Link>
             </div>
           </div>

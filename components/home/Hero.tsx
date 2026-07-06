@@ -58,7 +58,7 @@ export function Hero() {
 
       {/* Content */}
       <div
-        className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 flex flex-col justify-center"
+        className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 flex flex-col justify-center pt-12 lg:pt-16"
         style={{ minHeight: "calc(100vh - var(--nav-height))" }}
       >
         <motion.div variants={containerVariants} initial="hidden" animate="visible" className="max-w-2xl">
@@ -117,7 +117,7 @@ export function Hero() {
           {/* Stats strip */}
           <motion.div
             variants={itemVariants}
-            className="grid grid-cols-4 gap-0 pt-8"
+            className="grid grid-cols-4 gap-0 pt-8 mb-20"
             style={{ borderTop: "1px solid rgba(255,255,255,0.15)" }}
           >
             {STATS.map(({ value, label }, i) => (
