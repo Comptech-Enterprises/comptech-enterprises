@@ -1,10 +1,11 @@
 export const COMPANY = {
   name: "Comptech Enterprises",
   tagline: "Enterprise IT Solutions",
-  phone: "+91 22 1234 5678",
-  email: "info@comptech.in",
-  whatsapp: "912212345678",
-  address: "Janakpuri, Delhi, India",
+  phone: "+91 8595073837",
+  email: "mohit@comptech.in",
+  whatsapp: "918595073837",
+  address: "207, DDA-1, District Center, JanakPuri, New Delhi, India",
+  gstin: "07AAAFC4294J1ZD",
   founded: "2008",
 };
 

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { ReactNode } from "react";
+import Image from "next/image";
 
 interface Breadcrumb { label: string; href?: string }
 
@@ -11,15 +12,26 @@ interface PageHeroProps {
   breadcrumbs?: Breadcrumb[];
   actions?: ReactNode;
   dark?: boolean;
+  backgroundImage?: string;
 }
 
-export function PageHero({ badge, title, subtitle, breadcrumbs, actions, dark }: PageHeroProps) {
+export function PageHero({ badge, title, subtitle, breadcrumbs, actions, dark, backgroundImage }: PageHeroProps) {
   const bgClass = dark
     ? "bg-ai-gradient"
     : "page-hero-bg";
 
   return (
-    <section className={`${bgClass} pt-[calc(var(--nav-height)+4rem)] pb-16 lg:pb-24`}>
+    <section className={`${bgClass} pt-[calc(var(--nav-height)+4rem)] pb-16 lg:pb-24 relative overflow-hidden`}>
+      {backgroundImage && (
+        <Image
+          src={backgroundImage}
+          alt=""
+          fill
+          className="object-cover object-center opacity-30 mix-blend-luminosity"
+          priority
+          aria-hidden="true"
+        />
+      )}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         {/* Breadcrumb */}
         {breadcrumbs && (

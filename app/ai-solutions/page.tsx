@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Cpu, Brain, Bot, Sparkles, Shield, Activity, CheckCircle2, ArrowRight } from "lucide-react";
+import { Cpu, Brain, GraduationCap, Shield, Activity, Sparkles, CheckCircle2, ArrowRight } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { PageHero } from "@/components/sections/PageHero";
@@ -10,64 +10,64 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 export const metadata: Metadata = {
   title: "AI Solutions",
   description:
-    "Enterprise AI solutions by Comptech Enterprises. NVIDIA GPU compute nodes, AI Enablement Workshops, and custom no-code AI builder deployment.",
+    "Enterprise AI solutions by Comptech Enterprises. High-performance GPU hardware, custom AI software, and hands-on AI training programs.",
 };
 
 const AI_OFFERINGS = [
   {
     icon: Cpu,
-    title: "NVIDIA GPU Infrastructure",
-    badge: "Hardware & Cloud",
-    desc: "We supply and configure high-performance NVIDIA GPU infrastructure (H100, A100, L40S, and RTX 6000 Ada) tailored for deep learning, LLM training, and high-density inference workloads.",
+    title: "Hardware Solutions",
+    badge: "Hardware & Infrastructure",
+    desc: "Comptech specializes in sourcing and configuring AI hardware built for the demands of modern machine learning workloads — from deep learning research to large-scale inference in production.",
     points: [
-      "OEM-certified server integration (Dell, HP, Lenovo)",
-      "High-speed InfiniBand & networking setup",
-      "CUDA, PyTorch, and TensorFlow optimization",
-      "On-premise or hybrid GPU cloud deployment"
-    ]
+      "High-performance GPUs ideal for deep learning, data processing, and AI training",
+      "Custom-built AI systems configured for specific projects",
+      "Scalable AI servers and workstations for businesses",
+      "On-premise or hybrid deployment with full OEM support",
+    ],
   },
   {
     icon: Brain,
-    title: "AI Enablement Workshops",
-    badge: "Consulting & Training",
-    desc: "Empower your workforce with custom training programs. We conduct hands-on developer and leadership workshops covering Generative AI, Retrieval-Augmented Generation (RAG), and agentic workflows.",
+    title: "AI Software Solutions",
+    badge: "Software & Integration",
+    desc: "We deliver comprehensive AI software offerings that span the full development lifecycle — from building bespoke models to integrating AI capabilities into your existing enterprise systems.",
     points: [
-      "Leadership strategy & ROI workshops",
-      "Developer training for LLM APIs & frameworks",
-      "Best practices for secure enterprise data integration",
-      "Post-workshop roadmap & deployment support"
-    ]
+      "Custom-built AI models for various industries and use cases",
+      "Machine learning and deep learning tools for decision-making automation",
+      "AI integration services for existing systems",
+      "Tailored software meeting unique business needs",
+    ],
   },
   {
-    icon: Bot,
-    title: "No-Code AI Builder Platform",
-    badge: "Software Deployment",
-    desc: "Deploy a private, secure, no-code AI application builder inside your enterprise network. Let business users create chatbots, extract document data, and automate workflows with zero coding.",
+    icon: GraduationCap,
+    title: "AI Teaching & Training",
+    badge: "Education & Enablement",
+    desc: "We design and deliver training programs that build lasting AI capability inside your organisation — from executive strategy sessions to developer deep-dives and hands-on workshops.",
     points: [
-      "Self-hosted LLMs for 100% data privacy",
-      "Drag-and-drop workspace for custom prompt engineering",
-      "Pre-built connectors for databases, PDFs, and Sharepoint",
-      "Enterprise access controls & audit logs"
-    ]
-  }
+      "Hands-on workshops and seminars for educational institutions and professionals",
+      "Custom AI Training Programs tailored to your industry and business requirements",
+      "One-on-one mentorship from industry experts",
+      "Corporate training empowering teams to leverage AI effectively",
+    ],
+  },
 ];
 
 const AI_CAPABILITIES = [
   {
     title: "Data Privacy First",
-    desc: "All AI workloads and LLMs are deployed within your secure enterprise perimeter. No data leaves your network to train public models.",
-    icon: Shield
+    desc: "All AI workloads and models are deployed within your secure enterprise perimeter. No data leaves your network.",
+    icon: Shield,
   },
   {
     title: "OEM-Grade Performance",
-    desc: "Fully optimized hardware builds backed by our certified Dell Titanium and HP Gold server engineering expertise.",
-    icon: Activity
+    desc: "Fully optimized hardware builds backed by certified Dell Titanium and HP Gold server engineering expertise.",
+    icon: Activity,
   },
   {
     title: "Rapid Implementation",
-    desc: "Get proof-of-concept AI applications up and running in weeks, not months, utilizing pre-validated blueprints.",
-    icon: Sparkles
-  }
+    desc: "Get proof-of-concept AI applications up and running in weeks, not months, using pre-validated blueprints.",
+    icon: Sparkles,
+  },
 ];
 
 export default function AISolutionsPage() {
@@ -76,19 +76,27 @@ export default function AISolutionsPage() {
       <Navbar />
       <main>
         <PageHero
+          backgroundImage="/images/AI_Banner.webp"
           badge="AI Division"
           title={
             <>
-              Enterprise AI Solutions, <span className="text-gradient-purple font-extrabold">Accelerated</span>
+              Our AI Vision: From{" "}
+              <span className="text-gradient-purple font-extrabold">
+                Hardware to Software
+              </span>
             </>
           }
-          subtitle="Empowering Indian enterprises to adopt machine learning and Generative AI securely. From high-density GPU servers to private no-code AI platforms."
+          subtitle="Empowering Indian enterprises to adopt machine learning and Generative AI securely — from high-density GPU servers to custom AI models and hands-on team training."
           breadcrumbs={[{ label: "Home", href: "/" }, { label: "AI Solutions" }]}
           dark
           actions={
             <>
-              <Link href="/contact#quote" className="btn-accent btn btn-lg">Request AI Quote</Link>
-              <a href="#offerings" className="btn-outline-white btn btn-lg">Explore Solutions</a>
+              <Link href="/contact#quote" className="btn-accent btn btn-lg">
+                Request AI Quote
+              </Link>
+              <a href="#offerings" className="btn-outline-white btn btn-lg">
+                Explore Solutions
+              </a>
             </>
           }
         />
@@ -100,13 +108,13 @@ export default function AISolutionsPage() {
               <RevealWrapper>
                 <SectionLabel>Why Comptech AI</SectionLabel>
                 <h2 id="overview-title" className="font-display font-extrabold text-display-md text-gray-900 mb-6 text-balance">
-                  Bridge the Gap Between GPU Silicon and Enterprise ROI
+                  End-to-End AI Enablement for Indian Enterprises
                 </h2>
                 <p className="text-gray-500 text-lg leading-relaxed mb-6">
-                  While GPU hardware is hard to source and AI models are complex, Comptech provides a complete turn-key solution. We configure the silicon, train your team, and deploy self-hosted software platforms so you can generate immediate business value safely.
+                  Comptech delivers a complete AI stack — sourcing and configuring the right GPU hardware, building and integrating custom AI software, and training your teams to use it all effectively. One partner for the full journey.
                 </p>
                 <p className="text-gray-500 leading-relaxed mb-8">
-                  By partnering with NVIDIA, Dell, and leading LLM providers, we ensure that your infrastructure is highly available, optimized for throughput, and compliant with enterprise security standards.
+                  By partnering with NVIDIA, Dell, and leading AI software providers, we ensure your infrastructure is highly available, your models are production-ready, and your people have the skills to drive ROI from day one.
                 </p>
                 <div className="flex gap-4">
                   <div className="flex items-center gap-3">
@@ -118,7 +126,7 @@ export default function AISolutionsPage() {
 
               <RevealWrapper delay={150}>
                 <div className="grid grid-cols-1 gap-6">
-                  {AI_CAPABILITIES.map((cap, i) => {
+                  {AI_CAPABILITIES.map((cap) => {
                     const Icon = cap.icon;
                     return (
                       <div key={cap.title} className="flex gap-5 p-6 rounded-2xl bg-gray-50 border border-gray-100 hover:border-blue-200 transition-colors duration-300">
@@ -144,10 +152,10 @@ export default function AISolutionsPage() {
             <RevealWrapper className="text-center mb-16">
               <SectionLabel className="justify-center">Core AI Deliverables</SectionLabel>
               <h2 id="offerings-title" className="font-display font-extrabold text-display-md text-gray-900">
-                End-to-End AI Enablement
+                What We Offer
               </h2>
               <p className="mt-4 text-lg text-gray-500 max-w-xl mx-auto">
-                We handle the hardware provisioning, software deployment, and team training to ensure your AI success.
+                Hardware, software, and training — we cover every layer so you can focus on building with AI, not figuring it out.
               </p>
             </RevealWrapper>
 
@@ -173,7 +181,7 @@ export default function AISolutionsPage() {
                         <div className="w-12 h-12 rounded-xl bg-blue-700 text-white flex items-center justify-center mb-6">
                           <Icon size={24} />
                         </div>
-                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">What's Included</p>
+                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">What&apos;s Included</p>
                         <ul className="flex flex-col gap-3">
                           {off.points.map((p) => (
                             <li key={p} className="flex items-start gap-3 text-sm text-gray-600">
@@ -203,15 +211,15 @@ export default function AISolutionsPage() {
                 As a Preferred Partner in the NVIDIA Partner Network, we design GPU configurations using NVIDIA HGX, DGX, and RTX reference architectures, validated on Dell PowerEdge &amp; HPE ProLiant nodes.
               </p>
               <div className="inline-flex items-center gap-6 justify-center flex-wrap">
-                <span className="text-white font-display font-black text-2xl tracking-tight">NVIDIA<span className="text-green-500 font-sans">®</span> Partner</span>
+                <span className="text-white font-display font-black text-2xl tracking-tight">
+                  NVIDIA<span className="text-green-500 font-sans">®</span> Partner
+                </span>
                 <span className="w-px h-6 bg-white/20" />
                 <span className="text-gray-300 font-semibold text-sm">Preferred GPU Computing Partner</span>
               </div>
             </RevealWrapper>
           </div>
         </section>
-
-        
       </main>
       <Footer />
     </>
