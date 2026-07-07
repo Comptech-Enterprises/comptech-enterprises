@@ -29,7 +29,7 @@ const PARTNERS: { name: string; cert: string; logo: string | null; domain?: stri
 
 const STATS = [
   { value: "20+",  label: "OEM Partners",       sub: "Tier-1 global brands"        },
-  { value: "15+",  label: "Years Experience",   sub: "Since 2008"                  },
+  { value: "25+",  label: "Years Experience",   sub: "Since 2000"                  },
   { value: "200+", label: "Clients Served",     sub: "Across India"                },
   { value: "50+",  label: "Certified Engineers",sub: "OEM certified professionals" },
 ];
@@ -78,10 +78,10 @@ export function PartnersStrip() {
             </p>
             <h2 className="font-display font-extrabold text-gray-900 leading-tight mb-4"
               style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)" }}>
-              15+ Years of{" "}
+              25+ Years of{" "}
               <span className="text-transparent bg-clip-text"
                 style={{ backgroundImage: "linear-gradient(135deg, #5C0F26, #E8435A)" }}>
-                OEM Excellence
+                IT Service
               </span>
             </h2>
             <p className="text-gray-500 text-base leading-relaxed max-w-sm">
