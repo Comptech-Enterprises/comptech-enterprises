@@ -17,7 +17,7 @@ const TIMELINE = [
   { year: "2008", title: "Founded in Mumbai", desc: "Started with 3 engineers and our first Dell PowerEdge server deployment for a Mumbai SME." },
   { year: "2010", title: "HP Gold Partnership", desc: "Achieved HP Gold Business Partner status, expanding our ProLiant server and storage portfolio." },
   { year: "2013", title: "50 Enterprise Clients", desc: "Crossed the 50-client milestone with deployments spanning healthcare, education, and government." },
-  { year: "2016", title: "Networking & Security", desc: "Launched dedicated Networking and CCTV divisions, adding Cisco, Aruba, and Hikvision to our portfolio." },
+  { year: "2016", title: "Networking & Security", desc: "Launched dedicated Networking and CCTV divisions, adding Cisco, Aruba, and CP Plus to our portfolio." },
   { year: "2019", title: "Lenovo Silver Partner", desc: "Achieved Lenovo Silver Reseller status and expanded our engineering team to 30+ certified professionals." },
   { year: "2022", title: "AI Solutions Division", desc: "Launched our AI Infrastructure and No-Code AI Builder services in partnership with NVIDIA." },
   { year: "2025", title: "Dell Titanium Partner", desc: "Achieved Dell Titanium Partner status — the highest tier — with 200+ enterprise clients across India." },

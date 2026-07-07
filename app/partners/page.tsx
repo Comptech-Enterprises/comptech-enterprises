@@ -90,13 +90,6 @@ const PARTNER_CATEGORIES = [
         desc: "Epson Authorized Reseller for enterprise inkjet and laser printers, large-format plotters, and projectors for corporate and educational environments.",
         products: ["EcoTank Enterprise", "WorkForce Pro", "Large Format Printers", "Epson Projectors"],
       },
-      {
-        name: "Sony",
-        color: "#003087",
-        tier: "Business Partner",
-        desc: "Sony Business Partner for professional AV, 4K commercial displays, video conferencing cameras, and enterprise surveillance solutions.",
-        products: ["BRAVIA Professional", "Video Conferencing", "4K Commercial Displays", "Sony Surveillance"],
-      },
     ],
   },
 ];

@@ -27,7 +27,6 @@ export const PARTNERS = [
   { name: "Canon", color: "#CC0000" },
   { name: "Samsung", color: "#1428A0" },
   { name: "Epson", color: "#009AC7" },
-  { name: "Sony", color: "#003087" },
 ];
 
 export const SERVICES = [
