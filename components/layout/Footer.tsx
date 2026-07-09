@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Mail, Phone, MapPin, Linkedin } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Instagram } from "lucide-react";
 import { COMPANY } from "@/lib/constants";
 
 const SERVICES = [
@@ -24,7 +24,8 @@ const COMPANY_LINKS = [
 ];
 
 const SOCIALS = [
-  { Icon: Linkedin, href: "#", label: "LinkedIn" },
+  { Icon: Linkedin, href: "https://www.linkedin.com/company/comptech-enterprises1", label: "LinkedIn" },
+  { Icon: Instagram, href: "https://www.instagram.com/comptechenterprises", label: "Instagram" },
 ];
 
 export function Footer() {
@@ -134,21 +135,10 @@ export function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-gray-300">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="flex flex-col sm:flex-row items-center gap-3">
-            <p className="text-xs text-gray-500">
-              © {new Date().getFullYear()} {COMPANY.name}. All rights reserved.
-            </p>
-            <span className="hidden sm:inline text-gray-300">|</span>
-            <p className="text-xs text-gray-500">GSTIN: {COMPANY.gstin}</p>
-          </div>
-          <div className="flex gap-6">
-            {["Privacy Policy", "Terms of Use", "Sitemap"].map((item) => (
-              <a key={item} href="#" className="text-xs text-gray-500 hover:text-gray-900 transition-colors">
-                {item}
-              </a>
-            ))}
-          </div>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-5 flex items-center justify-center">
+          <p className="text-xs text-gray-500">
+            © {new Date().getFullYear()} {COMPANY.name}. All rights reserved.
+          </p>
         </div>
       </div>
 
