@@ -1,7 +1,7 @@
 import Link from "next/link";
 import {
   Server, Monitor, Database, Network, ShieldCheck, Cloud, Wrench, Cpu,
-  Check, ArrowRight, CheckCircle2,
+  Check, ArrowRight, CheckCircle2, Laptop, Camera, HardDrive,
 } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -17,6 +17,7 @@ const NAV_ITEMS = [
   { label: "CCTV & Security",   href: "#security" },
   { label: "Cloud",             href: "#cloud" },
   { label: "AMC",               href: "#amc" },
+  { label: "Repair",            href: "#repair" },
   { label: "AI",                href: "#ai" },
 ];
 
@@ -77,6 +78,12 @@ const AMC_TIERS = [
     cta: "Get Enterprise Quote",
     highlighted: false,
   },
+];
+
+const REPAIR_CARDS = [
+  { title: "Computers & Laptops",  desc: "Component-level diagnostics and repair for desktops, laptops, and workstations across all major OEM brands.", Icon: Laptop },
+  { title: "CCTV Systems",         desc: "Camera, DVR/NVR, and cabling repair to get your surveillance systems back online with minimal downtime.", Icon: Camera },
+  { title: "Peripherals",          desc: "Printers, scanners, UPS units, and other peripherals serviced and restored by certified technicians.", Icon: HardDrive },
 ];
 
 export default function ServicesPage() {
@@ -404,6 +411,37 @@ export default function ServicesPage() {
                 </RevealWrapper>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ── Repair Services ── */}
+        <section id="repair" className="py-24 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <RevealWrapper className="text-center mb-14">
+              <SectionLabel className="justify-center">Repair Services</SectionLabel>
+              <h2 className="font-display font-extrabold text-display-md text-gray-900">
+                Fast, Reliable Hardware Repair
+              </h2>
+              <p className="mt-4 text-lg text-gray-500 max-w-xl mx-auto leading-relaxed">
+                We specialize in repairing computers, laptops, CCTV systems, and peripherals — so you can focus on what matters most: your business.
+              </p>
+            </RevealWrapper>
+            <div className="grid md:grid-cols-3 gap-6">
+              {REPAIR_CARDS.map((card, i) => (
+                <RevealWrapper key={card.title} delay={i * 100}>
+                  <div className="service-card-top card-lift bg-white border border-gray-200 rounded-3xl p-8 h-full">
+                    <card.Icon size={28} className="text-blue-700 mb-5" />
+                    <h3 className="font-display font-bold text-lg text-gray-900 mb-3">{card.title}</h3>
+                    <p className="text-sm text-gray-500 leading-relaxed">{card.desc}</p>
+                  </div>
+                </RevealWrapper>
+              ))}
+            </div>
+            <RevealWrapper delay={300} className="text-center mt-10">
+              <Link href="/contact#quote" className="btn-primary btn btn-lg inline-flex">
+                Get Repair Quote <ArrowRight size={16} className="btn-arrow" />
+              </Link>
+            </RevealWrapper>
           </div>
         </section>
 

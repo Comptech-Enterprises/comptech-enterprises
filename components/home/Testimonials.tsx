@@ -71,7 +71,7 @@ export function Testimonials() {
             <div className="mt-8 grid grid-cols-3 gap-3">
               {[
                 { value: "200+", label: "Clients" },
-                { value: "15+",  label: "Years"   },
+                { value: "30+",  label: "Years"   },
                 { value: "50+",  label: "Engineers"},
               ].map(({ value, label }) => (
                 <div key={label} className="rounded-2xl border border-gray-100 bg-gray-50 p-4 text-center">

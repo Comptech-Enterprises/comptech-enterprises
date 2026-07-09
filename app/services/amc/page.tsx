@@ -123,7 +123,7 @@ export default function AMCPage() {
                   Waiting for server drives to fail or switches to overheat before acting is a costly strategy. Comptech's AMC plans focus heavily on proactive, preventative care: monitoring temperatures, reviewing logs, and scheduling maintenance outside peak hours.
                 </p>
                 <p className="text-gray-500 leading-relaxed mb-8">
-                  With 15+ years of maintenance experience, we support legacy hardware configurations that have gone end-of-life (EOL) with the manufacturer, keeping your capital assets running smoothly.
+                  With 30+ years of maintenance experience, we support legacy hardware configurations that have gone end-of-life (EOL) with the manufacturer, keeping your capital assets running smoothly.
                 </p>
                 <div className="flex gap-4">
                   <div className="flex items-center gap-2">

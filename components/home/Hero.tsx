@@ -13,7 +13,7 @@ const TRUST_ITEMS = [
 
 const STATS = [
   { value: "200+", label: "Enterprise clients" },
-  { value: "15+", label: "Years experience" },
+  { value: "30+", label: "Years experience" },
   { value: "50+", label: "Certified engineers" },
   { value: "24/7", label: "AMC support" },
 ];

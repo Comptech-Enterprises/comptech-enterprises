@@ -7,7 +7,7 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { CheckCircle2 } from "lucide-react";
 
 const REASONS = [
-  { title: "15+ years of enterprise IT delivery", desc: "Trusted by hospitals, universities, government bodies, and Fortune 500 subsidiaries across India since 2008." },
+  { title: "30+ years of enterprise IT delivery", desc: "Trusted by hospitals, universities, government bodies, and Fortune 500 subsidiaries across India since 1996." },
   { title: "OEM-certified across all major brands", desc: "50+ engineers certified by Dell, HP, Cisco, Microsoft, and NVIDIA — not generalists, specialists." },
   { title: "One vendor, end-to-end ownership", desc: "Design, procurement, deployment, and 24/7 AMC all under one roof. No finger-pointing between contractors." },
   { title: "99.9% uptime SLA, guaranteed in writing", desc: "We back every maintenance contract with a documented SLA and proactive monitoring — not just promises." },
@@ -35,7 +35,7 @@ export function StatsSection() {
               Relationships built on results
             </h2>
             <p className="text-gray-500 text-base leading-relaxed mb-10">
-              15+ years of enterprise IT delivery have earned the trust of 200+ organizations across India — and we treat each one like they&rsquo;re our only client.
+              30+ years of enterprise IT delivery have earned the trust of 200+ organizations across India — and we treat each one like they&rsquo;re our only client.
             </p>
 
             <ul className="space-y-6">

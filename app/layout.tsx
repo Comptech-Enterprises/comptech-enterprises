@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     locale: "en_IN",
     siteName: "Comptech Enterprises",
     title: "Comptech Enterprises | Enterprise IT Solutions",
-    description: "India's trusted enterprise IT partner since 2008.",
+    description: "India's trusted enterprise IT partner since 1996.",
     images: [{ url: "/images/logo.webp" }],
   },
   icons: {

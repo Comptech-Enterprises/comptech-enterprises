@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Server, Monitor, Cpu, Database, Network, ShieldCheck, Cloud, Wrench } from "lucide-react";
+import { ArrowRight, Server, Monitor, Cpu, Database, Network, ShieldCheck, Cloud, Wrench, Laptop } from "lucide-react";
 import { SERVICES } from "@/lib/constants";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
@@ -15,6 +15,7 @@ const ICONS: Record<string, React.ElementType> = {
   shield:   ShieldCheck,
   cloud:    Cloud,
   tool:     Wrench,
+  laptop:   Laptop,
 };
 
 const SERVICE_META: Record<string, { accent: string; bg: string; gradient: string; btnGradient: string; vendors: string[]; highlights: string[] }> = {
@@ -26,6 +27,7 @@ const SERVICE_META: Record<string, { accent: string; bg: string; gradient: strin
   security:       { accent: "#5C0F26", bg: "#FDF4F6", gradient: "linear-gradient(135deg, #EFF6FF 0%, #FDF4F6 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #E8435A 100%)", vendors: ["CP Plus", "Dahua"],   highlights: ["IP CCTV systems", "Access control", "AI video analytics", "Perimeter security"] },
   cloud:          { accent: "#1D4ED8", bg: "#EFF6FF", gradient: "linear-gradient(135deg, #EFF6FF 0%, #F0EEFF 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #7C3AED 100%)", vendors: ["Azure", "AWS", "GCP"],  highlights: ["Cloud migration", "Hybrid architecture", "Managed cloud ops", "Cost optimisation"] },
   amc:            { accent: "#5C0F26", bg: "#FDF4F6", gradient: "linear-gradient(135deg, #EFF6FF 0%, #FDF4F6 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #E8435A 100%)", vendors: ["24/7 SLA"],             highlights: ["Proactive monitoring", "Preventive maintenance", "Rapid response", "Asset management"] },
+  repair:         { accent: "#1D4ED8", bg: "#EFF6FF", gradient: "linear-gradient(135deg, #EFF6FF 0%, #F0EEFF 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #7C3AED 100%)", vendors: [],                       highlights: ["Computer & laptop repair", "CCTV system repair", "Peripheral servicing", "Certified technicians"] },
 };
 
 export function ServicesSection() {

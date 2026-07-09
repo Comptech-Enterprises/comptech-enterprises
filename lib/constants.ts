@@ -6,7 +6,7 @@ export const COMPANY = {
   whatsapp: "918595073837",
   address: "207, DDA-1, District Center, JanakPuri, New Delhi, India",
   gstin: "07AAAFC4294J1ZD",
-  founded: "2008",
+  founded: "1996",
 };
 
 export const NAV_LINKS = [
@@ -86,10 +86,17 @@ export const SERVICES = [
     desc: "Keep your IT systems running smoothly with our Computer AMC service. We provide comprehensive maintenance and support for smooth operations.",
     href: "/services/amc",
   },
+  {
+    id: "repair",
+    icon: "laptop",
+    title: "Repair Services",
+    desc: "We specialize in repairing computers, laptops, CCTV systems, and peripherals — keeping your technology running smoothly.",
+    href: "/services#repair",
+  },
 ];
 
 export const STATS = [
-  { value: "15", suffix: "+", label: "Years Experience", desc: "Since 2008" },
+  { value: "30", suffix: "+", label: "Years Experience", desc: "Since 1996" },
   { value: "500", suffix: "+", label: "Projects Delivered", desc: "Across India" },
   { value: "200", suffix: "+", label: "Enterprise Clients", desc: "Active accounts" },
   { value: "24", suffix: "/7", label: "Support Coverage", desc: "Always available" },

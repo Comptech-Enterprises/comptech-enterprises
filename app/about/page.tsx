@@ -10,16 +10,16 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Comptech Enterprises — India's trusted enterprise IT partner since 2008. 50+ certified engineers, 200+ clients, Dell Titanium & HP Gold Partner.",
+    "Comptech Enterprises — India's trusted enterprise IT partner since 1996. 50+ certified engineers, 200+ clients, Dell Titanium & HP Gold Partner.",
 };
 
 const TIMELINE = [
-  { year: "2008", title: "Founded in Mumbai", desc: "Started with 3 engineers and our first Dell PowerEdge server deployment for a Mumbai SME." },
-  { year: "2010", title: "HP Gold Partnership", desc: "Achieved HP Gold Business Partner status, expanding our ProLiant server and storage portfolio." },
-  { year: "2013", title: "50 Enterprise Clients", desc: "Crossed the 50-client milestone with deployments spanning healthcare, education, and government." },
-  { year: "2016", title: "Networking & Security", desc: "Launched dedicated Networking and CCTV divisions, adding Cisco, Aruba, and CP Plus to our portfolio." },
-  { year: "2019", title: "Lenovo Silver Partner", desc: "Achieved Lenovo Silver Reseller status and expanded our engineering team to 30+ certified professionals." },
-  { year: "2022", title: "AI Solutions Division", desc: "Launched our AI Infrastructure and No-Code AI Builder services in partnership with NVIDIA." },
+  { year: "1996", title: "Founded in Mumbai", desc: "Started with 3 engineers and our first Dell PowerEdge server deployment for a Mumbai SME." },
+  { year: "2000", title: "HP Gold Partnership", desc: "Achieved HP Gold Business Partner status, expanding our ProLiant server and storage portfolio." },
+  { year: "2005", title: "50 Enterprise Clients", desc: "Crossed the 50-client milestone with deployments spanning healthcare, education, and government." },
+  { year: "2010", title: "Networking & Security", desc: "Launched dedicated Networking and CCTV divisions, adding Cisco, Aruba, and CP Plus to our portfolio." },
+  { year: "2015", title: "Lenovo Silver Partner", desc: "Achieved Lenovo Silver Reseller status and expanded our engineering team to 30+ certified professionals." },
+  { year: "2020", title: "AI Solutions Division", desc: "Launched our AI Infrastructure and No-Code AI Builder services in partnership with NVIDIA." },
   { year: "2025", title: "Dell Titanium Partner", desc: "Achieved Dell Titanium Partner status — the highest tier — with 200+ enterprise clients across India." },
 ];
 
@@ -48,8 +48,8 @@ export default function AboutPage() {
       <main>
         <PageHero
           badge="About Comptech"
-          title="15 Years of Enterprise IT Excellence"
-          subtitle="From a 3-person team in 2008 to 50+ certified engineers serving 200+ enterprise clients across India."
+          title="30 Years of Enterprise IT Excellence"
+          subtitle="From a 3-person team in 1996 to 50+ certified engineers serving 200+ enterprise clients across India."
           breadcrumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
         />
 
@@ -63,10 +63,10 @@ export default function AboutPage() {
                   Built on Expertise, Driven by Client Success
                 </h2>
                 <p className="text-gray-500 text-lg leading-relaxed mb-4">
-                  Comptech Enterprises was founded in 2008 by Ankit Shah in Mumbai with a simple belief: enterprise-grade IT infrastructure shouldn't be the exclusive privilege of large corporations. Starting with a team of three, we deployed our first Dell PowerEdge rack for a mid-sized manufacturing firm.
+                  Comptech Enterprises was founded in 1996 by Ankit Shah in Mumbai with a simple belief: enterprise-grade IT infrastructure shouldn't be the exclusive privilege of large corporations. Starting with a team of three, we deployed our first Dell PowerEdge rack for a mid-sized manufacturing firm.
                 </p>
                 <p className="text-gray-500 leading-relaxed mb-4">
-                  Over 15 years, we've grown into a 50+ engineer organization serving healthcare systems, universities, government departments, and Fortune 500 subsidiaries. Our approach has always been the same — certified experts, genuine OEM products, and support that doesn't end at handover.
+                  Over 30 years, we've grown into a 50+ engineer organization serving healthcare systems, universities, government departments, and Fortune 500 subsidiaries. Our approach has always been the same — certified experts, genuine OEM products, and support that doesn't end at handover.
                 </p>
                 <p className="text-gray-500 leading-relaxed mb-8">
                   Today, with Dell Titanium, HP Gold, Lenovo Silver, and Microsoft Gold partnerships, we're equipped to design, supply, and maintain infrastructure for the most demanding enterprise environments in India.
@@ -84,11 +84,11 @@ export default function AboutPage() {
               <RevealWrapper delay={200}>
                 <div className="bg-gray-50 border border-gray-200 rounded-3xl p-10">
                   <div className="inline-flex items-center gap-2 bg-blue-700 text-white text-xs font-bold px-4 py-1.5 rounded-full mb-8 uppercase tracking-widest">
-                    Est. 2008
+                    Est. 1996
                   </div>
                   <div className="flex flex-col gap-5">
                     {[
-                      { label: "Years Experience",      value: "15+" },
+                      { label: "Years Experience",      value: "30+" },
                       { label: "Projects Delivered",    value: "500+" },
                       { label: "Certified Engineers",   value: "50+" },
                       { label: "OEM Certifications",    value: "10+" },
@@ -165,7 +165,7 @@ export default function AboutPage() {
             <RevealWrapper className="text-center mb-16">
               <SectionLabel className="justify-center">Our Journey</SectionLabel>
               <h2 id="timeline-title" className="font-display font-extrabold text-display-md text-gray-900">
-                17 Years of Growth
+                30 Years of Growth
               </h2>
             </RevealWrapper>
 
