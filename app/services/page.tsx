@@ -146,7 +146,6 @@ export default function ServicesPage() {
                 </ul>
                 <div className="flex gap-3 flex-wrap">
                   <Link href="/contact#quote" className="btn-accent btn">Get Quote <ArrowRight size={16} className="btn-arrow" /></Link>
-                  <Link href="/services/infrastructure" className="btn-outline btn">Learn More</Link>
                 </div>
               </RevealWrapper>
 

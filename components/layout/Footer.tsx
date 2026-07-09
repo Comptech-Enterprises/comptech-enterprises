@@ -5,14 +5,14 @@ import { Mail, Phone, MapPin, Linkedin, Instagram } from "lucide-react";
 import { COMPANY } from "@/lib/constants";
 
 const SERVICES = [
-  { label: "Enterprise Infrastructure", href: "/services/infrastructure" },
-  { label: "End User Computing",        href: "/services/euc" },
+  { label: "Enterprise Infrastructure", href: "/services#infrastructure" },
+  { label: "End User Computing",        href: "/services#euc" },
   { label: "AI Solutions",              href: "/ai-solutions" },
-  { label: "Data Centre Solutions",     href: "/services/datacenter" },
-  { label: "Networking",                href: "/services/networking" },
-  { label: "CCTV & Security",           href: "/services/security" },
-  { label: "Cloud Solutions",           href: "/services/cloud" },
-  { label: "AMC",                       href: "/services/amc" },
+  { label: "Data Centre Solutions",     href: "/services#datacenter" },
+  { label: "Networking",                href: "/services#networking" },
+  { label: "CCTV & Security",           href: "/services#security" },
+  { label: "Cloud Solutions",           href: "/services#cloud" },
+  { label: "AMC",                       href: "/services#amc" },
 ];
 
 const COMPANY_LINKS = [

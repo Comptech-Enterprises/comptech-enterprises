@@ -151,16 +151,6 @@ export function ServicesSection() {
               )}
             </div>
 
-            {/* CTA */}
-            <div>
-              <Link
-                href={current.href}
-                className="inline-flex items-center justify-center gap-2 w-full lg:w-auto px-6 py-3 rounded-xl text-sm font-semibold text-white transition-all duration-200 hover:opacity-90"
-                style={{ background: meta.accent }}
-              >
-                Learn more <ArrowRight size={15} className="shrink-0" />
-              </Link>
-            </div>
           </div>
         </div>
 
