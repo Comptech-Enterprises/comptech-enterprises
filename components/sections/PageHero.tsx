@@ -13,15 +13,17 @@ interface PageHeroProps {
   actions?: ReactNode;
   dark?: boolean;
   backgroundImage?: string;
+  children?: ReactNode;
 }
 
-export function PageHero({ badge, title, subtitle, breadcrumbs, actions, dark, backgroundImage }: PageHeroProps) {
+export function PageHero({ badge, title, subtitle, breadcrumbs, actions, dark, backgroundImage, children }: PageHeroProps) {
   const bgClass = dark
     ? "bg-ai-gradient"
     : "page-hero-bg";
 
   return (
     <section className={`${bgClass} pt-[calc(var(--nav-height)+4rem)] pb-16 lg:pb-24 relative overflow-hidden`}>
+      {children}
       {backgroundImage && (
         <Image
           src={backgroundImage}
