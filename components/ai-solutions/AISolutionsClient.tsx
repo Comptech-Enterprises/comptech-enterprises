@@ -9,6 +9,26 @@ import { AnimatedCounter } from "@/components/ai-solutions/AnimatedCounter";
 
 const AI_OFFERINGS = [
   {
+    icon: GraduationCap,
+    title: "AI Teaching & Training",
+    badge: "Education & Enablement",
+    desc: "We design and deliver training programs that build lasting AI capability inside your organisation — from executive strategy sessions to developer deep-dives and hands-on workshops. Our curriculum is built by practitioners who deploy real AI infrastructure, not generic course content.",
+    points: [
+      "Hands-on workshops and seminars for educational institutions and professionals",
+      "Custom AI Training Programs tailored to your industry and business requirements",
+      "One-on-one mentorship from industry experts",
+      "Corporate training empowering teams to leverage AI effectively",
+      "Executive briefings on AI strategy, ROI, and adoption roadmaps",
+      "Applied machine learning and deep learning bootcamps for developers",
+      "Train-the-trainer programs to build in-house AI champions",
+      "Certification-track courses on GPU computing and MLOps practices",
+    ],
+    stats: [
+      { value: 500, suffix: "+", label: "Professionals trained" },
+      { value: 60, suffix: "+", label: "Workshops delivered" },
+    ],
+  },
+  {
     icon: Cpu,
     title: "Hardware Solutions",
     badge: "Hardware & Infrastructure",
@@ -18,6 +38,8 @@ const AI_OFFERINGS = [
       "Custom-built AI systems configured for specific projects",
       "Scalable AI servers and workstations for businesses",
       "On-premise or hybrid deployment with full OEM support",
+      "NVIDIA HGX and DGX reference architectures on Dell and HPE nodes",
+      "Network fabric design for low-latency, multi-node GPU clusters",
     ],
   },
   {
@@ -30,18 +52,8 @@ const AI_OFFERINGS = [
       "Machine learning and deep learning tools for decision-making automation",
       "AI integration services for existing systems",
       "Tailored software meeting unique business needs",
-    ],
-  },
-  {
-    icon: GraduationCap,
-    title: "AI Teaching & Training",
-    badge: "Education & Enablement",
-    desc: "We design and deliver training programs that build lasting AI capability inside your organisation — from executive strategy sessions to developer deep-dives and hands-on workshops.",
-    points: [
-      "Hands-on workshops and seminars for educational institutions and professionals",
-      "Custom AI Training Programs tailored to your industry and business requirements",
-      "One-on-one mentorship from industry experts",
-      "Corporate training empowering teams to leverage AI effectively",
+      "Retrieval-augmented generation (RAG) pipelines for enterprise knowledge bases",
+      "API-first architecture for embedding AI into existing workflows",
     ],
   },
 ];
@@ -142,7 +154,7 @@ export function AISolutionsClient() {
       <section className="relative bg-gray-950 border-b border-white/10 overflow-hidden" aria-label="AI impact stats">
         <div className="absolute inset-0 bg-ai-gradient opacity-90" />
         <div className="absolute inset-0 bg-grid-purple opacity-30" />
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12 relative z-10">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-10 relative z-10">
           <motion.div
             className="grid grid-cols-2 lg:grid-cols-4 gap-8"
             variants={containerVariants}
@@ -164,13 +176,13 @@ export function AISolutionsClient() {
 
       <main>
         {/* ── Overview Section ── */}
-        <section id="overview" className="py-24 bg-white relative overflow-hidden" aria-labelledby="overview-title">
+        <section id="overview" className="py-16 lg:py-20 bg-white relative overflow-hidden" aria-labelledby="overview-title">
           <div className="absolute -top-40 -right-40 w-[32rem] h-[32rem] rounded-full pointer-events-none animate-orb-float"
             style={{ background: "radial-gradient(circle, rgba(139,92,246,0.06) 0%, transparent 70%)" }}
             aria-hidden="true"
           />
           <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
               <motion.div
                 initial={{ opacity: 0, y: 32 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -178,13 +190,13 @@ export function AISolutionsClient() {
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               >
                 <SectionLabel>Why Comptech AI</SectionLabel>
-                <h2 id="overview-title" className="font-display font-extrabold text-display-md text-gray-900 mb-6 text-balance">
+                <h2 id="overview-title" className="font-display font-extrabold text-display-md text-gray-900 mb-4 text-balance">
                   End-to-End AI Enablement for Indian Enterprises
                 </h2>
-                <p className="text-gray-500 text-lg leading-relaxed mb-6">
+                <p className="text-gray-500 text-lg leading-relaxed mb-4">
                   Comptech delivers a complete AI stack — sourcing and configuring the right GPU hardware, building and integrating custom AI software, and training your teams to use it all effectively. One partner for the full journey.
                 </p>
-                <p className="text-gray-500 leading-relaxed mb-8">
+                <p className="text-gray-500 leading-relaxed mb-6">
                   By partnering with NVIDIA, Dell, and leading AI software providers, we ensure your infrastructure is highly available, your models are production-ready, and your people have the skills to drive ROI from day one.
                 </p>
                 <div className="flex gap-4">
@@ -196,7 +208,7 @@ export function AISolutionsClient() {
               </motion.div>
 
               <motion.div
-                className="grid grid-cols-1 gap-6"
+                className="grid grid-cols-1 gap-4"
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
@@ -232,7 +244,7 @@ export function AISolutionsClient() {
         </section>
 
         {/* ── Offerings Intro ── */}
-        <section id="offerings" className="pt-24 pb-4 bg-white" aria-labelledby="offerings-title">
+        <section id="offerings" className="pt-16 pb-2 bg-white" aria-labelledby="offerings-title">
           <motion.div
             className="max-w-7xl mx-auto px-6 lg:px-8 text-center"
             initial={{ opacity: 0, y: 24 }}
@@ -244,87 +256,101 @@ export function AISolutionsClient() {
             <h2 id="offerings-title" className="font-display font-extrabold text-display-md text-gray-900">
               What We Offer
             </h2>
-            <p className="mt-4 text-lg text-gray-500 max-w-xl mx-auto">
+            <p className="mt-3 text-lg text-gray-500 max-w-xl mx-auto">
               Hardware, software, and training — we cover every layer so you can focus on building with AI, not figuring it out.
             </p>
           </motion.div>
         </section>
 
-        {/* ── Offerings: big stacked sections ── */}
-        {AI_OFFERINGS.map((off, idx) => {
-          const Icon = off.icon;
-          const isEven = idx % 2 === 0;
-          const bg = isEven ? "bg-white" : "bg-indigo-50/40";
-          return (
-            <section
-              key={off.title}
-              className={`${bg} py-20 lg:py-28 relative overflow-hidden`}
-              aria-labelledby={`offering-${idx}-title`}
-            >
-              {!isEven && <div className="absolute inset-0 bg-grid-purple opacity-30 pointer-events-none" aria-hidden="true" />}
-              <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-                <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-                  {/* Icon + copy */}
+        {/* ── Offerings: horizontal timeline ── */}
+        <section className="pb-16 lg:pb-20 bg-white" aria-label="AI offerings timeline">
+          <div className="max-w-6xl mx-auto px-6 lg:px-8">
+            <div className="relative grid lg:grid-cols-3 gap-10 lg:gap-8 items-start">
+              {/* Connecting line, spans between the 3 circle centers on large screens */}
+              <div className="hidden lg:block absolute top-7 left-[16.666%] right-[16.666%] h-px bg-gray-200" aria-hidden="true" />
+
+              {AI_OFFERINGS.map((off, idx) => {
+                const Icon = off.icon;
+                const isTraining = off.title === "AI Teaching & Training";
+                const shownPoints = off.points.slice(0, 4);
+                return (
                   <motion.div
-                    className={`lg:col-span-5 ${isEven ? "lg:order-1" : "lg:order-2"}`}
-                    initial={{ opacity: 0, y: 32 }}
+                    key={off.title}
+                    className="relative flex flex-col items-start"
+                    initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
                   >
+                    {/* Numbered stop */}
                     <motion.div
-                      className="w-20 h-20 rounded-3xl bg-blue-700 text-white flex items-center justify-center mb-7 relative"
-                      whileHover={{ scale: 1.08, rotate: 4 }}
-                      transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                      className="relative z-10 flex-shrink-0 w-14 h-14 rounded-full bg-blue-700 text-white flex items-center justify-center font-display font-extrabold border-4 border-white shadow-md mb-5"
+                      initial={{ opacity: 0, scale: 0.6 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true, amount: 0.6 }}
+                      transition={{ type: "spring", stiffness: 260, damping: 20, delay: idx * 0.1 }}
                     >
-                      <span className="absolute inset-0 rounded-3xl bg-blue-700 animate-pulse-glow" aria-hidden="true" />
-                      <Icon size={34} className="relative z-10" />
+                      {String(idx + 1).padStart(2, "0")}
                     </motion.div>
-                    <span className="inline-block text-xs font-bold text-blue-700 bg-blue-50 border border-blue-100 px-3.5 py-1.5 rounded-full mb-4 uppercase tracking-widest">
-                      {off.badge}
-                    </span>
-                    <h3 id={`offering-${idx}-title`} className="font-display font-extrabold text-3xl lg:text-4xl text-gray-900 mb-4">
+
+                    <div className="flex items-center gap-3 mb-2">
+                      <Icon size={20} className="text-blue-700" />
+                      <span className="text-xs font-bold text-blue-700 bg-blue-50 border border-blue-100 px-3 py-1 rounded-full uppercase tracking-widest">
+                        {off.badge}
+                      </span>
+                    </div>
+                    <h3 className="font-display font-extrabold text-2xl text-gray-900 mb-2">
                       {off.title}
                     </h3>
-                    <p className="text-gray-500 text-lg leading-relaxed mb-8">{off.desc}</p>
-                    <Link href="/contact#quote" className="btn-accent btn btn-lg inline-flex">
-                      Inquire about {off.title.split(" ")[0]} <ArrowRight size={16} className="btn-arrow" />
-                    </Link>
-                  </motion.div>
+                    <p className="text-sm text-gray-500 leading-relaxed mb-4">{off.desc}</p>
 
-                  {/* Checklist */}
-                  <motion.div
-                    className={`lg:col-span-7 ${isEven ? "lg:order-2" : "lg:order-1"}`}
-                    initial={{ opacity: 0, y: 32 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                  >
-                    <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-5">What&apos;s Included</p>
-                    <div className="grid sm:grid-cols-2 gap-x-8 gap-y-5">
-                      {off.points.map((p, pIdx) => (
-                        <motion.div
-                          key={p}
-                          className="flex items-start gap-3"
-                          initial={{ opacity: 0, x: -12 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true, amount: 0.5 }}
-                          transition={{ duration: 0.4, delay: pIdx * 0.07 }}
-                        >
-                          <CheckCircle2 size={20} className="text-blue-700 flex-shrink-0 mt-0.5" />
-                          <span className="text-gray-600 leading-relaxed">{p}</span>
-                        </motion.div>
+                    {off.stats && (
+                      <div className="flex gap-6 mb-4">
+                        {off.stats.map((s) => (
+                          <div key={s.label}>
+                            <p className="font-display font-extrabold text-lg text-blue-700 leading-none mb-1">
+                              <AnimatedCounter value={s.value} suffix={s.suffix} />
+                            </p>
+                            <p className="text-[11px] text-gray-500">{s.label}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    <div className="flex flex-col gap-2.5 mb-5">
+                      {shownPoints.map((p) => (
+                        <div key={p} className="flex items-start gap-2.5">
+                          <CheckCircle2 size={16} className="text-blue-700 flex-shrink-0 mt-0.5" />
+                          <span className="text-sm text-gray-600 leading-relaxed">{p}</span>
+                        </div>
                       ))}
+                      {off.points.length > shownPoints.length && (
+                        <p className="text-xs text-gray-400 pl-6">+ {off.points.length - shownPoints.length} more included</p>
+                      )}
+                    </div>
+
+                    <div className="flex flex-wrap gap-3">
+                      {isTraining && (
+                        <Link href="" className="btn-accent btn btn-sm inline-flex">
+                          Register <ArrowRight size={14} className="btn-arrow" />
+                        </Link>
+                      )}
+                      <Link
+                        href="/contact#quote"
+                        className={isTraining ? "btn-outline btn btn-sm inline-flex" : "btn-accent btn btn-sm inline-flex"}
+                      >
+                        Inquire <ArrowRight size={14} className="btn-arrow" />
+                      </Link>
                     </div>
                   </motion.div>
-                </div>
-              </div>
-            </section>
-          );
-        })}
+                );
+              })}
+            </div>
+          </div>
+        </section>
 
         {/* ── Partner Strip ── */}
-        <section className="py-20 bg-gray-900 relative overflow-hidden" aria-labelledby="partner-title">
+        <section className="py-16 bg-gray-900 relative overflow-hidden" aria-labelledby="partner-title">
           <div className="absolute inset-0 bg-grid-lines opacity-10" />
           <AIOrbs />
           <div className="max-w-5xl mx-auto px-6 lg:px-8 relative z-10 text-center">
