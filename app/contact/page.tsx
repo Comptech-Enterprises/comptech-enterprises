@@ -26,11 +26,12 @@ export default function ContactPage() {
     company: "",
     phone: "",
     service: "",
-    budget: "",
     requirements: "",
     downloadProfile: false,
   });
   const [quoteSubmitted, setQuoteSubmitted] = useState(false);
+  const [quoteSubmitting, setQuoteSubmitting] = useState(false);
+  const [quoteError, setQuoteError] = useState("");
 
   return (
     <>
@@ -107,9 +108,23 @@ export default function ContactPage() {
                 ) : (
                   <form
                     className="bg-white rounded-3xl p-8 lg:p-10 shadow-lg"
-                    onSubmit={(e) => {
+                    onSubmit={async (e) => {
                       e.preventDefault();
-                      setQuoteSubmitted(true);
+                      setQuoteSubmitting(true);
+                      setQuoteError("");
+                      try {
+                        const res = await fetch("/api/contact", {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify({ ...quoteForm, source: "Contact Page Quote Form" }),
+                        });
+                        if (!res.ok) throw new Error("Request failed");
+                        setQuoteSubmitted(true);
+                      } catch {
+                        setQuoteError("Something went wrong. Please try again or call us directly.");
+                      } finally {
+                        setQuoteSubmitting(false);
+                      }
                     }}
                   >
                     <div className="grid grid-cols-2 gap-4 mb-4">
@@ -174,19 +189,6 @@ export default function ContactPage() {
                         ))}
                       </select>
                     </div>
-                    <div className="mb-4">
-                      <label className="block text-xs font-semibold text-gray-600 mb-1.5">Estimated Budget</label>
-                      <select
-                        className={inputClass}
-                        value={quoteForm.budget}
-                        onChange={(e) => setQuoteForm({ ...quoteForm, budget: e.target.value })}
-                      >
-                        <option value="">Select budget range</option>
-                        {["Under ₹5L", "₹5L–20L", "₹20L–1Cr", "₹1Cr+", "Prefer to discuss"].map((b) => (
-                          <option key={b}>{b}</option>
-                        ))}
-                      </select>
-                    </div>
                     <div className="mb-5">
                       <label className="block text-xs font-semibold text-gray-600 mb-1.5">Requirements *</label>
                       <textarea
@@ -207,8 +209,9 @@ export default function ContactPage() {
                       />
                       <span className="text-sm text-gray-600">I&apos;d like to download the Company Profile PDF</span>
                     </label>
-                    <button type="submit" className="btn-accent btn btn-lg w-full">
-                      Send Inquiry <ArrowRight size={18} className="btn-arrow" />
+                    {quoteError && <p className="text-sm text-red-600 mb-4">{quoteError}</p>}
+                    <button type="submit" disabled={quoteSubmitting} className="btn-accent btn btn-lg w-full disabled:opacity-60">
+                      {quoteSubmitting ? "Sending..." : "Send Inquiry"} <ArrowRight size={18} className="btn-arrow" />
                     </button>
                   </form>
                 )}

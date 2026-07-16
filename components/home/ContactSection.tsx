@@ -18,9 +18,11 @@ const CONTACT_METHODS = [
 export function ContactSection() {
   const [form, setForm] = useState({
     firstName: "", lastName: "", email: "", company: "",
-    phone: "", service: "", budget: "", requirements: "", downloadProfile: false,
+    phone: "", service: "", requirements: "", downloadProfile: false,
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
   return (
     <section id="contact" className="py-16 lg:py-20 bg-white" aria-labelledby="contact-title">
@@ -105,7 +107,24 @@ export function ContactSection() {
           ) : (
             <form
               className="bg-gray-50 rounded-3xl p-8 border border-gray-100"
-              onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
+              onSubmit={async (e) => {
+                e.preventDefault();
+                setSubmitting(true);
+                setError("");
+                try {
+                  const res = await fetch("/api/contact", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ ...form, source: "Homepage Contact Section" }),
+                  });
+                  if (!res.ok) throw new Error("Request failed");
+                  setSubmitted(true);
+                } catch {
+                  setError("Something went wrong. Please try again or call us directly.");
+                } finally {
+                  setSubmitting(false);
+                }
+              }}
             >
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div>
@@ -144,17 +163,6 @@ export function ContactSection() {
                 </select>
               </div>
 
-              <div className="mb-4">
-                <label className="block text-xs font-semibold text-gray-600 mb-1.5">Estimated Budget</label>
-                <select className={inputClass} value={form.budget}
-                  onChange={(e) => setForm({ ...form, budget: e.target.value })}>
-                  <option value="">Select budget range</option>
-                  {["Under ₹5L","₹5L–20L","₹20L–1Cr","₹1Cr+","Prefer to discuss"].map((b) => (
-                    <option key={b}>{b}</option>
-                  ))}
-                </select>
-              </div>
-
               <div className="mb-5">
                 <label className="block text-xs font-semibold text-gray-600 mb-1.5">Requirements *</label>
                 <textarea required rows={4} className={`${inputClass} resize-none`}
@@ -169,12 +177,15 @@ export function ContactSection() {
                 <span className="text-sm text-gray-600">I'd like to download the Company Profile PDF</span>
               </label>
 
+              {error && <p className="text-sm text-red-600 mb-4">{error}</p>}
+
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl text-sm font-semibold text-white transition-all duration-200 hover:opacity-90"
+                disabled={submitting}
+                className="w-full flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl text-sm font-semibold text-white transition-all duration-200 hover:opacity-90 disabled:opacity-60"
                 style={{ background: "#5C0F26" }}
               >
-                Send Inquiry <ArrowRight size={15} />
+                {submitting ? "Sending..." : "Send Inquiry"} <ArrowRight size={15} />
               </button>
             </form>
           )}
