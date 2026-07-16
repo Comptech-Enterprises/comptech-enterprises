@@ -37,12 +37,11 @@ export async function appendContactSubmission(data: ContactSubmission) {
 
   await sheets.spreadsheets.values.append({
     spreadsheetId: sheetId,
-    range: "Sheet1!A:J",
+    range: "Sheet1!A:I",
     valueInputOption: "USER_ENTERED",
     requestBody: {
       values: [
         [
-          new Date().toISOString(),
           data.firstName,
           data.lastName,
           data.email,
