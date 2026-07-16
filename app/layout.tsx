@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
-import { FloatingActions } from "@/components/layout/FloatingActions";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -50,7 +49,6 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${manrope.variable}`}>
       <body>
         {children}
-        <FloatingActions />
       </body>
     </html>
   );
