@@ -30,6 +30,7 @@ export function Navbar({ transparent = false }: NavbarProps) {
   useEffect(() => {
     if (!transparent) return;
     const onScroll = () => setSolid(window.scrollY > 60);
+    onScroll(); // sync to current scroll position on mount (e.g. reloading mid-page)
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, [transparent]);
@@ -69,19 +70,28 @@ export function Navbar({ transparent = false }: NavbarProps) {
       <nav
         className={clsx(
           "fixed top-0 left-0 right-0 z-[999] transition-all duration-500",
-          solid ? "navbar-solid" : "navbar-transparent",
+          // While the mobile panel is open, drop the solid white bar so it doesn't cover
+          // the panel's own header, and let clicks fall through to the panel.
+          solid && !mobileOpen ? "navbar-solid" : "navbar-transparent",
+          mobileOpen && "pointer-events-none",
         )}
         style={{ height: "var(--nav-height)" }}
         role="navigation"
         aria-label="Main navigation"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8 h-full flex items-center justify-between gap-8">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 sm:gap-2.5 min-w-0 shrink">
-            <Logo className="w-12 h-12 sm:w-16 sm:h-16 shrink-0" />
+          {/* Logo — hidden while the mobile menu is open so it doesn't overlap the panel's own logo */}
+          <Link
+            href="/"
+            className={clsx(
+              "flex items-center gap-2 sm:gap-2.5 min-w-0 shrink transition-opacity duration-200",
+              mobileOpen && "opacity-0 pointer-events-none",
+            )}
+          >
+            <Logo className="w-10 h-10 sm:w-14 sm:h-14 lg:w-16 lg:h-16 shrink-0" />
             <span
               className={clsx(
-                "font-display font-extrabold text-sm sm:text-xl lg:text-2xl leading-none tracking-tight transition-colors duration-300 truncate",
+                "font-display font-extrabold text-base sm:text-xl lg:text-2xl leading-none tracking-tight transition-colors duration-300 truncate",
                 logoTextColor,
               )}
             >
@@ -198,14 +208,19 @@ export function Navbar({ transparent = false }: NavbarProps) {
             </Link>
           </div>
 
-          {/* Mobile Toggle */}
+          {/* Mobile Toggle — hidden once open; the panel's own header provides the close button */}
           <button
-            className={clsx("lg:hidden p-2 rounded-lg transition-colors shrink-0", textColor, hoverBg)}
-            onClick={() => setMobileOpen((v) => !v)}
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            className={clsx(
+              "lg:hidden p-2 rounded-lg transition-colors shrink-0",
+              textColor,
+              hoverBg,
+              mobileOpen && "hidden",
+            )}
+            onClick={() => setMobileOpen(true)}
+            aria-label="Open menu"
             aria-expanded={mobileOpen}
           >
-            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+            <Menu size={22} />
           </button>
         </div>
       </nav>

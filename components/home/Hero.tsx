@@ -117,19 +117,14 @@ export function Hero() {
           {/* Stats strip */}
           <motion.div
             variants={itemVariants}
-            className="grid grid-cols-4 gap-0 pt-8 mb-20"
-            style={{ borderTop: "1px solid rgba(255,255,255,0.15)" }}
+            className="grid grid-cols-2 sm:grid-cols-4 gap-y-6 pt-8 mb-12 sm:mb-20 border-t border-white/15"
           >
             {STATS.map(({ value, label }, i) => (
               <div
                 key={label}
-                className="text-center"
-                style={{
-                  borderRight: i < STATS.length - 1 ? "1px solid rgba(255,255,255,0.15)" : "none",
-                  padding: "0 12px",
-                }}
+                className={`text-center px-3 ${i % 2 === 1 ? "border-l border-white/15" : ""} ${i % 4 !== 0 ? "sm:border-l sm:border-white/15" : ""}`}
               >
-                <p className="font-display font-extrabold text-2xl text-white leading-none mb-1">{value}</p>
+                <p className="font-display font-extrabold text-xl sm:text-2xl text-white leading-none mb-1">{value}</p>
                 <p className="text-[11px] text-white/80 leading-tight">{label}</p>
               </div>
             ))}

@@ -1,28 +1,21 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, BrainCircuit, GraduationCap, Blocks, LineChart, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Bot, GraduationCap, Blocks, LineChart, CheckCircle2 } from "lucide-react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
 const AI_FEATURES = [
-  { Icon: BrainCircuit, title: "NVIDIA GPU Infrastructure",  desc: "OEM-certified GPU servers for ML, deep learning, and inference workloads." },
-  { Icon: GraduationCap, title: "AI Enablement Workshops",   desc: "Train your teams on LLMs, RAG, and AI agent frameworks." },
-  { Icon: Blocks,        title: "No-Code AI Platform",       desc: "Private, self-hosted AI builder — secure chatbots inside your network." },
-  { Icon: LineChart,     title: "Document Intelligence",     desc: "OCR, data extraction, and workflow automation on your local data." },
-];
-
-const STATS = [
-  { value: "50+",  label: "AI Projects" },
-  { value: "400+", label: "Hours Saved/mo" },
-  { value: "100%", label: "On-Premise" },
-  { value: "24/7", label: "AI Support" },
+  { Icon: GraduationCap, title: "AI Training & Workshops",   desc: "Hands-on workshops that upskill your leadership and engineers on LLMs, RAG, and AI agents." },
+  { Icon: Bot,           title: "Custom AI Agents",          desc: "Bespoke agents that automate workflows and act across your tools — built around your business." },
+  { Icon: Blocks,        title: "AI Software & Integration", desc: "Custom models and RAG pipelines integrated securely into your existing systems." },
+  { Icon: LineChart,     title: "Document Intelligence",     desc: "OCR, data extraction, and workflow automation on your own private data." },
 ];
 
 const BULLETS = [
   "Fully private — your data never leaves your network",
-  "Certified NVIDIA infrastructure partners",
-  "Custom AI workshops for leadership & engineering",
-  "Deployed in 200+ enterprise environments",
+  "Custom AI agents tailored to your workflows",
+  "Hands-on AI workshops for leadership & engineering",
+  "Trusted across 200+ enterprise environments",
 ];
 
 export function AISection() {
@@ -34,7 +27,7 @@ export function AISection() {
         <SectionLabel className="mb-4">AI Division</SectionLabel>
 
         {/* Main split layout */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
 
           {/* Left — text */}
           <div>
@@ -47,7 +40,7 @@ export function AISection() {
               <span style={{ color: "#1D4ED8" }}>built for India.</span>
             </h2>
             <p className="text-gray-500 text-base leading-relaxed mb-8 max-w-lg">
-              We help enterprises adopt Generative AI and machine learning securely — inside your own network, with your own data. From GPU hardware to team enablement.
+              We help enterprises adopt Generative AI securely — training your teams, building custom AI agents, and integrating them into your own systems, with your own data.
             </p>
 
             <ul className="flex flex-col gap-3 mb-10">
@@ -90,23 +83,6 @@ export function AISection() {
               </div>
             ))}
           </div>
-        </div>
-
-        {/* Stats bar */}
-        <div
-          className="grid grid-cols-2 md:grid-cols-4 rounded-2xl overflow-hidden"
-          style={{ background: "#1D4ED8" }}
-        >
-          {STATS.map(({ value, label }, i) => (
-            <div
-              key={label}
-              className="px-8 py-7 text-center"
-              style={{ borderRight: i < STATS.length - 1 ? "1px solid rgba(255,255,255,0.15)" : "none" }}
-            >
-              <p className="font-display font-extrabold text-white text-3xl mb-1">{value}</p>
-              <p className="text-xs font-medium text-white/60 uppercase tracking-widest">{label}</p>
-            </div>
-          ))}
         </div>
 
       </div>

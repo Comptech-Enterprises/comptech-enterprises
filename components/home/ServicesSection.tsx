@@ -66,7 +66,7 @@ export function ServicesSection() {
         <div className="flex flex-col lg:flex-row gap-4 rounded-3xl overflow-hidden bg-white shadow-lg border border-gray-100">
 
           {/* Sidebar tabs */}
-          <div className="lg:w-64 shrink-0 flex flex-row lg:flex-col overflow-x-auto lg:overflow-visible border-b lg:border-b-0 lg:border-r border-gray-100 scrollbar-hide">
+          <div className="lg:w-64 shrink-0 flex flex-row lg:flex-col overflow-x-auto lg:overflow-visible border-b lg:border-b-0 lg:border-r border-gray-100 scrollbar-hide snap-x snap-mandatory">
             {SERVICES.map((service) => {
               const SIcon = ICONS[service.icon] ?? Server;
               const smeta = SERVICE_META[service.id];
@@ -75,13 +75,17 @@ export function ServicesSection() {
                 <button
                   key={service.id}
                   onClick={() => setActive(service.id)}
-                  className="flex items-center gap-3 px-4 lg:px-5 py-3 lg:py-4 text-left transition-all duration-150 shrink-0 lg:shrink relative"
-                  style={{
-                    background: isActive ? (smeta?.gradient ?? "#EFF6FF") : "transparent",
-                    borderRight: isActive ? `3px solid transparent` : "3px solid transparent",
-                    borderImage: isActive ? "linear-gradient(180deg, #1D4ED8, #E8435A) 1" : "none",
-                  }}
+                  className="flex items-center gap-2.5 lg:gap-3 px-4 lg:px-5 py-3 lg:py-4 text-left transition-all duration-150 shrink-0 lg:shrink relative snap-start"
+                  style={{ background: isActive ? (smeta?.gradient ?? "#EFF6FF") : "transparent" }}
                 >
+                  {/* Active indicator — underline on mobile, right bar on desktop */}
+                  {isActive && (
+                    <span
+                      className="absolute left-3 right-3 bottom-0 h-[3px] rounded-full lg:left-auto lg:right-0 lg:top-0 lg:bottom-0 lg:h-auto lg:w-[3px] lg:rounded-none"
+                      style={{ background: "linear-gradient(90deg, #1D4ED8, #E8435A)" }}
+                      aria-hidden="true"
+                    />
+                  )}
                   <div
                     className="hidden lg:flex w-8 h-8 rounded-lg items-center justify-center shrink-0"
                     style={{ background: smeta?.bg ?? "#EFF6FF" }}
@@ -89,7 +93,7 @@ export function ServicesSection() {
                     <SIcon size={16} style={{ color: smeta?.accent ?? "#1D4ED8" }} />
                   </div>
                   <span
-                    className="text-sm font-semibold whitespace-nowrap lg:whitespace-normal leading-tight"
+                    className="text-[13px] lg:text-sm font-semibold whitespace-nowrap lg:whitespace-normal leading-tight"
                     style={{ color: isActive ? smeta?.accent ?? "#1D4ED8" : "#374151" }}
                   >
                     {service.title}

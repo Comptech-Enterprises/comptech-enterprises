@@ -2,58 +2,57 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Cpu, Brain, GraduationCap, Shield, Activity, Sparkles, CheckCircle2, ArrowRight } from "lucide-react";
+import { Bot, Brain, GraduationCap, Shield, Workflow, Sparkles, CheckCircle2, ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { AnimatedCounter } from "@/components/ai-solutions/AnimatedCounter";
 
 const AI_OFFERINGS = [
   {
     icon: GraduationCap,
-    title: "AI Teaching & Training",
+    title: "AI Training & Workshops",
     badge: "Education & Enablement",
-    desc: "We design and deliver training programs that build lasting AI capability inside your organisation — from executive strategy sessions to developer deep-dives and hands-on workshops. Our curriculum is built by practitioners who deploy real AI infrastructure, not generic course content.",
+    desc: "We design and deliver training programs that build lasting AI capability inside your organisation — from executive strategy sessions to developer deep-dives and hands-on workshops. Our curriculum is built by practitioners who ship real AI, not generic course content.",
     points: [
       "Hands-on workshops and seminars for educational institutions and professionals",
-      "Custom AI Training Programs tailored to your industry and business requirements",
-      "One-on-one mentorship from industry experts",
-      "Corporate training empowering teams to leverage AI effectively",
+      "Custom AI training programs tailored to your industry and business requirements",
+      "One-on-one mentorship from practising AI engineers",
+      "Corporate training that empowers teams to use AI effectively and safely",
       "Executive briefings on AI strategy, ROI, and adoption roadmaps",
-      "Applied machine learning and deep learning bootcamps for developers",
+      "Applied LLM, RAG, and prompt-engineering bootcamps for developers",
       "Train-the-trainer programs to build in-house AI champions",
-      "Certification-track courses on GPU computing and MLOps practices",
+      "Practical courses on building and operating AI agents",
     ],
     stats: [
-      { value: 500, suffix: "+", label: "Professionals trained" },
-      { value: 60, suffix: "+", label: "Workshops delivered" },
+      { value: "500+", label: "Professionals trained" },
+      { value: "60+", label: "Workshops delivered" },
     ],
   },
   {
-    icon: Cpu,
-    title: "Hardware Solutions",
-    badge: "Hardware & Infrastructure",
-    desc: "Comptech specializes in sourcing and configuring AI hardware built for the demands of modern machine learning workloads — from deep learning research to large-scale inference in production.",
+    icon: Bot,
+    title: "Custom AI Agents",
+    badge: "Agents & Automation",
+    desc: "We build custom AI agents that plug into your business — automating repetitive work, answering questions from your own knowledge, and taking real actions across your tools. Every agent is designed around your workflows and runs securely on your terms.",
     points: [
-      "High-performance GPUs ideal for deep learning, data processing, and AI training",
-      "Custom-built AI systems configured for specific projects",
-      "Scalable AI servers and workstations for businesses",
-      "On-premise or hybrid deployment with full OEM support",
-      "NVIDIA HGX and DGX reference architectures on Dell and HPE nodes",
-      "Network fabric design for low-latency, multi-node GPU clusters",
+      "Custom AI agents built around your specific workflows and data",
+      "Task-automation agents that draft, summarise, classify, and route work",
+      "Knowledge assistants grounded in your internal documents (RAG)",
+      "Multi-step agents that take actions across your existing tools & APIs",
+      "Customer-facing chat agents for support and lead qualification",
+      "Human-in-the-loop controls, guardrails, and full audit logging",
     ],
   },
   {
     icon: Brain,
-    title: "AI Software Solutions",
+    title: "AI Software & Integration",
     badge: "Software & Integration",
-    desc: "We deliver comprehensive AI software offerings that span the full development lifecycle — from building bespoke models to integrating AI capabilities into your existing enterprise systems.",
+    desc: "Beyond agents, we deliver AI software across the full lifecycle — building bespoke models and weaving AI capabilities into the enterprise systems your teams already use every day.",
     points: [
-      "Custom-built AI models for various industries and use cases",
-      "Machine learning and deep learning tools for decision-making automation",
-      "AI integration services for existing systems",
-      "Tailored software meeting unique business needs",
-      "Retrieval-augmented generation (RAG) pipelines for enterprise knowledge bases",
-      "API-first architecture for embedding AI into existing workflows",
+      "Custom-built AI models for industry-specific use cases",
+      "Machine learning tools that automate decision-making",
+      "AI integration into your existing systems and workflows",
+      "Retrieval-augmented generation (RAG) over your knowledge bases",
+      "API-first architecture for embedding AI into any workflow",
+      "Tailored software that meets your unique business needs",
     ],
   },
 ];
@@ -61,26 +60,19 @@ const AI_OFFERINGS = [
 const AI_CAPABILITIES = [
   {
     title: "Data Privacy First",
-    desc: "All AI workloads and models are deployed within your secure enterprise perimeter. No data leaves your network.",
+    desc: "All AI workloads, agents, and models can be deployed within your secure enterprise perimeter — your data never has to leave your network.",
     icon: Shield,
   },
   {
-    title: "OEM-Grade Performance",
-    desc: "Fully optimized hardware builds backed by certified Dell Titanium and HP Gold server engineering expertise.",
-    icon: Activity,
+    title: "Built Around Your Workflows",
+    desc: "Every agent, model, and training program is tailored to how your teams actually work — not generic, off-the-shelf tooling.",
+    icon: Workflow,
   },
   {
     title: "Rapid Implementation",
-    desc: "Get proof-of-concept AI applications up and running in weeks, not months, using pre-validated blueprints.",
+    desc: "Get a working proof-of-concept agent or workshop running in weeks, not months, using pre-validated blueprints.",
     icon: Sparkles,
   },
-];
-
-const AI_STATS = [
-  { value: 40, suffix: "+", label: "AI/GPU deployments" },
-  { value: 15, suffix: "x", label: "Faster inference vs. legacy racks" },
-  { value: 99, suffix: "%", label: "On-prem data residency" },
-  { value: 24, suffix: "/7", label: "Infrastructure support" },
 ];
 
 const containerVariants = {
@@ -126,19 +118,19 @@ export function AISolutionsClient() {
         badge="AI Division"
         title={
           <>
-            Our AI Vision: From{" "}
+            AI Training &amp;{" "}
             <span className="text-gradient-purple font-extrabold">
-              Hardware to Software
+              Custom AI Agents
             </span>
           </>
         }
-        subtitle="Empowering Indian enterprises to adopt machine learning and Generative AI securely — from high-density GPU servers to custom AI models and hands-on team training."
+        subtitle="We help Indian enterprises put AI to work — upskilling your teams with hands-on workshops and building custom AI agents that automate real work, securely, with your own data."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "AI Solutions" }]}
         dark
         actions={
           <>
             <Link href="/contact#quote" className="btn-accent btn btn-lg">
-              Request AI Quote
+              Talk to Our AI Team
             </Link>
             <a href="#offerings" className="btn-outline-white btn btn-lg">
               Explore Solutions
@@ -149,30 +141,6 @@ export function AISolutionsClient() {
         <AIOrbs />
         <div className="absolute inset-0 bg-grid-purple opacity-40" />
       </PageHero>
-
-      {/* ── Stats Band ── */}
-      <section className="relative bg-gray-950 border-b border-white/10 overflow-hidden" aria-label="AI impact stats">
-        <div className="absolute inset-0 bg-ai-gradient opacity-90" />
-        <div className="absolute inset-0 bg-grid-purple opacity-30" />
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-10 relative z-10">
-          <motion.div
-            className="grid grid-cols-2 lg:grid-cols-4 gap-8"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.4 }}
-          >
-            {AI_STATS.map((s) => (
-              <motion.div key={s.label} variants={itemVariants} className="text-center">
-                <p className="font-display font-extrabold text-3xl lg:text-4xl text-white leading-none mb-2">
-                  <AnimatedCounter value={s.value} suffix={s.suffix} />
-                </p>
-                <p className="text-xs lg:text-sm text-white/60 leading-tight">{s.label}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
 
       <main>
         {/* ── Overview Section ── */}
@@ -191,18 +159,22 @@ export function AISolutionsClient() {
               >
                 <SectionLabel>Why Comptech AI</SectionLabel>
                 <h2 id="overview-title" className="font-display font-extrabold text-display-md text-gray-900 mb-4 text-balance">
-                  End-to-End AI Enablement for Indian Enterprises
+                  From First Workshop to Production AI Agent
                 </h2>
                 <p className="text-gray-500 text-lg leading-relaxed mb-4">
-                  Comptech delivers a complete AI stack — sourcing and configuring the right GPU hardware, building and integrating custom AI software, and training your teams to use it all effectively. One partner for the full journey.
+                  Comptech helps enterprises adopt AI end to end — training your people to use it confidently, then designing and building custom AI agents that automate real work inside your business.
                 </p>
                 <p className="text-gray-500 leading-relaxed mb-6">
-                  By partnering with NVIDIA, Dell, and leading AI software providers, we ensure your infrastructure is highly available, your models are production-ready, and your people have the skills to drive ROI from day one.
+                  We focus on practical outcomes: teams that can build with AI, agents that take work off your plate, and software that fits neatly into the systems you already run — all deployed with your data privacy front and centre.
                 </p>
-                <div className="flex gap-4">
+                <div className="flex flex-wrap gap-4">
                   <div className="flex items-center gap-3">
                     <span className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
-                    <span className="text-sm font-semibold text-gray-700">NVIDIA Preferred GPU Partner</span>
+                    <span className="text-sm font-semibold text-gray-700">Practitioner-led, outcome-focused</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
+                    <span className="text-sm font-semibold text-gray-700">Private, on-premise deployment</span>
                   </div>
                 </div>
               </motion.div>
@@ -257,7 +229,7 @@ export function AISolutionsClient() {
               What We Offer
             </h2>
             <p className="mt-3 text-lg text-gray-500 max-w-xl mx-auto">
-              Hardware, software, and training — we cover every layer so you can focus on building with AI, not figuring it out.
+              Training, custom agents, and software integration — we cover every layer so you can focus on building with AI, not figuring it out.
             </p>
           </motion.div>
         </section>
@@ -271,7 +243,7 @@ export function AISolutionsClient() {
 
               {AI_OFFERINGS.map((off, idx) => {
                 const Icon = off.icon;
-                const isTraining = off.title === "AI Teaching & Training";
+                const isTraining = off.title === "AI Training & Workshops";
                 const shownPoints = off.points.slice(0, 4);
                 return (
                   <motion.div
@@ -309,7 +281,7 @@ export function AISolutionsClient() {
                         {off.stats.map((s) => (
                           <div key={s.label}>
                             <p className="font-display font-extrabold text-lg text-blue-700 leading-none mb-1">
-                              <AnimatedCounter value={s.value} suffix={s.suffix} />
+                              {s.value}
                             </p>
                             <p className="text-[11px] text-gray-500">{s.label}</p>
                           </div>
@@ -331,7 +303,7 @@ export function AISolutionsClient() {
 
                     <div className="flex flex-wrap gap-3">
                       {isTraining && (
-                        <Link href="" className="btn-accent btn btn-sm inline-flex">
+                        <Link href="/contact#quote" className="btn-accent btn btn-sm inline-flex">
                           Register <ArrowRight size={14} className="btn-arrow" />
                         </Link>
                       )}
@@ -349,8 +321,8 @@ export function AISolutionsClient() {
           </div>
         </section>
 
-        {/* ── Partner Strip ── */}
-        <section className="py-16 bg-gray-900 relative overflow-hidden" aria-labelledby="partner-title">
+        {/* ── Custom Agents CTA ── */}
+        <section className="py-16 lg:py-20 bg-gray-900 relative overflow-hidden" aria-labelledby="agents-cta-title">
           <div className="absolute inset-0 bg-grid-lines opacity-10" />
           <AIOrbs />
           <div className="max-w-5xl mx-auto px-6 lg:px-8 relative z-10 text-center">
@@ -360,18 +332,22 @@ export function AISolutionsClient() {
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             >
-              <h2 id="partner-title" className="font-display font-extrabold text-2xl lg:text-3xl text-white mb-4">
-                Powered by NVIDIA
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-white/10 border border-white/15 mb-6">
+                <Bot className="w-7 h-7 text-white" />
+              </div>
+              <h2 id="agents-cta-title" className="font-display font-extrabold text-2xl lg:text-4xl text-white mb-4 text-balance">
+                Have a workflow in mind? We&rsquo;ll build the agent.
               </h2>
-              <p className="text-gray-400 max-w-xl mx-auto mb-8 text-sm leading-relaxed">
-                As a Preferred Partner in the NVIDIA Partner Network, we design GPU configurations using NVIDIA HGX, DGX, and RTX reference architectures, validated on Dell PowerEdge &amp; HPE ProLiant nodes.
+              <p className="text-gray-400 max-w-2xl mx-auto mb-8 leading-relaxed">
+                Tell us the task that&rsquo;s eating your team&rsquo;s time — from answering repetitive questions to processing documents or coordinating across tools. We&rsquo;ll design, build, and deploy a custom AI agent tailored to exactly how you work, with your data kept private.
               </p>
-              <div className="inline-flex items-center gap-6 justify-center flex-wrap">
-                <span className="text-white font-display font-black text-2xl tracking-tight">
-                  NVIDIA<span className="text-green-500 font-sans animate-blink">®</span> Partner
-                </span>
-                <span className="w-px h-6 bg-white/20" />
-                <span className="text-gray-300 font-semibold text-sm">Preferred GPU Computing Partner</span>
+              <div className="flex flex-wrap gap-4 justify-center">
+                <Link href="/contact#quote" className="btn-accent btn btn-lg">
+                  Build a Custom Agent <ArrowRight size={16} className="btn-arrow" />
+                </Link>
+                <Link href="/contact" className="btn-outline-white btn btn-lg">
+                  Talk to Our AI Team
+                </Link>
               </div>
             </motion.div>
           </div>
