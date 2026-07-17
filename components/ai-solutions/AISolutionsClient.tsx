@@ -237,7 +237,7 @@ export function AISolutionsClient() {
         {/* ── Offerings: horizontal timeline ── */}
         <section className="pb-16 lg:pb-20 bg-white" aria-label="AI offerings timeline">
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
-            <div className="relative grid lg:grid-cols-3 gap-6 lg:gap-8 items-start">
+            <div className="relative grid lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
               {/* Connecting line, spans between the 3 circle centers on large screens */}
               <div className="hidden lg:block absolute top-7 left-[16.666%] right-[16.666%] h-px bg-gray-200" aria-hidden="true" />
 
