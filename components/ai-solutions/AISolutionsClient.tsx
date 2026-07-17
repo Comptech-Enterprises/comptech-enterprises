@@ -237,7 +237,7 @@ export function AISolutionsClient() {
         {/* ── Offerings: horizontal timeline ── */}
         <section className="pb-16 lg:pb-20 bg-white" aria-label="AI offerings timeline">
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
-            <div className="relative grid lg:grid-cols-3 gap-10 lg:gap-8 items-start">
+            <div className="relative grid lg:grid-cols-3 gap-6 lg:gap-8 items-start">
               {/* Connecting line, spans between the 3 circle centers on large screens */}
               <div className="hidden lg:block absolute top-7 left-[16.666%] right-[16.666%] h-px bg-gray-200" aria-hidden="true" />
 
@@ -248,7 +248,7 @@ export function AISolutionsClient() {
                 return (
                   <motion.div
                     key={off.title}
-                    className="relative flex flex-col items-start"
+                    className="relative flex flex-col items-start rounded-3xl border border-gray-100 bg-white shadow-sm p-6 sm:p-8 lg:p-0 lg:rounded-none lg:border-0 lg:shadow-none lg:bg-transparent"
                     initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
@@ -277,13 +277,16 @@ export function AISolutionsClient() {
                     <p className="text-sm text-gray-500 leading-relaxed mb-4">{off.desc}</p>
 
                     {off.stats && (
-                      <div className="flex gap-6 mb-4">
+                      <div className="flex w-full gap-3 mb-5">
                         {off.stats.map((s) => (
-                          <div key={s.label}>
-                            <p className="font-display font-extrabold text-lg text-blue-700 leading-none mb-1">
+                          <div
+                            key={s.label}
+                            className="flex-1 rounded-xl bg-blue-50/70 border border-blue-100 px-4 py-3"
+                          >
+                            <p className="font-display font-extrabold text-2xl text-blue-700 leading-none mb-1.5">
                               {s.value}
                             </p>
-                            <p className="text-[11px] text-gray-500">{s.label}</p>
+                            <p className="text-[11px] text-gray-500 leading-tight">{s.label}</p>
                           </div>
                         ))}
                       </div>
@@ -301,15 +304,15 @@ export function AISolutionsClient() {
                       )}
                     </div>
 
-                    <div className="flex flex-wrap gap-3">
+                    <div className="flex flex-col sm:flex-row w-full lg:w-auto flex-wrap gap-3 mt-auto">
                       {isTraining && (
-                        <Link href="/contact#quote" className="btn-accent btn btn-sm inline-flex">
+                        <Link href="/contact#quote" className="btn-accent btn btn-sm inline-flex justify-center">
                           Register <ArrowRight size={14} className="btn-arrow" />
                         </Link>
                       )}
                       <Link
                         href="/contact#quote"
-                        className={isTraining ? "btn-outline btn btn-sm inline-flex" : "btn-accent btn btn-sm inline-flex"}
+                        className={`${isTraining ? "btn-outline" : "btn-accent"} btn btn-sm inline-flex justify-center`}
                       >
                         Inquire <ArrowRight size={14} className="btn-arrow" />
                       </Link>
