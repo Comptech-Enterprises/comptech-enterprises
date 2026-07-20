@@ -47,12 +47,12 @@ export function ContactSection() {
         </div>
 
         {/* Form */}
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
 
           {/* Left — info + contact methods */}
           <div>
             <h3 className="font-display font-extrabold text-2xl text-gray-900 mb-3">Request a Custom IT Proposal</h3>
-            <p className="text-gray-500 text-base leading-relaxed mb-8">
+            <p className="text-gray-500 text-base leading-relaxed mb-6 lg:mb-8">
               Tell us what you need and we'll get back to you within 2 business hours.
             </p>
             <div className="flex flex-col gap-3">
@@ -71,7 +71,7 @@ export function ContactSection() {
             </div>
 
             {/* What happens next */}
-            <div className="mt-8">
+            <div className="mt-6 lg:mt-8">
               <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-4">What happens next?</p>
               <div className="flex flex-col gap-4">
                 {[
@@ -106,7 +106,7 @@ export function ContactSection() {
             </div>
           ) : (
             <form
-              className="bg-gray-50 rounded-3xl p-8 border border-gray-100"
+              className="bg-gray-50 rounded-3xl p-5 sm:p-8 border border-gray-100"
               onSubmit={async (e) => {
                 e.preventDefault();
                 setSubmitting(true);
