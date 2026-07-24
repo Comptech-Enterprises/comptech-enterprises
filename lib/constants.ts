@@ -14,6 +14,7 @@ export const NAV_LINKS = [
   { label: "AI", href: "/ai-solutions" },
   { label: "Our Services", href: "/#services" },
   { label: "Contact", href: "/#contact" },
+  { label: "Careers", href: "/careers" },
   { label: "About", href: "/about" },
 ];
 
@@ -31,6 +32,27 @@ export const PARTNERS = [
 
 export const SERVICES = [
   {
+    id: "ai",
+    icon: "cpu",
+    title: "AI Solutions",
+    desc: "GPUs, AI engineering, and ready-to-use AI tools — plus lead management and social media agents to put AI to work across your business.",
+    href: "/ai-solutions",
+  },
+  {
+    id: "ai-training",
+    icon: "graduation",
+    title: "AI Training",
+    desc: "Hands-on workshops that help your teams and students understand AI tools and apply them confidently in everyday work.",
+    href: "/ai-solutions#training",
+  },
+  {
+    id: "digital",
+    icon: "workflow",
+    title: "Digital Transformation",
+    desc: "We convert your manual, paper-based processes into streamlined digital workflows — making day-to-day operations faster, simpler, and easier to manage.",
+    href: "/services#digital",
+  },
+  {
     id: "infrastructure",
     icon: "server",
     title: "Enterprise Infrastructure",
@@ -45,18 +67,11 @@ export const SERVICES = [
     href: "/services#euc",
   },
   {
-    id: "ai",
-    icon: "cpu",
-    title: "AI Solutions",
-    desc: "Unlock the potential of AI with our cutting-edge GPUs. We offer the best-in-class graphics processing units for unparalleled performance and innovation.",
-    href: "/ai-solutions",
-  },
-  {
-    id: "datacenter",
-    icon: "database",
-    title: "Data Centre Solutions",
-    desc: "Upgrade your infrastructure with our Data Centre Solutions, including servers, ensuring scalability, reliability, and optimal performance for your business needs.",
-    href: "/services#datacenter",
+    id: "software",
+    icon: "code",
+    title: "Software Solutions",
+    desc: "Custom software, web, and business applications built around your workflows — from concept and engineering to deployment and support.",
+    href: "/services#software",
   },
   {
     id: "networking",
@@ -214,6 +229,27 @@ export const TESTIMONIALS = [
     name: "HOD, Data Science",
     title: "LBSIM",
     initials: "DS",
+  },
+  {
+    quote:
+      "Comptech helped us understand how to adopt and use AI effectively across our teams. Their practical, hands-on approach made the transition simple.",
+    name: "Shuchir Suri",
+    title: "Anthem",
+    initials: "SS",
+  },
+  {
+    quote:
+      "Comptech showed us how to use AI for AI training, equipping our team with the skills and confidence to apply it in our day-to-day work.",
+    name: "Kavita Ray",
+    title: "HL Mando",
+    initials: "KR",
+  },
+  {
+    quote:
+      "Comptech's workshop at SRCC gave our teachers and students a clear understanding of AI tools and how to use them effectively in learning.",
+    name: "Aruna Jha",
+    title: "Vice Principal, SRCC",
+    initials: "AJ",
   },
 ];
 

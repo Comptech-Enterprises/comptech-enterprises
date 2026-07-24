@@ -7,7 +7,7 @@ import { TESTIMONIALS } from "@/lib/constants";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
 const AVATAR_COLORS = ["#5C0F26", "#1D4ED8", "#5C0F26", "#1D4ED8", "#5C0F26", "#1D4ED8"];
-const VISIBLE = 2;
+const VISIBLE = 3;
 
 function buildQueue(start: number) {
   return Array.from({ length: VISIBLE }, (_, i) => (start + i) % TESTIMONIALS.length);

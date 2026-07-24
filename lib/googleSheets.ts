@@ -27,6 +27,32 @@ function getAuth() {
   });
 }
 
+export interface CareerApplication {
+  name: string;
+  email: string;
+  domain: string;
+  resumeUrl: string;
+}
+
+export async function appendCareerApplication(data: CareerApplication) {
+  const sheetId = process.env.GOOGLE_SHEET_ID;
+  if (!sheetId) {
+    throw new Error("GOOGLE_SHEET_ID is not configured");
+  }
+
+  const sheets = google.sheets({ version: "v4", auth: getAuth() });
+  const tab = process.env.GOOGLE_CAREERS_SHEET_TAB || "Careers";
+
+  await sheets.spreadsheets.values.append({
+    spreadsheetId: sheetId,
+    range: `${tab}!A:E`,
+    valueInputOption: "USER_ENTERED",
+    requestBody: {
+      values: [[new Date().toISOString(), data.name, data.email, data.domain, data.resumeUrl]],
+    },
+  });
+}
+
 export async function appendContactSubmission(data: ContactSubmission) {
   const sheetId = process.env.GOOGLE_SHEET_ID;
   if (!sheetId) {

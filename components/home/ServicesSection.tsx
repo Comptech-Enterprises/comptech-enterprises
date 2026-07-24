@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Server, Monitor, Cpu, Database, Network, ShieldCheck, Cloud, Wrench, Laptop } from "lucide-react";
+import { ArrowRight, Server, Monitor, Cpu, Database, Network, ShieldCheck, Cloud, Wrench, Laptop, Workflow, Code2, GraduationCap } from "lucide-react";
 import { SERVICES } from "@/lib/constants";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
@@ -16,13 +16,18 @@ const ICONS: Record<string, React.ElementType> = {
   cloud:    Cloud,
   tool:     Wrench,
   laptop:   Laptop,
+  workflow: Workflow,
+  code:     Code2,
+  graduation: GraduationCap,
 };
 
 const SERVICE_META: Record<string, { accent: string; bg: string; gradient: string; btnGradient: string; vendors: string[]; highlights: string[] }> = {
   infrastructure: { accent: "#1D4ED8", bg: "#EFF6FF", gradient: "linear-gradient(135deg, #EFF6FF 0%, #F0EEFF 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #7C3AED 100%)", vendors: ["Dell", "HP", "Lenovo"], highlights: ["Server consolidation", "Virtualisation", "Storage solutions", "Rack & stack deployment"] },
   euc:            { accent: "#5C0F26", bg: "#FDF4F6", gradient: "linear-gradient(135deg, #EFF6FF 0%, #FDF4F6 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #E8435A 100%)", vendors: ["Dell", "HP", "Lenovo"], highlights: ["Desktops & laptops", "Workstations", "Thin clients", "Device management"] },
-  ai:             { accent: "#1D4ED8", bg: "#EFF6FF", gradient: "linear-gradient(135deg, #EFF6FF 0%, #F0EEFF 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #7C3AED 100%)", vendors: ["NVIDIA", "Intel"],      highlights: ["GPU infrastructure", "AI workshops", "No-code AI builder", "Model deployment"] },
-  datacenter:     { accent: "#5C0F26", bg: "#FDF4F6", gradient: "linear-gradient(135deg, #EFF6FF 0%, #FDF4F6 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #E8435A 100%)", vendors: ["Dell", "HP"],           highlights: ["Full DC buildouts", "Power & cooling", "Structured cabling", "Rack architecture"] },
+  ai:             { accent: "#1D4ED8", bg: "#EFF6FF", gradient: "linear-gradient(135deg, #EFF6FF 0%, #F0EEFF 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #7C3AED 100%)", vendors: ["NVIDIA", "Intel"],      highlights: ["GPUs & AI engineering", "Lead management", "Social media agents", "Ready-to-use AI tools"] },
+  "ai-training":  { accent: "#5C0F26", bg: "#FDF4F6", gradient: "linear-gradient(135deg, #EFF6FF 0%, #FDF4F6 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #E8435A 100%)", vendors: [],                       highlights: ["Hands-on workshops", "Team upskilling", "Practical AI tools", "Custom curriculum"] },
+  digital:        { accent: "#5C0F26", bg: "#FDF4F6", gradient: "linear-gradient(135deg, #EFF6FF 0%, #FDF4F6 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #E8435A 100%)", vendors: [],                       highlights: ["Process digitisation", "Workflow automation", "Paperless operations", "System integration"] },
+  software:       { accent: "#1D4ED8", bg: "#EFF6FF", gradient: "linear-gradient(135deg, #EFF6FF 0%, #F0EEFF 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #7C3AED 100%)", vendors: [],                       highlights: ["Custom software", "Web & business apps", "API integrations", "Deployment & support"] },
   networking:     { accent: "#1D4ED8", bg: "#EFF6FF", gradient: "linear-gradient(135deg, #EFF6FF 0%, #F0EEFF 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #7C3AED 100%)", vendors: ["Cisco", "Juniper", "Aruba"], highlights: ["LAN & SD-WAN", "Wi-Fi 6E", "Campus networking", "Network monitoring"] },
   security:       { accent: "#5C0F26", bg: "#FDF4F6", gradient: "linear-gradient(135deg, #EFF6FF 0%, #FDF4F6 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #E8435A 100%)", vendors: ["CP Plus", "Dahua"],   highlights: ["IP CCTV systems", "Access control", "AI video analytics", "Perimeter security"] },
   cloud:          { accent: "#1D4ED8", bg: "#EFF6FF", gradient: "linear-gradient(135deg, #EFF6FF 0%, #F0EEFF 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #7C3AED 100%)", vendors: ["Azure", "AWS", "GCP"],  highlights: ["Cloud migration", "Hybrid architecture", "Managed cloud ops", "Cost optimisation"] },
