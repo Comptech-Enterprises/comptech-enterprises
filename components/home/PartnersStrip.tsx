@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const PARTNERS: { name: string; cert: string; logo: string | null; domain?: string }[] = [
   { name: "Apple",      cert: "Authorized Reseller", logo: "/logo's/apple.webp"       },
@@ -60,6 +60,57 @@ function PartnerLogo({ name, logo, domain }: { name: string; logo: string | null
 }
 
 export function PartnersStrip() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const mql = window.matchMedia("(max-width: 639px)"); // below Tailwind `sm`
+    let raf = 0;
+    let paused = false;
+
+    const step = () => {
+      if (!paused) {
+        // loop back to start once the first (original) set is scrolled past
+        if (el.scrollLeft >= el.scrollWidth / 2) {
+          el.scrollLeft -= el.scrollWidth / 2;
+        }
+        el.scrollLeft += 0.5;
+      }
+      raf = requestAnimationFrame(step);
+    };
+
+    const pause = () => { paused = true; };
+    const resume = () => { paused = false; };
+
+    const start = () => {
+      cancelAnimationFrame(raf);
+      if (mql.matches) {
+        el.addEventListener("pointerdown", pause);
+        el.addEventListener("pointerup", resume);
+        el.addEventListener("pointerleave", resume);
+        raf = requestAnimationFrame(step);
+      } else {
+        el.removeEventListener("pointerdown", pause);
+        el.removeEventListener("pointerup", resume);
+        el.removeEventListener("pointerleave", resume);
+        el.scrollLeft = 0;
+      }
+    };
+
+    start();
+    mql.addEventListener("change", start);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      mql.removeEventListener("change", start);
+      el.removeEventListener("pointerdown", pause);
+      el.removeEventListener("pointerup", resume);
+      el.removeEventListener("pointerleave", resume);
+    };
+  }, []);
+
   return (
     <section
       className="pt-16 pb-10 lg:py-20"
@@ -107,12 +158,15 @@ export function PartnersStrip() {
           <div className="flex-1 h-px bg-gray-200" />
         </div>
 
-        {/* Partner cards grid */}
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-3">
-          {PARTNERS.map(({ name, cert, logo, domain }) => (
+        {/* Partner cards — auto-scrolling carousel on mobile, grid on larger screens */}
+        <div
+          ref={scrollRef}
+          className="flex sm:grid sm:grid-cols-4 md:grid-cols-7 gap-3 overflow-x-auto sm:overflow-visible -mx-6 px-6 sm:mx-0 sm:px-0 pb-4 sm:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {PARTNERS.concat(PARTNERS).map(({ name, cert, logo, domain }, i) => (
             <div
-              key={name}
-              className="group rounded-2xl border border-gray-100 bg-white p-4 flex flex-col items-center text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
+              key={`${name}-${i}`}
+              className={`group shrink-0 basis-[38%] sm:basis-auto rounded-2xl border border-gray-100 bg-white p-4 flex flex-col items-center text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 ${i >= PARTNERS.length ? "sm:hidden" : ""}`}
             >
               <div className="mb-3">
                 <PartnerLogo name={name} logo={logo} domain={domain} />
