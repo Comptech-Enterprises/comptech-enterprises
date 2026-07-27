@@ -9,9 +9,9 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Phone, Mail, MessageCircle, MapPin, ArrowRight, Calendar, Building2 } from "lucide-react";
 
 const CONTACT_METHODS = [
-  { Icon: Phone, title: "Call Us", value: "+91 8595073837", sub: "Mon–Sat, 9am–7pm" },
+  { Icon: Phone, title: "Call Us", value: "+91 9811010102", sub: "Mon–Sat, 9am–7pm" },
   { Icon: Mail, title: "Email Us", value: "mohit@comptech.in", sub: "Response in 2 hrs" },
-  { Icon: MessageCircle, title: "WhatsApp", value: "+91 8595073837", sub: "Quick queries" },
+  { Icon: MessageCircle, title: "WhatsApp", value: "+91 9811010102", sub: "Quick queries" },
   { Icon: MapPin, title: "Visit Us", value: "Janakpuri, New Delhi", sub: "Schedule a visit" },
 ];
 
@@ -245,7 +245,7 @@ export default function ContactPage() {
               <RevealWrapper delay={150} className="flex flex-col gap-5">
                 {[
                   { Icon: MapPin, label: "Address", value: "207, DDA-1, District Center, JanakPuri, New Delhi, India" },
-                  { Icon: Phone, label: "Phone", value: "+91 8595073837" },
+                  { Icon: Phone, label: "Phone", value: "+91 9811010102" },
                   { Icon: Mail, label: "Email", value: "mohit@comptech.in" },
                   { Icon: Calendar, label: "Office Hours", value: "Mon–Sat, 9:00am – 7:00pm IST" },
                 ].map(({ Icon, label, value }) => (

@@ -13,7 +13,7 @@ const inputClass =
 const CONTACT_METHODS = [
   { Icon: Phone,         label: "Call Us",   value: COMPANY.phone,        sub: "Mon–Sat, 9am–7pm"  },
   { Icon: Mail,          label: "Email",     value: COMPANY.email,        sub: "Response in 2 hrs" },
-  { Icon: MessageCircle, label: "WhatsApp",  value: "+91 98765 43210",    sub: "Quick queries"     },
+  { Icon: MessageCircle, label: "WhatsApp",  value: "+91 9811010102",    sub: "Quick queries"     },
   { Icon: MapPin,        label: "Office",    value: COMPANY.address,      sub: "Schedule a visit"  },
 ];
 
@@ -147,7 +147,7 @@ export function ContactSection() {
               {[
                 { label: "Work Email *",    key: "email",   type: "email", placeholder: "john@company.com" },
                 { label: "Company Name *",  key: "company", type: "text",  placeholder: "Your company"      },
-                { label: "Phone Number",    key: "phone",   type: "tel",   placeholder: "+91 98765 43210"   },
+                { label: "Phone Number",    key: "phone",   type: "tel",   placeholder: "+91 9811010102"   },
               ].map(({ label, key, type, placeholder }) => (
                 <div key={key} className="mb-4">
                   <label className="block text-xs font-semibold text-gray-600 mb-1.5">{label}</label>
