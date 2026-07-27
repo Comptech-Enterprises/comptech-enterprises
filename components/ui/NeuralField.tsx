@@ -11,7 +11,7 @@ interface NeuralFieldProps {
   opacity?: number;
   /** max px distance to draw a connecting line */
   linkDistance?: number;
-  /** draw lines/links to the mouse cursor */
+  /** react to the cursor: nearby nodes light up and link to it */
   interactive?: boolean;
   className?: string;
 }
@@ -50,6 +50,10 @@ export function NeuralField({
     let raf = 0;
     let running = false;
 
+    // cursor influence radius + how far a node is pulled toward the cursor
+    const influence = linkDistance * 1.5;
+    const maxPull = 16;
+
     const buildNodes = () => {
       const area = width * height;
       const base = (density * area) / (1280 * 720);
@@ -77,51 +81,27 @@ export function NeuralField({
       buildNodes();
     };
 
-    const drawStatic = () => {
-      // one non-animated frame for reduced-motion users
+    // Displaced draw position for a node — gently offset toward the cursor.
+    // Non-accumulating, so nodes always spring back when the cursor leaves.
+    const displaced = (n: Node): { x: number; y: number; boost: number } => {
+      const m = mouse.current;
+      if (!interactive || !m.active) return { x: n.x, y: n.y, boost: 0 };
+      const dx = m.x - n.x;
+      const dy = m.y - n.y;
+      const d = Math.hypot(dx, dy) || 1;
+      if (d >= influence) return { x: n.x, y: n.y, boost: 0 };
+      const t = 1 - d / influence; // 0..1, closer = higher
+      const pull = t * maxPull;
+      return { x: n.x + (dx / d) * pull, y: n.y + (dy / d) * pull, boost: t };
+    };
+
+    const drawFrame = (move: boolean) => {
       ctx.clearRect(0, 0, width, height);
-      drawLinks();
-      drawNodes(false);
-    };
+      const m = mouse.current;
 
-    const drawLinks = () => {
-      for (let i = 0; i < nodes.length; i++) {
-        const a = nodes[i];
-        for (let j = i + 1; j < nodes.length; j++) {
-          const b = nodes[j];
-          const dx = a.x - b.x;
-          const dy = a.y - b.y;
-          const dist = Math.hypot(dx, dy);
-          if (dist < linkDistance) {
-            const alpha = (1 - dist / linkDistance) * 0.5 * opacity;
-            ctx.strokeStyle = `rgba(${color}, ${alpha})`;
-            ctx.lineWidth = 0.8;
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
-            ctx.stroke();
-          }
-        }
-        if (interactive && mouse.current.active) {
-          const dx = a.x - mouse.current.x;
-          const dy = a.y - mouse.current.y;
-          const dist = Math.hypot(dx, dy);
-          if (dist < linkDistance * 1.3) {
-            const alpha = (1 - dist / (linkDistance * 1.3)) * 0.6 * opacity;
-            ctx.strokeStyle = `rgba(${color}, ${alpha})`;
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(mouse.current.x, mouse.current.y);
-            ctx.stroke();
-          }
-        }
-      }
-    };
-
-    const drawNodes = (move: boolean) => {
-      for (const n of nodes) {
-        if (move) {
+      // advance motion
+      if (move) {
+        for (const n of nodes) {
           n.x += n.vx;
           n.y += n.vy;
           if (n.x < 0 || n.x > width) n.vx *= -1;
@@ -129,17 +109,67 @@ export function NeuralField({
           n.x = Math.max(0, Math.min(width, n.x));
           n.y = Math.max(0, Math.min(height, n.y));
         }
+      }
+
+      // cache displaced positions once per frame
+      const pts = nodes.map(displaced);
+
+      // node-to-node links
+      for (let i = 0; i < nodes.length; i++) {
+        const a = pts[i];
+        for (let j = i + 1; j < nodes.length; j++) {
+          const b = pts[j];
+          const dist = Math.hypot(a.x - b.x, a.y - b.y);
+          if (dist < linkDistance) {
+            const near = Math.max(a.boost, b.boost);
+            const alpha = (1 - dist / linkDistance) * (0.5 + near * 0.5) * opacity;
+            ctx.strokeStyle = `rgba(${color}, ${alpha})`;
+            ctx.lineWidth = 0.8 + near * 0.6;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // links from nearby nodes to the cursor
+      if (interactive && m.active) {
+        for (let i = 0; i < pts.length; i++) {
+          const p = pts[i];
+          if (p.boost <= 0) continue;
+          const alpha = p.boost * 0.8 * opacity;
+          ctx.strokeStyle = `rgba(${color}, ${alpha})`;
+          ctx.lineWidth = 1 + p.boost;
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(m.x, m.y);
+          ctx.stroke();
+        }
+      }
+
+      // nodes (with glow for cursor-lit ones)
+      for (let i = 0; i < nodes.length; i++) {
+        const p = pts[i];
+        const r = nodes[i].r * (1 + p.boost * 1.8);
+        if (p.boost > 0.12) {
+          const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, r * 5);
+          g.addColorStop(0, `rgba(${color}, ${0.45 * p.boost * opacity})`);
+          g.addColorStop(1, `rgba(${color}, 0)`);
+          ctx.fillStyle = g;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, r * 5, 0, Math.PI * 2);
+          ctx.fill();
+        }
         ctx.beginPath();
-        ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${color}, ${0.9 * opacity})`;
+        ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${color}, ${Math.min((0.9 + p.boost * 0.7) * opacity, 1)})`;
         ctx.fill();
       }
     };
 
     const frame = () => {
-      ctx.clearRect(0, 0, width, height);
-      drawLinks();
-      drawNodes(true);
+      drawFrame(true);
       raf = requestAnimationFrame(frame);
     };
 
@@ -153,26 +183,28 @@ export function NeuralField({
       cancelAnimationFrame(raf);
     };
 
+    // Track the cursor at the window level so it works even though the canvas
+    // is pointer-events-none. Only "active" while the cursor is over this layer.
     const onMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
-      mouse.current = { x: e.clientX - rect.left, y: e.clientY - rect.top, active: true };
-    };
-    const onLeave = () => {
-      mouse.current.active = false;
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      mouse.current = {
+        x,
+        y,
+        active: x >= 0 && x <= rect.width && y >= 0 && y <= rect.height,
+      };
     };
 
     resize();
     if (reduce) {
-      drawStatic();
+      drawFrame(false);
     } else {
       start();
     }
 
     window.addEventListener("resize", resize);
-    if (interactive) {
-      canvas.addEventListener("mousemove", onMove);
-      canvas.addEventListener("mouseleave", onLeave);
-    }
+    if (interactive) window.addEventListener("mousemove", onMove, { passive: true });
 
     // Pause when scrolled off-screen (perf) — lets us run many instances cheaply.
     const io = new IntersectionObserver(
@@ -188,8 +220,7 @@ export function NeuralField({
       stop();
       io.disconnect();
       window.removeEventListener("resize", resize);
-      canvas.removeEventListener("mousemove", onMove);
-      canvas.removeEventListener("mouseleave", onLeave);
+      window.removeEventListener("mousemove", onMove);
     };
   }, [color, density, opacity, linkDistance, interactive]);
 

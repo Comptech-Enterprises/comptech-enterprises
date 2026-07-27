@@ -47,7 +47,7 @@ export function ServicesSection() {
   return (
     <section id="services" className="relative overflow-hidden py-12 lg:py-32" style={{ background: "linear-gradient(180deg, #ffffff 0%, #EFF6FF 25%, #F5F7FA 60%, #FDF4F6 85%, #ffffff 100%)" }} aria-labelledby="services-title">
       <div className="absolute inset-0">
-        <NeuralField color="92, 15, 38" opacity={0.22} density={38} interactive={false} />
+        <NeuralField color="92, 15, 38" opacity={0.22} density={38} />
       </div>
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
 

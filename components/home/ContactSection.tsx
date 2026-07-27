@@ -29,7 +29,7 @@ export function ContactSection() {
   return (
     <section id="contact" className="relative overflow-hidden py-16 lg:py-20 bg-white" aria-labelledby="contact-title">
       <div className="absolute inset-0">
-        <NeuralField color="92, 15, 38" opacity={0.16} density={30} interactive={false} />
+        <NeuralField color="92, 15, 38" opacity={0.16} density={30} />
       </div>
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
 
