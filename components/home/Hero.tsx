@@ -7,9 +7,9 @@ import { motion } from "framer-motion";
 import { Counter } from "@/components/ui/Counter";
 
 const TRUST_ITEMS = [
-  { Icon: CheckCircle2, label: "Genuine OEM hardware, every time" },
-  { Icon: Users, label: "Dedicated engineer for your account" },
-  { Icon: Clock, label: "24/7 AMC support — zero hold queues" },
+  { Icon: CheckCircle2, label: "AI agents built around your workflows" },
+  { Icon: Users, label: "Hands-on AI training for your team" },
+  { Icon: Clock, label: "Backed by 30 years of enterprise IT" },
 ];
 
 const STATS = [
@@ -67,7 +67,7 @@ export function Hero() {
           <motion.div variants={itemVariants} className="flex items-center gap-2 mb-7">
             <span className="inline-block w-5 h-[2px] rounded-full bg-white" />
             <span className="text-[11px] font-semibold uppercase tracking-widest text-white">
-              Enterprise IT Partner · Delhi, India
+              Enterprise AI Partner · India
             </span>
           </motion.div>
 
@@ -77,15 +77,15 @@ export function Hero() {
             className="font-display font-extrabold text-white leading-[1.08] tracking-tight mb-6"
             style={{ fontSize: "clamp(2.4rem, 5vw, 4rem)" }}
           >
-            Your IT team&rsquo;s most
+            From server room
             <br />
-            <span style={{ color: "#FFCDD5" }}>reliable partner.</span>
+            <span style={{ color: "#FFCDD5" }}>to smart business.</span>
           </motion.h1>
 
           {/* Subtitle */}
           <motion.p variants={itemVariants} className="text-lg text-white/90 max-w-lg leading-relaxed mb-9">
-            We design, supply, deploy, and maintain enterprise IT infrastructure — so your team can focus on the work
-            that matters. Real engineers, genuine OEM parts, honest timelines.
+            Lead-gen agents, support assistants, and AI training — engineered, deployed, and maintained by Comptech.
+            Real engineers, genuine expertise, honest timelines.
           </motion.p>
 
           {/* CTAs */}
@@ -98,10 +98,10 @@ export function Hero() {
               Get Free Proposal <ArrowRight size={16} />
             </Link>
             <Link
-              href="/services"
+              href="/ai-solutions"
               className="inline-flex items-center gap-2 rounded-xl border border-white/30 bg-white/10 backdrop-blur-sm px-7 py-3.5 font-semibold text-white text-sm hover:bg-white/20 hover:border-white/50 transition-all duration-300"
             >
-              Our Services
+              See AI Solutions
             </Link>
           </motion.div>
 

@@ -5,6 +5,9 @@ import { motion } from "framer-motion";
 import { Bot, Brain, GraduationCap, Shield, Workflow, Sparkles, CheckCircle2, ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { NeuralField } from "@/components/ui/NeuralField";
+import { AIOrb } from "@/components/ui/AIOrb";
+import { AIHowItWorks } from "@/components/ai-solutions/AIHowItWorks";
 
 const AI_OFFERINGS = [
   {
@@ -149,6 +152,10 @@ export function AISolutionsClient() {
             style={{ background: "radial-gradient(circle, rgba(139,92,246,0.06) 0%, transparent 70%)" }}
             aria-hidden="true"
           />
+          {/* Cursor-reactive neural network */}
+          <div className="absolute inset-0">
+            <NeuralField color="124, 58, 237" opacity={0.18} density={34} />
+          </div>
           <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <motion.div
@@ -324,10 +331,17 @@ export function AISolutionsClient() {
           </div>
         </section>
 
+        {/* ── How It Works — interactive tabs ── */}
+        <AIHowItWorks />
+
         {/* ── Custom Agents CTA ── */}
         <section className="py-16 lg:py-20 bg-gray-900 relative overflow-hidden" aria-labelledby="agents-cta-title">
           <div className="absolute inset-0 bg-grid-lines opacity-10" />
           <AIOrbs />
+          {/* Cursor-reactive neural network */}
+          <div className="absolute inset-0">
+            <NeuralField color="255, 255, 255" opacity={0.4} density={44} />
+          </div>
           <div className="max-w-5xl mx-auto px-6 lg:px-8 relative z-10 text-center">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
@@ -335,8 +349,8 @@ export function AISolutionsClient() {
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-white/10 border border-white/15 mb-6">
-                <Bot className="w-7 h-7 text-white" />
+              <div className="flex justify-center mb-6">
+                <AIOrb size={84} accent="#8B5CF6" light="#C4B5FD" />
               </div>
               <h2 id="agents-cta-title" className="font-display font-extrabold text-2xl lg:text-4xl text-white mb-4 text-balance">
                 Have a workflow in mind? We&rsquo;ll build the agent.
