@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, CheckCircle2, Users, Clock } from "lucide-react";
 import { motion } from "framer-motion";
+import { Counter } from "@/components/ui/Counter";
 
 const TRUST_ITEMS = [
   { Icon: CheckCircle2, label: "Genuine OEM hardware, every time" },
@@ -12,10 +13,10 @@ const TRUST_ITEMS = [
 ];
 
 const STATS = [
-  { value: "200+", label: "Enterprise clients" },
-  { value: "30+", label: "Years experience" },
-  { value: "50+", label: "Certified engineers" },
-  { value: "24/7", label: "AMC support" },
+  { value: "200", suffix: "+", label: "Enterprise clients" },
+  { value: "30", suffix: "+", label: "Years experience" },
+  { value: "50", suffix: "+", label: "Certified engineers" },
+  { value: "24", suffix: "/7", label: "AMC support" },
 ];
 
 const containerVariants = {
@@ -119,12 +120,16 @@ export function Hero() {
             variants={itemVariants}
             className="grid grid-cols-2 sm:grid-cols-4 gap-y-6 pt-8 mb-12 sm:mb-20 border-t border-white/15"
           >
-            {STATS.map(({ value, label }, i) => (
+            {STATS.map(({ value, suffix, label }, i) => (
               <div
                 key={label}
                 className={`text-center px-3 ${i % 2 === 1 ? "border-l border-white/15" : ""} ${i % 4 !== 0 ? "sm:border-l sm:border-white/15" : ""}`}
               >
-                <p className="font-display font-extrabold text-xl sm:text-2xl text-white leading-none mb-1">{value}</p>
+                <Counter
+                  value={value}
+                  suffix={suffix}
+                  className="font-display font-extrabold text-xl sm:text-2xl text-white leading-none mb-1 block"
+                />
                 <p className="text-[11px] text-white/80 leading-tight">{label}</p>
               </div>
             ))}

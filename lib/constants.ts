@@ -1,7 +1,7 @@
 export const COMPANY = {
   name: "Comptech Enterprises",
   tagline: "Enterprise IT Solutions",
-  phone: "+91 8595073837",
+  phone: "+91 9811010102",
   email: "mohit@comptech.in",
   whatsapp: "918595073837",
   address: "207, DDA-1, District Center, JanakPuri, New Delhi, India",
