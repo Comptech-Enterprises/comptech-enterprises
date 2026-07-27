@@ -86,3 +86,10 @@ comptech/
 - **Blog** — Articles and insights
 - **Partners** — Partner network
 - **Contact** — Contact form and details
+
+## Deployment
+
+Two independent targets:
+
+- **`development` branch → Vercel** (`comptech-enterprises.vercel.app`). Pushes to `development` create the Vercel production deployment.
+- **`main` branch → EC2** (self-hosted, via `.github/workflows/deploy.yml`). Pushes to `main` SSH into the server, rebuild the Docker container, and health-check on `:3000`.
