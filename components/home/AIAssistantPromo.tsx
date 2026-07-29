@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight, CalendarClock, Video, FileText, Sparkles } from "lucide-react";
-import { AIOrb } from "@/components/ui/AIOrb";
+import { NeuralBall } from "@/components/ui/NeuralBall";
 import { RevealWrapper } from "@/components/ui/RevealWrapper";
 import { NeuralField } from "@/components/ui/NeuralField";
 
@@ -31,7 +31,7 @@ export function AIAssistantPromo() {
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         {/* Left — orb */}
         <RevealWrapper direction="left" className="flex justify-center order-1 lg:order-none">
-          <AIOrb size={300} accent="#7C3AED" light="#C4B5FD" />
+          <NeuralBall size={440} nodes={120} accent="#8B5CF6" light="#C4B5FD" className="max-w-full h-auto" />
         </RevealWrapper>
 
         {/* Right — copy */}
