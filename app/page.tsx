@@ -1,9 +1,10 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/home/Hero";
+import { CustomersStrip } from "@/components/home/CustomersStrip";
 import { PartnersStrip } from "@/components/home/PartnersStrip";
 import { ServicesSection } from "@/components/home/ServicesSection";
-import { CodeShowcase } from "@/components/home/CodeShowcase";
+import { IndustriesSection } from "@/components/home/IndustriesSection";
 import { AIAssistantPromo } from "@/components/home/AIAssistantPromo";
 import { Testimonials } from "@/components/home/Testimonials";
 import { ContactSection } from "@/components/home/ContactSection";
@@ -15,13 +16,14 @@ export default function HomePage() {
       <Navbar transparent />
       <main>
         <Hero />
-        <PartnersStrip />
+        <CustomersStrip />
         <ServicesSection />
-        <CodeShowcase />
+        <IndustriesSection />
         <AIAssistantPromo />
         <div className="relative">
           <PageThread />
           <Testimonials />
+          <PartnersStrip />
           <ContactSection />
         </div>
       </main>

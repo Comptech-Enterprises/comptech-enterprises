@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowRight, CalendarClock, Video, FileText, Sparkles } from "lucide-react";
 import { AIOrb } from "@/components/ui/AIOrb";
 import { RevealWrapper } from "@/components/ui/RevealWrapper";
+import { NeuralField } from "@/components/ui/NeuralField";
 
 const CAPABILITIES = [
   { Icon: CalendarClock, title: "Schedules your consults", desc: "Books site surveys and meetings straight into your calendar." },
@@ -19,6 +20,10 @@ export function AIAssistantPromo() {
       style={{ background: "linear-gradient(135deg, #160C2E 0%, #2A1140 45%, #3F0A1A 100%)" }}
       aria-labelledby="assistant-title"
     >
+      <div className="absolute inset-0">
+        <NeuralField color="255, 255, 255" opacity={0.14} density={30} />
+      </div>
+
       {/* Ambient glows */}
       <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full blur-3xl opacity-30 pointer-events-none" style={{ background: "#7C3AED" }} />
       <div className="absolute -bottom-32 right-0 w-96 h-96 rounded-full blur-3xl opacity-25 pointer-events-none" style={{ background: "#E8435A" }} />
