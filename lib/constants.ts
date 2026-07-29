@@ -240,7 +240,7 @@ export const TESTIMONIALS = [
   {
     quote:
       "Comptech showed us how to use AI for AI training, equipping our team with the skills and confidence to apply it in our day-to-day work.",
-    name: "Kavita Ray",
+    name: "Kavita Rai",
     title: "HL Mando",
     initials: "KR",
   },
