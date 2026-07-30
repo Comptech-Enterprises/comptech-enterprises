@@ -2,9 +2,62 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { ArrowRight, CheckCircle2, Users, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 import { Counter } from "@/components/ui/Counter";
+
+const LINE_1 = "From server room";
+const LINE_2 = "to smart business.";
+const FULL_LEN = LINE_1.length + LINE_2.length;
+
+/** Types the headline out character-by-character with a blinking caret. */
+function TypewriterHeadline() {
+  const reduce =
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const [count, setCount] = useState(reduce ? FULL_LEN : 0);
+
+  useEffect(() => {
+    if (reduce || count >= FULL_LEN) return;
+    const t = setTimeout(() => setCount((c) => c + 1), count < LINE_1.length ? 65 : 55);
+    return () => clearTimeout(t);
+  }, [count, reduce]);
+
+  const shown1 = LINE_1.slice(0, count);
+  const shown2 = count > LINE_1.length ? LINE_2.slice(0, count - LINE_1.length) : "";
+  const done = count >= FULL_LEN;
+  const caretOnLine1 = count <= LINE_1.length;
+
+  return (
+    <h1
+      className="font-display font-extrabold text-white leading-[1.08] tracking-tight mb-6"
+      style={{ fontSize: "clamp(2.4rem, 5vw, 4rem)" }}
+      aria-label={`${LINE_1} ${LINE_2}`}
+    >
+      <span aria-hidden="true">
+        <span>
+          {shown1}
+          {caretOnLine1 && !done && <Caret />}
+        </span>
+        <br />
+        <span style={{ color: "#FFCDD5" }}>
+          {shown2}
+          {!caretOnLine1 && <Caret />}
+        </span>
+      </span>
+    </h1>
+  );
+}
+
+function Caret() {
+  return (
+    <span
+      className="inline-block w-[3px] -mb-1 align-baseline animate-caret-blink"
+      style={{ height: "0.95em", background: "#FFCDD5", marginLeft: "2px" }}
+    />
+  );
+}
 
 const TRUST_ITEMS = [
   { Icon: CheckCircle2, label: "AI agents built around your workflows" },
@@ -71,16 +124,10 @@ export function Hero() {
             </span>
           </motion.div>
 
-          {/* Headline */}
-          <motion.h1
-            variants={itemVariants}
-            className="font-display font-extrabold text-white leading-[1.08] tracking-tight mb-6"
-            style={{ fontSize: "clamp(2.4rem, 5vw, 4rem)" }}
-          >
-            From server room
-            <br />
-            <span style={{ color: "#FFCDD5" }}>to smart business.</span>
-          </motion.h1>
+          {/* Headline — typewriter */}
+          <motion.div variants={itemVariants}>
+            <TypewriterHeadline />
+          </motion.div>
 
           {/* Subtitle */}
           <motion.p variants={itemVariants} className="text-lg text-white/90 max-w-lg leading-relaxed mb-9">
