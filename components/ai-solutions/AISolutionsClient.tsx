@@ -242,74 +242,66 @@ export function AISolutionsClient() {
         </section>
 
         {/* ── Offerings: horizontal timeline ── */}
-        <section className="pb-16 lg:pb-20 bg-white" aria-label="AI offerings timeline">
+        <section className="pt-10 lg:pt-14 pb-16 lg:pb-20 bg-white" aria-label="AI offerings timeline">
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
             <div className="relative grid lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
-              {/* Connecting line, spans between the 3 circle centers on large screens */}
-              <div className="hidden lg:block absolute top-7 left-[16.666%] right-[16.666%] h-px bg-gray-200" aria-hidden="true" />
-
               {AI_OFFERINGS.map((off, idx) => {
                 const Icon = off.icon;
                 const isTraining = off.title === "AI Training & Workshops";
-                const shownPoints = off.points.slice(0, 4);
+                const shownPoints = off.points.slice(0, 3);
                 return (
                   <motion.div
                     key={off.title}
-                    className="relative flex flex-col items-start rounded-3xl border border-gray-100 bg-white shadow-sm p-6 sm:p-8 lg:p-0 lg:rounded-none lg:border-0 lg:shadow-none lg:bg-transparent"
+                    className="group relative flex flex-col items-start rounded-3xl border border-gray-100 bg-white shadow-sm p-5 sm:p-6 lg:p-6 transition-shadow duration-300 hover:shadow-xl hover:border-blue-200"
                     initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                    whileHover={{ y: -6 }}
                   >
-                    {/* Numbered stop */}
+                    {/* Icon tile — pulses a ring on hover */}
                     <motion.div
-                      className="relative z-10 flex-shrink-0 w-14 h-14 rounded-full bg-blue-700 text-white flex items-center justify-center font-display font-extrabold border-4 border-white shadow-md mb-5"
+                      className="relative z-10 flex-shrink-0 w-12 h-12 rounded-2xl bg-blue-700 text-white flex items-center justify-center shadow-md mb-4"
                       initial={{ opacity: 0, scale: 0.6 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true, amount: 0.6 }}
                       transition={{ type: "spring", stiffness: 260, damping: 20, delay: idx * 0.1 }}
+                      whileHover={{ scale: 1.08, rotate: 6 }}
                     >
-                      {String(idx + 1).padStart(2, "0")}
+                      <span
+                        className="absolute inset-0 rounded-2xl bg-blue-700/40 opacity-0 group-hover:opacity-100 group-hover:animate-ping"
+                        aria-hidden="true"
+                      />
+                      <Icon size={22} className="relative" />
                     </motion.div>
 
-                    <div className="flex items-center gap-3 mb-2">
-                      <Icon size={20} className="text-blue-700" />
+                    <div className="mb-2">
                       <span className="text-xs font-bold text-blue-700 bg-blue-50 border border-blue-100 px-3 py-1 rounded-full uppercase tracking-widest">
                         {off.badge}
                       </span>
                     </div>
-                    <h3 className="font-display font-extrabold text-2xl text-gray-900 mb-2">
+                    <h3 className="font-display font-extrabold text-xl lg:text-2xl text-gray-900 mb-1.5">
                       {off.title}
                     </h3>
-                    <p className="text-sm text-gray-500 leading-relaxed mb-4">{off.desc}</p>
+                    <p className="text-sm text-gray-500 leading-relaxed mb-3 line-clamp-3">{off.desc}</p>
 
-                    {off.stats && (
-                      <div className="flex w-full gap-3 mb-5">
-                        {off.stats.map((s) => (
-                          <div
-                            key={s.label}
-                            className="flex-1 rounded-xl bg-blue-50/70 border border-blue-100 px-4 py-3"
-                          >
-                            <p className="font-display font-extrabold text-2xl text-blue-700 leading-none mb-1.5">
-                              {s.value}
-                            </p>
-                            <p className="text-[11px] text-gray-500 leading-tight">{s.label}</p>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-
-                    <div className="flex flex-col gap-2.5 mb-5">
+                    <motion.div
+                      className="flex flex-col gap-2 mb-4"
+                      variants={containerVariants}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true, amount: 0.3 }}
+                    >
                       {shownPoints.map((p) => (
-                        <div key={p} className="flex items-start gap-2.5">
+                        <motion.div key={p} variants={itemVariants} className="flex items-start gap-2.5">
                           <CheckCircle2 size={16} className="text-blue-700 flex-shrink-0 mt-0.5" />
                           <span className="text-sm text-gray-600 leading-relaxed">{p}</span>
-                        </div>
+                        </motion.div>
                       ))}
                       {off.points.length > shownPoints.length && (
                         <p className="text-xs text-gray-400 pl-6">+ {off.points.length - shownPoints.length} more included</p>
                       )}
-                    </div>
+                    </motion.div>
 
                     <div className="flex flex-col sm:flex-row w-full lg:w-auto flex-wrap gap-3 mt-auto">
                       {isTraining && (
