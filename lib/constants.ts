@@ -1,7 +1,7 @@
 export const COMPANY = {
   name: "Comptech Enterprises",
   tagline: "Enterprise IT Solutions",
-  phone: "+91 8595073837",
+  phone: "+91 9811010102",
   email: "mohit@comptech.in",
   whatsapp: "918595073837",
   address: "207, DDA-1, District Center, JanakPuri, New Delhi, India",
@@ -123,9 +123,19 @@ export const STATS = [
 
 export const INDUSTRIES = [
   {
+    icon: "building",
+    title: "Real Estate",
+    desc: "Structured cabling, CCTV, and IT setups for builders and property groups.",
+  },
+  {
     icon: "heart-pulse",
     title: "Healthcare",
     desc: "Hospital networks, PACS systems, and medical IT infrastructure.",
+  },
+  {
+    icon: "megaphone",
+    title: "Marketing",
+    desc: "Creative workstations, media storage, and collaboration tools for agencies.",
   },
   {
     icon: "graduation",
@@ -133,29 +143,14 @@ export const INDUSTRIES = [
     desc: "Campuswide Wi-Fi, smart classrooms, and student device programs.",
   },
   {
-    icon: "landmark",
-    title: "Government",
-    desc: "Secure infrastructure for government offices and municipalities.",
-  },
-  {
     icon: "factory",
     title: "Manufacturing",
     desc: "OT/IT convergence, ERP servers, and plant-floor computing.",
   },
   {
-    icon: "shopping-bag",
-    title: "Retail",
-    desc: "POS systems, inventory servers, and CCTV for retail chains.",
-  },
-  {
     icon: "banknote",
     title: "Finance",
     desc: "High-availability trading and banking IT infrastructure.",
-  },
-  {
-    icon: "code-2",
-    title: "IT Services",
-    desc: "Dev workstations, collaboration tools, and cloud infrastructure.",
   },
 ];
 

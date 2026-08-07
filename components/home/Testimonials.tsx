@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Star, Quote } from "lucide-react";
 import { TESTIMONIALS } from "@/lib/constants";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { NeuralField } from "@/components/ui/NeuralField";
 
 const AVATAR_COLORS = ["#5C0F26", "#1D4ED8", "#5C0F26", "#1D4ED8", "#5C0F26", "#1D4ED8"];
 const VISIBLE = 3;
@@ -32,8 +33,11 @@ export function Testimonials() {
   }, []);
 
   return (
-    <section className="py-24 lg:py-32 bg-white" aria-labelledby="testimonials-title">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section className="relative overflow-hidden py-24 lg:py-32 bg-white" aria-labelledby="testimonials-title">
+      <div className="absolute inset-0">
+        <NeuralField color="92, 15, 38" opacity={0.18} density={34} />
+      </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
 
           {/* ── Left: heading ── */}

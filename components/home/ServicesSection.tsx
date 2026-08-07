@@ -5,6 +5,8 @@ import Link from "next/link";
 import { ArrowRight, Server, Monitor, Cpu, Database, Network, ShieldCheck, Cloud, Wrench, Laptop, Workflow, Code2, GraduationCap } from "lucide-react";
 import { SERVICES } from "@/lib/constants";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { NeuralField } from "@/components/ui/NeuralField";
+import { RevealWrapper } from "@/components/ui/RevealWrapper";
 
 const ICONS: Record<string, React.ElementType> = {
   server:   Server,
@@ -43,11 +45,14 @@ export function ServicesSection() {
   const Icon = ICONS[current.icon] ?? Server;
 
   return (
-    <section id="services" className="py-12 lg:py-32" style={{ background: "linear-gradient(180deg, #ffffff 0%, #EFF6FF 25%, #F5F7FA 60%, #FDF4F6 85%, #ffffff 100%)" }} aria-labelledby="services-title">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="services" className="relative overflow-hidden py-12 lg:py-32" style={{ background: "linear-gradient(180deg, #ffffff 0%, #EFF6FF 25%, #F5F7FA 60%, #FDF4F6 85%, #ffffff 100%)" }} aria-labelledby="services-title">
+      <div className="absolute inset-0">
+        <NeuralField color="92, 15, 38" opacity={0.22} density={38} />
+      </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
-        <div className="mb-12">
+        <RevealWrapper className="mb-12">
           <SectionLabel>What We Do</SectionLabel>
           <h2
             id="services-title"
@@ -65,10 +70,12 @@ export function ServicesSection() {
           <p className="mt-3 text-lg text-gray-500 max-w-xl leading-relaxed">
             From server room to cloud — design, supply, deployment, and maintenance.
           </p>
-        </div>
+        </RevealWrapper>
 
         {/* Interactive panel */}
-        <div className="flex flex-col lg:flex-row gap-4 rounded-3xl overflow-hidden bg-white shadow-lg border border-gray-100">
+        <RevealWrapper delay={80} className="relative flex flex-col lg:flex-row gap-4 rounded-3xl overflow-hidden bg-white shadow-lg border border-gray-100">
+          {/* Flowing gradient accent */}
+          <div className="gradient-flow-strip absolute top-0 left-0 right-0 h-1 z-20" />
 
           {/* Sidebar tabs */}
           <div className="lg:w-64 shrink-0 flex flex-row lg:flex-col overflow-x-auto lg:overflow-visible border-b lg:border-b-0 lg:border-r border-gray-100 scrollbar-hide snap-x snap-mandatory">
@@ -161,7 +168,7 @@ export function ServicesSection() {
             </div>
 
           </div>
-        </div>
+        </RevealWrapper>
 
         {/* Footer CTA */}
         <div className="mt-8 text-center">
