@@ -11,7 +11,7 @@ import { Phone, Mail, MessageCircle, MapPin, ArrowRight, Calendar, Building2 } f
 const CONTACT_METHODS = [
   { Icon: Phone, title: "Call Us", value: "+91 9811010102", sub: "Mon–Sat, 9am–7pm" },
   { Icon: Mail, title: "Email Us", value: "mohit@comptech.in", sub: "Response in 2 hrs" },
-  { Icon: MessageCircle, title: "WhatsApp", value: "+91 9811010102", sub: "Quick queries" },
+  { Icon: MessageCircle, title: "WhatsApp", value: "+91 8595073837", sub: "Quick queries" },
   { Icon: MapPin, title: "Visit Us", value: "Janakpuri, New Delhi", sub: "Schedule a visit" },
 ];
 

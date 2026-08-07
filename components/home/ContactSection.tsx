@@ -13,7 +13,7 @@ const inputClass =
 const CONTACT_METHODS = [
   { Icon: Phone,         label: "Call Us",   value: COMPANY.phone,        sub: "Mon–Sat, 9am–7pm"  },
   { Icon: Mail,          label: "Email",     value: COMPANY.email,        sub: "Response in 2 hrs" },
-  { Icon: MessageCircle, label: "WhatsApp",  value: "+91 9811010102",    sub: "Quick queries"     },
+  { Icon: MessageCircle, label: "WhatsApp",  value: "+91 8595073837",    sub: "Quick queries"     },
   { Icon: MapPin,        label: "Office",    value: COMPANY.address,      sub: "Schedule a visit"  },
 ];
 
