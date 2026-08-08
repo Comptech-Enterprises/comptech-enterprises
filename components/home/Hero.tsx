@@ -45,15 +45,20 @@ export function Hero() {
       />
 
       {/* Dark overlay for text readability */}
-      <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.6)" }} />
+      <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.5)" }} />
       <div
         className="absolute inset-0"
-        style={{ background: "linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.2) 60%, transparent 100%)" }}
+        style={{ background: "linear-gradient(to right, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.15) 60%, transparent 100%)" }}
       />
-      {/* Bottom fade to white — blends into the next section */}
+      {/* Gradient mesh blobs for glass depth */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 -left-20 w-[500px] h-[500px] rounded-full blur-3xl opacity-20" style={{ background: "#5C0F26" }} />
+        <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] rounded-full blur-3xl opacity-15" style={{ background: "#1D4ED8" }} />
+      </div>
+      {/* Bottom fade — blends into pastel mesh */}
       <div
         className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
-        style={{ background: "linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.85) 70%, #ffffff 100%)" }}
+        style={{ background: "linear-gradient(to bottom, transparent 0%, rgba(237,232,242,0.85) 70%, #ede8f2 100%)" }}
       />
 
       {/* Content */}
@@ -91,41 +96,45 @@ export function Hero() {
           <motion.div variants={itemVariants} className="flex flex-wrap gap-4 mb-10">
             <Link
               href="/contact#quote"
-              className="inline-flex items-center gap-2.5 rounded-xl px-7 py-3.5 font-semibold text-white text-sm transition-all duration-300 hover:opacity-90 hover:-translate-y-px"
-              style={{ background: "#5C0F26", boxShadow: "0 4px 18px rgba(92,15,38,0.5)" }}
+              className="inline-flex items-center gap-2.5 rounded-xl px-7 py-3.5 font-semibold text-white text-sm transition-all duration-300 hover:-translate-y-px"
+              style={{ background: "rgba(92,15,38,0.85)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", boxShadow: "0 4px 24px rgba(92,15,38,0.4), inset 0 1px 0 rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.1)" }}
             >
               Get Free Proposal <ArrowRight size={16} />
             </Link>
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 rounded-xl border border-white/30 bg-white/10 backdrop-blur-sm px-7 py-3.5 font-semibold text-white text-sm hover:bg-white/20 hover:border-white/50 transition-all duration-300"
+              className="dark-glass-panel inline-flex items-center gap-2 rounded-xl px-7 py-3.5 font-semibold text-white text-sm hover:bg-white/15 transition-all duration-300"
             >
               Our Services
             </Link>
           </motion.div>
 
-          {/* Trust list */}
-          <motion.ul variants={itemVariants} className="space-y-2.5 mb-12">
+          {/* Trust list — glass pills */}
+          <motion.ul variants={itemVariants} className="flex flex-wrap gap-2.5 mb-12">
             {TRUST_ITEMS.map(({ Icon, label }) => (
-              <li key={label} className="flex items-center gap-3 text-sm text-white">
-                <Icon size={15} className="shrink-0 text-white" />
+              <li
+                key={label}
+                className="flex items-center gap-2.5 text-sm text-white rounded-full px-4 py-2"
+                style={{ background: "rgba(255,255,255,0.08)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,0.12)" }}
+              >
+                <Icon size={14} className="shrink-0 text-white/80" />
                 {label}
               </li>
             ))}
           </motion.ul>
 
-          {/* Stats strip */}
+          {/* Stats strip — frosted glass bar */}
           <motion.div
             variants={itemVariants}
-            className="grid grid-cols-2 sm:grid-cols-4 gap-y-6 pt-8 mb-12 sm:mb-20 border-t border-white/15"
+            className="dark-glass-panel rounded-2xl grid grid-cols-2 sm:grid-cols-4 gap-y-5 p-5 sm:p-6 mb-12 sm:mb-20"
           >
             {STATS.map(({ value, label }, i) => (
               <div
                 key={label}
-                className={`text-center px-3 ${i % 2 === 1 ? "border-l border-white/15" : ""} ${i % 4 !== 0 ? "sm:border-l sm:border-white/15" : ""}`}
+                className={`text-center px-3 ${i % 2 === 1 ? "border-l border-white/10" : ""} ${i % 4 !== 0 ? "sm:border-l sm:border-white/10" : ""}`}
               >
                 <p className="font-display font-extrabold text-xl sm:text-2xl text-white leading-none mb-1">{value}</p>
-                <p className="text-[11px] text-white/80 leading-tight">{label}</p>
+                <p className="text-[11px] text-white/60 leading-tight">{label}</p>
               </div>
             ))}
           </motion.div>

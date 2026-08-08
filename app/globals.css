@@ -45,7 +45,7 @@ html {
 body {
   font-family: var(--font-inter, 'Inter', system-ui, sans-serif);
   color: var(--color-text);
-  background: #ffffff;
+  background: #f0eef5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -141,19 +141,109 @@ body {
    GLASSMORPHISM & PREMIUM GLOW CARD EFFECTS
    ================================================================ */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.04);
+  background: rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(40px) saturate(1.6);
+  -webkit-backdrop-filter: blur(40px) saturate(1.6);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 24px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.glass-panel-strong {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(48px) saturate(1.8);
+  -webkit-backdrop-filter: blur(48px) saturate(1.8);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 28px;
+  box-shadow:
+    0 12px 48px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .dark-glass-panel {
-  background: rgba(10, 12, 16, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  background: rgba(10, 12, 16, 0.45);
+  backdrop-filter: blur(40px) saturate(1.6);
+  -webkit-backdrop-filter: blur(40px) saturate(1.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.38);
+  backdrop-filter: blur(30px) saturate(1.5);
+  -webkit-backdrop-filter: blur(30px) saturate(1.5);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.55);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transform: translateY(-4px);
+}
+
+/* Gradient mesh backgrounds — vivid pastel blobs for glass depth */
+.glass-mesh-warm {
+  background:
+    radial-gradient(ellipse 70% 60% at 10% 15%, rgba(200, 160, 220, 0.35) 0%, transparent 70%),
+    radial-gradient(ellipse 55% 55% at 85% 25%, rgba(255, 200, 170, 0.30) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 50% at 50% 85%, rgba(180, 220, 200, 0.25) 0%, transparent 65%),
+    radial-gradient(ellipse 45% 45% at 30% 60%, rgba(255, 180, 200, 0.20) 0%, transparent 60%),
+    linear-gradient(160deg, #ede8f2 0%, #f0ece8 40%, #e8ede9 100%);
+}
+
+.glass-mesh-cool {
+  background:
+    radial-gradient(ellipse 65% 55% at 15% 30%, rgba(170, 200, 240, 0.35) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 80% 20%, rgba(200, 170, 230, 0.30) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 50% at 60% 80%, rgba(170, 220, 200, 0.28) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 40% at 40% 50%, rgba(255, 210, 180, 0.18) 0%, transparent 55%),
+    linear-gradient(160deg, #e8edf5 0%, #ede8f0 40%, #e8f0ec 100%);
+}
+
+.glass-mesh-rose {
+  background:
+    radial-gradient(ellipse 60% 55% at 20% 20%, rgba(240, 180, 200, 0.35) 0%, transparent 70%),
+    radial-gradient(ellipse 55% 55% at 80% 75%, rgba(170, 200, 240, 0.30) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 45% at 55% 40%, rgba(200, 220, 180, 0.22) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 35% 80%, rgba(230, 190, 220, 0.20) 0%, transparent 55%),
+    linear-gradient(160deg, #f2ece8 0%, #ede8f0 40%, #e8ede9 100%);
+}
+
+/* Full-page dreamy mesh — applied to main content wrapper */
+.glass-mesh-page {
+  background:
+    radial-gradient(ellipse 80% 50% at 5% 10%, rgba(200, 170, 230, 0.30) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 60% at 90% 15%, rgba(255, 200, 170, 0.25) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 55% at 50% 45%, rgba(170, 215, 200, 0.22) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 50% at 15% 75%, rgba(180, 210, 240, 0.25) 0%, transparent 55%),
+    radial-gradient(ellipse 65% 45% at 80% 80%, rgba(240, 190, 210, 0.22) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 40% 90%, rgba(200, 170, 230, 0.18) 0%, transparent 50%),
+    linear-gradient(170deg, #ede8f2 0%, #f0ece8 30%, #e8ede9 60%, #ede8f0 100%);
+}
+
+/* Noise texture overlay for glass depth */
+.glass-noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 1;
 }
 
 .glow-card {
@@ -213,6 +303,11 @@ body {
 @keyframes marquee-rtl {
   0%   { transform: translateX(-33.333%); }
   100% { transform: translateX(0); }
+}
+
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 /* ================================================================
@@ -340,11 +435,11 @@ body {
    ================================================================ */
 .navbar-transparent { background: transparent; }
 .navbar-solid {
-  background: rgba(255,255,255,0.97);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid #D8DDE5;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(40px) saturate(1.6);
+  -webkit-backdrop-filter: blur(40px) saturate(1.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04), inset 0 -1px 0 rgba(255, 255, 255, 0.4);
 }
 
 /* ================================================================
