@@ -6,7 +6,8 @@ import { COMPANY } from "@/lib/constants";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
 const inputClass =
-  "w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10 outline-none transition-all bg-white";
+  "w-full rounded-2xl px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500/20 outline-none transition-all"
+  + " bg-white/40 backdrop-blur-md border border-white/50 focus:border-blue-400 focus:bg-white/60";
 
 const CONTACT_METHODS = [
   { Icon: Phone,         label: "Call Us",   value: COMPANY.phone,        sub: "Mon–Sat, 9am–7pm"  },
@@ -25,8 +26,8 @@ export function ContactSection() {
   const [error, setError] = useState("");
 
   return (
-    <section id="contact" className="py-16 lg:py-20 bg-white" aria-labelledby="contact-title">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="contact" className="relative py-16 lg:py-20 overflow-hidden" aria-labelledby="contact-title">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
         <div className="mb-8">
@@ -57,7 +58,7 @@ export function ContactSection() {
             </p>
             <div className="flex flex-col gap-3">
               {CONTACT_METHODS.map(({ Icon, label, value, sub }) => (
-                <div key={label} className="flex items-center gap-4 p-4 rounded-2xl border border-gray-100 bg-gray-50">
+                <div key={label} className="glass-card flex items-center gap-4 p-4 rounded-2xl">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "#FDF4F6" }}>
                     <Icon size={17} style={{ color: "#5C0F26" }} />
                   </div>
@@ -95,7 +96,7 @@ export function ContactSection() {
 
           {/* Right form */}
           {submitted ? (
-            <div className="flex flex-col items-center justify-center text-center py-20 rounded-3xl border border-gray-100 bg-gray-50">
+            <div className="flex flex-col items-center justify-center text-center py-20 rounded-3xl glass-panel-strong">
               <div className="w-16 h-16 rounded-full flex items-center justify-center mb-5" style={{ background: "#FDF4F6" }}>
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" strokeWidth="2.5">
                   <polyline points="20 6 9 17 4 12" />
@@ -106,7 +107,7 @@ export function ContactSection() {
             </div>
           ) : (
             <form
-              className="bg-gray-50 rounded-3xl p-5 sm:p-8 border border-gray-100"
+              className="glass-panel-strong rounded-3xl p-5 sm:p-8"
               onSubmit={async (e) => {
                 e.preventDefault();
                 setSubmitting(true);

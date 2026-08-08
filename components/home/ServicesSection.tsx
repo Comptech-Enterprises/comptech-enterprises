@@ -43,8 +43,8 @@ export function ServicesSection() {
   const Icon = ICONS[current.icon] ?? Server;
 
   return (
-    <section id="services" className="py-12 lg:py-32" style={{ background: "linear-gradient(180deg, #ffffff 0%, #EFF6FF 25%, #F5F7FA 60%, #FDF4F6 85%, #ffffff 100%)" }} aria-labelledby="services-title">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="services" className="relative py-12 lg:py-32 overflow-hidden" aria-labelledby="services-title">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
         <div className="mb-12">
@@ -67,8 +67,8 @@ export function ServicesSection() {
           </p>
         </div>
 
-        {/* Interactive panel */}
-        <div className="flex flex-col lg:flex-row gap-4 rounded-3xl overflow-hidden bg-white shadow-lg border border-gray-100">
+        {/* Interactive panel — glass */}
+        <div className="glass-panel-strong flex flex-col lg:flex-row gap-4 rounded-3xl overflow-hidden">
 
           {/* Sidebar tabs */}
           <div className="lg:w-64 shrink-0 flex flex-row lg:flex-col overflow-x-auto lg:overflow-visible border-b lg:border-b-0 lg:border-r border-gray-100 scrollbar-hide snap-x snap-mandatory">
@@ -80,8 +80,8 @@ export function ServicesSection() {
                 <button
                   key={service.id}
                   onClick={() => setActive(service.id)}
-                  className="flex items-center gap-2.5 lg:gap-3 px-4 lg:px-5 py-3 lg:py-4 text-left transition-all duration-150 shrink-0 lg:shrink relative snap-start"
-                  style={{ background: isActive ? (smeta?.gradient ?? "#EFF6FF") : "transparent" }}
+                  className="flex items-center gap-2.5 lg:gap-3 px-4 lg:px-5 py-3 lg:py-4 text-left transition-all duration-300 shrink-0 lg:shrink relative snap-start"
+                  style={{ background: isActive ? "rgba(255,255,255,0.5)" : "transparent", backdropFilter: isActive ? "blur(8px)" : "none" }}
                 >
                   {/* Active indicator — underline on mobile, right bar on desktop */}
                   {isActive && (
@@ -150,8 +150,8 @@ export function ServicesSection() {
                   {meta.vendors.map((v) => (
                     <span
                       key={v}
-                      className="px-3 py-1 rounded-lg text-xs font-semibold border"
-                      style={{ color: meta.accent, borderColor: `${meta.accent}30`, background: meta.bg }}
+                      className="px-3 py-1 rounded-lg text-xs font-semibold"
+                      style={{ color: meta.accent, background: "rgba(255,255,255,0.5)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.4)" }}
                     >
                       {v}
                     </span>
@@ -167,7 +167,7 @@ export function ServicesSection() {
         <div className="mt-8 text-center">
           <Link
             href="/services"
-            className="inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-8 py-3.5 font-semibold text-gray-700 text-sm hover:border-gray-300 hover:bg-gray-50 transition-all duration-200 group"
+            className="glass-card inline-flex items-center gap-2 px-8 py-3.5 font-semibold text-gray-700 text-sm transition-all duration-200 group"
           >
             View All Services
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-200" />

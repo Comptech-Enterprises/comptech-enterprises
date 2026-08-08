@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 const PARTNERS: { name: string; cert: string; logo: string | null; domain?: string }[] = [
   { name: "Apple",      cert: "Authorized Reseller", logo: "/logo's/apple.webp"       },
@@ -24,6 +24,22 @@ const PARTNERS: { name: string; cert: string; logo: string | null; domain?: stri
   { name: "Honeywell",  cert: "Authorized Reseller", logo: "/logo's/honeywell.webp"   },
   { name: "Brother",    cert: "Authorized Reseller", logo: "/logo's/brother.webp"     },
 ];
+
+const MID = Math.ceil(PARTNERS.length / 2);
+const ROW1 = PARTNERS.slice(0, MID);
+const ROW2 = PARTNERS.slice(MID);
+
+const CLIENTS = [
+  "Fabstract Clothing", "St. Cecilia School", "Active Motors", "LBSIM",
+  "Apex Pharma", "Greenfield Hospitals", "Nova Retail", "Pinnacle Finance",
+  "TrueNorth Logistics", "Skyline Builders", "Evergreen Foods", "Metro Dental",
+  "Sapphire Hotels", "Quantum Labs", "Prism Media", "Heritage Academy",
+  "Sunrise Textiles", "Orbit Telecom", "Vertex Engineering", "ClearPath Insurance",
+];
+
+const CLIENT_MID = Math.ceil(CLIENTS.length / 2);
+const CLIENT_ROW1 = CLIENTS.slice(0, CLIENT_MID);
+const CLIENT_ROW2 = CLIENTS.slice(CLIENT_MID);
 
 const STATS = [
   { value: "20+",  label: "OEM Partners",       sub: "Tier-1 global brands"        },
@@ -60,61 +76,9 @@ function PartnerLogo({ name, logo, domain }: { name: string; logo: string | null
 }
 
 export function PartnersStrip() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-
-    const mql = window.matchMedia("(max-width: 639px)"); // below Tailwind `sm`
-    let raf = 0;
-    let paused = false;
-
-    const step = () => {
-      if (!paused) {
-        // loop back to start once the first (original) set is scrolled past
-        if (el.scrollLeft >= el.scrollWidth / 2) {
-          el.scrollLeft -= el.scrollWidth / 2;
-        }
-        el.scrollLeft += 0.5;
-      }
-      raf = requestAnimationFrame(step);
-    };
-
-    const pause = () => { paused = true; };
-    const resume = () => { paused = false; };
-
-    const start = () => {
-      cancelAnimationFrame(raf);
-      if (mql.matches) {
-        el.addEventListener("pointerdown", pause);
-        el.addEventListener("pointerup", resume);
-        el.addEventListener("pointerleave", resume);
-        raf = requestAnimationFrame(step);
-      } else {
-        el.removeEventListener("pointerdown", pause);
-        el.removeEventListener("pointerup", resume);
-        el.removeEventListener("pointerleave", resume);
-        el.scrollLeft = 0;
-      }
-    };
-
-    start();
-    mql.addEventListener("change", start);
-
-    return () => {
-      cancelAnimationFrame(raf);
-      mql.removeEventListener("change", start);
-      el.removeEventListener("pointerdown", pause);
-      el.removeEventListener("pointerup", resume);
-      el.removeEventListener("pointerleave", resume);
-    };
-  }, []);
-
   return (
     <section
-      className="pt-16 pb-10 lg:py-20"
-      style={{ background: "linear-gradient(180deg, #ffffff 0%, #f8f9ff 50%, #f5f0f2 85%, #ffffff 100%)" }}
+      className="relative pt-16 pb-10 lg:py-20 overflow-hidden"
       aria-label="Technology partners"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -140,7 +104,7 @@ export function PartnersStrip() {
 
           <div className="flex-1 grid grid-cols-2 gap-4">
             {STATS.map(({ value, label, sub }) => (
-              <div key={label} className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
+              <div key={label} className="glass-card rounded-2xl p-5">
                 <p className="font-display font-extrabold text-2xl leading-none mb-1" style={{ color: "#5C0F26" }}>{value}</p>
                 <p className="text-sm font-semibold text-gray-900 leading-tight">{label}</p>
                 <p className="text-[11px] text-gray-400 mt-1">{sub}</p>
@@ -149,35 +113,68 @@ export function PartnersStrip() {
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="flex items-center gap-4 mb-10">
+        {/* Clients ticker */}
+        <div className="flex items-center gap-4 mb-6">
           <div className="flex-1 h-px bg-gray-200" />
           <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 whitespace-nowrap">
-            Trusted Technology Partners
+            Brands That Trust Us
           </p>
           <div className="flex-1 h-px bg-gray-200" />
         </div>
 
-        {/* Partner cards — auto-scrolling carousel on mobile, grid on larger screens */}
-        <div
-          ref={scrollRef}
-          className="flex sm:grid sm:grid-cols-4 md:grid-cols-7 gap-3 overflow-x-auto sm:overflow-visible -mx-6 px-6 sm:mx-0 sm:px-0 pb-4 sm:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-        >
-          {PARTNERS.concat(PARTNERS).map(({ name, cert, logo, domain }, i) => (
+        <div className="flex flex-col gap-2 overflow-hidden mb-16">
+          {[CLIENT_ROW1, CLIENT_ROW2].map((row, ri) => (
             <div
-              key={`${name}-${i}`}
-              className={`group shrink-0 basis-[38%] sm:basis-auto rounded-2xl border border-gray-100 bg-white p-4 flex flex-col items-center text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 ${i >= PARTNERS.length ? "sm:hidden" : ""}`}
+              key={`cl-${ri}`}
+              className="flex w-max gap-2"
+              style={{ animation: `ticker-scroll ${row.length * 3}s linear infinite`, animationDirection: ri === 1 ? "reverse" : "normal" }}
             >
-              <div className="mb-3">
-                <PartnerLogo name={name} logo={logo} domain={domain} />
-              </div>
-              <p className="font-display font-bold text-sm text-gray-900 leading-none mb-1.5">{name}</p>
-              <p className="text-[10px] text-gray-400 leading-tight">{cert}</p>
+              {row.concat(row).map((name, i) => (
+                <span
+                  key={`${name}-${ri}-${i}`}
+                  className="shrink-0 glass-card rounded-full px-8 py-4 text-base font-semibold text-gray-700 whitespace-nowrap"
+                >
+                  {name}
+                </span>
+              ))}
             </div>
           ))}
         </div>
 
       </div>
     </section>
+  );
+}
+
+export function ResellerTicker() {
+  return (
+    <div className="max-w-7xl mx-auto px-6 lg:px-8 py-10 overflow-hidden">
+      <div className="flex items-center gap-4 mb-8">
+        <div className="flex-1 h-px bg-gray-200" />
+        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 whitespace-nowrap">
+          Authorized Reseller
+        </p>
+        <div className="flex-1 h-px bg-gray-200" />
+      </div>
+
+      <div className="flex flex-col gap-3 overflow-hidden">
+        {[ROW1, ROW2].map((row, ri) => (
+          <div
+            key={ri}
+            className="flex w-max gap-3"
+            style={{ animation: `ticker-scroll ${row.length * 2.5}s linear infinite`, animationDirection: ri === 1 ? "reverse" : "normal" }}
+          >
+            {row.concat(row).map(({ name, logo, domain }, i) => (
+              <div
+                key={`${name}-${ri}-${i}`}
+                className="group shrink-0 glass-card rounded-2xl px-6 py-4 flex items-center justify-center"
+              >
+                <PartnerLogo name={name} logo={logo} domain={domain} />
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }

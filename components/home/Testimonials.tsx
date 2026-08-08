@@ -32,8 +32,8 @@ export function Testimonials() {
   }, []);
 
   return (
-    <section className="py-24 lg:py-32 bg-white" aria-labelledby="testimonials-title">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section className="relative py-24 lg:py-32 overflow-hidden" aria-labelledby="testimonials-title">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
 
           {/* ── Left: heading ── */}
@@ -74,7 +74,7 @@ export function Testimonials() {
                 { value: "30+",  label: "Years"   },
                 { value: "50+",  label: "Engineers"},
               ].map(({ value, label }) => (
-                <div key={label} className="rounded-2xl border border-gray-100 bg-gray-50 p-4 text-center">
+                <div key={label} className="glass-card rounded-2xl p-4 text-center">
                   <p className="font-display font-extrabold text-xl text-gray-900 leading-none mb-1"
                     style={{ color: "#5C0F26" }}>{value}</p>
                   <p className="text-[11px] font-semibold uppercase tracking-widest text-gray-400">{label}</p>
@@ -87,7 +87,7 @@ export function Testimonials() {
               <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">Trusted by</p>
               <div className="flex flex-wrap gap-2">
                 {["Fabstract Clothing", "St. Cecilia School", "Active Motors", "LBSIM"].map((c) => (
-                  <span key={c} className="px-3 py-1 rounded-full border border-gray-200 bg-white text-xs font-medium text-gray-600">
+                  <span key={c} className="px-3 py-1 rounded-full text-xs font-medium text-gray-600" style={{ background: "rgba(255,255,255,0.5)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.4)" }}>
                     {c}
                   </span>
                 ))}
@@ -108,7 +108,7 @@ export function Testimonials() {
                     animate={{ y: 0, opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.96, transition: { duration: 0.2 } }}
                     transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                    className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm hover:shadow-md transition-shadow duration-300"
+                    className="glass-card rounded-2xl p-6"
                   >
                     {/* Top row */}
                     <div className="flex items-start justify-between mb-4">
