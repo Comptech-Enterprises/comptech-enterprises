@@ -4,11 +4,10 @@ import { useState } from "react";
 import { ArrowRight, Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 import { COMPANY } from "@/lib/constants";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { NeuralField } from "@/components/ui/NeuralField";
-import { RevealWrapper } from "@/components/ui/RevealWrapper";
 
 const inputClass =
-  "w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10 outline-none transition-all bg-white";
+  "w-full rounded-2xl px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500/20 outline-none transition-all"
+  + " bg-white/40 backdrop-blur-md border border-white/50 focus:border-blue-400 focus:bg-white/60";
 
 const CONTACT_METHODS = [
   { Icon: Phone,         label: "Call Us",   value: COMPANY.phone,        sub: "Mon–Sat, 9am–7pm"  },
@@ -27,14 +26,11 @@ export function ContactSection() {
   const [error, setError] = useState("");
 
   return (
-    <section id="contact" className="relative overflow-hidden py-16 lg:py-20 bg-white" aria-labelledby="contact-title">
-      <div className="absolute inset-0">
-        <NeuralField color="92, 15, 38" opacity={0.16} density={30} />
-      </div>
+    <section id="contact" className="relative py-16 lg:py-20 overflow-hidden" aria-labelledby="contact-title">
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
-        <RevealWrapper className="mb-8">
+        <div className="mb-8">
           <SectionLabel>Contact Us</SectionLabel>
           <h2
             id="contact-title"
@@ -49,20 +45,20 @@ export function ContactSection() {
           <p className="mt-3 text-base text-gray-500 max-w-xl leading-relaxed">
             Share your requirements and our certified engineers will prepare a detailed, no-obligation proposal within 24 hours.
           </p>
-        </RevealWrapper>
+        </div>
 
         {/* Form */}
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
 
           {/* Left — info + contact methods */}
-          <RevealWrapper direction="left">
+          <div>
             <h3 className="font-display font-extrabold text-2xl text-gray-900 mb-3">Request a Custom IT Proposal</h3>
             <p className="text-gray-500 text-base leading-relaxed mb-6 lg:mb-8">
               Tell us what you need and we'll get back to you within 2 business hours.
             </p>
             <div className="flex flex-col gap-3">
               {CONTACT_METHODS.map(({ Icon, label, value, sub }) => (
-                <div key={label} className="card-lift flex items-center gap-4 p-4 rounded-2xl border border-gray-100 bg-white">
+                <div key={label} className="glass-card flex items-center gap-4 p-4 rounded-2xl">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "#FDF4F6" }}>
                     <Icon size={17} style={{ color: "#5C0F26" }} />
                   </div>
@@ -96,11 +92,11 @@ export function ContactSection() {
                 ))}
               </div>
             </div>
-          </RevealWrapper>
+          </div>
 
           {/* Right form */}
           {submitted ? (
-            <div className="flex flex-col items-center justify-center text-center py-20 rounded-3xl border border-gray-100 bg-gray-50">
+            <div className="flex flex-col items-center justify-center text-center py-20 rounded-3xl glass-panel-strong">
               <div className="w-16 h-16 rounded-full flex items-center justify-center mb-5" style={{ background: "#FDF4F6" }}>
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" strokeWidth="2.5">
                   <polyline points="20 6 9 17 4 12" />
@@ -111,7 +107,7 @@ export function ContactSection() {
             </div>
           ) : (
             <form
-              className="bg-gray-50 rounded-3xl p-5 sm:p-8 border border-gray-100"
+              className="glass-panel-strong rounded-3xl p-5 sm:p-8"
               onSubmit={async (e) => {
                 e.preventDefault();
                 setSubmitting(true);
@@ -147,7 +143,7 @@ export function ContactSection() {
               {[
                 { label: "Work Email *",    key: "email",   type: "email", placeholder: "john@company.com" },
                 { label: "Company Name *",  key: "company", type: "text",  placeholder: "Your company"      },
-                { label: "Phone Number",    key: "phone",   type: "tel",   placeholder: "+91 9811010102"   },
+                { label: "Phone Number",    key: "phone",   type: "tel",   placeholder: "+91 8595073837"   },
               ].map(({ label, key, type, placeholder }) => (
                 <div key={key} className="mb-4">
                   <label className="block text-xs font-semibold text-gray-600 mb-1.5">{label}</label>

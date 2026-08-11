@@ -5,8 +5,6 @@ import Link from "next/link";
 import { ArrowRight, Server, Monitor, Cpu, Database, Network, ShieldCheck, Cloud, Wrench, Laptop, Workflow, Code2, GraduationCap } from "lucide-react";
 import { SERVICES } from "@/lib/constants";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { NeuralField } from "@/components/ui/NeuralField";
-import { RevealWrapper } from "@/components/ui/RevealWrapper";
 
 const ICONS: Record<string, React.ElementType> = {
   server:   Server,
@@ -45,14 +43,11 @@ export function ServicesSection() {
   const Icon = ICONS[current.icon] ?? Server;
 
   return (
-    <section id="services" className="relative overflow-hidden py-12 lg:py-32" style={{ background: "linear-gradient(180deg, #ffffff 0%, #EFF6FF 25%, #F5F7FA 60%, #FDF4F6 85%, #ffffff 100%)" }} aria-labelledby="services-title">
-      <div className="absolute inset-0">
-        <NeuralField color="92, 15, 38" opacity={0.22} density={38} />
-      </div>
+    <section id="services" className="relative py-12 lg:py-32 overflow-hidden" aria-labelledby="services-title">
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
-        <RevealWrapper className="mb-12">
+        <div className="mb-12">
           <SectionLabel>What We Do</SectionLabel>
           <h2
             id="services-title"
@@ -70,12 +65,10 @@ export function ServicesSection() {
           <p className="mt-3 text-lg text-gray-500 max-w-xl leading-relaxed">
             From server room to cloud — design, supply, deployment, and maintenance.
           </p>
-        </RevealWrapper>
+        </div>
 
-        {/* Interactive panel */}
-        <RevealWrapper delay={80} className="relative flex flex-col lg:flex-row gap-4 rounded-3xl overflow-hidden bg-white shadow-lg border border-gray-100">
-          {/* Flowing gradient accent */}
-          <div className="gradient-flow-strip absolute top-0 left-0 right-0 h-1 z-20" />
+        {/* Interactive panel — glass */}
+        <div className="glass-panel-strong flex flex-col lg:flex-row gap-4 rounded-3xl overflow-hidden">
 
           {/* Sidebar tabs */}
           <div className="lg:w-64 shrink-0 flex flex-row lg:flex-col overflow-x-auto lg:overflow-visible border-b lg:border-b-0 lg:border-r border-gray-100 scrollbar-hide snap-x snap-mandatory">
@@ -87,8 +80,8 @@ export function ServicesSection() {
                 <button
                   key={service.id}
                   onClick={() => setActive(service.id)}
-                  className="flex items-center gap-2.5 lg:gap-3 px-4 lg:px-5 py-3 lg:py-4 text-left transition-all duration-150 shrink-0 lg:shrink relative snap-start"
-                  style={{ background: isActive ? (smeta?.gradient ?? "#EFF6FF") : "transparent" }}
+                  className="flex items-center gap-2.5 lg:gap-3 px-4 lg:px-5 py-3 lg:py-4 text-left transition-all duration-300 shrink-0 lg:shrink relative snap-start"
+                  style={{ background: isActive ? "rgba(255,255,255,0.5)" : "transparent", backdropFilter: isActive ? "blur(8px)" : "none" }}
                 >
                   {/* Active indicator — underline on mobile, right bar on desktop */}
                   {isActive && (
@@ -157,8 +150,8 @@ export function ServicesSection() {
                   {meta.vendors.map((v) => (
                     <span
                       key={v}
-                      className="px-3 py-1 rounded-lg text-xs font-semibold border"
-                      style={{ color: meta.accent, borderColor: `${meta.accent}30`, background: meta.bg }}
+                      className="px-3 py-1 rounded-lg text-xs font-semibold"
+                      style={{ color: meta.accent, background: "rgba(255,255,255,0.5)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.4)" }}
                     >
                       {v}
                     </span>
@@ -168,13 +161,13 @@ export function ServicesSection() {
             </div>
 
           </div>
-        </RevealWrapper>
+        </div>
 
         {/* Footer CTA */}
         <div className="mt-8 text-center">
           <Link
             href="/services"
-            className="inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-8 py-3.5 font-semibold text-gray-700 text-sm hover:border-gray-300 hover:bg-gray-50 transition-all duration-200 group"
+            className="glass-card inline-flex items-center gap-2 px-8 py-3.5 font-semibold text-gray-700 text-sm transition-all duration-200 group"
           >
             View All Services
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-200" />
