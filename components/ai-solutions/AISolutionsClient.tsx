@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Bot, Brain, GraduationCap, Shield, Workflow, Sparkles, CheckCircle2, ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { AIAssistantPromo } from "@/components/ai-solutions/AIAssistantPromo";
 
 const AI_OFFERINGS = [
   {
@@ -141,6 +142,8 @@ export function AISolutionsClient() {
         <AIOrbs />
         <div className="absolute inset-0 bg-grid-purple opacity-40" />
       </PageHero>
+
+      <AIAssistantPromo />
 
       <main>
         {/* ── Overview Section ── */}

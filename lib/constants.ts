@@ -120,39 +120,6 @@ export const STATS = [
   { value: "4.8", suffix: "/5", label: "Client Satisfaction", desc: "Avg. CSAT score" },
 ];
 
-export const INDUSTRIES = [
-  {
-    icon: "building",
-    title: "Real Estate",
-    desc: "Structured cabling, CCTV, and IT setups for builders and property groups.",
-  },
-  {
-    icon: "heart-pulse",
-    title: "Healthcare",
-    desc: "Hospital networks, PACS systems, and medical IT infrastructure.",
-  },
-  {
-    icon: "megaphone",
-    title: "Marketing",
-    desc: "Creative workstations, media storage, and collaboration tools for agencies.",
-  },
-  {
-    icon: "graduation",
-    title: "Education",
-    desc: "Campuswide Wi-Fi, smart classrooms, and student device programs.",
-  },
-  {
-    icon: "factory",
-    title: "Manufacturing",
-    desc: "OT/IT convergence, ERP servers, and plant-floor computing.",
-  },
-  {
-    icon: "banknote",
-    title: "Finance",
-    desc: "High-availability trading and banking IT infrastructure.",
-  },
-];
-
 export const CASE_STUDIES = [
   {
     tag: "Healthcare",

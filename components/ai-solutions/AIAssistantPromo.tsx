@@ -122,12 +122,12 @@ export function AIAssistantPromo() {
           >
             Book a consult <ArrowRight size={16} />
           </Link>
-          <Link
-            href="/ai-solutions"
+          <a
+            href="#offerings"
             className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-7 py-3.5 font-semibold text-sm text-white hover:bg-white/10 hover:border-white/40 transition-all duration-300"
           >
-            See AI solutions
-          </Link>
+            Explore solutions
+          </a>
         </div>
       </div>
     </section>
