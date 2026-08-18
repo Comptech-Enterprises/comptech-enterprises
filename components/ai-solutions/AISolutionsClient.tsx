@@ -143,8 +143,6 @@ export function AISolutionsClient() {
         <div className="absolute inset-0 bg-grid-purple opacity-40" />
       </PageHero>
 
-      <AIAssistantPromo />
-
       <main>
         {/* ── Overview Section ── */}
         <section id="overview" className="py-16 lg:py-20 bg-white relative overflow-hidden" aria-labelledby="overview-title">
@@ -217,6 +215,8 @@ export function AISolutionsClient() {
             </div>
           </div>
         </section>
+
+        <AIAssistantPromo />
 
         {/* ── Offerings Intro ── */}
         <section id="offerings" className="pt-16 pb-2 bg-white" aria-labelledby="offerings-title">

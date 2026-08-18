@@ -29,6 +29,36 @@ export const PARTNERS = [
   { name: "Epson", color: "#009AC7" },
 ];
 
+export const HOME_PILLARS = [
+  {
+    id: "ai",
+    icon: "cpu",
+    title: "AI",
+    desc: "GPUs, AI engineering, and ready-to-use tools — plus lead management and social media agents that put AI to work across your business.",
+    href: "/ai-solutions",
+    highlights: ["GPUs & AI engineering", "Custom agents", "Ready-to-use AI tools"],
+    vendors: ["NVIDIA", "Intel"],
+  },
+  {
+    id: "ai-training",
+    icon: "graduation",
+    title: "AI Training",
+    desc: "Hands-on workshops that help teams and students understand AI tools and apply them confidently in everyday work.",
+    href: "/ai-solutions#training",
+    highlights: ["Hands-on workshops", "Team upskilling", "Custom curriculum"],
+    vendors: [],
+  },
+  {
+    id: "hardware",
+    icon: "server",
+    title: "Hardware",
+    desc: "Servers, storage, PCs, networking, and CCTV — designed, supplied, and deployed for offices, campuses, and data centres.",
+    href: "/services",
+    highlights: ["Servers & storage", "Desktops & workstations", "Networking & CCTV"],
+    vendors: ["Dell", "HP", "Lenovo"],
+  },
+];
+
 export const SERVICES = [
   {
     id: "ai",
