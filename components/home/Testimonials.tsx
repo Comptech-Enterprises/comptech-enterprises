@@ -82,17 +82,6 @@ export function Testimonials() {
               ))}
             </div>
 
-            {/* Notable clients */}
-            <div className="mt-8">
-              <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">Trusted by</p>
-              <div className="flex flex-wrap gap-2">
-                {["Fabstract Clothing", "St. Cecilia School", "Active Motors", "LBSIM"].map((c) => (
-                  <span key={c} className="px-3 py-1 rounded-full text-xs font-medium text-gray-600" style={{ background: "rgba(255,255,255,0.5)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.4)" }}>
-                    {c}
-                  </span>
-                ))}
-              </div>
-            </div>
           </div>
 
           {/* ── Right: dropping cards ── */}

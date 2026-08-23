@@ -1,0 +1,42 @@
+# Comptech Enterprises
+
+Enterprise IT infrastructure and AI implementation partner based in New Delhi, India. Specializing in helping **MSMEs** and **Corporates** adopt, deploy, and scale AI across their daily business operations.
+
+## Contact & Location
+- **Address:** 207, DDA-1, District Center, JanakPuri, New Delhi, India
+- **Phone:** +91 8595073837
+- **Email:** mohit@comptech.in
+- **Website:** https://comptech-enterprises.com
+- **Founded:** 1996
+
+## AI Adoption Programs (MSMEs & Corporates)
+
+### 1. MSME AI Adoption (Small & Medium Businesses)
+- **Rapid AI Onboarding:** Cost-effective, plug-and-play AI agents for automated lead qualification, customer support, and sales outreach.
+- **Workflow & Document Automation:** Automated invoice scanning, data extraction, accounting reconciliation, and repetitive back-office task elimination.
+- **Practical Team Upskilling:** Hands-on workshops to train non-technical staff in everyday generative AI and prompt engineering to boost workplace productivity.
+
+### 2. Corporate & Enterprise AI Integration
+- **Private LLMs & Enterprise RAG:** Secure internal knowledge bases allowing staff to query enterprise documents without exposing sensitive data to public models.
+- **Cross-Department Multi-Agent Systems:** Autonomous agent pipelines connecting CRM, ERP, and operational databases for end-to-end task execution.
+- **Executive Strategy & Workforce Bootcamps:** Leadership advisory on AI governance, ROI measurement, and tailored role-based AI training programs.
+- **AI Audits & Infrastructure:** Assessing AI readiness, data pipeline structuring, and deploying secure on-premise GPU clusters (NVIDIA & Intel powered).
+
+## Core Offerings Summary
+
+### 1. AI Services & Trainings
+- AI Agent Development (Custom business agents)
+- AI Corporate Trainings & Team Workshops
+- AI Audits, Consulting & Strategy
+- Custom RAG & Secure LLM Deployment
+- Predictive ML & Computer Vision Solutions
+
+### 2. Custom Software & Automations
+- Enterprise Web & Mobile Applications
+- ERP & CRM Integrations
+- Custom API Connections & Workflow Automations
+
+### 3. IT Hardware & AMC
+- Enterprise Servers, Storage, Networking, and CCTV
+- 24/7 Dedicated AMC Engineering Support
+- Authorized Tier-1 partner for Dell, HP, Lenovo, NVIDIA, and Intel
