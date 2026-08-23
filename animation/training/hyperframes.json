@@ -1,0 +1,26 @@
+{
+  "$schema": "https://hyperframes.dev/schema.json",
+  "name": "ai-training-story",
+  "compositions": [
+    {
+      "id": "main",
+      "name": "AI Training Story",
+      "htmlPath": "index.html",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "duration": 12,
+      "output": "../../public/training-bg.mp4"
+    },
+    {
+      "id": "mobile",
+      "name": "AI Training Mobile",
+      "htmlPath": "mobile/index.html",
+      "width": 1080,
+      "height": 1920,
+      "fps": 30,
+      "duration": 12,
+      "output": "../../public/training-bg-mobile.mp4"
+    }
+  ]
+}

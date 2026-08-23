@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;850&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: 'Syne';
+        src: local('Syne'), local('Syne-Bold');
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #ffffff;
+        font-family: 'Syne', sans-serif;
+      }
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .text-container {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        padding: 0 60px;
+      }
+      .slide-text {
+        font-size: 84px;
+        font-weight: 900;
+        color: #0c0a0f;
+        letter-spacing: -2px;
+        line-height: 1.1;
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      .final-title {
+        font-size: 92px;
+        font-weight: 900;
+        color: #0c0a0f;
+        letter-spacing: -3px;
+        line-height: 1.05;
+        margin: 0;
+      }
+      .final-subtitle {
+        font-size: 40px;
+        font-weight: 700;
+        color: #5C0F26;
+        margin-top: 24px;
+        letter-spacing: -1px;
+        line-height: 1.2;
+      }
+      #neural-canvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        opacity: 0;
+      }
+      #svg-container {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="mobile"
+      data-start="0"
+      data-duration="12"
+      data-width="1080"
+      data-height="1920"
+    >
+      <!-- Text 1 -->
+      <div id="step-1" class="text-container">
+        <h1 id="text-1" class="slide-text">The World is<br>Adopting AI.</h1>
+      </div>
+
+      <!-- Text 2 -->
+      <div id="step-2" class="text-container">
+        <h1 id="text-2" class="slide-text" style="color: #5C0F26;">Are you?</h1>
+      </div>
+
+      <!-- Beautiful Animation: Canvas + SVG -->
+      <canvas id="neural-canvas" width="1080" height="1920"></canvas>
+      <svg id="svg-container" data-layout-allow-overflow viewBox="0 0 1080 1920" fill="none">
+        <!-- Connecting network paths adapted for mobile portrait -->
+        <path id="network-path-1" d="M 540,-100 C 150,450 950,850 540,1260 C 180,1570 930,1770 540,2020" stroke="#5C0F26" stroke-width="7" stroke-linecap="round" />
+        <path id="network-path-2" d="M 440,-100 C 850,550 50,950 440,1350 C 830,1650 150,1850 440,2020" stroke="#8B5CF6" stroke-width="5" stroke-linecap="round" />
+        <path id="network-path-3" d="M 640,-100 C 350,350 950,750 640,1100 C 330,1450 50,1750 640,2020" stroke="#1D4ED8" stroke-width="4" stroke-linecap="round" />
+      </svg>
+
+      <!-- Final Text -->
+      <div id="step-3" class="text-container" style="opacity: 0;">
+        <h1 id="final-title" class="final-title">Book an<br>AI Training</h1>
+        <p id="final-subtitle" class="final-subtitle">Empowering Teams with Enterprise AI Skills</p>
+      </div>
+    </div>
+
+    <script>
+      const canvas = document.getElementById("neural-canvas");
+      const ctx = canvas.getContext("2d");
+
+      let seed = 9988;
+      function random() {
+        let x = Math.sin(seed++) * 10000;
+        return x - Math.floor(x);
+      }
+
+      const numNodes = 70;
+      const nodes = [];
+      const colors = ["92, 15, 38", "139, 92, 246", "29, 78, 216", "75, 85, 99"];
+
+      for (let i = 0; i < numNodes; i++) {
+        const kX = Math.floor(random() * 3) + 1;
+        const kY = Math.floor(random() * 3) + 1;
+        
+        nodes.push({
+          baseX: random() * 1080,
+          baseY: random() * 1920,
+          freqX: kX * Math.PI / 6,
+          freqY: kY * Math.PI / 6,
+          ampX: 60 + random() * 60,
+          ampY: 60 + random() * 60,
+          phaseX: random() * Math.PI * 2,
+          phaseY: random() * Math.PI * 2,
+          r: 2.2 + random() * 3.5,
+          color: colors[Math.floor(random() * colors.length)]
+        });
+      }
+
+      function drawFrame(progress) {
+        const time = progress * 12;
+        ctx.clearRect(0, 0, 1080, 1920);
+
+        const pts = nodes.map(n => {
+          const x = n.baseX + Math.sin(time * 0.35 * n.freqX + n.phaseX) * n.ampX;
+          const y = n.baseY + Math.cos(time * 0.35 * n.freqY + n.phaseY) * n.ampY;
+          return { x, y, r: n.r, color: n.color };
+        });
+
+        const linkDistance = 220;
+        for (let i = 0; i < pts.length; i++) {
+          const a = pts[i];
+          for (let j = i + 1; j < pts.length; j++) {
+            const b = pts[j];
+            const dx = a.x - b.x;
+            const dy = a.y - b.y;
+            const dist = Math.hypot(dx, dy);
+            if (dist < linkDistance) {
+              const alpha = (1 - dist / linkDistance) * 0.16;
+              ctx.strokeStyle = `rgba(92, 15, 38, ${alpha})`;
+              ctx.lineWidth = 0.9;
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        for (let i = 0; i < pts.length; i++) {
+          const p = pts[i];
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${p.color}, 0.7)`;
+          ctx.fill();
+        }
+      }
+
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // 1. Text 1: "The World is Adopting AI."
+      tl.to("#text-1", { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.2);
+      tl.to("#text-1", { opacity: 0, y: -30, duration: 0.6, ease: "power3.in" }, 2.2);
+
+      // 2. Text 2: "Are you?"
+      tl.to("#text-2", { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 2.9);
+      tl.to("#text-2", { opacity: 0, y: -30, duration: 0.6, ease: "power3.in" }, 4.8);
+
+      // 3. Network drawing phase
+      tl.to("#neural-canvas", { opacity: 1, duration: 0.8 }, 5.2);
+      tl.to("#svg-container", { opacity: 0.45, duration: 0.8 }, 5.2);
+
+      const path1 = document.getElementById("network-path-1");
+      const path2 = document.getElementById("network-path-2");
+      const path3 = document.getElementById("network-path-3");
+
+      const len1 = path1.getTotalLength();
+      const len2 = path2.getTotalLength();
+      const len3 = path3.getTotalLength();
+
+      gsap.set(path1, { strokeDasharray: len1, strokeDashoffset: len1 });
+      gsap.set(path2, { strokeDasharray: len2, strokeDashoffset: len2 });
+      gsap.set(path3, { strokeDasharray: len3, strokeDashoffset: len3 });
+
+      tl.to(path1, { strokeDashoffset: 0, duration: 2.8, ease: "power2.inOut" }, 5.2);
+      tl.to(path2, { strokeDashoffset: 0, duration: 2.5, ease: "power2.inOut" }, 5.5);
+      tl.to(path3, { strokeDashoffset: 0, duration: 2.2, ease: "power2.inOut" }, 5.8);
+
+      // 4. Final Text: "Book an AI Training"
+      tl.to("#step-3", { opacity: 1, duration: 0.8 }, 8.2);
+      tl.from("#final-title", { y: 40, duration: 0.8, ease: "power3.out" }, 8.2);
+      tl.from("#final-subtitle", { y: 40, duration: 0.8, ease: "power3.out" }, 8.4);
+
+      const animState = { progress: 0 };
+      tl.to(animState, {
+        progress: 1,
+        duration: 12,
+        ease: "none",
+        onUpdate: () => {
+          drawFrame(animState.progress);
+        }
+      }, 0);
+
+      window.__timelines["mobile"] = tl;
+    </script>
+  </body>
+</html>
