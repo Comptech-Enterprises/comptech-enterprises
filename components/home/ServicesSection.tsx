@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Cpu, GraduationCap, Server } from "lucide-react";
+import { ArrowRight, Cpu, GraduationCap, Server, Code } from "lucide-react";
 import { HOME_PILLARS } from "@/lib/constants";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
@@ -7,6 +7,7 @@ const ICONS = {
   cpu: Cpu,
   graduation: GraduationCap,
   server: Server,
+  code: Code,
 } as const;
 
 export function ServicesSection() {
@@ -44,15 +45,15 @@ export function ServicesSection() {
                 className="glass-card group flex flex-col p-7 lg:p-8"
               >
                 <div
-                  className="w-12 h-12 rounded-2xl flex items-center justify-center mb-5"
+                  className="w-12 h-12 rounded-2xl flex items-center justify-center mb-5 mx-auto"
                   style={{ background: "#EFF6FF" }}
                 >
                   <Icon size={22} style={{ color: "#1D4ED8" }} />
                 </div>
-                <p className="text-[11px] font-bold uppercase tracking-widest mb-1" style={{ color: "#1D4ED8" }}>
+                <p className="text-[11px] font-bold uppercase tracking-widest mb-1 text-center" style={{ color: "#1D4ED8" }}>
                   What we do
                 </p>
-                <h3 className="font-display font-extrabold text-gray-900 text-2xl leading-tight mb-3">
+                <h3 className="font-display font-extrabold text-gray-900 text-2xl leading-tight mb-3 text-center">
                   {pillar.title}
                 </h3>
                 <p className="text-gray-600 text-sm leading-relaxed mb-6">
@@ -66,24 +67,8 @@ export function ServicesSection() {
                     </li>
                   ))}
                 </ul>
-                <div className="mt-auto pt-2">
-                  <div className="flex flex-wrap gap-2 min-h-[28px]">
-                    {pillar.vendors.map((v) => (
-                      <span
-                        key={v}
-                        className="px-3 py-1 rounded-lg text-xs font-semibold"
-                        style={{
-                          color: "#1D4ED8",
-                          background: "rgba(255,255,255,0.5)",
-                          backdropFilter: "blur(8px)",
-                          border: "1px solid rgba(255,255,255,0.4)",
-                        }}
-                      >
-                        {v}
-                      </span>
-                    ))}
-                  </div>
-                  <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold" style={{ color: "#1D4ED8" }}>
+                <div className="mt-auto pt-2 text-center">
+                  <span className="inline-flex items-center justify-center gap-1.5 text-sm font-semibold w-full" style={{ color: "#1D4ED8" }}>
                     Learn more
                     <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" />
                   </span>

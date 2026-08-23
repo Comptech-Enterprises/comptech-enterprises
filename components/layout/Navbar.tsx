@@ -59,11 +59,20 @@ export function Navbar({ transparent = false }: NavbarProps) {
     };
   }, [mobileOpen]);
 
+  const isHomepage = pathname === "/";
   const isTransparent = transparent && !solid;
-  const textColor = isTransparent ? "text-white/90" : "text-gray-700";
-  const logoTextColor = isTransparent ? "text-white" : "text-gray-900";
-  const activeColor = isTransparent ? "text-white font-semibold" : "text-[#5C0F26] font-semibold";
-  const hoverBg = isTransparent ? "hover:bg-white/10" : "hover:bg-gray-100";
+  const textColor = isTransparent
+    ? (isHomepage ? "text-gray-800" : "text-white/90")
+    : "text-gray-700";
+  const logoTextColor = isTransparent
+    ? (isHomepage ? "text-gray-900" : "text-white")
+    : "text-gray-900";
+  const activeColor = isTransparent
+    ? (isHomepage ? "text-[#5C0F26] font-semibold" : "text-white font-semibold")
+    : "text-[#5C0F26] font-semibold";
+  const hoverBg = isTransparent
+    ? (isHomepage ? "hover:bg-gray-100" : "hover:bg-white/10")
+    : "hover:bg-gray-100";
 
   return (
     <>
@@ -193,7 +202,7 @@ export function Navbar({ transparent = false }: NavbarProps) {
               href="/contact"
               className={clsx(
                 "text-sm font-semibold px-5 py-2.5 rounded-xl border transition-all duration-200",
-                isTransparent
+                isTransparent && !isHomepage
                   ? "border-white/30 text-white hover:bg-white/10"
                   : "border-gray-200 text-gray-700 hover:border-[#5C0F26]/30 hover:text-[#5C0F26]",
               )}
