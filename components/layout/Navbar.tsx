@@ -209,12 +209,6 @@ export function Navbar({ transparent = false }: NavbarProps) {
             >
               Talk to an Expert
             </Link>
-            <Link
-              href="/contact#quote"
-              className="btn-accent btn btn-sm text-sm px-5 py-2.5 !bg-[#5C0F26] hover:!bg-[#3F0A1A]"
-            >
-              Get Quote
-            </Link>
           </div>
 
           {/* Mobile Toggle — hidden once open; the panel's own header provides the close button */}
@@ -287,13 +281,6 @@ export function Navbar({ transparent = false }: NavbarProps) {
             className="w-full py-4 rounded-2xl border-2 border-[#5C0F26] text-[#5C0F26] text-[15px] font-bold text-center hover:bg-[#FDF4F6] transition-colors"
           >
             Talk to an Expert
-          </Link>
-          <Link
-            href="/contact#quote"
-            onClick={() => setMobileOpen(false)}
-            className="w-full py-4 rounded-2xl bg-[#5C0F26] hover:bg-[#3F0A1A] text-white text-[15px] font-bold text-center transition-colors flex items-center justify-center gap-2"
-          >
-            Get a Quote <ArrowRight size={16} />
           </Link>
         </div>
       </div>

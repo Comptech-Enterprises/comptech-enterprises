@@ -34,7 +34,7 @@ export const HOME_PILLARS = [
     id: "ai",
     icon: "cpu",
     title: "AI",
-    desc: "GPUs, AI engineering, and ready-to-use tools — plus lead management and social media agents that put AI to work across your business.",
+    desc: "Empowering MSMEs and corporates to adopt practical AI — from custom autonomous agents and team trainings to secure workflow automation.",
     href: "/ai-solutions",
     highlights: ["AI Agent Development", "AI Trainings and Workshops", "AI Audits"],
     vendors: ["NVIDIA", "Intel"],
