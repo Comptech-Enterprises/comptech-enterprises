@@ -15,7 +15,6 @@ export const NAV_LINKS = [
   { label: "Our Services", href: "/#services" },
   { label: "Contact", href: "/#contact" },
   { label: "Careers", href: "/careers" },
-  { label: "About", href: "/about" },
 ];
 
 export const PARTNERS = [
@@ -28,6 +27,36 @@ export const PARTNERS = [
   { name: "Canon", color: "#CC0000" },
   { name: "Samsung", color: "#1428A0" },
   { name: "Epson", color: "#009AC7" },
+];
+
+export const HOME_PILLARS = [
+  {
+    id: "ai",
+    icon: "cpu",
+    title: "AI",
+    desc: "GPUs, AI engineering, and ready-to-use tools — plus lead management and social media agents that put AI to work across your business.",
+    href: "/ai-solutions",
+    highlights: ["AI Agent Development", "AI Trainings and Workshops", "AI Audits"],
+    vendors: ["NVIDIA", "Intel"],
+  },
+  {
+    id: "software",
+    icon: "code",
+    title: "Software",
+    desc: "Custom web applications, ERPs, CRMs, and API integrations built to streamline your business workflows.",
+    href: "/services#software",
+    highlights: ["Custom web & mobile apps", "Enterprise ERP & CRM systems", "API & workflow automation"],
+    vendors: [],
+  },
+  {
+    id: "hardware",
+    icon: "server",
+    title: "Hardware",
+    desc: "Servers, storage, PCs, networking, and CCTV — designed, supplied, and deployed for offices, campuses, and data centres.",
+    href: "/services",
+    highlights: ["Servers & storage", "Desktops & workstations", "Networking & CCTV"],
+    vendors: ["Dell", "HP", "Lenovo"],
+  },
 ];
 
 export const SERVICES = [
@@ -119,44 +148,6 @@ export const STATS = [
   { value: "50", suffix: "+", label: "Certified Engineers", desc: "OEM certified" },
   { value: "10", suffix: "+", label: "OEM Partnerships", desc: "Tier-1 vendors" },
   { value: "4.8", suffix: "/5", label: "Client Satisfaction", desc: "Avg. CSAT score" },
-];
-
-export const INDUSTRIES = [
-  {
-    icon: "heart-pulse",
-    title: "Healthcare",
-    desc: "Hospital networks, PACS systems, and medical IT infrastructure.",
-  },
-  {
-    icon: "graduation",
-    title: "Education",
-    desc: "Campuswide Wi-Fi, smart classrooms, and student device programs.",
-  },
-  {
-    icon: "landmark",
-    title: "Government",
-    desc: "Secure infrastructure for government offices and municipalities.",
-  },
-  {
-    icon: "factory",
-    title: "Manufacturing",
-    desc: "OT/IT convergence, ERP servers, and plant-floor computing.",
-  },
-  {
-    icon: "shopping-bag",
-    title: "Retail",
-    desc: "POS systems, inventory servers, and CCTV for retail chains.",
-  },
-  {
-    icon: "banknote",
-    title: "Finance",
-    desc: "High-availability trading and banking IT infrastructure.",
-  },
-  {
-    icon: "code-2",
-    title: "IT Services",
-    desc: "Dev workstations, collaboration tools, and cloud infrastructure.",
-  },
 ];
 
 export const CASE_STUDIES = [

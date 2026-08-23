@@ -1,52 +1,20 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Server, Monitor, Cpu, Database, Network, ShieldCheck, Cloud, Wrench, Laptop, Workflow, Code2, GraduationCap } from "lucide-react";
-import { SERVICES } from "@/lib/constants";
+import { ArrowRight, Cpu, GraduationCap, Server, Code } from "lucide-react";
+import { HOME_PILLARS } from "@/lib/constants";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
-const ICONS: Record<string, React.ElementType> = {
-  server:   Server,
-  monitor:  Monitor,
-  cpu:      Cpu,
-  database: Database,
-  network:  Network,
-  shield:   ShieldCheck,
-  cloud:    Cloud,
-  tool:     Wrench,
-  laptop:   Laptop,
-  workflow: Workflow,
-  code:     Code2,
+const ICONS = {
+  cpu: Cpu,
   graduation: GraduationCap,
-};
-
-const SERVICE_META: Record<string, { accent: string; bg: string; gradient: string; btnGradient: string; vendors: string[]; highlights: string[] }> = {
-  infrastructure: { accent: "#1D4ED8", bg: "#EFF6FF", gradient: "linear-gradient(135deg, #EFF6FF 0%, #F0EEFF 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #7C3AED 100%)", vendors: ["Dell", "HP", "Lenovo"], highlights: ["Server consolidation", "Virtualisation", "Storage solutions", "Rack & stack deployment"] },
-  euc:            { accent: "#5C0F26", bg: "#FDF4F6", gradient: "linear-gradient(135deg, #EFF6FF 0%, #FDF4F6 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #E8435A 100%)", vendors: ["Dell", "HP", "Lenovo"], highlights: ["Desktops & laptops", "Workstations", "Thin clients", "Device management"] },
-  ai:             { accent: "#1D4ED8", bg: "#EFF6FF", gradient: "linear-gradient(135deg, #EFF6FF 0%, #F0EEFF 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #7C3AED 100%)", vendors: ["NVIDIA", "Intel"],      highlights: ["GPUs & AI engineering", "Lead management", "Social media agents", "Ready-to-use AI tools"] },
-  "ai-training":  { accent: "#5C0F26", bg: "#FDF4F6", gradient: "linear-gradient(135deg, #EFF6FF 0%, #FDF4F6 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #E8435A 100%)", vendors: [],                       highlights: ["Hands-on workshops", "Team upskilling", "Practical AI tools", "Custom curriculum"] },
-  digital:        { accent: "#5C0F26", bg: "#FDF4F6", gradient: "linear-gradient(135deg, #EFF6FF 0%, #FDF4F6 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #E8435A 100%)", vendors: [],                       highlights: ["Process digitisation", "Workflow automation", "Paperless operations", "System integration"] },
-  software:       { accent: "#1D4ED8", bg: "#EFF6FF", gradient: "linear-gradient(135deg, #EFF6FF 0%, #F0EEFF 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #7C3AED 100%)", vendors: [],                       highlights: ["Custom software", "Web & business apps", "API integrations", "Deployment & support"] },
-  networking:     { accent: "#1D4ED8", bg: "#EFF6FF", gradient: "linear-gradient(135deg, #EFF6FF 0%, #F0EEFF 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #7C3AED 100%)", vendors: ["Cisco", "Juniper", "Aruba"], highlights: ["LAN & SD-WAN", "Wi-Fi 6E", "Campus networking", "Network monitoring"] },
-  security:       { accent: "#5C0F26", bg: "#FDF4F6", gradient: "linear-gradient(135deg, #EFF6FF 0%, #FDF4F6 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #E8435A 100%)", vendors: ["CP Plus", "Dahua"],   highlights: ["IP CCTV systems", "Access control", "AI video analytics", "Perimeter security"] },
-  cloud:          { accent: "#1D4ED8", bg: "#EFF6FF", gradient: "linear-gradient(135deg, #EFF6FF 0%, #F0EEFF 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #7C3AED 100%)", vendors: ["Azure", "AWS", "GCP"],  highlights: ["Cloud migration", "Hybrid architecture", "Managed cloud ops", "Cost optimisation"] },
-  amc:            { accent: "#5C0F26", bg: "#FDF4F6", gradient: "linear-gradient(135deg, #EFF6FF 0%, #FDF4F6 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #E8435A 100%)", vendors: ["24/7 SLA"],             highlights: ["Proactive monitoring", "Preventive maintenance", "Rapid response", "Asset management"] },
-  repair:         { accent: "#1D4ED8", bg: "#EFF6FF", gradient: "linear-gradient(135deg, #EFF6FF 0%, #F0EEFF 100%)", btnGradient: "linear-gradient(135deg, #1D4ED8 0%, #7C3AED 100%)", vendors: [],                       highlights: ["Computer & laptop repair", "CCTV system repair", "Peripheral servicing", "Certified technicians"] },
-};
+  server: Server,
+  code: Code,
+} as const;
 
 export function ServicesSection() {
-  const [active, setActive] = useState(SERVICES[0].id);
-
-  const current = SERVICES.find((s) => s.id === active)!;
-  const meta = SERVICE_META[active] ?? { accent: "#1D4ED8", bg: "#EFF6FF", vendors: [], highlights: [] };
-  const Icon = ICONS[current.icon] ?? Server;
-
   return (
     <section id="services" className="relative py-12 lg:py-32 overflow-hidden" aria-labelledby="services-title">
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
 
-        {/* Header */}
         <div className="mb-12">
           <SectionLabel>What We Do</SectionLabel>
           <h2
@@ -63,107 +31,53 @@ export function ServicesSection() {
             </span>
           </h2>
           <p className="mt-3 text-lg text-gray-500 max-w-xl leading-relaxed">
-            From server room to cloud — design, supply, deployment, and maintenance.
+            AI, training, and hardware — design, supply, deployment, and support.
           </p>
         </div>
 
-        {/* Interactive panel — glass */}
-        <div className="glass-panel-strong flex flex-col lg:flex-row gap-4 rounded-3xl overflow-hidden">
-
-          {/* Sidebar tabs */}
-          <div className="lg:w-64 shrink-0 flex flex-row lg:flex-col overflow-x-auto lg:overflow-visible border-b lg:border-b-0 lg:border-r border-gray-100 scrollbar-hide snap-x snap-mandatory">
-            {SERVICES.map((service) => {
-              const SIcon = ICONS[service.icon] ?? Server;
-              const smeta = SERVICE_META[service.id];
-              const isActive = service.id === active;
-              return (
-                <button
-                  key={service.id}
-                  onClick={() => setActive(service.id)}
-                  className="flex items-center gap-2.5 lg:gap-3 px-4 lg:px-5 py-3 lg:py-4 text-left transition-all duration-300 shrink-0 lg:shrink relative snap-start"
-                  style={{ background: isActive ? "rgba(255,255,255,0.5)" : "transparent", backdropFilter: isActive ? "blur(8px)" : "none" }}
-                >
-                  {/* Active indicator — underline on mobile, right bar on desktop */}
-                  {isActive && (
-                    <span
-                      className="absolute left-3 right-3 bottom-0 h-[3px] rounded-full lg:left-auto lg:right-0 lg:top-0 lg:bottom-0 lg:h-auto lg:w-[3px] lg:rounded-none"
-                      style={{ background: "linear-gradient(90deg, #1D4ED8, #E8435A)" }}
-                      aria-hidden="true"
-                    />
-                  )}
-                  <div
-                    className="hidden lg:flex w-8 h-8 rounded-lg items-center justify-center shrink-0"
-                    style={{ background: smeta?.bg ?? "#EFF6FF" }}
-                  >
-                    <SIcon size={16} style={{ color: smeta?.accent ?? "#1D4ED8" }} />
-                  </div>
-                  <span
-                    className="text-[13px] lg:text-sm font-semibold whitespace-nowrap lg:whitespace-normal leading-tight"
-                    style={{ color: isActive ? smeta?.accent ?? "#1D4ED8" : "#374151" }}
-                  >
-                    {service.title}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Detail panel */}
-          <div className="flex-1 p-5 lg:p-12 flex flex-col justify-between gap-6 lg:gap-8">
-            <div>
-              {/* Icon + title */}
-              <div className="flex items-start gap-5 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {HOME_PILLARS.map((pillar) => {
+            const Icon = ICONS[pillar.icon as keyof typeof ICONS] ?? Server;
+            return (
+              <Link
+                key={pillar.id}
+                href={pillar.href}
+                className="glass-card group flex flex-col p-7 lg:p-8"
+              >
                 <div
-                  className="w-16 h-16 rounded-2xl flex items-center justify-center shrink-0"
-                  style={{ background: meta.bg }}
+                  className="w-12 h-12 rounded-2xl flex items-center justify-center mb-5 mx-auto"
+                  style={{ background: "#EFF6FF" }}
                 >
-                  <Icon size={30} style={{ color: meta.accent }} />
+                  <Icon size={22} style={{ color: "#1D4ED8" }} />
                 </div>
-                <div>
-                  <p className="text-[11px] font-bold uppercase tracking-widest mb-1" style={{ color: meta.accent }}>
-                    Service
-                  </p>
-                  <h3 className="font-display font-extrabold text-gray-900 text-2xl leading-tight">
-                    {current.title}
-                  </h3>
-                </div>
-              </div>
-
-              {/* Description */}
-              <p className="text-gray-600 text-base leading-relaxed max-w-xl mb-8">
-                {current.desc}
-              </p>
-
-              {/* Highlights grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-                {meta.highlights.map((h) => (
-                  <div key={h} className="flex items-center gap-2.5">
-                    <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: meta.accent }} />
-                    <span className="text-sm text-gray-700 font-medium">{h}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Vendor badges */}
-              {meta.vendors.length > 0 && (
-                <div className="flex flex-wrap gap-2">
-                  {meta.vendors.map((v) => (
-                    <span
-                      key={v}
-                      className="px-3 py-1 rounded-lg text-xs font-semibold"
-                      style={{ color: meta.accent, background: "rgba(255,255,255,0.5)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.4)" }}
-                    >
-                      {v}
-                    </span>
+                <p className="text-[11px] font-bold uppercase tracking-widest mb-1 text-center" style={{ color: "#1D4ED8" }}>
+                  What we do
+                </p>
+                <h3 className="font-display font-extrabold text-gray-900 text-2xl leading-tight mb-3 text-center">
+                  {pillar.title}
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                  {pillar.desc}
+                </p>
+                <ul className="flex flex-col gap-2.5 mb-6">
+                  {pillar.highlights.map((h) => (
+                    <li key={h} className="flex items-center gap-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: "#1D4ED8" }} />
+                      <span className="text-sm text-gray-700 font-medium">{h}</span>
+                    </li>
                   ))}
+                </ul>
+                <div className="mt-auto pt-2 text-center">
+                  <span className="inline-flex items-center justify-center gap-1.5 text-sm font-semibold w-full" style={{ color: "#1D4ED8" }}>
+                    Learn more
+                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" />
+                  </span>
                 </div>
-              )}
-            </div>
-
-          </div>
+              </Link>
+            );
+          })}
         </div>
 
-        {/* Footer CTA */}
         <div className="mt-8 text-center">
           <Link
             href="/services"

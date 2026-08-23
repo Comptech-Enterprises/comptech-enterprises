@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Bot, Brain, GraduationCap, Shield, Workflow, Sparkles, CheckCircle2, ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { AIAssistantPromo } from "@/components/ai-solutions/AIAssistantPromo";
 
 const AI_OFFERINGS = [
   {
@@ -214,6 +215,8 @@ export function AISolutionsClient() {
             </div>
           </div>
         </section>
+
+        <AIAssistantPromo />
 
         {/* ── Offerings Intro ── */}
         <section id="offerings" className="pt-16 pb-2 bg-white" aria-labelledby="offerings-title">
