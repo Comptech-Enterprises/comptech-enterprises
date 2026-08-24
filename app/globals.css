@@ -310,6 +310,21 @@ body {
   100% { transform: translateX(-50%); }
 }
 
+@keyframes ticker-scroll-reverse {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes ticker-down {
+  0%   { transform: translateY(-50%); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes ticker-up {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
 /* ================================================================
    SCROLLBAR HIDE
    ================================================================ */

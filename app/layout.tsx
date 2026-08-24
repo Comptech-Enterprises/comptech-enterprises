@@ -15,6 +15,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://comptech.in"),
   title: {
     default: "Comptech Enterprises | Enterprise IT & AI Solutions India",
     template: "%s | Comptech Enterprises",
