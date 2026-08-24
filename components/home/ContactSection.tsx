@@ -129,34 +129,66 @@ export function ContactSection() {
             >
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div>
-                  <label className="block text-xs font-semibold text-gray-600 mb-1.5">First Name *</label>
-                  <input type="text" required className={inputClass} placeholder="John"
-                    value={form.firstName} onChange={(e) => setForm({ ...form, firstName: e.target.value })} />
+                  <label htmlFor="contact-first-name" className="block text-xs font-semibold text-gray-600 mb-1.5">First Name *</label>
+                  <input
+                    id="contact-first-name"
+                    name="firstName"
+                    type="text"
+                    required
+                    autoComplete="given-name"
+                    className={inputClass}
+                    placeholder="John"
+                    value={form.firstName}
+                    onChange={(e) => setForm({ ...form, firstName: e.target.value })}
+                  />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-gray-600 mb-1.5">Last Name *</label>
-                  <input type="text" required className={inputClass} placeholder="Doe"
-                    value={form.lastName} onChange={(e) => setForm({ ...form, lastName: e.target.value })} />
+                  <label htmlFor="contact-last-name" className="block text-xs font-semibold text-gray-600 mb-1.5">Last Name *</label>
+                  <input
+                    id="contact-last-name"
+                    name="lastName"
+                    type="text"
+                    required
+                    autoComplete="family-name"
+                    className={inputClass}
+                    placeholder="Doe"
+                    value={form.lastName}
+                    onChange={(e) => setForm({ ...form, lastName: e.target.value })}
+                  />
                 </div>
               </div>
 
               {[
-                { label: "Work Email *",    key: "email",   type: "email", placeholder: "john@company.com" },
-                { label: "Company Name *",  key: "company", type: "text",  placeholder: "Your company"      },
-                { label: "Phone Number",    key: "phone",   type: "tel",   placeholder: "+91 8595073837"   },
-              ].map(({ label, key, type, placeholder }) => (
+                { label: "Work Email *",    key: "email",   type: "email", placeholder: "john@company.com", auto: "email" },
+                { label: "Company Name *",  key: "company", type: "text",  placeholder: "Your company",      auto: "organization" },
+                { label: "Phone Number",    key: "phone",   type: "tel",   placeholder: "+91 8595073837",   auto: "tel" },
+              ].map(({ label, key, type, placeholder, auto }) => (
                 <div key={key} className="mb-4">
-                  <label className="block text-xs font-semibold text-gray-600 mb-1.5">{label}</label>
-                  <input type={type} required={label.includes("*")} className={inputClass} placeholder={placeholder}
+                  <label htmlFor={`contact-${key}`} className="block text-xs font-semibold text-gray-600 mb-1.5">{label}</label>
+                  <input
+                    id={`contact-${key}`}
+                    name={key}
+                    type={type}
+                    required={label.includes("*")}
+                    autoComplete={auto}
+                    className={inputClass}
+                    placeholder={placeholder}
                     value={form[key as keyof typeof form] as string}
-                    onChange={(e) => setForm({ ...form, [key]: e.target.value })} />
+                    onChange={(e) => setForm({ ...form, [key]: e.target.value })}
+                  />
                 </div>
               ))}
 
               <div className="mb-4">
-                <label className="block text-xs font-semibold text-gray-600 mb-1.5">Service Required *</label>
-                <select required className={inputClass} value={form.service}
-                  onChange={(e) => setForm({ ...form, service: e.target.value })}>
+                <label htmlFor="contact-service" className="block text-xs font-semibold text-gray-600 mb-1.5">Service Required *</label>
+                <select
+                  id="contact-service"
+                  name="service"
+                  required
+                  className={inputClass}
+                  value={form.service}
+                  onChange={(e) => setForm({ ...form, service: e.target.value })}
+                >
                   <option value="">Select a service</option>
                   {["Enterprise Infrastructure","End User Computing","AI Solutions","Data Centre","Networking","CCTV & Security","Cloud Solutions","AMC","Multiple Services"].map((s) => (
                     <option key={s}>{s}</option>

@@ -30,11 +30,34 @@ const ROW1 = PARTNERS.slice(0, MID);
 const ROW2 = PARTNERS.slice(MID);
 
 const CLIENTS = [
-  "Fabstract Clothing", "St. Cecilia School", "Active Motors", "LBSIM",
-  "Apex Pharma", "Greenfield Hospitals", "Nova Retail", "Pinnacle Finance",
-  "TrueNorth Logistics", "Skyline Builders", "Evergreen Foods", "Metro Dental",
-  "Sapphire Hotels", "Quantum Labs", "Prism Media", "Heritage Academy",
-  "Sunrise Textiles", "Orbit Telecom", "Vertex Engineering", "ClearPath Insurance",
+  "Beanly Coffee",
+  "HL Mando",
+  "Shervani Hotels",
+  "Summit Hotels",
+  "SRCC",
+  "Rebel Foods",
+  "IIT Delhi",
+  "Canara Bank",
+  "Fabstract Clothing",
+  "St. Cecilia School",
+  "Active Motors",
+  "LBSIM",
+  "Apex Pharma",
+  "Greenfield Hospitals",
+  "Nova Retail",
+  "Pinnacle Finance",
+  "TrueNorth Logistics",
+  "Skyline Builders",
+  "Evergreen Foods",
+  "Metro Dental",
+  "Sapphire Hotels",
+  "Quantum Labs",
+  "Prism Media",
+  "Heritage Academy",
+  "Sunrise Textiles",
+  "Orbit Telecom",
+  "Vertex Engineering",
+  "ClearPath Insurance",
 ];
 
 const CLIENT_MID = Math.ceil(CLIENTS.length / 2);
@@ -117,7 +140,7 @@ export function PartnersStrip() {
         <div className="flex items-center gap-4 mb-6">
           <div className="flex-1 h-px bg-gray-200" />
           <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 whitespace-nowrap">
-            Brands That Trust Us
+            Organizations Powered by Comptech
           </p>
           <div className="flex-1 h-px bg-gray-200" />
         </div>
@@ -127,7 +150,9 @@ export function PartnersStrip() {
             <div
               key={`cl-${ri}`}
               className="flex w-max gap-2"
-              style={{ animation: `ticker-scroll ${row.length * 3}s linear infinite`, animationDirection: ri === 1 ? "reverse" : "normal" }}
+              style={{
+                animation: `${ri === 0 ? "ticker-scroll" : "ticker-scroll-reverse"} ${row.length * 3.5}s linear infinite`,
+              }}
             >
               {row.concat(row).map((name, i) => (
                 <span
@@ -162,7 +187,9 @@ export function ResellerTicker() {
           <div
             key={ri}
             className="flex w-max gap-3"
-            style={{ animation: `ticker-scroll ${row.length * 2.5}s linear infinite`, animationDirection: ri === 1 ? "reverse" : "normal" }}
+            style={{
+              animation: `${ri === 0 ? "ticker-scroll-reverse" : "ticker-scroll"} ${row.length * 3}s linear infinite`,
+            }}
           >
             {row.concat(row).map(({ name, logo, domain }, i) => (
               <div

@@ -178,10 +178,13 @@ export default function ContactPage() {
                     }}
                   >
                     <div className="mb-4">
-                      <label className="block text-xs font-semibold text-gray-600 mb-1.5">Name *</label>
+                      <label htmlFor="training-name" className="block text-xs font-semibold text-gray-600 mb-1.5">Name *</label>
                       <input
+                        id="training-name"
+                        name="name"
                         type="text"
                         required
+                        autoComplete="name"
                         className={inputClass}
                         placeholder="John Doe"
                         value={form.name}
@@ -190,10 +193,13 @@ export default function ContactPage() {
                     </div>
 
                     <div className="mb-4">
-                      <label className="block text-xs font-semibold text-gray-600 mb-1.5">Email *</label>
+                      <label htmlFor="training-email" className="block text-xs font-semibold text-gray-600 mb-1.5">Email *</label>
                       <input
+                        id="training-email"
+                        name="email"
                         type="email"
                         required
+                        autoComplete="email"
                         className={inputClass}
                         placeholder="john@company.com"
                         value={form.email}
@@ -202,10 +208,13 @@ export default function ContactPage() {
                     </div>
 
                     <div className="mb-4">
-                      <label className="block text-xs font-semibold text-gray-600 mb-1.5">Company Name *</label>
+                      <label htmlFor="training-company" className="block text-xs font-semibold text-gray-600 mb-1.5">Company Name *</label>
                       <input
+                        id="training-company"
+                        name="company"
                         type="text"
                         required
+                        autoComplete="organization"
                         className={inputClass}
                         placeholder="Your Company Name"
                         value={form.company}
@@ -215,8 +224,10 @@ export default function ContactPage() {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                       <div>
-                        <label className="block text-xs font-semibold text-gray-600 mb-1.5">Number of Employees in Training *</label>
+                        <label htmlFor="training-employees" className="block text-xs font-semibold text-gray-600 mb-1.5">Number of Employees in Training *</label>
                         <input
+                          id="training-employees"
+                          name="employees"
                           type="number"
                           min="1"
                           required
@@ -228,8 +239,10 @@ export default function ContactPage() {
                       </div>
 
                       <div>
-                        <label className="block text-xs font-semibold text-gray-600 mb-1.5">Use Case *</label>
+                        <label htmlFor="training-use-case" className="block text-xs font-semibold text-gray-600 mb-1.5">Use Case *</label>
                         <select
+                          id="training-use-case"
+                          name="useCase"
                           required
                           className={inputClass}
                           value={form.useCase}
@@ -243,8 +256,10 @@ export default function ContactPage() {
                     </div>
 
                     <div className="mb-6">
-                      <label className="block text-xs font-semibold text-gray-600 mb-1.5">Additional Notes / Goals (Optional)</label>
+                      <label htmlFor="training-notes" className="block text-xs font-semibold text-gray-600 mb-1.5">Additional Notes / Goals (Optional)</label>
                       <textarea
+                        id="training-notes"
+                        name="notes"
                         rows={3}
                         className={`${inputClass} resize-none`}
                         placeholder="Tell us about specific tools, workflows, or team objectives..."
