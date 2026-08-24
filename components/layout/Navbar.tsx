@@ -59,19 +59,19 @@ export function Navbar({ transparent = false }: NavbarProps) {
     };
   }, [mobileOpen]);
 
-  const isHomepage = pathname === "/";
+  const isWhiteHeader = pathname === "/" || pathname === "/contact";
   const isTransparent = transparent && !solid;
   const textColor = isTransparent
-    ? (isHomepage ? "text-gray-800" : "text-white/90")
+    ? (isWhiteHeader ? "text-gray-800" : "text-white/90")
     : "text-gray-700";
   const logoTextColor = isTransparent
-    ? (isHomepage ? "text-gray-900" : "text-white")
+    ? (isWhiteHeader ? "text-gray-900" : "text-white")
     : "text-gray-900";
   const activeColor = isTransparent
-    ? (isHomepage ? "text-[#5C0F26] font-semibold" : "text-white font-semibold")
+    ? (isWhiteHeader ? "text-[#5C0F26] font-semibold" : "text-white font-semibold")
     : "text-[#5C0F26] font-semibold";
   const hoverBg = isTransparent
-    ? (isHomepage ? "hover:bg-gray-100" : "hover:bg-white/10")
+    ? (isWhiteHeader ? "hover:bg-gray-100" : "hover:bg-white/10")
     : "hover:bg-gray-100";
 
   return (
@@ -202,12 +202,12 @@ export function Navbar({ transparent = false }: NavbarProps) {
               href="/contact"
               className={clsx(
                 "text-sm font-semibold px-5 py-2.5 rounded-xl border transition-all duration-200",
-                isTransparent && !isHomepage
+                isTransparent && !isWhiteHeader
                   ? "border-white/30 text-white hover:bg-white/10"
                   : "border-gray-200 text-gray-700 hover:border-[#5C0F26]/30 hover:text-[#5C0F26]",
               )}
             >
-              Talk to an Expert
+              Book an AI Training
             </Link>
           </div>
 
@@ -280,7 +280,7 @@ export function Navbar({ transparent = false }: NavbarProps) {
             onClick={() => setMobileOpen(false)}
             className="w-full py-4 rounded-2xl border-2 border-[#5C0F26] text-[#5C0F26] text-[15px] font-bold text-center hover:bg-[#FDF4F6] transition-colors"
           >
-            Talk to an Expert
+            Book an AI Training
           </Link>
         </div>
       </div>
