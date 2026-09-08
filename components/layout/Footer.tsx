@@ -5,12 +5,12 @@ import { Mail, Phone, MapPin, Linkedin, Instagram } from "lucide-react";
 import { COMPANY } from "@/lib/constants";
 
 const SERVICES = [
+  { label: "Custom AI Agents",          href: "/ai-solutions#agents" },
+  { label: "AI Automation",             href: "/ai-solutions#automation" },
+  { label: "AI Audits",                 href: "/ai-solutions#audit" },
+  { label: "AI Training & Workshops",   href: "/ai-solutions#training" },
   { label: "Enterprise Infrastructure", href: "/services#infrastructure" },
-  { label: "End User Computing",        href: "/services#euc" },
-  { label: "AI Solutions",              href: "/ai-solutions" },
-  { label: "Data Centre Solutions",     href: "/services#datacenter" },
-  { label: "Networking",                href: "/services#networking" },
-  { label: "CCTV & Security",           href: "/services#security" },
+  { label: "Networking & Security",     href: "/services#security" },
   { label: "Cloud Solutions",           href: "/services#cloud" },
   { label: "AMC",                       href: "/services#amc" },
 ];
@@ -37,7 +37,7 @@ export function Footer() {
           Comptech Enterprises
         </p>
         <p className="text-gray-600 text-base max-w-md leading-relaxed">
-          India's trusted enterprise IT partner. Certified Dell, HP, Lenovo, Microsoft, and NVIDIA partner serving 200+ organizations.
+          We build AI agents, automation, and custom AI systems that deliver measurable results — backed by 30+ years of enterprise technology expertise.
         </p>
       </div>
 
@@ -53,7 +53,7 @@ export function Footer() {
 
             {/* Services */}
             <div className="col-span-2 md:col-span-1">
-              <h3 className="text-[11px] font-bold uppercase tracking-widest text-gray-500 mb-5">Services</h3>
+              <h3 className="text-[11px] font-bold uppercase tracking-widest text-gray-500 mb-5">AI & IT Services</h3>
               <nav className="flex flex-col gap-2.5">
                 {SERVICES.map(({ label, href }) => (
                   <Link key={href} href={href} className="text-sm text-gray-700 hover:text-gray-900 transition-colors duration-150">
@@ -80,18 +80,18 @@ export function Footer() {
               <div>
                 <h3 className="text-[11px] font-bold uppercase tracking-widest text-gray-500 mb-5">Contact</h3>
                 <div className="flex flex-col gap-3.5">
+                  <a href="mailto:paawan@comptech.in" className="flex items-center gap-2.5 text-sm text-gray-700 hover:text-gray-900 transition-colors">
+                    <Mail size={14} className="shrink-0 text-gray-900" />
+                    <span>AI Solutions <span className="text-gray-400">— paawan@comptech.in</span></span>
+                  </a>
+                  <a href={`mailto:${COMPANY.email}`} className="flex items-center gap-2.5 text-sm text-gray-700 hover:text-gray-900 transition-colors">
+                    <Mail size={14} className="shrink-0 text-gray-900" />
+                    <span>IT Services <span className="text-gray-400">— {COMPANY.email}</span></span>
+                  </a>
                   <a href={`tel:${COMPANY.phone}`} className="flex items-center gap-2.5 text-sm text-gray-700 hover:text-gray-900 transition-colors">
                     <Phone size={14} className="shrink-0 text-gray-900" />
                     {COMPANY.phone}
                   </a>
-                  <a href={`mailto:${COMPANY.email}`} className="flex items-center gap-2.5 text-sm text-gray-700 hover:text-gray-900 transition-colors">
-                    <Mail size={14} className="shrink-0 text-gray-900" />
-                    {COMPANY.email}
-                  </a>
-                  <div className="flex items-start gap-2.5 text-sm text-gray-700">
-                    <MapPin size={14} className="shrink-0 mt-0.5 text-gray-900" />
-                    {COMPANY.address}
-                  </div>
                 </div>
               </div>
               <div>
@@ -112,21 +112,18 @@ export function Footer() {
 
           </div>
 
-          {/* Right — Map */}
-          <div className="lg:w-[380px] shrink-0">
-            <h3 className="text-[11px] font-bold uppercase tracking-widest text-gray-500 mb-5">Our Location</h3>
-            <div className="rounded-2xl overflow-hidden border border-gray-300" style={{ height: 280 }}>
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8162.161356476114!2d77.08226761405187!3d28.63043314304227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d05cc68aaffd9%3A0x706a637432a46983!2sComptech%20Enterprises!5e1!3m2!1sen!2sin!4v1783152683613!5m2!1sen!2sin"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="strict-origin-when-cross-origin"
-                title="Comptech Enterprises location"
-              />
-            </div>
+          {/* Right — Office (minimised, no embedded map) */}
+          <div className="lg:w-[280px] shrink-0">
+            <h3 className="text-[11px] font-bold uppercase tracking-widest text-gray-500 mb-5">Office</h3>
+            <a
+              href="https://maps.google.com/?q=Comptech+Enterprises+Janakpuri+New+Delhi"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-start gap-2.5 text-sm text-gray-700 hover:text-gray-900 transition-colors"
+            >
+              <MapPin size={14} className="shrink-0 mt-0.5 text-gray-900" />
+              <span>{COMPANY.address}</span>
+            </a>
           </div>
 
         </div>
