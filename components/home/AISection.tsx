@@ -23,7 +23,7 @@ export function AISection() {
       aria-labelledby="ai-pillars-title"
     >
       {/* Subtle background tint */}
-      <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(180deg, #ffffff 0%, #FDF4F6 40%, #F5F3FF 100%)", opacity: 0.55 }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(180deg, #ede8f2 0%, #FDF4F6 40%, #F5F3FF 100%)", opacity: 0.55 }} />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
