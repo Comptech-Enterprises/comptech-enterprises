@@ -207,7 +207,7 @@ export function Navbar({ transparent = false }: NavbarProps) {
                   : "border-gray-200 text-gray-700 hover:border-[#5C0F26]/30 hover:text-[#5C0F26]",
               )}
             >
-              Book an AI Training
+              Get a Free Proposal
             </Link>
           </div>
 

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 
 export function Hero() {
   const [isMobile, setIsMobile] = useState(false);
@@ -41,6 +43,24 @@ export function Hero() {
         className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
         style={{ background: "linear-gradient(to bottom, transparent 0%, rgba(237,232,242,0.85) 70%, #ede8f2 100%)" }}
       />
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-7 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-0">
+        {[0, 1, 2].map((i) => (
+          <motion.div
+            key={i}
+            animate={{ opacity: [0, 1, 0] }}
+            transition={{
+              duration: 1.6,
+              repeat: Infinity,
+              delay: i * 0.3,
+              ease: "easeInOut",
+            }}
+          >
+            <ChevronDown size={20} strokeWidth={2.5} style={{ color: "#5C0F26" }} className="-mt-1.5" />
+          </motion.div>
+        ))}
+      </div>
     </section>
   );
 }
