@@ -4,11 +4,14 @@ import Link from "next/link";
 import { Mail, Phone, MapPin, Linkedin, Instagram } from "lucide-react";
 import { COMPANY } from "@/lib/constants";
 
-const SERVICES = [
-  { label: "Custom AI Agents",          href: "/ai-solutions#agents" },
-  { label: "AI Automation",             href: "/ai-solutions#automation" },
-  { label: "AI Audits",                 href: "/ai-solutions#audit" },
-  { label: "AI Training & Workshops",   href: "/ai-solutions#training" },
+const AI_SERVICES = [
+  { label: "Custom AI Agents",        href: "/ai-solutions#agents" },
+  { label: "AI Automation",           href: "/ai-solutions#automation" },
+  { label: "AI Audits",               href: "/ai-solutions#audit" },
+  { label: "AI Training & Workshops", href: "/ai-solutions#training" },
+];
+
+const IT_SERVICES = [
   { label: "Enterprise Infrastructure", href: "/services#infrastructure" },
   { label: "Networking & Security",     href: "/services#security" },
   { label: "Cloud Solutions",           href: "/services#cloud" },
@@ -37,7 +40,7 @@ export function Footer() {
           Comptech Enterprises
         </p>
         <p className="text-gray-600 text-base max-w-md leading-relaxed">
-          We build AI agents, automation, and custom AI systems that deliver measurable results — backed by 30+ years of enterprise technology expertise.
+          Custom AI solutions built around how your business works. For IT infrastructure enquiries: mohit@comptech.in
         </p>
       </div>
 
@@ -49,13 +52,25 @@ export function Footer() {
         <div className="flex flex-col lg:flex-row gap-12">
 
           {/* Left — links */}
-          <div className="flex-1 grid grid-cols-2 md:grid-cols-3 gap-10">
+          <div className="flex-1 grid grid-cols-2 md:grid-cols-4 gap-10">
 
-            {/* Services */}
-            <div className="col-span-2 md:col-span-1">
-              <h3 className="text-[11px] font-bold uppercase tracking-widest text-gray-500 mb-5">AI & IT Services</h3>
+            {/* AI Services */}
+            <div>
+              <h3 className="text-[11px] font-bold uppercase tracking-widest text-gray-500 mb-5">AI Services</h3>
               <nav className="flex flex-col gap-2.5">
-                {SERVICES.map(({ label, href }) => (
+                {AI_SERVICES.map(({ label, href }) => (
+                  <Link key={href} href={href} className="text-sm text-gray-700 hover:text-gray-900 transition-colors duration-150">
+                    {label}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+
+            {/* IT Services */}
+            <div>
+              <h3 className="text-[11px] font-bold uppercase tracking-widest text-gray-500 mb-5">IT Services</h3>
+              <nav className="flex flex-col gap-2.5">
+                {IT_SERVICES.map(({ label, href }) => (
                   <Link key={href} href={href} className="text-sm text-gray-700 hover:text-gray-900 transition-colors duration-150">
                     {label}
                   </Link>
