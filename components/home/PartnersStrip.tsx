@@ -40,10 +40,10 @@ const STACK_ROW1 = AI_STACK.slice(0, STACK_MID);
 const STACK_ROW2 = AI_STACK.slice(STACK_MID);
 
 const STATS = [
-  { value: "50+",  label: "AI Projects Delivered",  sub: "Agents, automations, audits" },
-  { value: "3x",   label: "Average Client ROI",     sub: "Within first 6 months"       },
-  { value: "200+", label: "Hours Saved Weekly",      sub: "Per client average"           },
-  { value: "98%",  label: "Automation Accuracy",     sub: "Production-grade AI"          },
+  { value: "30",    suffix: "days", label: "Avg. Time to Live AI System"      },
+  { value: "247",   suffix: "%",    label: "Avg. Increase in Qualified Leads" },
+  { value: "3",     suffix: "+",    label: "Industries with Live Deployments" },
+  { value: "$0",    suffix: "",     label: "Cost of Your First AI Audit"      },
 ];
 
 function PartnerLogo({ name, logo, domain }: { name: string; logo: string | null; domain?: string }) {
@@ -81,34 +81,19 @@ export function PartnersStrip() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
-        {/* Top: Heading left + Stats right */}
-        <div className="flex flex-col lg:flex-row lg:items-start gap-12 mb-16">
-          <div className="lg:w-2/5">
-            <p className="text-[10px] font-bold uppercase tracking-[0.2em] mb-3" style={{ color: "#5C0F26" }}>
-              AI Results
-            </p>
-            <h2 className="font-display font-extrabold text-gray-900 leading-tight mb-4"
-              style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)" }}>
-              AI that{" "}
-              <span className="text-transparent bg-clip-text"
-                style={{ backgroundImage: "linear-gradient(135deg, #5C0F26, #E8435A)" }}>
-                moves the needle
-              </span>
-            </h2>
-            <p className="text-gray-500 text-base leading-relaxed max-w-sm">
-              Real outcomes from real deployments — measurable ROI, hours recovered, and production-grade accuracy across every project.
-            </p>
-          </div>
-
-          <div className="flex-1 grid grid-cols-2 gap-4">
-            {STATS.map(({ value, label, sub }) => (
-              <div key={label} className="glass-card rounded-2xl p-5">
-                <p className="font-display font-extrabold text-2xl leading-none mb-1" style={{ color: "#5C0F26" }}>{value}</p>
-                <p className="text-sm font-semibold text-gray-900 leading-tight">{label}</p>
-                <p className="text-[11px] text-gray-400 mt-1">{sub}</p>
-              </div>
-            ))}
-          </div>
+        {/* Kicker + Stats grid — no left block, stats lead */}
+        <p className="text-[10px] font-bold uppercase tracking-[0.2em] mb-6 text-center" style={{ color: "#5C0F26" }}>
+          What We&apos;ve Delivered
+        </p>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+          {STATS.map(({ value, suffix, label }) => (
+            <div key={label} className="glass-card rounded-2xl p-6 text-center">
+              <p className="font-display font-extrabold text-3xl lg:text-4xl leading-none mb-2" style={{ color: "#5C0F26" }}>
+                {value}<span className="text-xl lg:text-2xl">{suffix}</span>
+              </p>
+              <p className="text-sm font-medium text-gray-600 leading-snug">{label}</p>
+            </div>
+          ))}
         </div>
 
         {/* AI tech stack ticker */}
