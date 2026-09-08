@@ -35,16 +35,16 @@ export function AISection() {
             className="font-display font-extrabold text-gray-900 tracking-tight mt-2 sm:mt-3 leading-tight"
             style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.8rem)" }}
           >
-            Practical AI that{" "}
+            Tailored AI Solutions{" "}
             <span
               className="text-transparent bg-clip-text"
               style={{ backgroundImage: "linear-gradient(135deg, #5C0F26, #E8435A 60%, #7C3AED)" }}
             >
-              delivers real results
+              built around your business
             </span>
           </h2>
           <p className="mt-2 sm:mt-3 text-base sm:text-lg text-gray-500 max-w-2xl leading-relaxed">
-            From AI audits and custom agents to company-wide digitization — we take you from idea to working AI, end to end.
+            Custom AI built around how you work — not off-the-shelf tools, not generic playbooks.
           </p>
         </div>
 
