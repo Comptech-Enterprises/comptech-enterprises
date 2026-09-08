@@ -60,13 +60,13 @@ export function ContactSection() {
             className="font-display font-extrabold text-gray-900 tracking-tight mt-3"
             style={{ fontSize: "clamp(1.9rem, 3.5vw, 2.8rem)" }}
           >
-            Let&apos;s build your{" "}
+            Looking for AI solutions or IT support?{" "}
             <span className="text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(135deg, #5C0F26, #E8435A)" }}>
-              AI advantage.
+              Let&apos;s talk.
             </span>
           </h2>
           <p className="mt-3 text-base text-gray-500 max-w-xl leading-relaxed">
-            Pick the right person and grab a slot directly on their calendar — no forms, no waiting.
+            Tell us what&apos;s eating your team&apos;s time. We&apos;ll show you exactly what we&apos;d build.
           </p>
         </div>
 
@@ -160,8 +160,7 @@ export function ContactSection() {
                 }
               }}
             >
-              <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-1.5">Prefer to write instead?</p>
-              <h3 className="font-display font-extrabold text-lg text-gray-900 mb-5">Send us your requirements</h3>
+              <h3 className="font-display font-extrabold text-lg text-gray-900 mb-5">Or send us a message</h3>
 
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div>
