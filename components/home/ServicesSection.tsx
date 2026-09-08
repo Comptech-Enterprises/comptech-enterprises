@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, PanInfo } from "framer-motion";
-import { ArrowRight, Cpu, GraduationCap, Server, Code, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
+import { ArrowRight, Cpu, GraduationCap, Server, Code, ChevronLeft, ChevronRight } from "lucide-react";
 import { HOME_PILLARS } from "@/lib/constants";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SpotlightCard } from "./BorderBeamCard";
@@ -68,30 +68,30 @@ export function ServicesSection() {
 
         {/* Section Header */}
         <div className="mb-8 sm:mb-12">
-          <SectionLabel>What We Do</SectionLabel>
+          <SectionLabel>IT Infrastructure</SectionLabel>
           <h2
             id="services-title"
             className="font-display font-extrabold text-gray-900 tracking-tight mt-2 sm:mt-3 leading-tight"
             style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.8rem)" }}
           >
-            Everything your business needs,{" "}
+            Full-stack IT,{" "}
             <span
               className="text-transparent bg-clip-text"
-              style={{ backgroundImage: "linear-gradient(135deg, #5C0F26, #E8435A)" }}
+              style={{ backgroundImage: "linear-gradient(135deg, #1E3A8A, #10B981)" }}
             >
-              from one team
+              supply to support
             </span>
           </h2>
           <p className="mt-2 sm:mt-3 text-base sm:text-lg text-gray-500 max-w-xl leading-relaxed">
-            AI, training, and hardware — design, supply, deployment, and support.
+            Software and hardware — designed, supplied, deployed, and maintained by one team.
           </p>
         </div>
 
         {/* ── DESKTOP VIEW: 3-column Grid with Animated Border Beams & Spotlights ── */}
-        <div className="hidden lg:grid lg:grid-cols-3 gap-6 items-stretch">
+        <div className="hidden lg:grid lg:grid-cols-2 gap-6 items-stretch">
           {HOME_PILLARS.map((pillar) => {
             const Icon = ICONS[pillar.icon as keyof typeof ICONS] ?? Server;
-            const theme = THEMES[pillar.id] || THEMES.ai;
+            const theme = THEMES[pillar.id] || THEMES.software;
 
             return (
               <SpotlightCard
@@ -169,7 +169,7 @@ export function ServicesSection() {
           <div className="relative h-[480px] w-full max-w-sm mx-auto flex items-center justify-center">
             {HOME_PILLARS.map((pillar, index) => {
               const Icon = ICONS[pillar.icon as keyof typeof ICONS] ?? Server;
-              const theme = THEMES[pillar.id] || THEMES.ai;
+              const theme = THEMES[pillar.id] || THEMES.software;
               
               // Calculate offset relative to active card
               const offset = (index - activeIndex + total) % total;
