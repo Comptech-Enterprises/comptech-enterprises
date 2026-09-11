@@ -1,16 +1,24 @@
 import nodemailer from "nodemailer";
 import type { ContactSubmission } from "./googleSheets";
 
-const AI_INBOX = process.env.CONTACT_EMAIL_AI || "paawan@comptech.in";
-const IT_INBOX = process.env.CONTACT_EMAIL_IT || "mohit@comptech.in";
+function inboxes(value: string | undefined, fallback: string[]): string[] {
+  const parsed = (value ?? "").split(",").map((a) => a.trim()).filter(Boolean);
+  return parsed.length ? parsed : fallback;
+}
+
+const AI_INBOX = inboxes(process.env.CONTACT_EMAIL_AI, ["paawan@comptech.in"]);
+const IT_INBOX = inboxes(process.env.CONTACT_EMAIL_IT, [
+  "mohit@comptech.in",
+  "mohitcomp@hotmail.com",
+]);
 
 function resolveRecipients(service: string): string[] {
-  if (service === "Multiple Services") return [AI_INBOX, IT_INBOX];
+  if (service === "Multiple Services") return [...new Set([...AI_INBOX, ...IT_INBOX])];
   // Covers every AI dropdown value across both forms: "AI Audit",
   // "Custom AI Agents", "AI Automation", "AI Training & Workshops",
   // "AI Development", "AI tools usage".
-  if (/\bai\b/i.test(service)) return [AI_INBOX];
-  return [IT_INBOX];
+  if (/\bai\b/i.test(service)) return AI_INBOX;
+  return IT_INBOX;
 }
 
 function getTransport() {
