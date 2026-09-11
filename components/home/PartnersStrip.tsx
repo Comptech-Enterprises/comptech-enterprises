@@ -29,16 +29,6 @@ const MID = Math.ceil(PARTNERS.length / 2);
 const ROW1 = PARTNERS.slice(0, MID);
 const ROW2 = PARTNERS.slice(MID);
 
-const AI_STACK = [
-  "OpenAI", "LangChain", "Azure AI", "AWS Bedrock", "Pinecone",
-  "Hugging Face", "CrewAI", "n8n", "Make", "Zapier AI",
-  "Google Gemini", "Anthropic", "NVIDIA AI", "Mistral", "Weaviate",
-];
-
-const STACK_MID = Math.ceil(AI_STACK.length / 2);
-const STACK_ROW1 = AI_STACK.slice(0, STACK_MID);
-const STACK_ROW2 = AI_STACK.slice(STACK_MID);
-
 const STATS = [
   { value: "30",    suffix: "days", label: "Avg. Time to Live AI System"      },
   { value: "247",   suffix: "%",    label: "Avg. Increase in Qualified Leads" },
@@ -92,36 +82,6 @@ export function PartnersStrip() {
                 {value}<span className="text-xl lg:text-2xl">{suffix}</span>
               </p>
               <p className="text-sm font-medium text-gray-600 leading-snug">{label}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* AI tech stack ticker */}
-        <div className="flex items-center gap-4 mb-6">
-          <div className="flex-1 h-px bg-gray-200" />
-          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 whitespace-nowrap">
-            Built With
-          </p>
-          <div className="flex-1 h-px bg-gray-200" />
-        </div>
-
-        <div className="flex flex-col gap-2 overflow-hidden mb-16">
-          {[STACK_ROW1, STACK_ROW2].map((row, ri) => (
-            <div
-              key={`st-${ri}`}
-              className="flex w-max gap-2"
-              style={{
-                animation: `${ri === 0 ? "ticker-scroll" : "ticker-scroll-reverse"} ${row.length * 3.5}s linear infinite`,
-              }}
-            >
-              {row.concat(row).map((name, i) => (
-                <span
-                  key={`${name}-${ri}-${i}`}
-                  className="shrink-0 glass-card rounded-full px-8 py-4 text-base font-semibold text-gray-700 whitespace-nowrap"
-                >
-                  {name}
-                </span>
-              ))}
             </div>
           ))}
         </div>
