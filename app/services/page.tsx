@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import {
   Server, Monitor, Database, Network, ShieldCheck, Cloud, Wrench, Cpu,
-  Check, ArrowRight, CheckCircle2, Laptop, Camera, HardDrive,
+  Check, ArrowRight, CheckCircle2, Laptop, Camera, HardDrive, Code2,
 } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -22,6 +22,7 @@ const NAV_ITEMS = [
   { label: "End User Computing",href: "#euc" },
   { label: "Data Centre",       href: "#datacenter" },
   { label: "Networking",        href: "#networking" },
+  { label: "Software",          href: "#software" },
   { label: "CCTV & Security",   href: "#security" },
   { label: "Cloud",             href: "#cloud" },
   { label: "AMC",               href: "#amc" },
@@ -86,6 +87,12 @@ const AMC_TIERS = [
     cta: "Get Enterprise Quote",
     highlighted: false,
   },
+];
+
+const SOFTWARE_CARDS = [
+  { title: "Web & Mobile Apps",    desc: "Custom web applications and mobile apps engineered around your exact workflows, not off-the-shelf templates." },
+  { title: "ERP & CRM Systems",    desc: "Bespoke ERP, CRM, and internal tools that replace spreadsheets and disconnected point solutions." },
+  { title: "API & Integrations",   desc: "REST/GraphQL APIs and third-party integrations that connect your software stack end to end." },
 ];
 
 const REPAIR_CARDS = [
@@ -293,6 +300,37 @@ export default function ServicesPage() {
                 </div>
               </RevealWrapper>
             </div>
+          </div>
+        </section>
+
+        {/* ── Software Development ── */}
+        <section id="software" className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <RevealWrapper className="text-center mb-14">
+              <SectionLabel className="justify-center">Software Development</SectionLabel>
+              <h2 className="font-display font-extrabold text-display-md text-gray-900">
+                Custom Software Development Services
+              </h2>
+              <p className="mt-4 text-lg text-gray-500 max-w-xl mx-auto leading-relaxed">
+                Comptech's software development team builds web apps, ERPs, CRMs, and API integrations — from concept and engineering through deployment and ongoing support.
+              </p>
+            </RevealWrapper>
+            <div className="grid md:grid-cols-3 gap-6">
+              {SOFTWARE_CARDS.map((card, i) => (
+                <RevealWrapper key={card.title} delay={i * 100}>
+                  <div className="service-card-top card-lift bg-gray-50 border border-gray-200 rounded-3xl p-8 h-full">
+                    <Code2 size={28} className="text-blue-700 mb-5" />
+                    <h3 className="font-display font-bold text-lg text-gray-900 mb-3">{card.title}</h3>
+                    <p className="text-sm text-gray-500 leading-relaxed">{card.desc}</p>
+                  </div>
+                </RevealWrapper>
+              ))}
+            </div>
+            <RevealWrapper delay={300} className="text-center mt-10">
+              <Link href="/contact#quote" className="btn-primary btn btn-lg inline-flex">
+                Get Software Development Quote <ArrowRight size={16} className="btn-arrow" />
+              </Link>
+            </RevealWrapper>
           </div>
         </section>
 
