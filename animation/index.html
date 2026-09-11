@@ -99,12 +99,12 @@
     >
       <!-- Text 1 -->
       <div id="step-1" class="text-container">
-        <h1 id="text-1" class="slide-text">AI is evolving,</h1>
+        <h1 id="text-1" class="slide-text">The future runs on AI.</h1>
       </div>
 
       <!-- Text 2 -->
       <div id="step-2" class="text-container">
-        <h1 id="text-2" class="slide-text">so are we.</h1>
+        <h1 id="text-2" class="slide-text">We build yours.</h1>
       </div>
 
       <!-- Beautiful Animation: Canvas + SVG -->
@@ -119,7 +119,7 @@
       <!-- Final Text -->
       <div id="step-3" class="text-container" style="opacity: 0;">
         <h1 id="final-title" class="final-title">Comptech Enterprises</h1>
-        <p id="final-subtitle" class="final-subtitle">your AI Implementation partner</p>
+        <p id="final-subtitle" class="final-subtitle">Custom agents. Real results.</p>
       </div>
     </div>
 
@@ -200,17 +200,17 @@
       window.__timelines = window.__timelines || {};
       const tl = gsap.timeline({ paused: true });
 
-      // 1. Text 1: "AI is evolving"
-      tl.to("#text-1", { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.2);
-      tl.to("#text-1", { opacity: 0, y: -30, duration: 0.6, ease: "power3.in" }, 2.0);
+      // 1. Text 1
+      tl.to("#text-1", { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.1);
+      tl.to("#text-1", { opacity: 0, y: -30, duration: 0.4, ease: "power3.in" }, 1.4);
 
-      // 2. Text 2: "so are we"
-      tl.to("#text-2", { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 2.7);
-      tl.to("#text-2", { opacity: 0, y: -30, duration: 0.6, ease: "power3.in" }, 4.5);
+      // 2. Text 2
+      tl.to("#text-2", { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.0);
+      tl.to("#text-2", { opacity: 0, y: -30, duration: 0.4, ease: "power3.in" }, 3.5);
 
-      // 3. Beautiful animations phase (starts at 5.0s)
-      tl.to("#neural-canvas", { opacity: 1, duration: 0.8 }, 5.0);
-      tl.to("#svg-container", { opacity: 0.4, duration: 0.8 }, 5.0);
+      // 3. Beautiful animations phase (starts at 4.0s)
+      tl.to("#neural-canvas", { opacity: 1, duration: 0.6 }, 4.0);
+      tl.to("#svg-container", { opacity: 0.4, duration: 0.6 }, 4.0);
 
       // Animate SVG path draws (strokeDashoffset)
       const path1 = document.getElementById("network-path-1");
@@ -225,14 +225,14 @@
       gsap.set(path2, { strokeDasharray: len2, strokeDashoffset: len2 });
       gsap.set(path3, { strokeDasharray: len3, strokeDashoffset: len3 });
 
-      tl.to(path1, { strokeDashoffset: 0, duration: 2.8, ease: "power2.inOut" }, 5.0);
-      tl.to(path2, { strokeDashoffset: 0, duration: 2.5, ease: "power2.inOut" }, 5.3);
-      tl.to(path3, { strokeDashoffset: 0, duration: 2.2, ease: "power2.inOut" }, 5.6);
+      tl.to(path1, { strokeDashoffset: 0, duration: 2.5, ease: "power2.inOut" }, 4.0);
+      tl.to(path2, { strokeDashoffset: 0, duration: 2.2, ease: "power2.inOut" }, 4.3);
+      tl.to(path3, { strokeDashoffset: 0, duration: 2.0, ease: "power2.inOut" }, 4.6);
 
-      // 4. Final Text: "Comptech, your AI Implementation partner"
-      tl.to("#step-3", { opacity: 1, duration: 0.8 }, 8.0);
-      tl.from("#final-title", { y: 40, duration: 0.8, ease: "power3.out" }, 8.0);
-      tl.from("#final-subtitle", { y: 40, duration: 0.8, ease: "power3.out" }, 8.2);
+      // 4. Final Text
+      tl.to("#step-3", { opacity: 1, duration: 0.5 }, 7.0);
+      tl.from("#final-title", { y: 40, duration: 0.5, ease: "power3.out" }, 7.0);
+      tl.from("#final-subtitle", { y: 40, duration: 0.5, ease: "power3.out" }, 7.2);
 
       // Keep updating canvas frame based on timeline progress
       const animState = { progress: 0 };

@@ -1,92 +1,134 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { PageHero } from "@/components/sections/PageHero";
 import { RevealWrapper } from "@/components/ui/RevealWrapper";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { Phone, Mail, MessageCircle, MapPin, ArrowRight, Calendar, Building2 } from "lucide-react";
+import { Phone, Mail, MessageCircle, MapPin, ArrowRight, Calendar, Sparkles, Users, Cpu } from "lucide-react";
 
-const CONTACT_METHODS = [
-  { Icon: Phone, title: "Call Us", value: "+91 8595073837", sub: "Mon–Sat, 9am–7pm" },
-  { Icon: Mail, title: "Email Us", value: "mohit@comptech.in", sub: "Response in 2 hrs" },
-  { Icon: MessageCircle, title: "WhatsApp", value: "+91 8595073837", sub: "Quick queries" },
-  { Icon: MapPin, title: "Visit Us", value: "Janakpuri, New Delhi", sub: "Schedule a visit" },
+const TRAINING_CLIENTS = [
+  "Anthem",
+  "Foodtalk India",
+  "Summit Hotels",
+  "Beanly Coffee",
+  "Shervani Hotels",
+  "SRCC",
+  "IIT Delhi",
+  "Coreweave",
+  "Stark Partners",
 ];
 
 const inputClass =
   "w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10 outline-none transition-all bg-white";
 
 export default function ContactPage() {
-  const [quoteForm, setQuoteForm] = useState({
-    firstName: "",
-    lastName: "",
+  const [isMobile, setIsMobile] = useState(false);
+  const [form, setForm] = useState({
+    name: "",
     email: "",
     company: "",
-    phone: "",
-    service: "",
-    requirements: "",
-    downloadProfile: false,
+    employees: "",
+    useCase: "",
+    notes: "",
   });
-  const [quoteSubmitted, setQuoteSubmitted] = useState(false);
-  const [quoteSubmitting, setQuoteSubmitting] = useState(false);
-  const [quoteError, setQuoteError] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   return (
     <>
       <Navbar />
       <main>
-        <PageHero
-          badge="Contact Us"
-          title="Let's Talk Enterprise IT"
-          subtitle="Get a custom proposal, schedule a demo, or speak to a certified engineer — we respond within 2 business hours."
-          breadcrumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
-          backgroundImage="/images/contact_banner.jpg"
-        />
+        {/* Responsive AI Training Storytelling Hero Video */}
+        <section
+          className="relative overflow-hidden"
+          style={{ minHeight: "100vh", paddingTop: "var(--nav-height)" }}
+          aria-label="Hero"
+        >
+          <video
+            key={isMobile ? "mobile" : "desktop"}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+          >
+            <source src={isMobile ? "/training-bg-mobile.mp4" : "/training-bg.mp4"} type="video/mp4" />
+          </video>
 
-        {/* Contact Methods */}
-        <section className="bg-white py-16">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-              {CONTACT_METHODS.map(({ Icon, title, value, sub }) => (
-                <RevealWrapper key={title}>
-                  <div className="card-lift bg-gray-50 border border-gray-200 rounded-3xl p-7 text-center">
-                    <div className="w-12 h-12 bg-blue-700 rounded-2xl flex items-center justify-center text-white mx-auto mb-4">
-                      <Icon size={20} />
-                    </div>
-                    <h3 className="font-display font-bold text-gray-900 mb-2">{title}</h3>
-                    <p className="text-blue-700 font-semibold text-sm mb-1">{value}</p>
-                    <p className="text-xs text-gray-400">{sub}</p>
-                  </div>
-                </RevealWrapper>
-              ))}
+          {/* Gradient mesh blobs for glass depth */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-1/4 -left-20 w-[500px] h-[500px] rounded-full blur-3xl opacity-20" style={{ background: "#5C0F26" }} />
+            <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] rounded-full blur-3xl opacity-15" style={{ background: "#1D4ED8" }} />
+          </div>
+
+          {/* Bottom fade */}
+          <div
+            className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
+            style={{ background: "linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.85) 70%, #ffffff 100%)" }}
+          />
+        </section>
+
+        {/* Companies Leveraging our AI Trainings Ticker (Single large line) */}
+        <section className="bg-white pt-12 sm:pt-16 pb-10 sm:pb-14 overflow-hidden border-b border-gray-100">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
+              <div className="flex-1 h-px bg-gray-200" />
+              <p className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-gray-400 whitespace-nowrap">
+                Companies Leveraging our AI Trainings
+              </p>
+              <div className="flex-1 h-px bg-gray-200" />
+            </div>
+
+            <div className="overflow-hidden py-2">
+              <div
+                className="flex w-max gap-3 sm:gap-4"
+                style={{
+                  animation: "ticker-scroll 26s linear infinite",
+                }}
+              >
+                {TRAINING_CLIENTS.concat(TRAINING_CLIENTS).map((name, i) => (
+                  <span
+                    key={`${name}-${i}`}
+                    className="shrink-0 glass-card rounded-full px-6 py-3.5 sm:px-10 sm:py-5 text-sm sm:text-lg lg:text-xl font-bold text-gray-800 whitespace-nowrap cursor-default hover:border-[#5C0F26]/40 hover:text-[#5C0F26] transition-colors"
+                  >
+                    {name}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Quote Form */}
-        <section id="quote" className="bg-gray-50 py-24">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-14 items-start">
+        {/* AI Training Booking Form */}
+        <section id="training-form" className="bg-gray-50 py-14 sm:py-20 lg:py-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
               <RevealWrapper>
-                <SectionLabel>Get a Quote</SectionLabel>
-                <h2 className="font-display font-extrabold text-display-md text-gray-900 mb-5">
-                  Request a Custom IT Proposal
+                <SectionLabel>Corporate AI Workshops</SectionLabel>
+                <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-gray-900 mb-4 sm:mb-5 leading-tight">
+                  Upskill Your Team in Practical AI
                 </h2>
-                <p className="text-gray-500 text-lg leading-relaxed mb-8">
-                  Share your requirements and our certified engineers will prepare a detailed, no-obligation proposal
-                  within 24 hours.
+                <p className="text-gray-500 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8">
+                  Whether you want your engineering team to build custom AI agents or non-technical staff to 10x their productivity with generative AI tools, we design tailored enterprise workshops.
                 </p>
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-3.5 sm:gap-4 mb-8 lg:mb-0">
                   {[
-                    { icon: Building2, text: "OEM-certified Dell, HP, Lenovo solutions" },
-                    { icon: Phone, text: "Dedicated account manager assigned" },
-                    { icon: Calendar, text: "Free site assessment available" },
+                    { icon: Sparkles, text: "Practical, project-based curriculum tailored to your industry" },
+                    { icon: Users, text: "Workshops for MSMEs, startups, and enterprise teams" },
+                    { icon: Cpu, text: "Led by certified AI engineers and industry practitioners" },
                   ].map(({ icon: Icon, text }) => (
-                    <div key={text} className="flex items-center gap-3 text-sm text-gray-600">
-                      <div className="w-8 h-8 rounded-xl bg-blue-50 flex items-center justify-center shrink-0">
-                        <Icon size={15} className="text-blue-700" />
+                    <div key={text} className="flex items-center gap-3 text-xs sm:text-sm text-gray-600">
+                      <div className="w-8 h-8 rounded-xl bg-[#FDF4F6] flex items-center justify-center shrink-0">
+                        <Icon size={15} style={{ color: "#5C0F26" }} />
                       </div>
                       {text}
                     </div>
@@ -95,123 +137,145 @@ export default function ContactPage() {
               </RevealWrapper>
 
               <RevealWrapper delay={150}>
-                {quoteSubmitted ? (
-                  <div className="bg-white rounded-3xl p-10 shadow-lg text-center">
-                    <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-5">
+                {submitted ? (
+                  <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-10 shadow-lg text-center">
+                    <div className="w-14 sm:w-16 h-14 sm:h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-5">
                       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2.5">
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
                     </div>
-                    <h3 className="font-display font-bold text-xl text-gray-900 mb-2">Inquiry Received!</h3>
-                    <p className="text-gray-500 text-sm">We&apos;ll get back to you within 2 business hours.</p>
+                    <h3 className="font-display font-bold text-lg sm:text-xl text-gray-900 mb-2">Training Request Received!</h3>
+                    <p className="text-gray-500 text-xs sm:text-sm">Our AI training coordinator will reach out within 2 business hours with curriculum details.</p>
                   </div>
                 ) : (
                   <form
-                    className="bg-white rounded-3xl p-8 lg:p-10 shadow-lg"
+                    className="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 shadow-lg"
                     onSubmit={async (e) => {
                       e.preventDefault();
-                      setQuoteSubmitting(true);
-                      setQuoteError("");
+                      setSubmitting(true);
+                      setError("");
                       try {
                         const res = await fetch("/api/contact", {
                           method: "POST",
                           headers: { "Content-Type": "application/json" },
-                          body: JSON.stringify({ ...quoteForm, source: "Contact Page Quote Form" }),
+                          body: JSON.stringify({
+                            name: form.name,
+                            email: form.email,
+                            company: form.company,
+                            employees: form.employees,
+                            useCase: form.useCase,
+                            requirements: form.notes || `Training for ${form.employees} employees (Use Case: ${form.useCase})`,
+                            source: "Book an AI Training Page",
+                          }),
                         });
                         if (!res.ok) throw new Error("Request failed");
-                        setQuoteSubmitted(true);
+                        setSubmitted(true);
                       } catch {
-                        setQuoteError("Something went wrong. Please try again or call us directly.");
+                        setError("Something went wrong. Please try again or call us directly.");
                       } finally {
-                        setQuoteSubmitting(false);
+                        setSubmitting(false);
                       }
                     }}
                   >
-                    <div className="grid grid-cols-2 gap-4 mb-4">
-                      <div>
-                        <label className="block text-xs font-semibold text-gray-600 mb-1.5">First Name *</label>
-                        <input
-                          type="text"
-                          required
-                          className={inputClass}
-                          value={quoteForm.firstName}
-                          onChange={(e) => setQuoteForm({ ...quoteForm, firstName: e.target.value })}
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-xs font-semibold text-gray-600 mb-1.5">Last Name *</label>
-                        <input
-                          type="text"
-                          required
-                          className={inputClass}
-                          value={quoteForm.lastName}
-                          onChange={(e) => setQuoteForm({ ...quoteForm, lastName: e.target.value })}
-                        />
-                      </div>
-                    </div>
-                    {[
-                      { label: "Work Email *", key: "email", type: "email" },
-                      { label: "Company Name *", key: "company", type: "text" },
-                      { label: "Phone Number", key: "phone", type: "tel" },
-                    ].map(({ label, key, type }) => (
-                      <div key={key} className="mb-4">
-                        <label className="block text-xs font-semibold text-gray-600 mb-1.5">{label}</label>
-                        <input
-                          type={type}
-                          required={label.includes("*")}
-                          className={inputClass}
-                          value={quoteForm[key as keyof typeof quoteForm] as string}
-                          onChange={(e) => setQuoteForm({ ...quoteForm, [key]: e.target.value })}
-                        />
-                      </div>
-                    ))}
                     <div className="mb-4">
-                      <label className="block text-xs font-semibold text-gray-600 mb-1.5">Service Required *</label>
-                      <select
-                        required
-                        className={inputClass}
-                        value={quoteForm.service}
-                        onChange={(e) => setQuoteForm({ ...quoteForm, service: e.target.value })}
-                      >
-                        <option value="">Select a service</option>
-                        {[
-                          "Enterprise Infrastructure",
-                          "End User Computing",
-                          "AI Solutions",
-                          "Data Centre",
-                          "Networking",
-                          "CCTV & Security",
-                          "Cloud Solutions",
-                          "AMC",
-                          "Multiple Services",
-                        ].map((s) => (
-                          <option key={s}>{s}</option>
-                        ))}
-                      </select>
-                    </div>
-                    <div className="mb-5">
-                      <label className="block text-xs font-semibold text-gray-600 mb-1.5">Requirements *</label>
-                      <textarea
-                        required
-                        rows={4}
-                        className={`${inputClass} resize-none min-h-32`}
-                        placeholder="Describe your IT requirements, existing setup, and goals..."
-                        value={quoteForm.requirements}
-                        onChange={(e) => setQuoteForm({ ...quoteForm, requirements: e.target.value })}
-                      />
-                    </div>
-                    <label className="flex items-center gap-3 mb-6 cursor-pointer">
+                      <label htmlFor="training-name" className="block text-xs font-semibold text-gray-600 mb-1.5">Name *</label>
                       <input
-                        type="checkbox"
-                        className="w-4 h-4 rounded border-gray-300 text-blue-700 focus:ring-blue-500"
-                        checked={quoteForm.downloadProfile}
-                        onChange={(e) => setQuoteForm({ ...quoteForm, downloadProfile: e.target.checked })}
+                        id="training-name"
+                        name="name"
+                        type="text"
+                        required
+                        autoComplete="name"
+                        className={inputClass}
+                        placeholder="John Doe"
+                        value={form.name}
+                        onChange={(e) => setForm({ ...form, name: e.target.value })}
                       />
-                      <span className="text-sm text-gray-600">I&apos;d like to download the Company Profile PDF</span>
-                    </label>
-                    {quoteError && <p className="text-sm text-red-600 mb-4">{quoteError}</p>}
-                    <button type="submit" disabled={quoteSubmitting} className="btn-accent btn btn-lg w-full disabled:opacity-60">
-                      {quoteSubmitting ? "Sending..." : "Send Inquiry"} <ArrowRight size={18} className="btn-arrow" />
+                    </div>
+
+                    <div className="mb-4">
+                      <label htmlFor="training-email" className="block text-xs font-semibold text-gray-600 mb-1.5">Email *</label>
+                      <input
+                        id="training-email"
+                        name="email"
+                        type="email"
+                        required
+                        autoComplete="email"
+                        className={inputClass}
+                        placeholder="john@company.com"
+                        value={form.email}
+                        onChange={(e) => setForm({ ...form, email: e.target.value })}
+                      />
+                    </div>
+
+                    <div className="mb-4">
+                      <label htmlFor="training-company" className="block text-xs font-semibold text-gray-600 mb-1.5">Company Name *</label>
+                      <input
+                        id="training-company"
+                        name="company"
+                        type="text"
+                        required
+                        autoComplete="organization"
+                        className={inputClass}
+                        placeholder="Your Company Name"
+                        value={form.company}
+                        onChange={(e) => setForm({ ...form, company: e.target.value })}
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                      <div>
+                        <label htmlFor="training-employees" className="block text-xs font-semibold text-gray-600 mb-1.5">Number of Employees in Training *</label>
+                        <input
+                          id="training-employees"
+                          name="employees"
+                          type="number"
+                          min="1"
+                          required
+                          className={inputClass}
+                          placeholder="e.g. 20"
+                          value={form.employees}
+                          onChange={(e) => setForm({ ...form, employees: e.target.value })}
+                        />
+                      </div>
+
+                      <div>
+                        <label htmlFor="training-use-case" className="block text-xs font-semibold text-gray-600 mb-1.5">Use Case *</label>
+                        <select
+                          id="training-use-case"
+                          name="useCase"
+                          required
+                          className={inputClass}
+                          value={form.useCase}
+                          onChange={(e) => setForm({ ...form, useCase: e.target.value })}
+                        >
+                          <option value="">Select a use case</option>
+                          <option value="AI Development">AI Development</option>
+                          <option value="AI tools usage">AI tools usage</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div className="mb-6">
+                      <label htmlFor="training-notes" className="block text-xs font-semibold text-gray-600 mb-1.5">Additional Notes / Goals (Optional)</label>
+                      <textarea
+                        id="training-notes"
+                        name="notes"
+                        rows={3}
+                        className={`${inputClass} resize-none`}
+                        placeholder="Tell us about specific tools, workflows, or team objectives..."
+                        value={form.notes}
+                        onChange={(e) => setForm({ ...form, notes: e.target.value })}
+                      />
+                    </div>
+
+                    {error && <p className="text-sm text-red-600 mb-4">{error}</p>}
+
+                    <button
+                      type="submit"
+                      disabled={submitting}
+                      className="btn-accent btn btn-lg w-full disabled:opacity-60 !bg-[#5C0F26] hover:!bg-[#3F0A1A]"
+                    >
+                      {submitting ? "Submitting..." : "Book AI Training"} <ArrowRight size={18} className="btn-arrow" />
                     </button>
                   </form>
                 )}
@@ -250,8 +314,8 @@ export default function ContactPage() {
                   { Icon: Calendar, label: "Office Hours", value: "Mon–Sat, 9:00am – 7:00pm IST" },
                 ].map(({ Icon, label, value }) => (
                   <div key={label} className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center shrink-0">
-                      <Icon size={17} className="text-blue-700" />
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "#FDF4F6" }}>
+                      <Icon size={17} style={{ color: "#5C0F26" }} />
                     </div>
                     <div>
                       <div className="text-xs font-semibold text-gray-400 mb-0.5">{label}</div>

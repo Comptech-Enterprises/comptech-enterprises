@@ -2,8 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=1080, height=1920" />
-    <title>Comptech AI Mobile Animation</title>
+    <meta name="viewport" content="width=1920, height=1080" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;850&display=swap" rel="stylesheet">
@@ -21,16 +20,16 @@
       html,
       body {
         margin: 0;
-        width: 1080px;
-        height: 1920px;
+        width: 1920px;
+        height: 1080px;
         overflow: hidden;
         background: #ffffff;
         font-family: 'Syne', sans-serif;
       }
       #root {
         position: relative;
-        width: 1080px;
-        height: 1920px;
+        width: 1920px;
+        height: 1080px;
         overflow: hidden;
         background: #ffffff;
         display: flex;
@@ -46,32 +45,30 @@
         align-items: center;
         justify-content: center;
         z-index: 10;
-        padding: 0 60px;
+        padding: 0 100px;
       }
       .slide-text {
-        font-size: 80px;
-        font-weight: 850;
+        font-size: 96px;
+        font-weight: 900;
         color: #0c0a0f;
-        letter-spacing: -2px;
-        line-height: 1.15;
+        letter-spacing: -3px;
         opacity: 0;
         transform: translateY(40px);
       }
       .final-title {
-        font-size: 90px;
-        font-weight: 850;
+        font-size: 105px;
+        font-weight: 900;
         color: #0c0a0f;
-        letter-spacing: -3px;
-        line-height: 1.1;
+        letter-spacing: -4px;
+        line-height: 1.05;
         margin: 0;
       }
       .final-subtitle {
-        font-size: 38px;
-        font-weight: 600;
-        color: #3b3a40;
+        font-size: 44px;
+        font-weight: 700;
+        color: #5C0F26;
         margin-top: 24px;
-        letter-spacing: -1px;
-        line-height: 1.3;
+        letter-spacing: -1.5px;
       }
       #neural-canvas {
         position: absolute;
@@ -81,6 +78,7 @@
         z-index: 2;
         opacity: 0;
       }
+      <svg id="svg-container" data-layout-allow-overflow viewBox="0 0 1920 1080" fill="none">
       #svg-container {
         position: absolute;
         inset: 0;
@@ -97,31 +95,32 @@
       data-composition-id="main"
       data-start="0"
       data-duration="12"
-      data-width="1080"
-      data-height="1920"
+      data-width="1920"
+      data-height="1080"
     >
       <!-- Text 1 -->
       <div id="step-1" class="text-container">
-        <h1 id="text-1" class="slide-text">The future runs on AI.</h1>
+        <h1 id="text-1" class="slide-text">The World is Adopting AI.</h1>
       </div>
 
       <!-- Text 2 -->
       <div id="step-2" class="text-container">
-        <h1 id="text-2" class="slide-text">We build yours.</h1>
+        <h1 id="text-2" class="slide-text" style="color: #5C0F26;">Are you?</h1>
       </div>
 
       <!-- Beautiful Animation: Canvas + SVG -->
-      <canvas id="neural-canvas" width="1080" height="1920"></canvas>
-      <svg id="svg-container" data-layout-allow-overflow viewBox="0 0 1080 1920" fill="none">
-        <path id="network-path-1" d="M 540,-100 C 150,350 900,650 540,960 C 180,1270 930,1570 540,2020" stroke="#1D4ED8" stroke-width="7" stroke-linecap="round" />
-        <path id="network-path-2" d="M 640,-100 C 950,450 50,750 440,1100 C 830,1450 150,1650 440,2020" stroke="#8B5CF6" stroke-width="5" stroke-linecap="round" />
-        <path id="network-path-3" d="M 440,-100 C 350,250 950,550 640,800 C 330,1050 50,1350 640,2020" stroke="#E8435A" stroke-width="4" stroke-linecap="round" />
+      <canvas id="neural-canvas" width="1920" height="1080"></canvas>
+      <svg id="svg-container" data-layout-allow-overflow viewBox="0 0 1920 1080" fill="none">
+        <!-- Connecting network paths that draw themselves -->
+        <path id="network-path-1" d="M -100,540 C 350,150 650,900 960,540 C 1270,180 1570,930 2020,540" stroke="#5C0F26" stroke-width="7" stroke-linecap="round" />
+        <path id="network-path-2" d="M -100,640 C 450,950 750,50 1100,440 C 1450,830 1650,150 2020,440" stroke="#8B5CF6" stroke-width="5" stroke-linecap="round" />
+        <path id="network-path-3" d="M -100,440 C 250,350 550,950 800,640 C 1050,330 1350,50 2020,640" stroke="#1D4ED8" stroke-width="4" stroke-linecap="round" />
       </svg>
 
       <!-- Final Text -->
       <div id="step-3" class="text-container" style="opacity: 0;">
-        <h1 id="final-title" class="final-title">Comptech<br>Enterprises</h1>
-        <p id="final-subtitle" class="final-subtitle">Custom agents. Real results.</p>
+        <h1 id="final-title" class="final-title">Book an AI Training</h1>
+        <p id="final-subtitle" class="final-subtitle">Empowering Teams with Enterprise AI Skills</p>
       </div>
     </div>
 
@@ -129,28 +128,27 @@
       const canvas = document.getElementById("neural-canvas");
       const ctx = canvas.getContext("2d");
 
-      // Math seed random helper for determinism
-      let seed = 7766;
+      let seed = 8899;
       function random() {
         let x = Math.sin(seed++) * 10000;
         return x - Math.floor(x);
       }
 
-      const numNodes = 60;
+      const numNodes = 75;
       const nodes = [];
-      const colors = ["29, 78, 216", "139, 92, 246", "232, 67, 90", "75, 85, 99"];
+      const colors = ["92, 15, 38", "139, 92, 246", "29, 78, 216", "75, 85, 99"];
 
       for (let i = 0; i < numNodes; i++) {
         const kX = Math.floor(random() * 3) + 1;
         const kY = Math.floor(random() * 3) + 1;
         
         nodes.push({
-          baseX: random() * 1080,
-          baseY: random() * 1920,
-          freqX: kX * Math.PI / 6, // loops perfectly over 12s
-          freqY: kY * Math.PI / 6, // loops perfectly over 12s
-          ampX: 50 + random() * 60,
-          ampY: 50 + random() * 60,
+          baseX: random() * 1920,
+          baseY: random() * 1080,
+          freqX: kX * Math.PI / 6,
+          freqY: kY * Math.PI / 6,
+          ampX: 70 + random() * 80,
+          ampY: 70 + random() * 80,
           phaseX: random() * Math.PI * 2,
           phaseY: random() * Math.PI * 2,
           r: 2.2 + random() * 3.5,
@@ -160,7 +158,7 @@
 
       function drawFrame(progress) {
         const time = progress * 12;
-        ctx.clearRect(0, 0, 1080, 1920);
+        ctx.clearRect(0, 0, 1920, 1080);
 
         const pts = nodes.map(n => {
           const x = n.baseX + Math.sin(time * 0.35 * n.freqX + n.phaseX) * n.ampX;
@@ -168,7 +166,7 @@
           return { x, y, r: n.r, color: n.color };
         });
 
-        const linkDistance = 220;
+        const linkDistance = 250;
         for (let i = 0; i < pts.length; i++) {
           const a = pts[i];
           for (let j = i + 1; j < pts.length; j++) {
@@ -178,7 +176,7 @@
             const dist = Math.hypot(dx, dy);
             if (dist < linkDistance) {
               const alpha = (1 - dist / linkDistance) * 0.16;
-              ctx.strokeStyle = `rgba(139, 92, 246, ${alpha})`;
+              ctx.strokeStyle = `rgba(92, 15, 38, ${alpha})`;
               ctx.lineWidth = 0.9;
               ctx.beginPath();
               ctx.moveTo(a.x, a.y);
@@ -200,17 +198,17 @@
       window.__timelines = window.__timelines || {};
       const tl = gsap.timeline({ paused: true });
 
-      // 1. Text 1
-      tl.to("#text-1", { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.1);
-      tl.to("#text-1", { opacity: 0, y: -30, duration: 0.4, ease: "power3.in" }, 1.4);
+      // 1. Text 1: "The World is Adopting AI."
+      tl.to("#text-1", { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.2);
+      tl.to("#text-1", { opacity: 0, y: -30, duration: 0.6, ease: "power3.in" }, 2.2);
 
-      // 2. Text 2
-      tl.to("#text-2", { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.0);
-      tl.to("#text-2", { opacity: 0, y: -30, duration: 0.4, ease: "power3.in" }, 3.5);
+      // 2. Text 2: "Are you?"
+      tl.to("#text-2", { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 2.9);
+      tl.to("#text-2", { opacity: 0, y: -30, duration: 0.6, ease: "power3.in" }, 4.8);
 
-      // 3. Beautiful animations
-      tl.to("#neural-canvas", { opacity: 1, duration: 0.6 }, 4.0);
-      tl.to("#svg-container", { opacity: 0.4, duration: 0.6 }, 4.0);
+      // 3. Network drawing phase
+      tl.to("#neural-canvas", { opacity: 1, duration: 0.8 }, 5.2);
+      tl.to("#svg-container", { opacity: 0.45, duration: 0.8 }, 5.2);
 
       const path1 = document.getElementById("network-path-1");
       const path2 = document.getElementById("network-path-2");
@@ -224,14 +222,14 @@
       gsap.set(path2, { strokeDasharray: len2, strokeDashoffset: len2 });
       gsap.set(path3, { strokeDasharray: len3, strokeDashoffset: len3 });
 
-      tl.to(path1, { strokeDashoffset: 0, duration: 2.5, ease: "power2.inOut" }, 4.0);
-      tl.to(path2, { strokeDashoffset: 0, duration: 2.2, ease: "power2.inOut" }, 4.3);
-      tl.to(path3, { strokeDashoffset: 0, duration: 2.0, ease: "power2.inOut" }, 4.6);
+      tl.to(path1, { strokeDashoffset: 0, duration: 2.8, ease: "power2.inOut" }, 5.2);
+      tl.to(path2, { strokeDashoffset: 0, duration: 2.5, ease: "power2.inOut" }, 5.5);
+      tl.to(path3, { strokeDashoffset: 0, duration: 2.2, ease: "power2.inOut" }, 5.8);
 
-      // 4. Final Text
-      tl.to("#step-3", { opacity: 1, duration: 0.5 }, 7.0);
-      tl.from("#final-title", { y: 40, duration: 0.5, ease: "power3.out" }, 7.0);
-      tl.from("#final-subtitle", { y: 40, duration: 0.5, ease: "power3.out" }, 7.2);
+      // 4. Final Text: "Book an AI Training"
+      tl.to("#step-3", { opacity: 1, duration: 0.8 }, 8.2);
+      tl.from("#final-title", { y: 40, duration: 0.8, ease: "power3.out" }, 8.2);
+      tl.from("#final-subtitle", { y: 40, duration: 0.8, ease: "power3.out" }, 8.4);
 
       const animState = { progress: 0 };
       tl.to(animState, {

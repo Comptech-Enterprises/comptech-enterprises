@@ -12,7 +12,7 @@ const CARDS = [
     Icon: Video,
     kicker: "AI Assistant",
     title: "AI for meetings",
-    desc: "An assistant that sits in your calls, captures context, writes clear notes, and follows up with action items.",
+    desc: "An assistant that joins your calls, records and transcribes, and speaks live to answer queries and capture action items.",
     accent: "#8B5CF6",
   },
   {

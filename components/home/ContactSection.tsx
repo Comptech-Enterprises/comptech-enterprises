@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, Phone, Mail, MapPin, MessageCircle } from "lucide-react";
+import { ArrowRight, Phone, Mail, MapPin, MessageCircle, Calendar } from "lucide-react";
 import { COMPANY } from "@/lib/constants";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
@@ -14,6 +14,29 @@ const CONTACT_METHODS = [
   { Icon: Mail,          label: "Email",     value: COMPANY.email,        sub: "Response in 2 hrs" },
   { Icon: MessageCircle, label: "WhatsApp",  value: "+91 8595073837",    sub: "Quick queries"     },
   { Icon: MapPin,        label: "Office",    value: COMPANY.address,      sub: "Schedule a visit"  },
+];
+
+const BOOKING_PATHS = [
+  {
+    id: "ai",
+    label: "AI Project",
+    name: "Paawan",
+    role: "AI Solutions Lead",
+    desc: "Building AI agents, automation, or want an AI audit? Book time directly on Paawan's calendar.",
+    cta: "Talk to an AI Expert",
+    href: "https://calendly.com/comptech-ai",
+    email: "paawan@comptech.in",
+  },
+  {
+    id: "it",
+    label: "IT Infrastructure",
+    name: "Mohit",
+    role: "IT Solutions Lead",
+    desc: "Need servers, networking, CCTV, or an AMC? Book time directly on Mohit's calendar.",
+    cta: "Talk to an IT Expert",
+    href: "https://calendly.com/comptech-it",
+    email: COMPANY.email,
+  },
 ];
 
 export function ContactSection() {
@@ -30,32 +53,64 @@ export function ContactSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
-        <div className="mb-8">
-          <SectionLabel>Contact Us</SectionLabel>
+        <div className="mb-10 lg:mb-12">
+          <SectionLabel>Get In Touch</SectionLabel>
           <h2
             id="contact-title"
             className="font-display font-extrabold text-gray-900 tracking-tight mt-3"
             style={{ fontSize: "clamp(1.9rem, 3.5vw, 2.8rem)" }}
           >
-            Got a project in mind?{" "}
+            Looking for AI solutions or IT support?{" "}
             <span className="text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(135deg, #5C0F26, #E8435A)" }}>
-              Let's talk.
+              Let&apos;s talk.
             </span>
           </h2>
           <p className="mt-3 text-base text-gray-500 max-w-xl leading-relaxed">
-            Share your requirements and our certified engineers will prepare a detailed, no-obligation proposal within 24 hours.
+            Tell us what&apos;s eating your team&apos;s time. We&apos;ll show you exactly what we&apos;d build.
           </p>
         </div>
 
-        {/* Form */}
+        {/* Primary action: two Calendly-first booking paths */}
+        <div className="grid sm:grid-cols-2 gap-5 mb-14 lg:mb-16">
+          {BOOKING_PATHS.map((p) => (
+            <div
+              key={p.id}
+              className="glass-panel-strong rounded-3xl p-6 lg:p-7 flex flex-col"
+            >
+              <span
+                className="self-start text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-4"
+                style={{ background: p.id === "ai" ? "#FDF4F6" : "#EFF6FF", color: p.id === "ai" ? "#5C0F26" : "#1D4ED8" }}
+              >
+                {p.label}
+              </span>
+              <h3 className="font-display font-extrabold text-xl text-gray-900 mb-1">{p.name}</h3>
+              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-3">{p.role}</p>
+              <p className="text-sm text-gray-500 leading-relaxed mb-6 flex-1">{p.desc}</p>
+              <a
+                href={p.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 w-full px-6 py-3.5 rounded-xl text-sm font-bold text-white transition-all duration-200 hover:opacity-90 hover:-translate-y-px"
+                style={{
+                  background: p.id === "ai" ? "linear-gradient(135deg, #5C0F26, #E8435A)" : "linear-gradient(135deg, #1E3A8A, #1D4ED8)",
+                }}
+              >
+                <Calendar size={15} />
+                {p.cta}
+              </a>
+              <a href={`mailto:${p.email}`} className="text-xs text-gray-400 text-center mt-3 hover:text-gray-600 transition-colors">
+                or email {p.email}
+              </a>
+            </div>
+          ))}
+        </div>
+
+        {/* Secondary: contact methods + form */}
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
 
-          {/* Left — info + contact methods */}
+          {/* Left — contact methods */}
           <div>
-            <h3 className="font-display font-extrabold text-2xl text-gray-900 mb-3">Request a Custom IT Proposal</h3>
-            <p className="text-gray-500 text-base leading-relaxed mb-6 lg:mb-8">
-              Tell us what you need and we'll get back to you within 2 business hours.
-            </p>
+            <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-4">Other Ways to Reach Us</p>
             <div className="flex flex-col gap-3">
               {CONTACT_METHODS.map(({ Icon, label, value, sub }) => (
                 <div key={label} className="glass-card flex items-center gap-4 p-4 rounded-2xl">
@@ -70,31 +125,9 @@ export function ContactSection() {
                 </div>
               ))}
             </div>
-
-            {/* What happens next */}
-            <div className="mt-6 lg:mt-8">
-              <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-4">What happens next?</p>
-              <div className="flex flex-col gap-4">
-                {[
-                  { step: "01", text: "We review your inquiry within 2 hours" },
-                  { step: "02", text: "A certified engineer calls to understand your needs" },
-                  { step: "03", text: "You receive a detailed, no-obligation proposal" },
-                ].map(({ step, text }) => (
-                  <div key={step} className="flex items-start gap-4">
-                    <span
-                      className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0"
-                      style={{ background: "linear-gradient(135deg, #5C0F26, #E8435A)" }}
-                    >
-                      {step}
-                    </span>
-                    <p className="text-sm text-gray-600 leading-relaxed pt-1">{text}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
 
-          {/* Right form */}
+          {/* Right — secondary form */}
           {submitted ? (
             <div className="flex flex-col items-center justify-center text-center py-20 rounded-3xl glass-panel-strong">
               <div className="w-16 h-16 rounded-full flex items-center justify-center mb-5" style={{ background: "#FDF4F6" }}>
@@ -127,38 +160,72 @@ export function ContactSection() {
                 }
               }}
             >
+              <h3 className="font-display font-extrabold text-lg text-gray-900 mb-5">Or send us a message</h3>
+
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div>
-                  <label className="block text-xs font-semibold text-gray-600 mb-1.5">First Name *</label>
-                  <input type="text" required className={inputClass} placeholder="John"
-                    value={form.firstName} onChange={(e) => setForm({ ...form, firstName: e.target.value })} />
+                  <label htmlFor="contact-first-name" className="block text-xs font-semibold text-gray-600 mb-1.5">First Name *</label>
+                  <input
+                    id="contact-first-name"
+                    name="firstName"
+                    type="text"
+                    required
+                    autoComplete="given-name"
+                    className={inputClass}
+                    placeholder="John"
+                    value={form.firstName}
+                    onChange={(e) => setForm({ ...form, firstName: e.target.value })}
+                  />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-gray-600 mb-1.5">Last Name *</label>
-                  <input type="text" required className={inputClass} placeholder="Doe"
-                    value={form.lastName} onChange={(e) => setForm({ ...form, lastName: e.target.value })} />
+                  <label htmlFor="contact-last-name" className="block text-xs font-semibold text-gray-600 mb-1.5">Last Name *</label>
+                  <input
+                    id="contact-last-name"
+                    name="lastName"
+                    type="text"
+                    required
+                    autoComplete="family-name"
+                    className={inputClass}
+                    placeholder="Doe"
+                    value={form.lastName}
+                    onChange={(e) => setForm({ ...form, lastName: e.target.value })}
+                  />
                 </div>
               </div>
 
               {[
-                { label: "Work Email *",    key: "email",   type: "email", placeholder: "john@company.com" },
-                { label: "Company Name *",  key: "company", type: "text",  placeholder: "Your company"      },
-                { label: "Phone Number",    key: "phone",   type: "tel",   placeholder: "+91 8595073837"   },
-              ].map(({ label, key, type, placeholder }) => (
+                { label: "Work Email *",    key: "email",   type: "email", placeholder: "john@company.com", auto: "email" },
+                { label: "Company Name *",  key: "company", type: "text",  placeholder: "Your company",      auto: "organization" },
+                { label: "Phone Number",    key: "phone",   type: "tel",   placeholder: "Phone number",      auto: "tel" },
+              ].map(({ label, key, type, placeholder, auto }) => (
                 <div key={key} className="mb-4">
-                  <label className="block text-xs font-semibold text-gray-600 mb-1.5">{label}</label>
-                  <input type={type} required={label.includes("*")} className={inputClass} placeholder={placeholder}
+                  <label htmlFor={`contact-${key}`} className="block text-xs font-semibold text-gray-600 mb-1.5">{label}</label>
+                  <input
+                    id={`contact-${key}`}
+                    name={key}
+                    type={type}
+                    required={label.includes("*")}
+                    autoComplete={auto}
+                    className={inputClass}
+                    placeholder={placeholder}
                     value={form[key as keyof typeof form] as string}
-                    onChange={(e) => setForm({ ...form, [key]: e.target.value })} />
+                    onChange={(e) => setForm({ ...form, [key]: e.target.value })}
+                  />
                 </div>
               ))}
 
               <div className="mb-4">
-                <label className="block text-xs font-semibold text-gray-600 mb-1.5">Service Required *</label>
-                <select required className={inputClass} value={form.service}
-                  onChange={(e) => setForm({ ...form, service: e.target.value })}>
+                <label htmlFor="contact-service" className="block text-xs font-semibold text-gray-600 mb-1.5">Service Required *</label>
+                <select
+                  id="contact-service"
+                  name="service"
+                  required
+                  className={inputClass}
+                  value={form.service}
+                  onChange={(e) => setForm({ ...form, service: e.target.value })}
+                >
                   <option value="">Select a service</option>
-                  {["Enterprise Infrastructure","End User Computing","AI Solutions","Data Centre","Networking","CCTV & Security","Cloud Solutions","AMC","Multiple Services"].map((s) => (
+                  {["AI Audit","Custom AI Agents","AI Automation","AI Training & Workshops","Enterprise Infrastructure","End User Computing","Networking & CCTV","Cloud Solutions","AMC","Multiple Services"].map((s) => (
                     <option key={s}>{s}</option>
                   ))}
                 </select>
@@ -167,7 +234,7 @@ export function ContactSection() {
               <div className="mb-5">
                 <label className="block text-xs font-semibold text-gray-600 mb-1.5">Requirements *</label>
                 <textarea required rows={4} className={`${inputClass} resize-none`}
-                  placeholder="Describe your IT requirements, existing setup, and goals..."
+                  placeholder="Describe what you need, your current setup, and your goals..."
                   value={form.requirements} onChange={(e) => setForm({ ...form, requirements: e.target.value })} />
               </div>
 

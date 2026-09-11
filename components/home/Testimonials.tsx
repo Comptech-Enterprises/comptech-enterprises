@@ -1,43 +1,25 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 import { Star, Quote } from "lucide-react";
 import { TESTIMONIALS } from "@/lib/constants";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
-const AVATAR_COLORS = ["#5C0F26", "#1D4ED8", "#5C0F26", "#1D4ED8", "#5C0F26", "#1D4ED8"];
-const VISIBLE = 3;
-
-function buildQueue(start: number) {
-  return Array.from({ length: VISIBLE }, (_, i) => (start + i) % TESTIMONIALS.length);
-}
+const AVATAR_COLORS = ["#5C0F26", "#1D4ED8", "#5C0F26", "#1D4ED8", "#5C0F26", "#1D4ED8", "#5C0F26"];
 
 export function Testimonials() {
-  const [start, setStart] = useState(0);
-  const [queue, setQueue] = useState(() => buildQueue(0));
-  const prev = useRef(queue);
+  const [isPaused, setIsPaused] = useState(false);
 
-  useEffect(() => {
-    const id = setInterval(() => {
-      setStart((s) => {
-        const next = (s + 1) % TESTIMONIALS.length;
-        prev.current = queue;
-        setQueue(buildQueue(next));
-        return next;
-      });
-    }, 3200);
-    return () => clearInterval(id);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // Duplicate the list so it scrolls endlessly and seamlessly
+  const allTestimonials = TESTIMONIALS.concat(TESTIMONIALS);
 
   return (
     <section className="relative py-24 lg:py-32 overflow-hidden" aria-labelledby="testimonials-title">
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
+        <div className="flex flex-col lg:flex-row gap-14 lg:gap-20 items-start">
 
-          {/* ── Left: heading ── */}
-          <div className="lg:w-2/5 lg:sticky lg:top-32 shrink-0">
+          {/* ── Left: heading & stats ── */}
+          <div className="w-full lg:w-2/5 lg:sticky lg:top-32 shrink-0">
             <SectionLabel>Client Stories</SectionLabel>
             <h2
               id="testimonials-title"
@@ -52,12 +34,12 @@ export function Testimonials() {
                 clients say
               </span>
             </h2>
-            <p className="mt-5 text-base text-gray-500 leading-relaxed max-w-xs">
-              Real results from real organizations. From hospitals to retail chains — here's what our partners think.
+            <p className="mt-4 text-base text-gray-500 leading-relaxed max-w-sm">
+              Real results from real organizations across India. From educational institutions to rapid-growth enterprises.
             </p>
 
             {/* Rating */}
-            <div className="mt-8 flex items-center gap-3">
+            <div className="mt-7 flex items-center gap-3">
               <div className="flex gap-0.5">
                 {Array(5).fill(null).map((_, i) => (
                   <Star key={i} size={14} fill="#5C0F26" stroke="none" />
@@ -82,55 +64,73 @@ export function Testimonials() {
               ))}
             </div>
 
+            <p className="text-xs text-gray-400 mt-6 font-medium">
+              💡 Hover to pause or scroll to explore all testimonials
+            </p>
           </div>
 
-          {/* ── Right: dropping cards ── */}
-          <div className="flex-1 flex flex-col gap-4" style={{ minHeight: 480 }}>
-            <AnimatePresence mode="popLayout" initial={false}>
-              {queue.map((idx) => {
-                const t = TESTIMONIALS[idx];
-                const isNew = !prev.current.includes(idx);
-                return (
-                  <motion.div
-                    key={idx}
-                    initial={{ y: isNew ? -70 : 0, opacity: isNew ? 0 : 1, scale: isNew ? 0.96 : 1 }}
-                    animate={{ y: 0, opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.96, transition: { duration: 0.2 } }}
-                    transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                    className="glass-card rounded-2xl p-6"
+          {/* ── Right: Continuous Downward Ticker + Scrollable Container ── */}
+          <div
+            className="w-full flex-1 relative h-[560px] sm:h-[600px] overflow-hidden rounded-3xl"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            {/* Top & Bottom gradient fade masks for seamless ticker look */}
+            <div
+              className="absolute top-0 left-0 right-0 h-16 z-20 pointer-events-none"
+              style={{ background: "linear-gradient(to bottom, #ede8f2 0%, transparent 100%)" }}
+            />
+            <div
+              className="absolute bottom-0 left-0 right-0 h-16 z-20 pointer-events-none"
+              style={{ background: "linear-gradient(to top, #ede8f2 0%, transparent 100%)" }}
+            />
+
+            {/* Scrollable ticker wrapper */}
+            <div className="h-full overflow-y-auto scrollbar-hide py-4 px-1">
+              <div
+                className="flex flex-col gap-4"
+                style={{
+                  animation: "ticker-down 32s linear infinite",
+                  animationPlayState: isPaused ? "paused" : "running",
+                }}
+              >
+                {allTestimonials.map((t, idx) => (
+                  <div
+                    key={`${t.name}-${idx}`}
+                    className="glass-card rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:border-[#5C0F26]/30 bg-white/90 backdrop-blur-md"
                   >
-                    {/* Top row */}
-                    <div className="flex items-start justify-between mb-4">
+                    {/* Top row with 5 stars and quote mark */}
+                    <div className="flex items-start justify-between mb-3.5">
                       <div className="flex gap-0.5">
                         {Array(5).fill(null).map((_, i) => (
                           <Star key={i} size={12} fill="#5C0F26" stroke="none" />
                         ))}
                       </div>
-                      <Quote size={18} className="text-gray-200" />
+                      <Quote size={18} className="text-gray-300" />
                     </div>
 
-                    {/* Quote */}
+                    {/* Testimonial Quote */}
                     <p className="text-gray-700 text-sm leading-relaxed mb-5">
                       "{t.quote}"
                     </p>
 
-                    {/* Author */}
+                    {/* Author info */}
                     <div className="flex items-center gap-3">
                       <div
-                        className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0"
+                        className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0 shadow-xs"
                         style={{ background: AVATAR_COLORS[idx % AVATAR_COLORS.length] }}
                       >
                         {t.initials}
                       </div>
                       <div>
                         <p className="text-sm font-semibold text-gray-900 leading-none mb-1">{t.name}</p>
-                        <p className="text-xs text-gray-400">{t.title}</p>
+                        <p className="text-xs text-gray-400 font-medium">{t.title}</p>
                       </div>
                     </div>
-                  </motion.div>
-                );
-              })}
-            </AnimatePresence>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
         </div>

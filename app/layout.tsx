@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 
@@ -15,15 +16,18 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://comptech.in"),
   title: {
-    default: "Comptech Enterprises | Enterprise IT & AI Solutions India",
+    default: "Comptech Enterprises | AI Services, AI Trainings & Software Development",
     template: "%s | Comptech Enterprises",
   },
   description:
-    "Empowering MSMEs and Corporates across India to adopt practical AI. Certified experts in AI agent development, corporate AI workshops, custom RAG/LLMs, and enterprise IT infrastructure.",
+    "Comptech Enterprises delivers AI Services, corporate AI Trainings, and custom Software Development for MSMEs and enterprises across India, alongside enterprise IT infrastructure.",
   keywords: [
-    "AI adoption for MSMEs India", "Corporate AI solutions Delhi", "AI services New Delhi",
-    "AI trainings India", "AI agent development Delhi", "corporate AI workshops NCR",
+    "AI Services", "AI Services India", "AI Services Delhi",
+    "AI Trainings", "AI Trainings India", "corporate AI Trainings", "AI workshops Delhi",
+    "Software Development", "Software Development India", "custom software development company",
+    "AI adoption for MSMEs India", "Corporate AI solutions Delhi", "AI agent development Delhi",
     "enterprise IT Delhi", "IT AMC New Delhi", "servers", "Dell partner Delhi", "HP partner Delhi", "Lenovo partner Delhi"
   ],
   authors: [{ name: "Comptech Enterprises" }],
@@ -32,8 +36,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     siteName: "Comptech Enterprises",
-    title: "Comptech Enterprises | Enterprise IT & AI Solutions India",
-    description: "Empowering MSMEs and Corporates across India to adopt practical AI.",
+    title: "Comptech Enterprises | AI Services, AI Trainings & Software Development",
+    description: "AI Services, corporate AI Trainings, and custom Software Development for MSMEs and enterprises across India.",
     images: [{ url: "/images/logo.webp" }],
   },
   icons: {
@@ -48,9 +52,9 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "Comptech Enterprises",
-  "image": "https://comptech-enterprises.com/images/logo.png",
-  "@id": "https://comptech-enterprises.com/#localbusiness",
-  "url": "https://comptech-enterprises.com",
+  "image": "https://comptech.in/images/logo.webp",
+  "@id": "https://comptech.in/#localbusiness",
+  "url": "https://comptech.in",
   "telephone": "+91-8595073837",
   "address": {
     "@type": "PostalAddress",
@@ -106,6 +110,13 @@ const jsonLd = {
           "@type": "Service",
           "name": "AI Readiness Audits & Infrastructure Consulting"
         }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Custom Software Development"
+        }
       }
     ]
   }
@@ -119,6 +130,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${manrope.variable}`}>
       <body>
+        <Script id="ms-clarity" strategy="afterInteractive">
+          {`(function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window, document, "clarity", "script", "ygirdfadfi");`}
+        </Script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

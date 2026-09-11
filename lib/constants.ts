@@ -12,9 +12,8 @@ export const COMPANY = {
 export const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "AI", href: "/ai-solutions" },
-  { label: "Our Services", href: "/#services" },
-  { label: "Contact", href: "/#contact" },
   { label: "Careers", href: "/careers" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export const PARTNERS = [
@@ -29,16 +28,73 @@ export const PARTNERS = [
   { name: "Epson", color: "#009AC7" },
 ];
 
-export const HOME_PILLARS = [
+export const AI_PILLARS = [
   {
-    id: "ai",
-    icon: "cpu",
-    title: "AI",
-    desc: "Empowering MSMEs and corporates to adopt practical AI — from custom autonomous agents and team trainings to secure workflow automation.",
-    href: "/ai-solutions",
-    highlights: ["AI Agent Development", "AI Trainings and Workshops", "AI Audits"],
-    vendors: ["NVIDIA", "Intel"],
+    id: "agents",
+    icon: "bot",
+    title: "Custom AI Agents",
+    desc: "Autonomous agents that research, draft, execute, and escalate — built around your exact workflows and tools.",
+    href: "/ai-solutions#agents",
+    color: "#5C0F26",
+    bg: "#FDF4F6",
   },
+  {
+    id: "automation",
+    icon: "zap",
+    title: "AI Automation",
+    desc: "Eliminate repetitive manual work — approvals, data entry, reporting — with intelligent, rule-free automation.",
+    href: "/ai-solutions#automation",
+    color: "#7C3AED",
+    bg: "#F5F3FF",
+  },
+  {
+    id: "audit",
+    icon: "search",
+    title: "AI Audits",
+    desc: "A structured 2-week assessment that maps your highest-ROI AI opportunities and delivers a prioritised roadmap.",
+    href: "/ai-solutions#audit",
+    color: "#1D4ED8",
+    bg: "#EFF6FF",
+  },
+  {
+    id: "software",
+    icon: "blocks",
+    title: "AI Software & Integration",
+    desc: "Custom AI-powered applications, RAG pipelines, and API integrations that fit into your existing stack securely.",
+    href: "/ai-solutions#software",
+    color: "#0891B2",
+    bg: "#ECFEFF",
+  },
+  {
+    id: "strategy",
+    icon: "target",
+    title: "AI Strategy & Consulting",
+    desc: "Board-ready AI strategy, vendor selection, and governance frameworks — from pilot to enterprise-wide rollout.",
+    href: "/ai-solutions#strategy",
+    color: "#059669",
+    bg: "#ECFDF5",
+  },
+  {
+    id: "training",
+    icon: "graduation",
+    title: "AI Training & Workshops",
+    desc: "Hands-on workshops for leadership, operations, and tech teams — practical AI skills, not theory.",
+    href: "/ai-solutions#training",
+    color: "#D97706",
+    bg: "#FFFBEB",
+  },
+  {
+    id: "digitization",
+    icon: "database",
+    title: "Complete Digitization",
+    desc: "Transform paper-based, manual processes into end-to-end digital and AI-ready workflows across your organisation.",
+    href: "/ai-solutions#digitization",
+    color: "#BE185D",
+    bg: "#FDF2F8",
+  },
+];
+
+export const HOME_PILLARS = [
   {
     id: "software",
     icon: "code",
