@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { appendContactSubmission } from "@/lib/googleSheets";
+import { sendContactNotification } from "@/lib/mailer";
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
@@ -29,18 +30,29 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
   }
 
+  const submission = {
+    firstName: resolvedFirstName || "Applicant",
+    lastName: resolvedLastName,
+    email,
+    company,
+    phone: phone ?? (employees ? `Employees: ${employees}` : ""),
+    service: resolvedService,
+    requirements: resolvedRequirements,
+    downloadProfile: Boolean(downloadProfile),
+    source: source ?? "Book an AI Training Form",
+  };
+
   try {
-    await appendContactSubmission({
-      firstName: resolvedFirstName || "Applicant",
-      lastName: resolvedLastName,
-      email,
-      company,
-      phone: phone ?? (employees ? `Employees: ${employees}` : ""),
-      service: resolvedService,
-      requirements: resolvedRequirements,
-      downloadProfile: Boolean(downloadProfile),
-      source: source ?? "Book an AI Training Form",
-    });
+    await appendContactSubmission(submission);
+
+    // Email is a notification, not the system of record — never fail the
+    // request when the Sheets row already landed.
+    try {
+      await sendContactNotification(submission);
+    } catch (mailErr) {
+      console.error("Failed to send contact notification email", mailErr);
+    }
+
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("Failed to append contact submission", err);
