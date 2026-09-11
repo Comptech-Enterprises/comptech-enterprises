@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   Server, Monitor, Database, Network, ShieldCheck, Cloud, Wrench, Cpu,
@@ -8,6 +9,13 @@ import { Footer } from "@/components/layout/Footer";
 import { PageHero } from "@/components/sections/PageHero";
 import { RevealWrapper } from "@/components/ui/RevealWrapper";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+
+export const metadata: Metadata = {
+  title: "IT Infrastructure & Software Development Services",
+  description:
+    "Enterprise IT services from Comptech Enterprises — Software Development, networking, data centre, cloud, CCTV, and AMC support across India.",
+  keywords: ["Software Development", "Software Development India", "IT services Delhi", "enterprise IT infrastructure", "AMC services"],
+};
 
 const NAV_ITEMS = [
   { label: "Infrastructure",    href: "#infrastructure" },

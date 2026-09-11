@@ -4,9 +4,10 @@ import { Footer } from "@/components/layout/Footer";
 import { AISolutionsClient } from "@/components/ai-solutions/AISolutionsClient";
 
 export const metadata: Metadata = {
-  title: "AI Solutions",
+  title: "AI Services & AI Trainings",
   description:
-    "Enterprise AI by Comptech Enterprises — hands-on AI training and workshops, custom AI agents built around your workflows, and secure AI software integration.",
+    "AI Services and corporate AI Trainings from Comptech Enterprises — hands-on workshops, custom AI agents built around your workflows, and secure AI software integration.",
+  keywords: ["AI Services", "AI Trainings", "AI workshops India", "corporate AI training Delhi", "AI agent development"],
 };
 
 export default function AISolutionsPage() {
