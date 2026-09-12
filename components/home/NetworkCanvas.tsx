@@ -26,6 +26,7 @@ export function NetworkCanvas() {
     let animationFrameId: number;
     let width = 0;
     let height = 0;
+    let running = false;
 
     const resize = () => {
       const parent = canvas.parentElement;
@@ -170,16 +171,41 @@ export function NetworkCanvas() {
         }
       });
 
-      animationFrameId = requestAnimationFrame(draw);
+      if (running) animationFrameId = requestAnimationFrame(draw);
     };
 
-    draw();
+    // Only burn main-thread cycles while the canvas is actually visible —
+    // an always-on rAF loop competes with input handling everywhere on the
+    // page and drags down INP even when this section is scrolled away.
+    const startLoop = () => {
+      if (running) return;
+      running = true;
+      draw();
+    };
+    const stopLoop = () => {
+      running = false;
+      cancelAnimationFrame(animationFrameId);
+    };
+
+    const visibilityObserver = new IntersectionObserver(
+      ([entry]) => (entry.isIntersecting ? startLoop() : stopLoop()),
+      { threshold: 0 }
+    );
+    visibilityObserver.observe(canvas);
+
+    const handleTabVisibility = () => {
+      if (document.hidden) stopLoop();
+      else if (canvas.getBoundingClientRect().top < window.innerHeight) startLoop();
+    };
+    document.addEventListener("visibilitychange", handleTabVisibility);
 
     return () => {
       window.removeEventListener("resize", resize);
       canvas.removeEventListener("mousemove", handleMouseMove);
       canvas.removeEventListener("mouseleave", handleMouseLeave);
-      cancelAnimationFrame(animationFrameId);
+      document.removeEventListener("visibilitychange", handleTabVisibility);
+      visibilityObserver.disconnect();
+      stopLoop();
     };
   }, []);
 
