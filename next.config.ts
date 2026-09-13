@@ -20,6 +20,11 @@ const nextConfig: NextConfig = {
         destination: "/services#amc",
         permanent: true,
       },
+      {
+        source: "/partners-and-brands",
+        destination: "/partners",
+        permanent: true,
+      },
     ];
   },
 };
