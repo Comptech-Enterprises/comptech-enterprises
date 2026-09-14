@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, Phone, Mail, MapPin, MessageCircle, Calendar } from "lucide-react";
+import { ArrowRight, Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 import { COMPANY } from "@/lib/constants";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
@@ -14,29 +14,6 @@ const CONTACT_METHODS = [
   { Icon: Mail,          label: "Email",     value: COMPANY.email,        sub: "Response in 2 hrs" },
   { Icon: MessageCircle, label: "WhatsApp",  value: "+91 8595073837",    sub: "Quick queries"     },
   { Icon: MapPin,        label: "Office",    value: COMPANY.address,      sub: "Schedule a visit"  },
-];
-
-const BOOKING_PATHS = [
-  {
-    id: "ai",
-    label: "AI Project",
-    name: "Paawan",
-    role: "AI Solutions Lead",
-    desc: "Building AI agents, automation, or want an AI audit? Book time directly on Paawan's calendar.",
-    cta: "Talk to an AI Expert",
-    href: "https://calendly.com/comptech-ai",
-    email: "paawan@comptech.in",
-  },
-  {
-    id: "it",
-    label: "IT Infrastructure",
-    name: "Mohit",
-    role: "IT Solutions Lead",
-    desc: "Need servers, networking, CCTV, or an AMC? Book time directly on Mohit's calendar.",
-    cta: "Talk to an IT Expert",
-    href: "https://calendly.com/comptech-it",
-    email: COMPANY.email,
-  },
 ];
 
 export function ContactSection() {
@@ -70,42 +47,7 @@ export function ContactSection() {
           </p>
         </div>
 
-        {/* Primary action: two Calendly-first booking paths */}
-        <div className="grid sm:grid-cols-2 gap-5 mb-14 lg:mb-16">
-          {BOOKING_PATHS.map((p) => (
-            <div
-              key={p.id}
-              className="glass-panel-strong rounded-3xl p-6 lg:p-7 flex flex-col"
-            >
-              <span
-                className="self-start text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-4"
-                style={{ background: p.id === "ai" ? "#FDF4F6" : "#EFF6FF", color: p.id === "ai" ? "#5C0F26" : "#1D4ED8" }}
-              >
-                {p.label}
-              </span>
-              <h3 className="font-display font-extrabold text-xl text-gray-900 mb-1">{p.name}</h3>
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-3">{p.role}</p>
-              <p className="text-sm text-gray-500 leading-relaxed mb-6 flex-1">{p.desc}</p>
-              <a
-                href={p.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 w-full px-6 py-3.5 rounded-xl text-sm font-bold text-white transition-all duration-200 hover:opacity-90 hover:-translate-y-px"
-                style={{
-                  background: p.id === "ai" ? "linear-gradient(135deg, #5C0F26, #E8435A)" : "linear-gradient(135deg, #1E3A8A, #1D4ED8)",
-                }}
-              >
-                <Calendar size={15} />
-                {p.cta}
-              </a>
-              <a href={`mailto:${p.email}`} className="text-xs text-gray-400 text-center mt-3 hover:text-gray-600 transition-colors">
-                or email {p.email}
-              </a>
-            </div>
-          ))}
-        </div>
-
-        {/* Secondary: contact methods + form */}
+        {/* Contact methods + form */}
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
 
           {/* Left — contact methods */}
