@@ -13,6 +13,20 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["lucide-react", "framer-motion"],
   },
+  async redirects() {
+    return [
+      {
+        source: "/annual-management-contracts",
+        destination: "/services#amc",
+        permanent: true,
+      },
+      {
+        source: "/partners-and-brands",
+        destination: "/partners",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

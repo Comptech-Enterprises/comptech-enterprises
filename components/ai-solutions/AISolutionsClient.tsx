@@ -124,12 +124,12 @@ export function AISolutionsClient() {
   return (
     <>
       {/* ── AI Hero Section ── */}
-      <section className="relative min-h-[90vh] flex items-center justify-center pt-28 pb-20 overflow-hidden bg-gradient-to-b from-[#11051A] via-[#1A0A26] to-[#0D0414] text-white">
+      <section className="relative min-h-[90vh] flex items-center justify-center pt-28 pb-20 overflow-hidden bg-gradient-to-b from-[#2B0712] via-[#3F0A1A] to-[#1A040A] text-white">
         {/* Glowing Neural Orbs */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-1/4 -left-20 w-[500px] h-[500px] rounded-full blur-[120px] opacity-25 bg-[#5C0F26]" />
+          <div className="absolute top-1/4 -left-20 w-[500px] h-[500px] rounded-full blur-[120px] opacity-25 bg-[#7A1535]" />
           <div className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] rounded-full blur-[120px] opacity-25 bg-[#1D4ED8]" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[140px] opacity-15 bg-[#7C3AED]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[140px] opacity-15 bg-[#E8435A]" />
         </div>
 
         {/* Ambient Grid Pattern */}
@@ -140,9 +140,9 @@ export function AISolutionsClient() {
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-500/30 bg-purple-950/40 text-purple-200 text-xs sm:text-sm font-semibold tracking-wide mb-6 shadow-inner backdrop-blur-md"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 bg-[#5C0F26]/40 text-rose-100 text-xs sm:text-sm font-semibold tracking-wide mb-6 shadow-inner backdrop-blur-md"
           >
-            <Sparkles size={14} className="text-purple-400 animate-pulse" />
+            <Sparkles size={14} className="text-rose-300 animate-pulse" />
             Comptech AI Division · Enterprise &amp; Academia Enablement
           </motion.div>
 
@@ -157,7 +157,7 @@ export function AISolutionsClient() {
             Practical AI for Enterprises:{" "}
             <span
               className="text-transparent bg-clip-text"
-              style={{ backgroundImage: "linear-gradient(120deg, #F0A6B9, #C4B5FD, #93C5FD)" }}
+              style={{ backgroundImage: "linear-gradient(120deg, #F0A6B9, #F5A9BE, #93C5FD)" }}
             >
               Train Your Team. Automate With Agents.
             </span>
@@ -384,10 +384,10 @@ export function AISolutionsClient() {
       <AIUseCaseExplorer />
 
       {/* ── Final High-Impact CTA Banner ── */}
-      <section className="py-20 lg:py-24 bg-gradient-to-br from-[#160C2E] via-[#2A1140] to-[#3F0A1A] text-white relative overflow-hidden text-center">
+      <section className="py-20 lg:py-24 bg-gradient-to-br from-[#3F0A1A] via-[#5C0F26] to-[#7A1535] text-white relative overflow-hidden text-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-white/10 border border-white/15 mb-6">
-            <Bot className="w-7 h-7 text-purple-300" />
+            <Bot className="w-7 h-7 text-rose-200" />
           </div>
           <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white mb-5 tracking-tight">
             Ready to deploy practical AI in your business?
