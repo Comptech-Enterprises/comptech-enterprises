@@ -39,8 +39,8 @@ export function Hero() {
         muted
         playsInline
         preload="auto"
-        // @ts-expect-error - fetchpriority is a valid HTML attribute not yet in React's types
-        fetchpriority="high"
+        // @ts-expect-error - fetchPriority is valid on <video> but missing from React's video element types
+        fetchPriority="high"
         poster={isMobile ? "/hero-poster-mobile.jpg" : "/hero-poster.jpg"}
         className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
       >
