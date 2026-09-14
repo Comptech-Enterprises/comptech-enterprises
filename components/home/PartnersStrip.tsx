@@ -29,6 +29,15 @@ const MID = Math.ceil(PARTNERS.length / 2);
 const ROW1 = PARTNERS.slice(0, MID);
 const ROW2 = PARTNERS.slice(MID);
 
+const CERTIFIED_WITH = [
+  { name: "OpenAI",    logo: "/logos/openai.svg"    },
+  { name: "Anthropic", logo: "/logos/anthropic.svg" },
+  { name: "Gemini",    logo: "/logos/gemini.svg"    },
+  { name: "AWS",       logo: "/logos/aws.svg"       },
+  { name: "Azure",     logo: "/logos/azure.svg"     },
+  { name: "NVIDIA",    logo: "/logos/nvidia.svg"    },
+];
+
 const STATS = [
   { value: "30",    suffix: "days", label: "Avg. Time to Live AI System"      },
   { value: "247",   suffix: "%",    label: "Avg. Increase in Qualified Leads" },
@@ -82,6 +91,29 @@ export function PartnersStrip() {
                 {value}<span className="text-xl lg:text-2xl">{suffix}</span>
               </p>
               <p className="text-sm font-medium text-gray-600 leading-snug">{label}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Certified With — AI platform logos */}
+        <div className="flex items-center gap-4 mb-8">
+          <div className="flex-1 h-px bg-gray-200" />
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 whitespace-nowrap">
+            Certified With
+          </p>
+          <div className="flex-1 h-px bg-gray-200" />
+        </div>
+        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
+          {CERTIFIED_WITH.map(({ name, logo }) => (
+            <div key={name} className="flex items-center justify-center h-8 opacity-70 hover:opacity-100 transition-opacity" title={name}>
+              <Image
+                src={logo}
+                alt={`${name} logo`}
+                width={100}
+                height={32}
+                className="h-7 w-auto object-contain"
+                unoptimized
+              />
             </div>
           ))}
         </div>
