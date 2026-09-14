@@ -105,13 +105,13 @@ export function PartnersStrip() {
         </div>
         <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
           {CERTIFIED_WITH.map(({ name, logo }) => (
-            <div key={name} className="flex items-center justify-center h-12 opacity-70 hover:opacity-100 transition-opacity" title={name}>
+            <div key={name} className="flex items-center justify-center h-16 opacity-70 hover:opacity-100 transition-opacity" title={name}>
               <Image
                 src={logo}
                 alt={`${name} logo`}
-                width={130}
-                height={44}
-                className="h-11 w-auto object-contain"
+                width={180}
+                height={64}
+                className="h-16 w-auto object-contain"
                 unoptimized
               />
             </div>
