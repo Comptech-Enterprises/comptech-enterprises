@@ -40,8 +40,8 @@ const CERTIFIED_WITH = [
 
 const STATS = [
   { value: "30",    suffix: "days", label: "Avg. Time to Live AI System"      },
-  { value: "247",   suffix: "%",    label: "Avg. Increase in Qualified Leads" },
-  { value: "3",     suffix: "+",    label: "Industries with Live Deployments" },
+  { value: "250",   suffix: "hrs",  label: "Work Time Saved"                  },
+  { value: "100",   suffix: "+",    label: "Live Deployments"                 },
   { value: "$0",    suffix: "",     label: "Cost of Your First AI Audit"      },
 ];
 
