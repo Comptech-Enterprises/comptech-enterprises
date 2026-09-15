@@ -199,7 +199,7 @@ export function Navbar({ transparent = false }: NavbarProps) {
           {/* Desktop Actions */}
           <div className="hidden lg:flex items-center gap-3 shrink-0">
             <Link
-              href="/contact"
+              href="/contact#training-form"
               className={clsx(
                 "text-sm font-semibold px-5 py-2.5 rounded-xl border transition-all duration-200",
                 isTransparent && !isWhiteHeader

@@ -7,14 +7,20 @@ import { ChevronDown, ArrowRight } from "lucide-react";
 
 export function Hero() {
   const [isMobile, setIsMobile] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
   const [buttonsVisible, setButtonsVisible] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  // Determine device size once before mounting the <video> at all — mounting
+  // it immediately (desktop-first, since SSR can't know the real viewport)
+  // and then flipping `key` on a later resize check forces a second full
+  // video download instead of cancelling the first. One decision, one fetch.
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+    setIsMobile(window.innerWidth < 768);
+    setVideoReady(true);
+    const onResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
   }, []);
 
   useEffect(() => {
@@ -31,21 +37,29 @@ export function Hero() {
       style={{ minHeight: "100vh", paddingTop: "var(--nav-height)" }}
       aria-label="Hero"
     >
-      {/* Background animation video — plays once, stops on last frame */}
-      <video
-        ref={videoRef}
-        key={isMobile ? "mobile" : "desktop"}
-        autoPlay
-        muted
-        playsInline
-        preload="auto"
-        // @ts-expect-error - fetchPriority is valid on <video> but missing from React's video element types
-        fetchPriority="high"
-        poster={isMobile ? "/hero-poster-mobile.jpg" : "/hero-poster.jpg"}
-        className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
-      >
-        <source src={isMobile ? "/hero-bg-mobile.mp4" : "/hero-bg.mp4"} type="video/mp4" />
-      </video>
+      {/* Background animation video — plays once, stops on last frame.
+          Not mounted until the mobile/desktop check resolves, so only one
+          video file is ever requested (see the effect above). */}
+      {videoReady ? (
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          playsInline
+          preload="auto"
+          // @ts-expect-error - fetchPriority is valid on <video> but missing from React's video element types
+          fetchPriority="high"
+          poster={isMobile ? "/hero-poster-mobile.jpg" : "/hero-poster.jpg"}
+          className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+        >
+          <source src={isMobile ? "/hero-bg-mobile.mp4" : "/hero-bg.mp4"} type="video/mp4" />
+        </video>
+      ) : (
+        <div
+          className="absolute inset-0 w-full h-full bg-cover bg-center"
+          style={{ backgroundImage: "url(/hero-poster.jpg)" }}
+        />
+      )}
 
       {/* Gradient mesh blobs for glass depth */}
       <div className="absolute inset-0 pointer-events-none">
