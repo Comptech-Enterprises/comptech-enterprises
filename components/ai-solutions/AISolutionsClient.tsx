@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
 import {
   Bot,
   Brain,
@@ -19,6 +18,7 @@ import {
   Globe,
 } from "lucide-react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { PageHero } from "@/components/sections/PageHero";
 import { SpotlightCard } from "@/components/home/BorderBeamCard";
 import { AIArchitecturePipeline } from "./AIArchitecturePipeline";
 import { AIUseCaseExplorer } from "./AIUseCaseExplorer";
@@ -123,22 +123,12 @@ export function AISolutionsClient() {
   return (
     <>
       {/* ── AI Hero Section ── */}
-      <section className="relative min-h-[90vh] flex items-center justify-center pt-28 pb-20 overflow-hidden bg-white">
-        {/* Soft gradient blobs — same treatment as the homepage hero */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-1/4 -left-20 w-[500px] h-[500px] rounded-full blur-3xl opacity-20" style={{ background: "#5C0F26" }} />
-          <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] rounded-full blur-3xl opacity-15" style={{ background: "#1D4ED8" }} />
-        </div>
-
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          {/* Heading */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="font-display font-extrabold text-gray-900 tracking-tight leading-[1.1] mb-6 max-w-4xl mx-auto"
-            style={{ fontSize: "clamp(2.3rem, 5vw, 4.2rem)" }}
-          >
+      <PageHero
+        light
+        badge="AI Solutions"
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "AI" }]}
+        title={
+          <>
             Practical AI for Enterprises:{" "}
             <span
               className="text-transparent bg-clip-text"
@@ -146,28 +136,14 @@ export function AISolutionsClient() {
             >
               Train Your Team. Automate With Agents.
             </span>
-          </motion.h1>
-
-          {/* Subtitle */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-base sm:text-xl text-gray-500 max-w-2xl mx-auto mb-10 leading-relaxed font-light"
-          >
-            Empowering Indian organizations to adopt AI with confidence. We deliver accredited corporate workshops and engineer custom, secure autonomous AI agents.
-          </motion.p>
-
-          {/* Action CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
+          </>
+        }
+        subtitle="Empowering Indian organizations to adopt AI with confidence. We deliver accredited corporate workshops and engineer custom, secure autonomous AI agents."
+        actions={
+          <>
             <Link
               href="/contact#quote"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-bold text-white shadow-xl hover:scale-105 transition-all duration-200"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-bold text-white shadow-xl hover:scale-105 transition-all duration-200"
               style={{
                 background: "linear-gradient(135deg, #5C0F26 0%, #E8435A 100%)",
                 boxShadow: "0 10px 30px rgba(92, 15, 38, 0.25)",
@@ -177,13 +153,13 @@ export function AISolutionsClient() {
             </Link>
             <a
               href="#offerings"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-semibold text-gray-700 border border-gray-200 bg-white hover:border-gray-300 hover:bg-gray-50 transition-all duration-200"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-semibold text-gray-700 border border-gray-200 bg-white hover:border-gray-300 hover:bg-gray-50 transition-all duration-200"
             >
               Explore AI Offerings
             </a>
-          </motion.div>
-        </div>
-      </section>
+          </>
+        }
+      />
 
       {/* ── Why Comptech AI & Trust Pillars ── */}
       <section className="py-20 bg-white relative overflow-hidden" aria-labelledby="why-ai-title">
