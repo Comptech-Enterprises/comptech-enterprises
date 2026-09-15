@@ -124,25 +124,21 @@ export function AISolutionsClient() {
   return (
     <>
       {/* ── AI Hero Section ── */}
-      <section className="relative min-h-[90vh] flex items-center justify-center pt-28 pb-20 overflow-hidden bg-gradient-to-b from-[#2B0712] via-[#3F0A1A] to-[#1A040A] text-white">
-        {/* Glowing Neural Orbs */}
+      <section className="relative min-h-[90vh] flex items-center justify-center pt-28 pb-20 overflow-hidden bg-white">
+        {/* Soft gradient blobs — same treatment as the homepage hero */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-1/4 -left-20 w-[500px] h-[500px] rounded-full blur-[120px] opacity-25 bg-[#7A1535]" />
-          <div className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] rounded-full blur-[120px] opacity-25 bg-[#5C0F26]" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[140px] opacity-15 bg-[#E8435A]" />
+          <div className="absolute top-1/4 -left-20 w-[500px] h-[500px] rounded-full blur-3xl opacity-20" style={{ background: "#5C0F26" }} />
+          <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] rounded-full blur-3xl opacity-15" style={{ background: "#1D4ED8" }} />
         </div>
-
-        {/* Ambient Grid Pattern */}
-        <div className="absolute inset-0 bg-grid-white/[0.03] bg-[size:32px_32px] pointer-events-none" />
 
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           {/* Tag badge */}
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 bg-[#5C0F26]/40 text-rose-100 text-xs sm:text-sm font-semibold tracking-wide mb-6 shadow-inner backdrop-blur-md"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gray-200 bg-[#FDF4F6] text-[#5C0F26] text-xs sm:text-sm font-semibold tracking-wide mb-6 shadow-sm"
           >
-            <Sparkles size={14} className="text-rose-300 animate-pulse" />
+            <Sparkles size={14} className="text-[#5C0F26] animate-pulse" />
             Comptech AI Division · Enterprise &amp; Academia Enablement
           </motion.div>
 
@@ -151,13 +147,13 @@ export function AISolutionsClient() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="font-display font-extrabold text-white tracking-tight leading-[1.1] mb-6 max-w-4xl mx-auto"
+            className="font-display font-extrabold text-gray-900 tracking-tight leading-[1.1] mb-6 max-w-4xl mx-auto"
             style={{ fontSize: "clamp(2.3rem, 5vw, 4.2rem)" }}
           >
             Practical AI for Enterprises:{" "}
             <span
               className="text-transparent bg-clip-text"
-              style={{ backgroundImage: "linear-gradient(120deg, #F0A6B9, #F5A9BE, #93C5FD)" }}
+              style={{ backgroundImage: "linear-gradient(135deg, #5C0F26, #E8435A)" }}
             >
               Train Your Team. Automate With Agents.
             </span>
@@ -168,7 +164,7 @@ export function AISolutionsClient() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-base sm:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed font-light"
+            className="text-base sm:text-xl text-gray-500 max-w-2xl mx-auto mb-10 leading-relaxed font-light"
           >
             Empowering Indian organizations to adopt AI with confidence. We deliver accredited corporate workshops and engineer custom, secure autonomous AI agents.
           </motion.p>
@@ -185,14 +181,14 @@ export function AISolutionsClient() {
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-bold text-white shadow-xl hover:scale-105 transition-all duration-200"
               style={{
                 background: "linear-gradient(135deg, #5C0F26 0%, #E8435A 100%)",
-                boxShadow: "0 10px 30px rgba(92, 15, 38, 0.4)",
+                boxShadow: "0 10px 30px rgba(92, 15, 38, 0.25)",
               }}
             >
               Book an AI Training <ArrowRight size={16} />
             </Link>
             <a
               href="#offerings"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-semibold text-white/90 border border-white/20 bg-white/5 hover:bg-white/10 hover:border-white/40 transition-all duration-200 backdrop-blur-md"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-semibold text-gray-700 border border-gray-200 bg-white hover:border-gray-300 hover:bg-gray-50 transition-all duration-200"
             >
               Explore AI Offerings
             </a>
