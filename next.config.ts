@@ -25,6 +25,11 @@ const nextConfig: NextConfig = {
         destination: "/partners",
         permanent: true,
       },
+      {
+        source: "/blog",
+        destination: "/",
+        permanent: true,
+      },
     ];
   },
 };

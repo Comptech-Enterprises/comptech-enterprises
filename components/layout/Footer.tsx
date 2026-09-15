@@ -21,7 +21,6 @@ const IT_SERVICES = [
 const COMPANY_LINKS = [
   { label: "Partners",     href: "/partners" },
   { label: "Case Studies", href: "/case-studies" },
-  { label: "Blog",         href: "/blog" },
   { label: "Careers",      href: "/careers" },
 ];
 
