@@ -8,7 +8,6 @@ import {
   GraduationCap,
   Shield,
   Workflow,
-  Sparkles,
   CheckCircle2,
   ArrowRight,
   Zap,
@@ -132,16 +131,6 @@ export function AISolutionsClient() {
         </div>
 
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          {/* Tag badge */}
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gray-200 bg-[#FDF4F6] text-[#5C0F26] text-xs sm:text-sm font-semibold tracking-wide mb-6 shadow-sm"
-          >
-            <Sparkles size={14} className="text-[#5C0F26] animate-pulse" />
-            Comptech AI Division · Enterprise &amp; Academia Enablement
-          </motion.div>
-
           {/* Heading */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -223,17 +212,6 @@ export function AISolutionsClient() {
               <p className="text-gray-500 text-sm sm:text-base leading-relaxed mb-8">
                 Every agent and training session is led by practicing engineers with strict data security, private air-gapped hosting, and verifiable business ROI.
               </p>
-
-              <div className="flex flex-wrap gap-6 pt-4 border-t border-gray-100">
-                <div className="flex items-center gap-3">
-                  <span className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse" />
-                  <span className="text-sm font-bold text-gray-800">100% Private &amp; Air-Gapped</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="w-3 h-3 rounded-full bg-[#1D4ED8] animate-pulse" />
-                  <span className="text-sm font-bold text-gray-800">Practitioner-Led Engineering</span>
-                </div>
-              </div>
             </div>
 
             {/* Right Capability Cards */}
