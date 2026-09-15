@@ -4,6 +4,9 @@ export const metadata: Metadata = {
   title: "Contact Us",
   description:
     "Get in touch with Comptech Enterprises for AI Services, AI Trainings, Software Development, or enterprise IT support.",
+  alternates: {
+    canonical: "/contact",
+  },
   openGraph: {
     type: "website",
     locale: "en_IN",

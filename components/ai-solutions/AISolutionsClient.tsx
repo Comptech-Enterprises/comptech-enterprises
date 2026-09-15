@@ -21,7 +21,6 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { PageHero } from "@/components/sections/PageHero";
 import { RevealWrapper } from "@/components/ui/RevealWrapper";
 import { SpotlightCard } from "@/components/home/BorderBeamCard";
-import { AIArchitecturePipeline } from "./AIArchitecturePipeline";
 import { AIUseCaseExplorer } from "./AIUseCaseExplorer";
 
 const AI_OFFERINGS = [
@@ -328,9 +327,6 @@ export function AISolutionsClient() {
 
         </div>
       </section>
-
-      {/* ── Interactive Architecture Pipeline ── */}
-      <AIArchitecturePipeline />
 
       {/* ── Industry Use-Case Explorer ── */}
       <AIUseCaseExplorer />

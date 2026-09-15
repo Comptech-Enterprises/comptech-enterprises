@@ -8,6 +8,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Case Studies",
   description: "Real enterprise IT results — hospitals, universities, government, and corporations across India.",
+  alternates: {
+    canonical: "/case-studies",
+  },
   openGraph: {
     type: "website",
     locale: "en_IN",

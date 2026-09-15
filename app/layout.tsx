@@ -32,6 +32,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Comptech Enterprises" }],
   creator: "Comptech Enterprises",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "en_IN",

@@ -4,6 +4,9 @@ export const metadata: Metadata = {
   title: "Careers",
   description:
     "Join Comptech Enterprises — build enterprise IT, AI, and infrastructure projects with a team of 50+ certified engineers across India.",
+  alternates: {
+    canonical: "/careers",
+  },
   openGraph: {
     type: "website",
     locale: "en_IN",
