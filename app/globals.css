@@ -555,7 +555,7 @@ body {
    PAGE HERO
    ================================================================ */
 .page-hero-bg {
-  background: linear-gradient(145deg, #001A57 0%, #003DA5 100%);
+  background: linear-gradient(145deg, var(--color-primary-dark) 0%, var(--color-primary) 60%, #7A1535 100%);
   position: relative;
   overflow: hidden;
 }
