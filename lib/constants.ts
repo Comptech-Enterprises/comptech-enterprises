@@ -65,15 +65,6 @@ export const AI_PILLARS = [
     color: "#D97706",
     bg: "#FFFBEB",
   },
-  {
-    id: "digitization",
-    icon: "database",
-    title: "Complete Digitization",
-    desc: "Transform paper-based, manual processes into end-to-end digital and AI-ready workflows across your organisation.",
-    href: "/ai-solutions#digitization",
-    color: "#BE185D",
-    bg: "#FDF2F8",
-  },
 ];
 
 export const HOME_PILLARS = [
