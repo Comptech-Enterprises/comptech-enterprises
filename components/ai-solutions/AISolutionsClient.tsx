@@ -76,11 +76,11 @@ const AI_OFFERINGS = [
     icon: Video,
     title: "Meeting AI Agent",
     badge: "Voice & Productivity",
-    beamFrom: "#7C3AED",
-    beamTo: "#C4B5FD",
-    spotlight: "rgba(124, 58, 237, 0.12)",
-    iconBg: "#FAF5FF",
-    iconColor: "#7C3AED",
+    beamFrom: "#BE185D",
+    beamTo: "#F472B6",
+    spotlight: "rgba(190, 24, 93, 0.12)",
+    iconBg: "#FDF2F8",
+    iconColor: "#BE185D",
     desc: "Autonomous voice-enabled assistant that joins your calls, records and transcribes conversations, and actively speaks live in the meeting to answer questions or brief the team when needed.",
     points: [
       "Auto-joins Zoom, Google Meet & Microsoft Teams as an active participant",
@@ -115,8 +115,8 @@ const AI_CAPABILITIES = [
     title: "Generative Engine Optimization (GEO)",
     desc: "Next-generation optimization ensuring your brand, products, and services rank and are cited directly inside ChatGPT, Perplexity, Claude, and Google AI Overviews.",
     icon: Globe,
-    color: "#7C3AED",
-    bg: "#FAF5FF",
+    color: "#BE185D",
+    bg: "#FDF2F8",
   },
 ];
 
@@ -128,7 +128,7 @@ export function AISolutionsClient() {
         {/* Glowing Neural Orbs */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute top-1/4 -left-20 w-[500px] h-[500px] rounded-full blur-[120px] opacity-25 bg-[#7A1535]" />
-          <div className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] rounded-full blur-[120px] opacity-25 bg-[#1D4ED8]" />
+          <div className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] rounded-full blur-[120px] opacity-25 bg-[#5C0F26]" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[140px] opacity-15 bg-[#E8435A]" />
         </div>
 

@@ -41,7 +41,7 @@ const PIPELINE_STEPS = [
     step: "03",
     title: "Multi-Agent Reasoning Core",
     icon: Cpu,
-    color: "#7C3AED",
+    color: "#BE185D",
     summary: "Coordinated autonomous LLM agents executing multi-step logic.",
     details: [
       "Task decomposition into parallel agent routines",
