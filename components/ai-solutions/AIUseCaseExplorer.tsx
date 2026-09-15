@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { GraduationCap, Building2, ShoppingBag, Hotel, Check, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { RevealWrapper } from "@/components/ui/RevealWrapper";
 
 const INDUSTRIES = [
   {
@@ -79,7 +80,7 @@ export function AIUseCaseExplorer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        <RevealWrapper className="text-center max-w-3xl mx-auto mb-12">
           <SectionLabel className="justify-center">Industry Blueprints</SectionLabel>
           <h2
             id="usecases-title"
@@ -97,10 +98,10 @@ export function AIUseCaseExplorer() {
           <p className="mt-3 text-base sm:text-lg text-gray-500 leading-relaxed">
             Real deployments powering colleges, hotels, consumer brands, and enterprise teams across India.
           </p>
-        </div>
+        </RevealWrapper>
 
         {/* Industry Category Navigation Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10">
+        <RevealWrapper delay={100} className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10">
           {INDUSTRIES.map((tab, i) => {
             const TabIcon = tab.icon;
             const isCurrent = activeTab === i;
@@ -119,10 +120,10 @@ export function AIUseCaseExplorer() {
               </button>
             );
           })}
-        </div>
+        </RevealWrapper>
 
         {/* Active Industry Deep-Dive Card */}
-        <div className="max-w-5xl mx-auto">
+        <RevealWrapper delay={200} className="max-w-5xl mx-auto">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
@@ -201,7 +202,7 @@ export function AIUseCaseExplorer() {
               </div>
             </motion.div>
           </AnimatePresence>
-        </div>
+        </RevealWrapper>
 
       </div>
     </section>

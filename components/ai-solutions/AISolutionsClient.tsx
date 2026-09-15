@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { PageHero } from "@/components/sections/PageHero";
+import { RevealWrapper } from "@/components/ui/RevealWrapper";
 import { SpotlightCard } from "@/components/home/BorderBeamCard";
 import { AIArchitecturePipeline } from "./AIArchitecturePipeline";
 import { AIUseCaseExplorer } from "./AIUseCaseExplorer";
@@ -167,7 +168,7 @@ export function AISolutionsClient() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             
             {/* Left Narrative */}
-            <div>
+            <RevealWrapper>
               <SectionLabel>Core AI Pillars</SectionLabel>
               <h2
                 id="why-ai-title"
@@ -188,10 +189,10 @@ export function AISolutionsClient() {
               <p className="text-gray-500 text-sm sm:text-base leading-relaxed mb-8">
                 Every agent and training session is led by practicing engineers with strict data security, private air-gapped hosting, and verifiable business ROI.
               </p>
-            </div>
+            </RevealWrapper>
 
             {/* Right Capability Cards */}
-            <div className="flex flex-col gap-4">
+            <RevealWrapper delay={150} className="flex flex-col gap-4">
               {AI_CAPABILITIES.map((cap) => {
                 const Icon = cap.icon;
                 return (
@@ -212,7 +213,7 @@ export function AISolutionsClient() {
                   </div>
                 );
               })}
-            </div>
+            </RevealWrapper>
 
           </div>
         </div>
@@ -222,7 +223,7 @@ export function AISolutionsClient() {
       <section id="offerings" className="py-20 lg:py-28 bg-[#F8FAFC] relative overflow-hidden" aria-labelledby="products-title">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
-          <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
+          <RevealWrapper className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
             <SectionLabel className="justify-center">Flagship AI Agents</SectionLabel>
             <h2
               id="products-title"
@@ -240,15 +241,15 @@ export function AISolutionsClient() {
             <p className="mt-3 text-base sm:text-lg text-gray-500 leading-relaxed">
               Pre-engineered, enterprise-ready autonomous AI agents tailored to your business data and workflows.
             </p>
-          </div>
+          </RevealWrapper>
 
           {/* 3 Pillars Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
-            {AI_OFFERINGS.map((off) => {
+            {AI_OFFERINGS.map((off, i) => {
               const Icon = off.icon;
               return (
+                <RevealWrapper key={off.id} delay={i * 120} className="h-full">
                 <SpotlightCard
-                  key={off.id}
                   beamFrom={off.beamFrom}
                   beamTo={off.beamTo}
                   spotlightColor={off.spotlight}
@@ -320,6 +321,7 @@ export function AISolutionsClient() {
                     </Link>
                   </div>
                 </SpotlightCard>
+                </RevealWrapper>
               );
             })}
           </div>
@@ -339,7 +341,7 @@ export function AISolutionsClient() {
           <div className="absolute top-0 -left-20 w-[400px] h-[400px] rounded-full blur-3xl opacity-20" style={{ background: "#5C0F26" }} />
           <div className="absolute bottom-0 right-0 w-[350px] h-[350px] rounded-full blur-3xl opacity-15" style={{ background: "#1D4ED8" }} />
         </div>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <RevealWrapper className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#FDF4F6] border border-gray-200 mb-6">
             <Bot className="w-7 h-7 text-[#5C0F26]" />
           </div>
@@ -364,7 +366,7 @@ export function AISolutionsClient() {
               Contact AI Team
             </Link>
           </div>
-        </div>
+        </RevealWrapper>
       </section>
     </>
   );

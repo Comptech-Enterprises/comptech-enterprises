@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Database, ShieldCheck, Cpu, Zap, ArrowRight, CheckCircle2, Server, Layers } from "lucide-react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { RevealWrapper } from "@/components/ui/RevealWrapper";
 
 const PIPELINE_STEPS = [
   {
@@ -76,7 +77,7 @@ export function AIArchitecturePipeline() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
+        <RevealWrapper className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
           <SectionLabel className="justify-center">System Blueprint</SectionLabel>
           <h2
             id="pipeline-title"
@@ -94,10 +95,10 @@ export function AIArchitecturePipeline() {
           <p className="mt-3 text-base sm:text-lg text-gray-500 leading-relaxed">
             From raw organizational documents to production-grade autonomous agent execution — private, secure, and compliant.
           </p>
-        </div>
+        </RevealWrapper>
 
         {/* 4 Steps Interactive Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <RevealWrapper delay={100} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           {PIPELINE_STEPS.map((step, idx) => {
             const Icon = step.icon;
             const isActive = activeStep === idx;
@@ -149,10 +150,10 @@ export function AIArchitecturePipeline() {
               </button>
             );
           })}
-        </div>
+        </RevealWrapper>
 
         {/* Interactive Active Step Deep-Dive Showcase */}
-        <div className="bg-white rounded-3xl p-6 sm:p-10 border border-gray-200/80 shadow-lg relative overflow-hidden">
+        <RevealWrapper delay={200} className="bg-white rounded-3xl p-6 sm:p-10 border border-gray-200/80 shadow-lg relative overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeStep}
@@ -216,7 +217,7 @@ export function AIArchitecturePipeline() {
               </div>
             </motion.div>
           </AnimatePresence>
-        </div>
+        </RevealWrapper>
 
       </div>
     </section>
