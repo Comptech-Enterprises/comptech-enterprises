@@ -380,15 +380,19 @@ export function AISolutionsClient() {
       <AIUseCaseExplorer />
 
       {/* ── Final High-Impact CTA Banner ── */}
-      <section className="py-20 lg:py-24 bg-gradient-to-br from-[#3F0A1A] via-[#5C0F26] to-[#7A1535] text-white relative overflow-hidden text-center">
+      <section className="py-20 lg:py-24 bg-white relative overflow-hidden text-center">
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute top-0 -left-20 w-[400px] h-[400px] rounded-full blur-3xl opacity-20" style={{ background: "#5C0F26" }} />
+          <div className="absolute bottom-0 right-0 w-[350px] h-[350px] rounded-full blur-3xl opacity-15" style={{ background: "#1D4ED8" }} />
+        </div>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-white/10 border border-white/15 mb-6">
-            <Bot className="w-7 h-7 text-rose-200" />
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#FDF4F6] border border-gray-200 mb-6">
+            <Bot className="w-7 h-7 text-[#5C0F26]" />
           </div>
-          <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white mb-5 tracking-tight">
+          <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-5 tracking-tight">
             Ready to deploy practical AI in your business?
           </h2>
-          <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+          <p className="text-gray-500 text-base sm:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
             Whether upskilling 50 employees or building a private multi-step agent pipeline, our engineers are ready to scope your project.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
@@ -401,7 +405,7 @@ export function AISolutionsClient() {
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-semibold text-white/90 border border-white/20 bg-white/5 hover:bg-white/10 transition-all duration-200 backdrop-blur-md"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-semibold text-gray-700 border border-gray-200 bg-white hover:border-gray-300 hover:bg-gray-50 transition-all duration-200"
             >
               Contact AI Team
             </Link>
