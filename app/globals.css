@@ -275,6 +275,25 @@ body {
 
 
 /* ================================================================
+   PAGE HERO ENTRANCE
+   ================================================================ */
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-anim {
+  opacity: 0;
+  animation: hero-fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-anim {
+    opacity: 1;
+    animation: none;
+    transform: none;
+  }
+}
+
+/* ================================================================
    GRADIENT FLOW STRIP
    ================================================================ */
 @keyframes gradient-flow {
