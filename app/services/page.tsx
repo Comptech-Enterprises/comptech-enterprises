@@ -15,6 +15,15 @@ export const metadata: Metadata = {
   description:
     "Enterprise IT services from Comptech Enterprises — Software Development, networking, data centre, cloud, CCTV, and AMC support across India.",
   keywords: ["Software Development", "Software Development India", "IT services Delhi", "enterprise IT infrastructure", "AMC services"],
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    siteName: "Comptech Enterprises",
+    title: "IT Infrastructure & Software Development Services | Comptech Enterprises",
+    description:
+      "Enterprise IT services from Comptech Enterprises — Software Development, networking, data centre, cloud, CCTV, and AMC support across India.",
+    images: [{ url: "/images/logo.webp" }],
+  },
 };
 
 const NAV_ITEMS = [

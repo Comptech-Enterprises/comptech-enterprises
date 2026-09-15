@@ -8,6 +8,14 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Case Studies",
   description: "Real enterprise IT results — hospitals, universities, government, and corporations across India.",
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    siteName: "Comptech Enterprises",
+    title: "Case Studies | Comptech Enterprises",
+    description: "Real enterprise IT results — hospitals, universities, government, and corporations across India.",
+    images: [{ url: "/images/logo.webp" }],
+  },
 };
 
 const FILTERS = ["All", "Healthcare", "Education", "Government", "Manufacturing", "Finance"];
