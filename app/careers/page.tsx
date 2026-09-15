@@ -43,11 +43,11 @@ export default function CareersPage() {
       <Navbar />
       <main>
         <PageHero
+          light
           badge="Careers"
           title="Build Your Career With Comptech"
           subtitle="Join a team that powers enterprise IT, AI, and infrastructure across India. Send us your details and resume — we're always looking for great people."
           breadcrumbs={[{ label: "Home", href: "/" }, { label: "Careers" }]}
-          backgroundImage="/images/contact_banner.jpg"
         />
 
         <section className="bg-gray-50 py-24">

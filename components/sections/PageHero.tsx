@@ -12,13 +12,17 @@ interface PageHeroProps {
   breadcrumbs?: Breadcrumb[];
   actions?: ReactNode;
   dark?: boolean;
+  /** Plain white background instead of the colored gradient, with dark text. */
+  light?: boolean;
   backgroundImage?: string;
   children?: ReactNode;
 }
 
-export function PageHero({ badge, title, subtitle, breadcrumbs, actions, dark, backgroundImage, children }: PageHeroProps) {
+export function PageHero({ badge, title, subtitle, breadcrumbs, actions, dark, light, backgroundImage, children }: PageHeroProps) {
   const bgClass = dark
     ? "bg-ai-gradient"
+    : light
+    ? "bg-white"
     : "page-hero-bg";
 
   return (
@@ -37,14 +41,14 @@ export function PageHero({ badge, title, subtitle, breadcrumbs, actions, dark, b
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         {/* Breadcrumb */}
         {breadcrumbs && (
-          <nav className="flex items-center gap-1.5 text-sm text-white/50 mb-6" aria-label="Breadcrumb">
+          <nav className={`flex items-center gap-1.5 text-sm mb-6 ${light ? "text-gray-400" : "text-white/50"}`} aria-label="Breadcrumb">
             {breadcrumbs.map((crumb, i) => (
               <span key={i} className="flex items-center gap-1.5">
-                {i > 0 && <ChevronRight size={14} className="text-white/30" />}
+                {i > 0 && <ChevronRight size={14} className={light ? "text-gray-300" : "text-white/30"} />}
                 {crumb.href ? (
-                  <Link href={crumb.href} className="hover:text-white/80 transition-colors">{crumb.label}</Link>
+                  <Link href={crumb.href} className={`transition-colors ${light ? "hover:text-gray-600" : "hover:text-white/80"}`}>{crumb.label}</Link>
                 ) : (
-                  <span className="text-white/70" aria-current="page">{crumb.label}</span>
+                  <span className={light ? "text-gray-600" : "text-white/70"} aria-current="page">{crumb.label}</span>
                 )}
               </span>
             ))}
@@ -53,17 +57,23 @@ export function PageHero({ badge, title, subtitle, breadcrumbs, actions, dark, b
 
         {/* Badge */}
         {badge && (
-          <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-xs font-semibold text-white/80 uppercase tracking-widest mb-5">
+          <div
+            className={
+              light
+                ? "inline-flex items-center gap-2 bg-[#FDF4F6] border border-gray-200 rounded-full px-4 py-1.5 text-xs font-semibold text-[#5C0F26] uppercase tracking-widest mb-5"
+                : "inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-xs font-semibold text-white/80 uppercase tracking-widest mb-5"
+            }
+          >
             {badge}
           </div>
         )}
 
-        <h1 className="font-display font-extrabold text-display-lg text-white text-balance max-w-3xl mb-4 leading-tight">
+        <h1 className={`font-display font-extrabold text-display-lg text-balance max-w-3xl mb-4 leading-tight ${light ? "text-gray-900" : "text-white"}`}>
           {title}
         </h1>
 
         {subtitle && (
-          <p className="text-lg text-white/70 max-w-2xl leading-relaxed mb-8">{subtitle}</p>
+          <p className={`text-lg max-w-2xl leading-relaxed mb-8 ${light ? "text-gray-500" : "text-white/70"}`}>{subtitle}</p>
         )}
 
         {actions && (
