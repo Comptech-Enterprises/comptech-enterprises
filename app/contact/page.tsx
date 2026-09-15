@@ -24,6 +24,7 @@ const inputClass =
 
 export default function ContactPage() {
   const [isMobile, setIsMobile] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -36,11 +37,15 @@ export default function ContactPage() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
 
+  // Determine device size once before mounting the <video> at all — mounting
+  // it immediately and then flipping `key` on a later resize check would
+  // force a second full video download instead of cancelling the first.
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+    setIsMobile(window.innerWidth < 768);
+    setVideoReady(true);
+    const onResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
   }, []);
 
   return (
@@ -53,16 +58,18 @@ export default function ContactPage() {
           style={{ minHeight: "100vh", paddingTop: "var(--nav-height)" }}
           aria-label="Hero"
         >
-          <video
-            key={isMobile ? "mobile" : "desktop"}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
-          >
-            <source src={isMobile ? "/training-bg-mobile.mp4" : "/training-bg.mp4"} type="video/mp4" />
-          </video>
+          {videoReady && (
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+              className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+            >
+              <source src={isMobile ? "/training-bg-mobile.mp4" : "/training-bg.mp4"} type="video/mp4" />
+            </video>
+          )}
 
           {/* Gradient mesh blobs for glass depth */}
           <div className="absolute inset-0 pointer-events-none">
