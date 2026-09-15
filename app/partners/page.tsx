@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   title: "Technology Partners",
   description:
     "Comptech is a certified Dell Titanium, HP Gold, Lenovo Silver, and Microsoft Gold partner — genuine products, official warranty, expert deployment.",
+  alternates: {
+    canonical: "/partners",
+  },
   openGraph: {
     type: "website",
     locale: "en_IN",
