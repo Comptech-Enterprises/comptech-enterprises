@@ -11,6 +11,15 @@ export const metadata: Metadata = {
   title: "Technology Partners",
   description:
     "Comptech is a certified Dell Titanium, HP Gold, Lenovo Silver, and Microsoft Gold partner — genuine products, official warranty, expert deployment.",
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    siteName: "Comptech Enterprises",
+    title: "Technology Partners | Comptech Enterprises",
+    description:
+      "Comptech is a certified Dell Titanium, HP Gold, Lenovo Silver, and Microsoft Gold partner — genuine products, official warranty, expert deployment.",
+    images: [{ url: "/images/logo.webp" }],
+  },
 };
 
 const PARTNER_CATEGORIES = [

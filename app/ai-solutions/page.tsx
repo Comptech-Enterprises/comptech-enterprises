@@ -8,6 +8,15 @@ export const metadata: Metadata = {
   description:
     "AI Services and corporate AI Trainings from Comptech Enterprises — hands-on workshops, custom AI agents built around your workflows, and secure AI software integration.",
   keywords: ["AI Services", "AI Trainings", "AI workshops India", "corporate AI training Delhi", "AI agent development"],
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    siteName: "Comptech Enterprises",
+    title: "AI Services & AI Trainings | Comptech Enterprises",
+    description:
+      "AI Services and corporate AI Trainings from Comptech Enterprises — hands-on workshops, custom AI agents built around your workflows, and secure AI software integration.",
+    images: [{ url: "/images/logo.webp" }],
+  },
 };
 
 export default function AISolutionsPage() {

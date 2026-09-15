@@ -1,14 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
 import {
   Bot,
   Brain,
   GraduationCap,
   Shield,
   Workflow,
-  Sparkles,
   CheckCircle2,
   ArrowRight,
   Zap,
@@ -20,6 +18,8 @@ import {
   Globe,
 } from "lucide-react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { PageHero } from "@/components/sections/PageHero";
+import { RevealWrapper } from "@/components/ui/RevealWrapper";
 import { SpotlightCard } from "@/components/home/BorderBeamCard";
 import { AIArchitecturePipeline } from "./AIArchitecturePipeline";
 import { AIUseCaseExplorer } from "./AIUseCaseExplorer";
@@ -76,11 +76,11 @@ const AI_OFFERINGS = [
     icon: Video,
     title: "Meeting AI Agent",
     badge: "Voice & Productivity",
-    beamFrom: "#7C3AED",
-    beamTo: "#C4B5FD",
-    spotlight: "rgba(124, 58, 237, 0.12)",
-    iconBg: "#FAF5FF",
-    iconColor: "#7C3AED",
+    beamFrom: "#BE185D",
+    beamTo: "#F472B6",
+    spotlight: "rgba(190, 24, 93, 0.12)",
+    iconBg: "#FDF2F8",
+    iconColor: "#BE185D",
     desc: "Autonomous voice-enabled assistant that joins your calls, records and transcribes conversations, and actively speaks live in the meeting to answer questions or brief the team when needed.",
     points: [
       "Auto-joins Zoom, Google Meet & Microsoft Teams as an active participant",
@@ -115,8 +115,8 @@ const AI_CAPABILITIES = [
     title: "Generative Engine Optimization (GEO)",
     desc: "Next-generation optimization ensuring your brand, products, and services rank and are cited directly inside ChatGPT, Perplexity, Claude, and Google AI Overviews.",
     icon: Globe,
-    color: "#7C3AED",
-    bg: "#FAF5FF",
+    color: "#BE185D",
+    bg: "#FDF2F8",
   },
 ];
 
@@ -124,81 +124,43 @@ export function AISolutionsClient() {
   return (
     <>
       {/* ── AI Hero Section ── */}
-      <section className="relative min-h-[90vh] flex items-center justify-center pt-28 pb-20 overflow-hidden bg-gradient-to-b from-[#2B0712] via-[#3F0A1A] to-[#1A040A] text-white">
-        {/* Glowing Neural Orbs */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-1/4 -left-20 w-[500px] h-[500px] rounded-full blur-[120px] opacity-25 bg-[#7A1535]" />
-          <div className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] rounded-full blur-[120px] opacity-25 bg-[#1D4ED8]" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[140px] opacity-15 bg-[#E8435A]" />
-        </div>
-
-        {/* Ambient Grid Pattern */}
-        <div className="absolute inset-0 bg-grid-white/[0.03] bg-[size:32px_32px] pointer-events-none" />
-
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          {/* Tag badge */}
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 bg-[#5C0F26]/40 text-rose-100 text-xs sm:text-sm font-semibold tracking-wide mb-6 shadow-inner backdrop-blur-md"
-          >
-            <Sparkles size={14} className="text-rose-300 animate-pulse" />
-            Comptech AI Division · Enterprise &amp; Academia Enablement
-          </motion.div>
-
-          {/* Heading */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="font-display font-extrabold text-white tracking-tight leading-[1.1] mb-6 max-w-4xl mx-auto"
-            style={{ fontSize: "clamp(2.3rem, 5vw, 4.2rem)" }}
-          >
+      <PageHero
+        light
+        badge="AI Solutions"
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "AI" }]}
+        title={
+          <>
             Practical AI for Enterprises:{" "}
             <span
               className="text-transparent bg-clip-text"
-              style={{ backgroundImage: "linear-gradient(120deg, #F0A6B9, #F5A9BE, #93C5FD)" }}
+              style={{ backgroundImage: "linear-gradient(135deg, #5C0F26, #E8435A)" }}
             >
               Train Your Team. Automate With Agents.
             </span>
-          </motion.h1>
-
-          {/* Subtitle */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-base sm:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed font-light"
-          >
-            Empowering Indian organizations to adopt AI with confidence. We deliver accredited corporate workshops and engineer custom, secure autonomous AI agents.
-          </motion.p>
-
-          {/* Action CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
+          </>
+        }
+        subtitle="Empowering Indian organizations to adopt AI with confidence. We deliver accredited corporate workshops and engineer custom, secure autonomous AI agents."
+        actions={
+          <>
             <Link
               href="/contact#quote"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-bold text-white shadow-xl hover:scale-105 transition-all duration-200"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-bold text-white shadow-xl hover:scale-105 transition-all duration-200"
               style={{
                 background: "linear-gradient(135deg, #5C0F26 0%, #E8435A 100%)",
-                boxShadow: "0 10px 30px rgba(92, 15, 38, 0.4)",
+                boxShadow: "0 10px 30px rgba(92, 15, 38, 0.25)",
               }}
             >
               Book an AI Training <ArrowRight size={16} />
             </Link>
             <a
               href="#offerings"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-semibold text-white/90 border border-white/20 bg-white/5 hover:bg-white/10 hover:border-white/40 transition-all duration-200 backdrop-blur-md"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-semibold text-gray-700 border border-gray-200 bg-white hover:border-gray-300 hover:bg-gray-50 transition-all duration-200"
             >
               Explore AI Offerings
             </a>
-          </motion.div>
-        </div>
-      </section>
+          </>
+        }
+      />
 
       {/* ── Why Comptech AI & Trust Pillars ── */}
       <section className="py-20 bg-white relative overflow-hidden" aria-labelledby="why-ai-title">
@@ -206,7 +168,7 @@ export function AISolutionsClient() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             
             {/* Left Narrative */}
-            <div>
+            <RevealWrapper>
               <SectionLabel>Core AI Pillars</SectionLabel>
               <h2
                 id="why-ai-title"
@@ -227,21 +189,10 @@ export function AISolutionsClient() {
               <p className="text-gray-500 text-sm sm:text-base leading-relaxed mb-8">
                 Every agent and training session is led by practicing engineers with strict data security, private air-gapped hosting, and verifiable business ROI.
               </p>
-
-              <div className="flex flex-wrap gap-6 pt-4 border-t border-gray-100">
-                <div className="flex items-center gap-3">
-                  <span className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse" />
-                  <span className="text-sm font-bold text-gray-800">100% Private &amp; Air-Gapped</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="w-3 h-3 rounded-full bg-[#1D4ED8] animate-pulse" />
-                  <span className="text-sm font-bold text-gray-800">Practitioner-Led Engineering</span>
-                </div>
-              </div>
-            </div>
+            </RevealWrapper>
 
             {/* Right Capability Cards */}
-            <div className="flex flex-col gap-4">
+            <RevealWrapper delay={150} className="flex flex-col gap-4">
               {AI_CAPABILITIES.map((cap) => {
                 const Icon = cap.icon;
                 return (
@@ -262,7 +213,7 @@ export function AISolutionsClient() {
                   </div>
                 );
               })}
-            </div>
+            </RevealWrapper>
 
           </div>
         </div>
@@ -272,7 +223,7 @@ export function AISolutionsClient() {
       <section id="offerings" className="py-20 lg:py-28 bg-[#F8FAFC] relative overflow-hidden" aria-labelledby="products-title">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
-          <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
+          <RevealWrapper className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
             <SectionLabel className="justify-center">Flagship AI Agents</SectionLabel>
             <h2
               id="products-title"
@@ -290,15 +241,15 @@ export function AISolutionsClient() {
             <p className="mt-3 text-base sm:text-lg text-gray-500 leading-relaxed">
               Pre-engineered, enterprise-ready autonomous AI agents tailored to your business data and workflows.
             </p>
-          </div>
+          </RevealWrapper>
 
           {/* 3 Pillars Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
-            {AI_OFFERINGS.map((off) => {
+            {AI_OFFERINGS.map((off, i) => {
               const Icon = off.icon;
               return (
+                <RevealWrapper key={off.id} delay={i * 120} className="h-full">
                 <SpotlightCard
-                  key={off.id}
                   beamFrom={off.beamFrom}
                   beamTo={off.beamTo}
                   spotlightColor={off.spotlight}
@@ -370,6 +321,7 @@ export function AISolutionsClient() {
                     </Link>
                   </div>
                 </SpotlightCard>
+                </RevealWrapper>
               );
             })}
           </div>
@@ -384,15 +336,19 @@ export function AISolutionsClient() {
       <AIUseCaseExplorer />
 
       {/* ── Final High-Impact CTA Banner ── */}
-      <section className="py-20 lg:py-24 bg-gradient-to-br from-[#3F0A1A] via-[#5C0F26] to-[#7A1535] text-white relative overflow-hidden text-center">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-white/10 border border-white/15 mb-6">
-            <Bot className="w-7 h-7 text-rose-200" />
+      <section className="py-20 lg:py-24 bg-white relative overflow-hidden text-center">
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute top-0 -left-20 w-[400px] h-[400px] rounded-full blur-3xl opacity-20" style={{ background: "#5C0F26" }} />
+          <div className="absolute bottom-0 right-0 w-[350px] h-[350px] rounded-full blur-3xl opacity-15" style={{ background: "#1D4ED8" }} />
+        </div>
+        <RevealWrapper className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#FDF4F6] border border-gray-200 mb-6">
+            <Bot className="w-7 h-7 text-[#5C0F26]" />
           </div>
-          <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white mb-5 tracking-tight">
+          <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-5 tracking-tight">
             Ready to deploy practical AI in your business?
           </h2>
-          <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+          <p className="text-gray-500 text-base sm:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
             Whether upskilling 50 employees or building a private multi-step agent pipeline, our engineers are ready to scope your project.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
@@ -405,12 +361,12 @@ export function AISolutionsClient() {
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-semibold text-white/90 border border-white/20 bg-white/5 hover:bg-white/10 transition-all duration-200 backdrop-blur-md"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-semibold text-gray-700 border border-gray-200 bg-white hover:border-gray-300 hover:bg-gray-50 transition-all duration-200"
             >
               Contact AI Team
             </Link>
           </div>
-        </div>
+        </RevealWrapper>
       </section>
     </>
   );

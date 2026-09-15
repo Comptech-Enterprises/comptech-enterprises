@@ -56,6 +56,10 @@ const jsonLd = {
   "@id": "https://comptech.in/#localbusiness",
   "url": "https://comptech.in",
   "telephone": "+91-8595073837",
+  "sameAs": [
+    "https://www.linkedin.com/company/comptech-enterprises1",
+    "https://www.instagram.com/comptechenterprises"
+  ],
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "207, DDA-1, District Center, JanakPuri",
