@@ -199,7 +199,7 @@ export function Navbar({ transparent = false }: NavbarProps) {
           {/* Desktop Actions */}
           <div className="hidden lg:flex items-center gap-3 shrink-0">
             <Link
-              href="/contact#training-form"
+              href="/contact"
               className={clsx(
                 "text-sm font-semibold px-5 py-2.5 rounded-xl border transition-all duration-200",
                 isTransparent && !isWhiteHeader
@@ -207,7 +207,7 @@ export function Navbar({ transparent = false }: NavbarProps) {
                   : "border-gray-200 text-gray-700 hover:border-[#5C0F26]/30 hover:text-[#5C0F26]",
               )}
             >
-              Get a Free Proposal
+              Talk to an Expert
             </Link>
           </div>
 
@@ -280,7 +280,7 @@ export function Navbar({ transparent = false }: NavbarProps) {
             onClick={() => setMobileOpen(false)}
             className="w-full py-4 rounded-2xl border-2 border-[#5C0F26] text-[#5C0F26] text-[15px] font-bold text-center hover:bg-[#FDF4F6] transition-colors"
           >
-            Book an AI Training
+            Talk to an Expert
           </Link>
         </div>
       </div>
