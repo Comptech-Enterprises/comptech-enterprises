@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Bot, GraduationCap, Blocks, LineChart, Sparkles } from "lucide-react";
+import { ArrowRight, Bot, Blocks, Target, GraduationCap } from "lucide-react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { AI_PILLARS } from "@/lib/constants";
 
 const CLIENTS = [
   "Diageo",
@@ -31,44 +32,24 @@ const CLIENTS = [
   "Fabstract",
 ];
 
-const AI_FEATURES = [
-  {
-    Icon: Bot,
-    title: "Custom AI Agents",
-    desc: "Bespoke autonomous agents that automate workflows and act across your tools — built specifically around your business.",
-    tag: "Autonomous Workflows",
-  },
-  {
-    Icon: GraduationCap,
-    title: "AI Training & Workshops",
-    desc: "Hands-on corporate workshops that upskill leadership and engineering teams on LLMs, RAG, and agentic systems.",
-    tag: "Enterprise Enablement",
-  },
-  {
-    Icon: Blocks,
-    title: "AI Software & Integration",
-    desc: "Custom models and RAG pipelines integrated securely into your existing systems with private, air-gapped hosting.",
-    tag: "Private & Secure",
-  },
-  {
-    Icon: LineChart,
-    title: "Document Intelligence",
-    desc: "Intelligent data extraction, OCR, and workflow automation applied directly to your own proprietary enterprise data.",
-    tag: "Custom Intelligence",
-  },
-];
+const ICONS = {
+  bot: Bot,
+  blocks: Blocks,
+  target: Target,
+  graduation: GraduationCap,
+} as const;
 
-const BULLETS = [
-  "Fully private — your data never leaves your network",
-  "Custom AI agents tailored to your exact workflows",
-  "Hands-on AI workshops for leadership & engineering",
-  "Trusted across 200+ enterprise environments",
-];
+const PILLAR_TAGS: Record<string, string[]> = {
+  agents: ["Autonomous Exec", "Multi-Agent", "Zero Leak"],
+  software: ["Private RAG", "Custom Models", "API Sync"],
+  strategy: ["Executive ROI", "Tool Selection", "Governance"],
+  training: ["Hands-On Lab", "C-Suite & Teams", "Practical Skills"],
+};
 
 export function AISection() {
   return (
-    <section className="py-20 lg:py-28 relative overflow-hidden" aria-labelledby="ai-title">
-      {/* ── Customer Ticker (Single line, bigger size, no dots) ── */}
+    <section id="ai" className="py-20 lg:py-28 relative overflow-hidden" aria-labelledby="ai-title">
+      {/* ── Customer Ticker (Single line, big font, no dots) ── */}
       <div className="w-full overflow-hidden mb-16 lg:mb-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-7">
           <div className="flex items-center gap-4">
@@ -104,20 +85,20 @@ export function AISection() {
         </div>
       </div>
 
-      {/* ── AI Solutions Content (Matching Screenshot) ── */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Header directly matching screenshot */}
-        <div className="mb-14 max-w-3xl">
-          <SectionLabel className="mb-3">AI SOLUTIONS</SectionLabel>
+      {/* ── AI Solutions Section Content ── */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Header directly matching screenshot and main */}
+        <div className="mb-12 max-w-3xl">
+          <SectionLabel className="mb-3">AI Solutions</SectionLabel>
           <h2
             id="ai-title"
-            className="font-display font-extrabold text-gray-900 tracking-tight leading-[1.12] mb-5"
-            style={{ fontSize: "clamp(2.1rem, 4vw, 3.4rem)" }}
+            className="font-display font-extrabold text-gray-900 tracking-tight leading-[1.12] mb-4"
+            style={{ fontSize: "clamp(2rem, 3.8vw, 3.2rem)" }}
           >
             Tailored AI Solutions{" "}
             <span
               className="text-transparent bg-clip-text"
-              style={{ backgroundImage: "linear-gradient(135deg, #8B1130 0%, #C0264A 55%, #7C3AED 100%)" }}
+              style={{ backgroundImage: "linear-gradient(135deg, #5C0F26 0%, #E8435A 60%, #7C3AED 100%)" }}
             >
               built around your business
             </span>
@@ -127,56 +108,87 @@ export function AISection() {
           </p>
         </div>
 
-        {/* Feature Cards Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {AI_FEATURES.map(({ Icon, title, desc, tag }) => (
-            <div
-              key={title}
-              className="glass-card rounded-3xl p-6 flex flex-col justify-between border border-white/70 bg-white/50 backdrop-blur-md shadow-xs hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-5">
-                  <div
-                    className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-xs"
-                    style={{ background: "#FDF4F6" }}
-                  >
-                    <Icon size={22} style={{ color: "#5C0F26" }} />
+        {/* 4 Pillars Grid with Enhanced Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {AI_PILLARS.map((pillar) => {
+            const Icon = ICONS[pillar.icon as keyof typeof ICONS] ?? Bot;
+            const tags = PILLAR_TAGS[pillar.id] ?? [];
+
+            return (
+              <Link
+                key={pillar.id}
+                href={pillar.href}
+                className="group relative rounded-3xl p-6 sm:p-7 flex flex-col justify-between border bg-white/90 backdrop-blur-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl overflow-hidden"
+                style={{
+                  borderColor: `${pillar.color}25`,
+                }}
+              >
+                {/* Ambient hover glow inside card */}
+                <div
+                  className="absolute -top-12 -right-12 w-32 h-32 rounded-full blur-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none"
+                  style={{ background: pillar.color }}
+                />
+
+                <div>
+                  {/* Top row: Icon + Arrow action indicator */}
+                  <div className="flex items-center justify-between mb-5">
+                    <div
+                      className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105 shadow-xs"
+                      style={{ background: pillar.bg }}
+                    >
+                      <Icon size={22} style={{ color: pillar.color }} />
+                    </div>
+
+                    <div
+                      className="w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform -translate-x-2 group-hover:translate-x-0"
+                      style={{ background: pillar.bg }}
+                    >
+                      <ArrowRight size={15} style={{ color: pillar.color }} />
+                    </div>
                   </div>
-                  <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">
-                    {tag}
-                  </span>
+
+                  {/* Title & Desc */}
+                  <h3 className="font-display font-bold text-gray-900 text-lg leading-snug mb-2 group-hover:text-gray-950 transition-colors">
+                    {pillar.title}
+                  </h3>
+                  <p className="text-sm text-gray-500 leading-relaxed mb-6">
+                    {pillar.desc}
+                  </p>
                 </div>
-                <h3 className="font-display font-bold text-gray-900 text-lg mb-2 leading-snug">
-                  {title}
-                </h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
-                  {desc}
-                </p>
-              </div>
-            </div>
-          ))}
+
+                {/* Bottom Feature Badges / Chips */}
+                <div className="pt-4 border-t border-gray-100/80 flex flex-wrap gap-1.5">
+                  {tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[10px] font-semibold px-2.5 py-1 rounded-md text-gray-600 bg-gray-50 border border-gray-200/60"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </Link>
+            );
+          })}
         </div>
 
-        {/* Bottom Bar: Bullets & CTA */}
-        <div className="mt-12 p-6 sm:p-8 rounded-3xl glass-card bg-white/60 border border-white/80 flex flex-col lg:flex-row items-center justify-between gap-6">
-          <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
-            {BULLETS.map((bullet) => (
-              <div key={bullet} className="flex items-center gap-2.5 text-xs sm:text-sm font-medium text-gray-700">
-                <Sparkles size={15} style={{ color: "#5C0F26" }} className="shrink-0" />
-                <span>{bullet}</span>
-              </div>
-            ))}
-          </div>
-
+        {/* Bottom CTA Buttons */}
+        <div className="mt-12 flex flex-col sm:flex-row gap-4 items-start sm:items-center">
           <Link
-            href="/ai-solutions"
-            className="shrink-0 inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white shadow-md hover:scale-105 transition-all duration-200"
+            href="/contact"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-bold text-white shadow-md hover:scale-105 transition-all duration-200"
             style={{
               background: "linear-gradient(135deg, #5C0F26 0%, #E8435A 100%)",
               boxShadow: "0 8px 24px rgba(92, 15, 38, 0.25)",
             }}
           >
-            Explore AI Solutions <ArrowRight size={16} />
+            Book a Free AI Audit <ArrowRight size={16} />
+          </Link>
+          <Link
+            href="/ai-solutions"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold text-gray-700 border border-gray-200 bg-white/80 backdrop-blur-md transition-all duration-200 hover:border-gray-400 hover:bg-white hover:text-gray-900 shadow-xs"
+          >
+            Explore All AI Services <ArrowRight size={16} />
           </Link>
         </div>
       </div>
