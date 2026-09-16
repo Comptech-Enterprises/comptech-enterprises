@@ -39,12 +39,7 @@ const ICONS = {
   graduation: GraduationCap,
 } as const;
 
-const PILLAR_TAGS: Record<string, string[]> = {
-  agents: ["Autonomous Exec", "Multi-Agent", "Zero Leak"],
-  software: ["Private RAG", "Custom Models", "API Sync"],
-  strategy: ["Executive ROI", "Tool Selection", "Governance"],
-  training: ["Hands-On Lab", "C-Suite & Teams", "Practical Skills"],
-};
+
 
 export function AISection() {
   return (
@@ -112,7 +107,6 @@ export function AISection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {AI_PILLARS.map((pillar) => {
             const Icon = ICONS[pillar.icon as keyof typeof ICONS] ?? Bot;
-            const tags = PILLAR_TAGS[pillar.id] ?? [];
 
             return (
               <Link
@@ -151,21 +145,9 @@ export function AISection() {
                   <h3 className="font-display font-bold text-gray-900 text-lg leading-snug mb-2 group-hover:text-gray-950 transition-colors">
                     {pillar.title}
                   </h3>
-                  <p className="text-sm text-gray-500 leading-relaxed mb-6">
+                  <p className="text-sm text-gray-500 leading-relaxed">
                     {pillar.desc}
                   </p>
-                </div>
-
-                {/* Bottom Feature Badges / Chips */}
-                <div className="pt-4 border-t border-gray-100/80 flex flex-wrap gap-1.5">
-                  {tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-[10px] font-semibold px-2.5 py-1 rounded-md text-gray-600 bg-gray-50 border border-gray-200/60"
-                    >
-                      {tag}
-                    </span>
-                  ))}
                 </div>
               </Link>
             );
