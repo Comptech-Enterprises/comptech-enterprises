@@ -3,7 +3,6 @@ import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/home/Hero";
 import { AISection } from "@/components/home/AISection";
 import { PartnersStrip, ResellerTicker } from "@/components/home/PartnersStrip";
-import { AITrainingSection } from "@/components/home/AITrainingSection";
 import { ServicesSection } from "@/components/home/ServicesSection";
 import { Testimonials } from "@/components/home/Testimonials";
 import { ContactSection } from "@/components/home/ContactSection";
@@ -17,7 +16,6 @@ export default function HomePage() {
         <Hero />
         <AISection />
         <PartnersStrip />
-        <AITrainingSection />
         <ServicesSection />
         <div className="relative">
           <PageThread />
