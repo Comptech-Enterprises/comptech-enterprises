@@ -52,10 +52,8 @@ function isValidCompany(value: string): boolean {
 
 function isValidPhone(value: string): boolean {
   const trimmed = value.trim();
-  if (!/^[0-9+\-() ]{6,20}$/.test(trimmed)) return false;
-  const digits = trimmed.replace(/\D/g, "");
-  if (digits.length < 7 || digits.length > 15) return false;
-  if (/^(\d)\1+$/.test(digits)) return false; // "1111111111"
+  if (!/^[0-9]{7,15}$/.test(trimmed)) return false; // digits only — no +, -, (), spaces
+  if (/^(\d)\1+$/.test(trimmed)) return false; // "1111111111"
   return true;
 }
 

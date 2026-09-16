@@ -164,8 +164,12 @@ export function ContactSection() {
                     autoComplete={auto}
                     className={inputClass}
                     placeholder={placeholder}
+                    inputMode={key === "phone" ? "numeric" : undefined}
                     value={form[key as keyof typeof form] as string}
-                    onChange={(e) => setForm({ ...form, [key]: e.target.value })}
+                    onChange={(e) => {
+                      const val = key === "phone" ? e.target.value.replace(/\D/g, "") : e.target.value;
+                      setForm({ ...form, [key]: val });
+                    }}
                   />
                 </div>
               ))}
