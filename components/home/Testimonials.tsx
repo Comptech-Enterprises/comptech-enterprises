@@ -38,23 +38,12 @@ export function Testimonials() {
               Real results from real organizations across India. From educational institutions to rapid-growth enterprises.
             </p>
 
-            {/* Rating */}
-            <div className="mt-7 flex items-center gap-3">
-              <div className="flex gap-0.5">
-                {Array(5).fill(null).map((_, i) => (
-                  <Star key={i} size={14} fill="#5C0F26" stroke="none" />
-                ))}
-              </div>
-              <span className="text-sm font-bold text-gray-900">4.8</span>
-              <span className="text-sm text-gray-400">/ 5 average rating</span>
-            </div>
-
             {/* Stats grid */}
             <div className="mt-8 grid grid-cols-3 gap-3">
               {[
                 { value: "200+", label: "Clients" },
                 { value: "30+",  label: "Years"   },
-                { value: "50+",  label: "Engineers"},
+                { value: "50+",  label: "Agents Deployed" },
               ].map(({ value, label }) => (
                 <div key={label} className="glass-card rounded-2xl p-4 text-center">
                   <p className="font-display font-extrabold text-xl text-gray-900 leading-none mb-1"
@@ -64,9 +53,7 @@ export function Testimonials() {
               ))}
             </div>
 
-            <p className="text-xs text-gray-400 mt-6 font-medium">
-              💡 Hover to pause or scroll to explore all testimonials
-            </p>
+
           </div>
 
           {/* ── Right: Continuous Downward Ticker + Scrollable Container ── */}

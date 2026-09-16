@@ -1,8 +1,8 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/home/Hero";
-import { AISection } from "@/components/home/AISection";
 import { PartnersStrip, ResellerTicker } from "@/components/home/PartnersStrip";
+import { AISection } from "@/components/home/AISection";
 import { ServicesSection } from "@/components/home/ServicesSection";
 import { Testimonials } from "@/components/home/Testimonials";
 import { ContactSection } from "@/components/home/ContactSection";
@@ -14,8 +14,8 @@ export default function HomePage() {
       <Navbar transparent />
       <main className="glass-mesh-page">
         <Hero />
-        <AISection />
         <PartnersStrip />
+        <AISection />
         <ServicesSection />
         <div className="relative">
           <PageThread />
