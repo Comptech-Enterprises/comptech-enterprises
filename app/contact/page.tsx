@@ -33,6 +33,8 @@ export default function ContactPage() {
     useCase: "",
     notes: "",
   });
+  const [website, setWebsite] = useState(""); // honeypot
+  const [formRenderedAt] = useState(() => Date.now());
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
@@ -173,6 +175,8 @@ export default function ContactPage() {
                             useCase: form.useCase,
                             requirements: form.notes || `Training for ${form.employees} employees (Use Case: ${form.useCase})`,
                             source: "Book an AI Training Page",
+                            website,
+                            formRenderedAt,
                           }),
                         });
                         if (!res.ok) throw new Error("Request failed");
@@ -184,6 +188,18 @@ export default function ContactPage() {
                       }
                     }}
                   >
+                    {/* Honeypot — hidden from real users, bots tend to fill every field */}
+                    <input
+                      type="text"
+                      name="website"
+                      value={website}
+                      onChange={(e) => setWebsite(e.target.value)}
+                      tabIndex={-1}
+                      autoComplete="off"
+                      aria-hidden="true"
+                      className="absolute -left-[9999px] w-px h-px opacity-0"
+                    />
+
                     <div className="mb-4">
                       <label htmlFor="training-name" className="block text-xs font-semibold text-gray-600 mb-1.5">Name *</label>
                       <input

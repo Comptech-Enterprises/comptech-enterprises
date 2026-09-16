@@ -21,6 +21,8 @@ export function ContactSection() {
     firstName: "", lastName: "", email: "", company: "",
     phone: "", service: "", requirements: "", downloadProfile: false,
   });
+  const [website, setWebsite] = useState(""); // honeypot
+  const [formRenderedAt] = useState(() => Date.now());
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
@@ -91,7 +93,7 @@ export function ContactSection() {
                   const res = await fetch("/api/contact", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ ...form, source: "Homepage Contact Section" }),
+                    body: JSON.stringify({ ...form, source: "Homepage Contact Section", website, formRenderedAt }),
                   });
                   if (!res.ok) throw new Error("Request failed");
                   setSubmitted(true);
@@ -102,6 +104,18 @@ export function ContactSection() {
                 }
               }}
             >
+              {/* Honeypot — hidden from real users, bots tend to fill every field */}
+              <input
+                type="text"
+                name="website"
+                value={website}
+                onChange={(e) => setWebsite(e.target.value)}
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="absolute -left-[9999px] w-px h-px opacity-0"
+              />
+
               <h3 className="font-display font-extrabold text-lg text-gray-900 mb-5">Or send us a message</h3>
 
               <div className="grid grid-cols-2 gap-4 mb-4">
@@ -150,8 +164,12 @@ export function ContactSection() {
                     autoComplete={auto}
                     className={inputClass}
                     placeholder={placeholder}
+                    inputMode={key === "phone" ? "numeric" : undefined}
                     value={form[key as keyof typeof form] as string}
-                    onChange={(e) => setForm({ ...form, [key]: e.target.value })}
+                    onChange={(e) => {
+                      const val = key === "phone" ? e.target.value.replace(/\D/g, "") : e.target.value;
+                      setForm({ ...form, [key]: val });
+                    }}
                   />
                 </div>
               ))}
