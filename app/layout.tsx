@@ -18,16 +18,14 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://comptech.in"),
   title: {
-    default: "Comptech Enterprises | AI Services, AI Trainings & Software Development",
+    default: "Comptech Enterprises | Enterprise IT & AI Solutions India",
     template: "%s | Comptech Enterprises",
   },
   description:
-    "Comptech Enterprises delivers AI Services, corporate AI Trainings, and custom Software Development for MSMEs and enterprises across India, alongside enterprise IT infrastructure.",
+    "Empowering MSMEs and Corporates across India to adopt practical AI. Certified experts in AI agent development, corporate AI workshops, custom RAG/LLMs, and enterprise IT infrastructure.",
   keywords: [
-    "AI Services", "AI Services India", "AI Services Delhi",
-    "AI Trainings", "AI Trainings India", "corporate AI Trainings", "AI workshops Delhi",
-    "Software Development", "Software Development India", "custom software development company",
-    "AI adoption for MSMEs India", "Corporate AI solutions Delhi", "AI agent development Delhi",
+    "AI adoption for MSMEs India", "Corporate AI solutions Delhi", "AI services New Delhi",
+    "AI trainings India", "AI agent development Delhi", "corporate AI workshops NCR",
     "enterprise IT Delhi", "IT AMC New Delhi", "servers", "Dell partner Delhi", "HP partner Delhi", "Lenovo partner Delhi"
   ],
   authors: [{ name: "Comptech Enterprises" }],
@@ -39,8 +37,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     siteName: "Comptech Enterprises",
-    title: "Comptech Enterprises | AI Services, AI Trainings & Software Development",
-    description: "AI Services, corporate AI Trainings, and custom Software Development for MSMEs and enterprises across India.",
+    title: "Comptech Enterprises | Enterprise IT & AI Solutions India",
+    description: "Empowering MSMEs and Corporates across India to adopt practical AI.",
     images: [{ url: "/images/logo.webp" }],
   },
   icons: {
