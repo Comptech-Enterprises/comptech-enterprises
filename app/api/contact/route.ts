@@ -2,11 +2,62 @@ import { NextRequest, NextResponse } from "next/server";
 import { appendContactSubmission } from "@/lib/googleSheets";
 import { sendContactNotification } from "@/lib/mailer";
 
-const NAME_RE = /^[\p{L}][\p{L}\p{M}'.\- ]{1,59}$/u;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-const COMPANY_RE = /^[\p{L}\p{N}][\p{L}\p{M}\p{N}'.,&\-() ]{1,99}$/u;
-const PHONE_RE = /^[0-9+\-() ]{6,20}$/;
 const MIN_FILL_TIME_MS = 2500;
+const WORD_RE = /^[\p{L}][\p{L}\p{M}'-]{1,29}$/u;
+const REPEAT_CHAR_RE = /(.)\1{2,}/; // e.g. "aaa", "blahblahblah" chunks
+
+function hasErraticCasing(word: string): boolean {
+  // Real names have at most one lowercase→uppercase shift mid-word (e.g.
+  // "McDonald"). Bot-generated strings like "ihlBUSuOZiFsSlieDrRNPR" flip
+  // into uppercase repeatedly.
+  let upshifts = 0;
+  for (let i = 1; i < word.length; i++) {
+    const prevUpper = word[i - 1] !== word[i - 1].toLowerCase();
+    const curUpper = word[i] !== word[i].toLowerCase();
+    if (curUpper && !prevUpper) upshifts++;
+  }
+  return upshifts > 1;
+}
+
+function isValidName(value: string): boolean {
+  const trimmed = value.trim();
+  if (!trimmed) return false;
+  const words = trimmed.split(/\s+/);
+  if (words.length < 1 || words.length > 4) return false;
+  const seen = new Set<string>();
+  for (const word of words) {
+    if (!WORD_RE.test(word) || REPEAT_CHAR_RE.test(word.toLowerCase()) || hasErraticCasing(word)) return false;
+    const lower = word.toLowerCase();
+    if (seen.has(lower)) return false; // "blah blah blah" — repeated word
+    seen.add(lower);
+  }
+  return true;
+}
+
+function isValidCompany(value: string): boolean {
+  const trimmed = value.trim();
+  if (trimmed.length < 2 || trimmed.length > 100) return false;
+  if (!/^[\p{L}\p{N}][\p{L}\p{M}\p{N}'.,&\-() ]{1,99}$/u.test(trimmed)) return false;
+  const words = trimmed.toLowerCase().split(/\s+/);
+  const seen = new Set<string>();
+  let repeats = 0;
+  for (const word of words) {
+    if (seen.has(word)) repeats++;
+    seen.add(word);
+  }
+  if (repeats >= 2) return false; // "blah blah blah corp" style padding
+  return true;
+}
+
+function isValidPhone(value: string): boolean {
+  const trimmed = value.trim();
+  if (!/^[0-9+\-() ]{6,20}$/.test(trimmed)) return false;
+  const digits = trimmed.replace(/\D/g, "");
+  if (digits.length < 7 || digits.length > 15) return false;
+  if (/^(\d)\1+$/.test(digits)) return false; // "1111111111"
+  return true;
+}
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
@@ -48,17 +99,17 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
   }
 
-  if (!NAME_RE.test(resolvedFirstName) || (resolvedLastName && !NAME_RE.test(resolvedLastName))) {
-    return NextResponse.json({ error: "Invalid name" }, { status: 400 });
+  if (!isValidName(resolvedFirstName) || (resolvedLastName && !isValidName(resolvedLastName))) {
+    return NextResponse.json({ error: "Please enter a valid name" }, { status: 400 });
   }
   if (!EMAIL_RE.test(String(email).trim())) {
-    return NextResponse.json({ error: "Invalid email" }, { status: 400 });
+    return NextResponse.json({ error: "Please enter a valid email" }, { status: 400 });
   }
-  if (!COMPANY_RE.test(String(company).trim())) {
-    return NextResponse.json({ error: "Invalid company name" }, { status: 400 });
+  if (!isValidCompany(String(company))) {
+    return NextResponse.json({ error: "Please enter a valid company name" }, { status: 400 });
   }
-  if (phone && !PHONE_RE.test(String(phone).trim())) {
-    return NextResponse.json({ error: "Invalid phone number" }, { status: 400 });
+  if (phone && !isValidPhone(String(phone))) {
+    return NextResponse.json({ error: "Phone number must contain only digits" }, { status: 400 });
   }
 
   const submission = {
