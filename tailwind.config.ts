@@ -52,6 +52,7 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
         display: ["var(--font-manrope)", "system-ui", "sans-serif"],
+        handwritten: ["'Caveat'", "'Patrick Hand'", "'Comic Sans MS'", "cursive", "sans-serif"],
       },
       fontSize: {
         "display-xl": ["clamp(2.5rem, 5vw, 4.5rem)", { lineHeight: "1.1", letterSpacing: "-0.03em" }],
