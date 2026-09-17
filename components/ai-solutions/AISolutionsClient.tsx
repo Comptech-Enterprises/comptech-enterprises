@@ -308,7 +308,7 @@ export function AISolutionsClient() {
                   {/* CTA Button */}
                   <div className="mt-auto pt-2">
                     <Link
-                      href="/contact#quote"
+                      href={`/ai-agents#${off.id}`}
                       className="inline-flex items-center justify-center gap-2 text-sm font-bold w-full py-3 rounded-2xl transition-all duration-200 group/btn"
                       style={{
                         background: off.iconBg,
