@@ -19,6 +19,8 @@ import {
   Play,
   Pause,
   Calendar,
+  Menu,
+  X,
 } from "lucide-react";
 
 export const STAGES = [
@@ -87,6 +89,7 @@ export const STAGES = [
 export function SalesWorkflowVisualizer() {
   const [activeStage, setActiveStage] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
@@ -112,6 +115,7 @@ export function SalesWorkflowVisualizer() {
   }, [activeStage]);
 
   const stage = STAGES[activeStage];
+  const ActiveIcon = stage.icon;
 
   return (
     <div className="relative w-full max-w-6xl mx-auto my-4 sm:my-6">
@@ -133,7 +137,7 @@ export function SalesWorkflowVisualizer() {
             </span>
             <span className="text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider text-gray-800 flex items-center gap-1.5 sm:gap-2 truncate">
               <Cpu size={14} className="text-[#5C0F26] shrink-0" />
-              <span className="truncate">Sales AI Agent · Live Simulation</span>
+              <span className="truncate">Sales AI Agent <span className="hidden sm:inline">· Live Simulation</span></span>
             </span>
           </div>
 
@@ -158,57 +162,163 @@ export function SalesWorkflowVisualizer() {
           </div>
         </div>
 
-        {/* Step Navigation Rail - Mobile Horizontal Scrollable / Desktop Grid */}
-        <div className="flex overflow-x-auto scrollbar-hide border-b border-gray-200 bg-gray-50/50 sm:grid sm:grid-cols-5 snap-x">
-          {STAGES.map((s, idx) => {
-            const SIcon = s.icon;
-            const isActive = activeStage === idx;
-            return (
-              <button
-                key={s.id}
-                ref={(el) => {
-                  tabRefs.current[idx] = el;
-                }}
-                onClick={() => {
-                  setActiveStage(idx);
-                  setIsPlaying(false);
-                }}
-                className={`relative px-3.5 sm:px-4 py-3 sm:py-4 text-left transition-all duration-300 border-r border-gray-200/70 last:border-r-0 flex flex-col justify-between shrink-0 min-w-[135px] sm:min-w-0 sm:shrink snap-start cursor-pointer ${
-                  isActive ? "bg-white shadow-xs" : "hover:bg-white/60 opacity-70 hover:opacity-100"
-                }`}
-              >
-                <div className="flex items-center justify-between mb-1.5 gap-1.5">
-                  <span
-                    className="text-[10px] sm:text-[11px] font-mono font-bold whitespace-nowrap"
-                    style={{ color: isActive ? s.color : "#6B7280" }}
-                  >
-                    PHASE {s.number}
-                  </span>
-                  <SIcon
-                    size={14}
-                    className="shrink-0"
-                    style={{ color: isActive ? s.color : "#9CA3AF" }}
-                  />
-                </div>
+        {/* Step Navigation: Mobile Hamburger Menu & Desktop Rail */}
+        <div className="border-b border-gray-200 bg-gray-50/50">
+          {/* Mobile Hamburger Header (< sm) */}
+          <div className="sm:hidden bg-white">
+            <div className="flex items-center justify-between px-3.5 py-2.5">
+              <div className="flex items-center gap-2.5 min-w-0">
                 <div
-                  className={`text-xs sm:text-sm font-bold whitespace-nowrap sm:whitespace-normal sm:truncate transition-colors ${
-                    isActive ? "text-gray-900 font-extrabold" : "text-gray-600"
+                  className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 border"
+                  style={{
+                    backgroundColor: stage.lightBg,
+                    borderColor: stage.borderColor,
+                    color: stage.color,
+                  }}
+                >
+                  <ActiveIcon size={14} />
+                </div>
+                <div className="min-w-0">
+                  <div className="text-[10px] font-mono font-bold" style={{ color: stage.color }}>
+                    PHASE {stage.number} OF 05
+                  </div>
+                  <div className="text-xs font-bold text-gray-900 truncate">
+                    {stage.name}
+                  </div>
+                </div>
+              </div>
+
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-gray-200 bg-gray-50 text-gray-800 hover:bg-gray-100 transition-colors text-xs font-bold cursor-pointer shadow-2xs"
+                aria-label="Toggle workflow steps menu"
+              >
+                {isMenuOpen ? <X size={15} className="text-[#5C0F26]" /> : <Menu size={15} className="text-[#5C0F26]" />}
+                <span>Steps</span>
+              </button>
+            </div>
+
+            {/* Mobile Hamburger Dropdown List */}
+            <AnimatePresence>
+              {isMenuOpen && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="overflow-hidden border-t border-gray-100 bg-gray-50/95 divide-y divide-gray-100 shadow-inner"
+                >
+                  {STAGES.map((s, idx) => {
+                    const SIcon = s.icon;
+                    const isActive = activeStage === idx;
+                    return (
+                      <button
+                        key={s.id}
+                        onClick={() => {
+                          setActiveStage(idx);
+                          setIsPlaying(false);
+                          setIsMenuOpen(false);
+                        }}
+                        className={`w-full px-4 py-3 flex items-center justify-between text-left transition-colors cursor-pointer ${
+                          isActive ? "bg-white" : "hover:bg-white/60 text-gray-700"
+                        }`}
+                      >
+                        <div className="flex items-center gap-3">
+                          <div
+                            className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 border"
+                            style={{
+                              backgroundColor: isActive ? s.lightBg : "#FFFFFF",
+                              borderColor: isActive ? s.borderColor : "#E5E7EB",
+                              color: isActive ? s.color : "#6B7280",
+                            }}
+                          >
+                            <SIcon size={15} />
+                          </div>
+                          <div>
+                            <div
+                              className="text-[10px] font-mono font-bold"
+                              style={{ color: isActive ? s.color : "#6B7280" }}
+                            >
+                              PHASE {s.number}
+                            </div>
+                            <div className={`text-xs font-bold ${isActive ? "text-gray-900 font-extrabold" : "text-gray-700"}`}>
+                              {s.name}
+                            </div>
+                          </div>
+                        </div>
+
+                        {isActive && (
+                          <span
+                            className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full border"
+                            style={{
+                              backgroundColor: s.lightBg,
+                              borderColor: s.borderColor,
+                              color: s.color,
+                            }}
+                          >
+                            Active
+                          </span>
+                        )}
+                      </button>
+                    );
+                  })}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* Desktop Step Navigation Rail (>= sm) */}
+          <div className="hidden sm:grid sm:grid-cols-5">
+            {STAGES.map((s, idx) => {
+              const SIcon = s.icon;
+              const isActive = activeStage === idx;
+              return (
+                <button
+                  key={s.id}
+                  ref={(el) => {
+                    tabRefs.current[idx] = el;
+                  }}
+                  onClick={() => {
+                    setActiveStage(idx);
+                    setIsPlaying(false);
+                  }}
+                  className={`relative px-3.5 sm:px-4 py-3 sm:py-4 text-left transition-all duration-300 border-r border-gray-200/70 last:border-r-0 flex flex-col justify-between cursor-pointer ${
+                    isActive ? "bg-white shadow-xs" : "hover:bg-white/60 opacity-70 hover:opacity-100"
                   }`}
                 >
-                  {s.name}
-                </div>
+                  <div className="flex items-center justify-between mb-1.5 gap-1.5">
+                    <span
+                      className="text-[10px] sm:text-[11px] font-mono font-bold whitespace-nowrap"
+                      style={{ color: isActive ? s.color : "#6B7280" }}
+                    >
+                      PHASE {s.number}
+                    </span>
+                    <SIcon
+                      size={14}
+                      className="shrink-0"
+                      style={{ color: isActive ? s.color : "#9CA3AF" }}
+                    />
+                  </div>
+                  <div
+                    className={`text-xs sm:text-sm font-bold truncate transition-colors ${
+                      isActive ? "text-gray-900 font-extrabold" : "text-gray-600"
+                    }`}
+                  >
+                    {s.name}
+                  </div>
 
-                {/* Active Underline Beam in Brand Color */}
-                {isActive && (
-                  <motion.div
-                    layoutId="activeTabBeamLight"
-                    className="absolute bottom-0 left-0 right-0 h-0.5"
-                    style={{ background: s.color }}
-                  />
-                )}
-              </button>
-            );
-          })}
+                  {/* Active Underline Beam in Brand Color */}
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeTabBeamLight"
+                      className="absolute bottom-0 left-0 right-0 h-0.5"
+                      style={{ background: s.color }}
+                    />
+                  )}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* Main Stage Viewport (Split: Left Story + Right Visual Hyperframe) */}
