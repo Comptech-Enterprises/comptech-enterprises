@@ -14,7 +14,7 @@ export function Testimonials() {
   const allTestimonials = TESTIMONIALS.concat(TESTIMONIALS);
 
   return (
-    <section className="relative py-24 lg:py-32 overflow-hidden" aria-labelledby="testimonials-title">
+    <section className="relative py-10 lg:py-14 overflow-hidden" aria-labelledby="testimonials-title">
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-14 lg:gap-20 items-start">
 

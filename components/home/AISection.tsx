@@ -43,10 +43,10 @@ const ICONS = {
 
 export function AISection() {
   return (
-    <section id="ai" className="py-20 lg:py-28 relative overflow-hidden" aria-labelledby="ai-title">
+    <section id="ai" className="py-10 lg:py-14 relative overflow-hidden" aria-labelledby="ai-title">
       {/* ── Customer Ticker (Single line, big font, no dots) ── */}
-      <div className="w-full overflow-hidden mb-16 lg:mb-20">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-7">
+      <div className="w-full overflow-hidden mb-10 lg:mb-12">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-5">
           <div className="flex items-center gap-4">
             <div className="flex-1 h-px bg-gray-200/80" />
             <p className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.24em] text-gray-400 whitespace-nowrap">
@@ -56,7 +56,7 @@ export function AISection() {
           </div>
         </div>
 
-        <div className="relative overflow-hidden py-2">
+        <div className="relative overflow-hidden py-1">
           {/* Gradient Edge Masks for seamless infinite scroll */}
           <div className="pointer-events-none absolute inset-y-0 left-0 w-20 sm:w-36 bg-gradient-to-r from-[#F5F5F9] via-[#F5F5F9]/80 to-transparent z-10" />
           <div className="pointer-events-none absolute inset-y-0 right-0 w-20 sm:w-36 bg-gradient-to-l from-[#F5F5F9] via-[#F5F5F9]/80 to-transparent z-10" />
@@ -71,7 +71,7 @@ export function AISection() {
             {CLIENTS.concat(CLIENTS).map((client, i) => (
               <span
                 key={`${client}-${i}`}
-                className="shrink-0 inline-flex items-center px-8 sm:px-11 py-4 sm:py-5 rounded-full text-base sm:text-lg lg:text-xl font-bold text-gray-800 glass-card bg-white/80 border border-white/90 shadow-sm hover:border-gray-300 hover:bg-white hover:shadow-md transition-all whitespace-nowrap"
+                className="shrink-0 inline-flex items-center px-8 sm:px-11 py-3.5 sm:py-4 rounded-full text-base sm:text-lg lg:text-xl font-bold text-gray-800 glass-card bg-white/80 border border-white/90 shadow-sm hover:border-gray-300 hover:bg-white hover:shadow-md transition-all whitespace-nowrap"
               >
                 {client}
               </span>
@@ -83,7 +83,7 @@ export function AISection() {
       {/* ── AI Solutions Section Content ── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header directly matching screenshot and main */}
-        <div className="mb-12 max-w-3xl">
+        <div className="mb-8 max-w-3xl">
           <SectionLabel className="mb-3">AI Solutions</SectionLabel>
           <h2
             id="ai-title"
@@ -99,7 +99,7 @@ export function AISection() {
             </span>
           </h2>
           <p className="text-gray-500 text-base sm:text-lg leading-relaxed max-w-2xl">
-            Custom AI built around how you work — not off-the-shelf tools, not generic playbooks.
+            Custom AI built around how you work, not off-the-shelf tools, not generic playbooks.
           </p>
         </div>
 
@@ -155,7 +155,7 @@ export function AISection() {
         </div>
 
         {/* Bottom CTA Buttons */}
-        <div className="mt-12 flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+        <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row gap-4 items-center justify-center">
           <Link
             href="/contact"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-bold text-white shadow-md hover:scale-105 transition-all duration-200"
