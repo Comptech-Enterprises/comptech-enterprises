@@ -54,25 +54,25 @@ export function AIAgentsHero({ onBookLiveDemo }: AIAgentsHeroProps = {}) {
   return (
     <section
       id="sales-agent"
-      className="relative overflow-hidden flex flex-col justify-center items-center bg-white"
+      className="relative overflow-hidden w-full max-w-full flex flex-col justify-center items-center bg-white"
       style={{ minHeight: "100vh", paddingTop: "var(--nav-height)" }}
       aria-label="Sales AI Agent Hero"
     >
       {/* ── 1. Gradient Mesh Blobs ── */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div
-          className="absolute top-1/4 -left-20 w-[550px] h-[550px] rounded-full blur-3xl opacity-20"
+          className="absolute top-1/4 -left-20 w-[350px] sm:w-[550px] h-[350px] sm:h-[550px] rounded-full blur-3xl opacity-20"
           style={{ background: "#5C0F26" }}
         />
         <div
-          className="absolute bottom-1/4 right-0 w-[450px] h-[450px] rounded-full blur-3xl opacity-15"
+          className="absolute bottom-1/4 -right-10 sm:right-0 w-[300px] sm:w-[450px] h-[300px] sm:h-[450px] rounded-full blur-3xl opacity-15"
           style={{ background: "#1D4ED8" }}
         />
       </div>
 
       {/* ── 2a. Mobile SVG Wave Lines (Vertical Flow for Mobile < md) ── */}
       <svg
-        className="absolute inset-0 w-full h-full pointer-events-none z-1 transition-opacity duration-1000 block md:hidden"
+        className="absolute inset-0 w-full h-full pointer-events-none z-1 transition-opacity duration-1000 block md:hidden overflow-hidden"
         style={{ opacity: showCanvasAndWaves ? 0.45 : 0 }}
         viewBox="0 0 1920 1080"
         preserveAspectRatio="none"
@@ -109,7 +109,7 @@ export function AIAgentsHero({ onBookLiveDemo }: AIAgentsHeroProps = {}) {
 
       {/* ── 2b. Desktop SVG Wave Lines (Horizontal Flow for Laptop/Desktop >= md) ── */}
       <svg
-        className="absolute inset-0 w-full h-full pointer-events-none z-1 transition-opacity duration-1000 hidden md:block"
+        className="absolute inset-0 w-full h-full pointer-events-none z-1 transition-opacity duration-1000 hidden md:block overflow-hidden"
         style={{ opacity: showCanvasAndWaves ? 0.45 : 0 }}
         viewBox="0 0 1920 1080"
         preserveAspectRatio="none"
