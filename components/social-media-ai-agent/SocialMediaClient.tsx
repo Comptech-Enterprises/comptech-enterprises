@@ -3,89 +3,77 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import {
-  MessageSquare,
-  Calendar,
-  ArrowRight,
-  Zap,
-  Target,
   TrendingUp,
   Clock,
+  Zap,
+  Sparkles,
+  Bot,
+  Calendar,
+  ArrowRight,
 } from "lucide-react";
-import { AgentVideoPlayer } from "./AgentVideoPlayer";
+import { AgentVideoPlayer } from "@/components/ai-agents/AgentVideoPlayer";
 import Link from "next/link";
-
-/* ------------------------------------------------------------------ */
-/*  Other agents — cards                                               */
-/* ------------------------------------------------------------------ */
 
 const OTHER_AGENTS = [
   {
-    id: "social-agent",
-    icon: MessageSquare,
-    title: "Social Media AI Agent",
+    id: "sales-agent",
+    icon: Bot,
+    title: "Sales AI Agent",
     description:
-      "Monitors brand mentions, drafts on-brand replies, schedules content, and analyzes engagement — across every platform.",
+      "Automates lead prospecting, intelligence enrichment, personalized multi-channel outreach, and books sales appointments on autopilot.",
     status: "Live in Production",
-    href: "/social-media-ai-agent",
-    gradient: "from-pink-500 to-rose-600",
+    href: "/ai-agents",
+    gradient: "from-[#5C0F26] to-[#E8435A]",
   },
   {
     id: "meeting-agent",
     icon: Calendar,
     title: "Google Meet AI Agent",
     description:
-      "Coordinates scheduling, sends agendas, takes meeting notes, extracts action items, and follows up — automatically.",
+      "Coordinates scheduling, sends agendas, takes comprehensive meeting notes, extracts action items, and follows up — automatically.",
     status: "Coming Soon",
     href: "#",
     gradient: "from-violet-500 to-purple-600",
   },
 ];
 
-/* ------------------------------------------------------------------ */
-/*  Stats                                                              */
-/* ------------------------------------------------------------------ */
-
 const STATS = [
-  { icon: Clock, value: "10x", label: "Faster Outreach" },
-  { icon: Target, value: "3x", label: "More Qualified Leads" },
-  { icon: TrendingUp, value: "85%", label: "Reply Rate Lift" },
-  { icon: Zap, value: "24/7", label: "Always Running" },
+  { icon: Clock, value: "5x", label: "Faster Publishing" },
+  { icon: TrendingUp, value: "+180%", label: "Engagement Lift" },
+  { icon: Sparkles, value: "100%", label: "On-Brand Voice" },
+  { icon: Zap, value: "24/7", label: "Always Monitoring" },
 ];
 
-/* ------------------------------------------------------------------ */
-/*  Main client component                                              */
-/* ------------------------------------------------------------------ */
-
-interface AIAgentsClientProps {
+interface SocialMediaClientProps {
   onBookLiveDemo?: () => void;
 }
 
-export function AIAgentsClient({ onBookLiveDemo }: AIAgentsClientProps = {}) {
+export function SocialMediaClient({ onBookLiveDemo }: SocialMediaClientProps = {}) {
   const statsRef = useRef<HTMLDivElement>(null);
   const statsInView = useInView(statsRef, { once: true, margin: "-40px" });
 
   return (
     <>
-      {/* ── Sales AI Agent Video Showcase ── */}
-      <section id="sales-agent-interactive" className="relative py-12 sm:py-20 lg:py-24 bg-white overflow-hidden border-b border-gray-100">
+      {/* ── Social Media AI Agent Video Showcase ── */}
+      <section id="social-agent-showcase" className="relative py-12 sm:py-20 lg:py-24 bg-white overflow-hidden border-b border-gray-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-8 sm:mb-12">
             <h2
               className="font-display font-extrabold text-gray-900 tracking-tight mt-2 sm:mt-3 mb-3 sm:mb-4"
               style={{ fontSize: "clamp(1.65rem, 5vw, 2.8rem)" }}
             >
-              Watch Our Sales AI Agent in{" "}
+              Watch Our Social Media AI Agent in{" "}
               <span className="text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(135deg, #5C0F26, #E8435A 60%, #7C3AED)" }}>
                 Action
               </span>
             </h2>
             <p className="text-gray-500 max-w-2xl mx-auto leading-relaxed text-sm sm:text-base lg:text-lg px-2">
-              Watch how our autonomous agent qualifies leads, parses intents, enriches CRM data, and books sales appointments live.
+              See how our autonomous agent monitors trends, generates high-performing visual & written content, schedules across channels, and interacts with followers live.
             </p>
           </div>
 
-          {/* Cinematic Interactive Video Player with Sales Agent Video */}
-          <AgentVideoPlayer src="/sales-ai-agent.mp4" />
+          {/* Video Showcase Player */}
+          <AgentVideoPlayer />
 
           {/* Call to Action */}
           <div className="mt-8 sm:mt-12 flex items-center justify-center">
@@ -104,7 +92,7 @@ export function AIAgentsClient({ onBookLiveDemo }: AIAgentsClientProps = {}) {
         </div>
       </section>
 
-      {/* ── Stats bar ── */}
+      {/* ── Stats Bar ── */}
       <section className="py-14 bg-gray-50 border-y border-gray-100">
         <div ref={statsRef} className="max-w-5xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
@@ -129,7 +117,7 @@ export function AIAgentsClient({ onBookLiveDemo }: AIAgentsClientProps = {}) {
         </div>
       </section>
 
-      {/* ── Other Agents — Coming Soon / Explore ── */}
+      {/* ── Other Agents ── */}
       <section id="more-agents" className="py-16 lg:py-24 bg-white">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">

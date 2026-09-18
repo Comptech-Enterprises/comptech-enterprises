@@ -9,6 +9,7 @@ import { Footer } from "@/components/layout/Footer";
 import { PageHero } from "@/components/sections/PageHero";
 import { RevealWrapper } from "@/components/ui/RevealWrapper";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { ResellerTicker } from "@/components/home/PartnersStrip";
 
 export const metadata: Metadata = {
   title: "IT Infrastructure & Software Development Services",
@@ -200,6 +201,11 @@ export default function ServicesPage() {
             </div>
           </div>
         </section>
+
+        {/* ── Authorized Reseller Ticker ── */}
+        <div className="bg-gray-50/60 border-y border-gray-100">
+          <ResellerTicker />
+        </div>
 
         {/* ── EUC ── */}
         <section id="euc" className="py-24 bg-gray-50">

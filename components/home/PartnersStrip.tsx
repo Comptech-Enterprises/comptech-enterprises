@@ -72,61 +72,90 @@ function PartnerLogo({ name, logo, domain }: { name: string; logo: string | null
   );
 }
 
-export function PartnersStrip() {
+export function WhatWeDelivered() {
   return (
     <section
-      className="relative pt-16 pb-10 lg:py-20 overflow-hidden"
-      aria-label="AI results and proof"
+      id="delivered"
+      className="relative py-8 lg:py-12 overflow-hidden"
+      aria-label="What We've Delivered"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-
-        {/* Kicker + Stats grid — no left block, stats lead */}
-        <p className="text-[10px] font-bold uppercase tracking-[0.2em] mb-6 text-center" style={{ color: "#5C0F26" }}>
-          What We&apos;ve Delivered
-        </p>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
-          {STATS.map(({ value, suffix, label }) => (
-            <div key={label} className="glass-card rounded-2xl p-6 text-center">
-              <p className="font-display font-extrabold text-3xl lg:text-4xl leading-none mb-2" style={{ color: "#5C0F26" }}>
-                {value}<span className="text-xl lg:text-2xl">{suffix}</span>
-              </p>
-              <p className="text-sm font-medium text-gray-600 leading-snug">{label}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Certified With — AI platform logos */}
-        <div className="flex items-center gap-4 mb-8">
-          <div className="flex-1 h-px bg-gray-200" />
-          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 whitespace-nowrap">
-            Certified With
+        <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-7">
+          <p className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.24em] mb-2" style={{ color: "#5C0F26" }}>
+            Proven Enterprise Results
           </p>
-          <div className="flex-1 h-px bg-gray-200" />
+          <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-gray-900 tracking-tight">
+            What We&apos;ve Delivered
+          </h2>
         </div>
-        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
-          {CERTIFIED_WITH.map(({ name, logo }) => (
-            <div key={name} className="flex items-center justify-center h-[52px] opacity-70 hover:opacity-100 transition-opacity" title={name}>
-              <Image
-                src={logo}
-                alt={`${name} logo`}
-                width={150}
-                height={52}
-                className="h-[52px] w-auto object-contain"
-                unoptimized
-              />
+
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+          {STATS.map(({ value, suffix, label }) => (
+            <div key={label} className="glass-card rounded-2xl p-5 sm:p-6 text-center bg-white/80 border border-gray-100/90 shadow-sm hover:shadow-md transition-all">
+              <p className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl leading-none mb-1.5" style={{ color: "#5C0F26" }}>
+                {value}<span className="text-xl sm:text-2xl lg:text-3xl">{suffix}</span>
+              </p>
+              <p className="text-xs sm:text-sm font-medium text-gray-600 leading-snug">{label}</p>
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );
 }
 
+export function CertifiedWith() {
+  return (
+    <section className="relative py-6 lg:py-8 overflow-hidden" aria-label="Certified With">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="flex items-center gap-4 mb-5">
+          <div className="flex-1 h-px bg-gray-200" />
+          <p className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.24em] text-gray-400 whitespace-nowrap">
+            Certified With
+          </p>
+          <div className="flex-1 h-px bg-gray-200" />
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-3.5">
+          {CERTIFIED_WITH.map(({ name, logo }) => (
+            <div
+              key={name}
+              className="flex flex-col items-center justify-center gap-2 p-3 sm:p-3.5 rounded-2xl bg-white/80 border border-gray-200/80 shadow-xs hover:shadow-md hover:border-gray-300 hover:bg-white transition-all duration-200 group"
+            >
+              <div className="h-8 w-auto flex items-center justify-center">
+                <Image
+                  src={logo}
+                  alt={`${name} logo`}
+                  width={110}
+                  height={32}
+                  className="h-7 max-w-[85px] w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+                  unoptimized
+                />
+              </div>
+              <span className="font-display font-bold text-xs sm:text-sm text-gray-800 tracking-tight">
+                {name}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function PartnersStrip() {
+  return (
+    <>
+      <WhatWeDelivered />
+      <CertifiedWith />
+    </>
+  );
+}
+
 export function ResellerTicker() {
   return (
-    <div className="max-w-7xl mx-auto px-6 lg:px-8 py-10 overflow-hidden">
-      <div className="flex items-center gap-4 mb-8">
+    <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 lg:py-8 overflow-hidden">
+      <div className="flex items-center gap-4 mb-5">
         <div className="flex-1 h-px bg-gray-200" />
         <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 whitespace-nowrap">
           Authorized Reseller

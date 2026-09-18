@@ -28,11 +28,11 @@ export function ContactSection() {
   const [error, setError] = useState("");
 
   return (
-    <section id="contact" className="relative py-16 lg:py-20 overflow-hidden" aria-labelledby="contact-title">
+    <section id="contact" className="relative py-10 lg:py-14 overflow-hidden" aria-labelledby="contact-title">
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
-        <div className="mb-10 lg:mb-12">
+        <div className="mb-6 sm:mb-8">
           <SectionLabel>Get In Touch</SectionLabel>
           <h2
             id="contact-title"
