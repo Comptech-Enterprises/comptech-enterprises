@@ -212,16 +212,16 @@ export function SalesWorkflowVisualizer() {
         </div>
 
         {/* Main Stage Viewport (Split: Left Story + Right Visual Hyperframe) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[380px] sm:min-h-[460px]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[440px] lg:h-[490px]">
           
           {/* Left: Phase Narrative & Controller */}
-          <div className="lg:col-span-5 p-5 sm:p-8 lg:p-10 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-gray-100 bg-white">
+          <div className="lg:col-span-5 p-5 sm:p-8 lg:p-10 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-gray-100 bg-white h-full">
             <div>
               <h3 className="font-display font-extrabold text-xl sm:text-2xl lg:text-3xl text-gray-900 tracking-tight mb-2.5 sm:mb-3">
                 {stage.name}
               </h3>
 
-              <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-5 sm:mb-6">
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-5 sm:mb-6 min-h-[48px] sm:min-h-[56px] flex items-center">
                 {stage.desc}
               </p>
 
@@ -246,7 +246,7 @@ export function SalesWorkflowVisualizer() {
           </div>
 
           {/* Right: The Light Theme Hyperframe Screen */}
-          <div className="lg:col-span-7 p-4 sm:p-8 lg:p-10 flex flex-col justify-center bg-gray-50/70 relative overflow-hidden">
+          <div className="lg:col-span-7 p-4 sm:p-8 lg:p-10 flex flex-col justify-center items-center bg-gray-50/70 relative overflow-hidden h-full">
             {/* Subtle light cyber grid */}
             <div
               className="absolute inset-0 opacity-40 pointer-events-none"
@@ -289,10 +289,10 @@ function StageDiscovery() {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.96, y: -15 }}
       transition={{ duration: 0.4 }}
-      className="relative z-10 w-full bg-white border border-gray-200/90 rounded-2xl p-4 sm:p-6 shadow-lg"
+      className="relative z-10 w-full bg-white border border-gray-200/90 rounded-2xl p-4 sm:p-6 shadow-lg h-[370px] sm:h-[385px] flex flex-col justify-between"
     >
       {/* Top Scanner Line */}
-      <div className="flex items-center justify-between pb-3 mb-4 border-b border-gray-100 text-xs font-mono gap-2">
+      <div className="flex items-center justify-between pb-3 mb-3 border-b border-gray-100 text-xs font-mono gap-2">
         <span className="text-[#5C0F26] font-bold flex items-center gap-1.5 truncate">
           <Search size={14} className="animate-spin text-[#5C0F26] shrink-0" />
           <span className="truncate">Autonomous Query Engine</span>
@@ -303,7 +303,7 @@ function StageDiscovery() {
       </div>
 
       {/* Discovered Lead Cards */}
-      <div className="space-y-2.5">
+      <div className="space-y-2.5 flex-1 flex flex-col justify-between py-0.5">
         {[
           { name: "FinEdge Systems", location: "San Francisco, CA", size: "180 Emp", funding: "Series B $32M", match: "99% ICP Match", badgeBg: "bg-emerald-50 text-emerald-700 border-emerald-200" },
           { name: "Apex Logistics AI", location: "New York, NY", size: "320 Emp", funding: "Series A $14M", match: "97% ICP Match", badgeBg: "bg-blue-50 text-blue-700 border-blue-200" },
@@ -314,7 +314,7 @@ function StageDiscovery() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: i * 0.15 + 0.1 }}
-            className="flex flex-col xs:flex-row xs:items-center justify-between p-3 sm:p-3.5 rounded-xl bg-gray-50/80 border border-gray-200/80 hover:bg-white hover:border-[#5C0F26]/30 hover:shadow-xs transition-all gap-2"
+            className="flex flex-col xs:flex-row xs:items-center justify-between p-2.5 sm:p-3 rounded-xl bg-gray-50/80 border border-gray-200/80 hover:bg-white hover:border-[#5C0F26]/30 hover:shadow-xs transition-all gap-2"
           >
             <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
               <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#FDF4F6] border border-[#F3D8DF] flex items-center justify-center text-[#5C0F26] shrink-0">
@@ -354,7 +354,7 @@ function StageIntelligence() {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.96, y: -15 }}
       transition={{ duration: 0.4 }}
-      className="relative z-10 w-full bg-white border border-purple-200 rounded-2xl p-4 sm:p-6 shadow-lg overflow-hidden"
+      className="relative z-10 w-full bg-white border border-purple-200 rounded-2xl p-4 sm:p-6 shadow-lg overflow-hidden h-[370px] sm:h-[385px] flex flex-col justify-between"
     >
       {/* Animated Laser Scanning Line */}
       <motion.div
@@ -363,7 +363,7 @@ function StageIntelligence() {
         className="absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-purple-500 to-transparent shadow-[0_0_10px_rgba(168,85,247,0.4)] z-20 pointer-events-none"
       />
 
-      <div className="flex items-center justify-between pb-3 mb-4 border-b border-gray-100 text-xs font-mono gap-2">
+      <div className="flex items-center justify-between pb-3 mb-3 border-b border-gray-100 text-xs font-mono gap-2">
         <span className="text-purple-700 font-bold flex items-center gap-1.5 truncate">
           <Newspaper size={14} className="text-purple-600 shrink-0" />
           <span className="truncate">Latest News About Leads</span>
@@ -374,8 +374,8 @@ function StageIntelligence() {
       </div>
 
       {/* Extracted Trigger Signals */}
-      <div className="space-y-3">
-        <div className="p-3 sm:p-3.5 rounded-xl bg-purple-50/60 border border-purple-200 text-xs leading-relaxed text-gray-800">
+      <div className="space-y-3.5 flex-1 flex flex-col justify-center">
+        <div className="p-3.5 sm:p-4 rounded-xl bg-purple-50/60 border border-purple-200 text-xs leading-relaxed text-gray-800">
           <div className="flex items-center gap-2 mb-1.5">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
             <span className="font-mono font-bold text-purple-900 uppercase text-[10px] tracking-wider">Trigger #1: Capital Expansion</span>
@@ -383,7 +383,7 @@ function StageIntelligence() {
           &ldquo;FinEdge Systems secures <strong className="text-purple-950 bg-purple-100/90 font-bold px-1.5 py-0.5 rounded border border-purple-200">Series B $32M funding</strong> to accelerate enterprise infrastructure.&rdquo;
         </div>
 
-        <div className="p-3 sm:p-3.5 rounded-xl bg-blue-50/60 border border-blue-200 text-xs leading-relaxed text-gray-800">
+        <div className="p-3.5 sm:p-4 rounded-xl bg-blue-50/60 border border-blue-200 text-xs leading-relaxed text-gray-800">
           <div className="flex items-center gap-2 mb-1.5">
             <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse shrink-0" />
             <span className="font-mono font-bold text-blue-900 uppercase text-[10px] tracking-wider">Trigger #2: Executive Hire</span>
@@ -406,9 +406,9 @@ function StageExtraction() {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.96, y: -15 }}
       transition={{ duration: 0.4 }}
-      className="relative z-10 w-full bg-white border border-sky-200 rounded-2xl p-4 sm:p-6 shadow-lg"
+      className="relative z-10 w-full bg-white border border-sky-200 rounded-2xl p-4 sm:p-6 shadow-lg h-[370px] sm:h-[385px] flex flex-col justify-between"
     >
-      <div className="flex items-center justify-between pb-3 mb-4 border-b border-gray-100 text-xs font-mono">
+      <div className="flex items-center justify-between pb-3 mb-3 border-b border-gray-100 text-xs font-mono">
         <span className="text-sky-700 font-bold flex items-center gap-1.5">
           <UserCheck size={14} className="text-sky-600 shrink-0" />
           Contact Search
@@ -416,7 +416,7 @@ function StageExtraction() {
       </div>
 
       {/* Contact Cards */}
-      <div className="space-y-2.5">
+      <div className="space-y-2.5 flex-1 flex flex-col justify-between py-0.5">
         {[
           { name: "Alex Rivera", role: "VP of Tech / CTO", email: "alex.rivera@finedge.io", company: "FinEdge Systems" },
           { name: "Sarah Chen", role: "Head of Infrastructure", email: "sarah.chen@apexflow.ai", company: "ApexFlow AI" },
@@ -427,7 +427,7 @@ function StageExtraction() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.15 + 0.1 }}
-            className="flex flex-col sm:flex-row sm:items-center justify-between p-3 sm:p-3.5 rounded-xl bg-gray-50/80 border border-gray-200 hover:border-sky-300 hover:bg-white transition-all gap-2"
+            className="flex flex-col sm:flex-row sm:items-center justify-between p-2.5 sm:p-3 rounded-xl bg-gray-50/80 border border-gray-200 hover:border-sky-300 hover:bg-white transition-all gap-2"
           >
             <div className="min-w-0">
               <div className="text-xs sm:text-sm font-bold text-gray-900 flex flex-wrap items-center gap-1.5 sm:gap-2">
@@ -463,9 +463,9 @@ function StageOutreach() {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.96, y: -15 }}
       transition={{ duration: 0.4 }}
-      className="relative z-10 w-full bg-white border border-amber-200 rounded-2xl p-4 sm:p-6 shadow-lg"
+      className="relative z-10 w-full bg-white border border-amber-200 rounded-2xl p-4 sm:p-6 shadow-lg h-[370px] sm:h-[385px] flex flex-col justify-between"
     >
-      <div className="flex items-center justify-between pb-3 mb-3 border-b border-gray-100 text-xs font-mono">
+      <div className="flex items-center justify-between pb-2 mb-2 border-b border-gray-100 text-xs font-mono">
         <span className="text-amber-800 font-bold flex items-center gap-1.5">
           <Send size={14} className="text-amber-600 shrink-0" />
           Outreach Generation
@@ -476,13 +476,13 @@ function StageOutreach() {
       </div>
 
       {/* Email Mock Header */}
-      <div className="bg-gray-50 rounded-xl p-2.5 sm:p-3 border border-gray-200 text-[11px] font-mono space-y-1 mb-3 text-gray-700 break-words">
+      <div className="bg-gray-50 rounded-xl p-2 sm:p-2.5 border border-gray-200 text-[11px] font-mono space-y-0.5 mb-2 text-gray-700 break-words">
         <div><strong className="text-gray-500">To:</strong> Alex Rivera &lt;alex.rivera@finedge.io&gt;</div>
         <div><strong className="text-gray-500">Subject:</strong> FinEdge&apos;s $32M Series B &amp; scaling IT infrastructure</div>
       </div>
 
       {/* Email Body Preview with Contextual Tokens */}
-      <div className="p-3.5 sm:p-4 rounded-xl bg-amber-50/30 border border-amber-200 text-xs sm:text-sm text-gray-800 leading-relaxed font-sans space-y-2.5">
+      <div className="p-3 sm:p-3.5 rounded-xl bg-amber-50/30 border border-amber-200 text-xs text-gray-800 leading-relaxed font-sans space-y-2 flex-1 flex flex-col justify-between">
         <p>
           Hi Alex, congrats on FinEdge&apos;s <span className="bg-amber-100 text-amber-900 font-semibold px-1.5 py-0.5 rounded font-mono text-xs border border-amber-200">Series B $32M round</span> and your new role heading engineering.
         </p>
@@ -492,7 +492,7 @@ function StageOutreach() {
         <p className="text-gray-700 font-medium">
           Would you be open to a 10-min intro next Tuesday at 2 PM to see how we automate deployment?
         </p>
-        <p className="text-amber-900 text-xs bg-amber-50 border border-amber-200 rounded-lg p-2.5 font-medium">
+        <p className="text-amber-900 text-xs bg-amber-50 border border-amber-200 rounded-lg p-2 font-medium">
           Here is how our company can help this lead: We streamline enterprise cloud deployment and automate infrastructure scaling so your team accelerates go-to-market with zero downtime.
         </p>
       </div>
@@ -511,9 +511,9 @@ function StageFollowup() {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.96, y: -15 }}
       transition={{ duration: 0.4 }}
-      className="relative z-10 w-full bg-white border border-emerald-200 rounded-2xl p-4 sm:p-6 shadow-lg"
+      className="relative z-10 w-full bg-white border border-emerald-200 rounded-2xl p-4 sm:p-6 shadow-lg h-[370px] sm:h-[385px] flex flex-col justify-between"
     >
-      <div className="flex items-center justify-between pb-3 mb-4 border-b border-gray-100 text-xs font-mono">
+      <div className="flex items-center justify-between pb-3 mb-3 border-b border-gray-100 text-xs font-mono">
         <span className="text-emerald-800 font-bold flex items-center gap-1.5">
           <RefreshCw size={14} className="text-emerald-600 shrink-0" />
           Automated Sequence
@@ -524,7 +524,7 @@ function StageFollowup() {
       </div>
 
       {/* Multi-Touch Sequence Progression */}
-      <div className="space-y-3">
+      <div className="space-y-3 flex-1 flex flex-col justify-between py-0.5">
         {/* Step 1: Initial */}
         <div className="flex items-center justify-between p-2.5 sm:p-3 rounded-xl bg-gray-50 border border-gray-200 text-xs text-gray-700">
           <div className="flex items-center gap-2">
