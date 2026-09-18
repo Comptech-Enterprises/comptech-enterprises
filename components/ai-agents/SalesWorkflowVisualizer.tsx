@@ -40,7 +40,7 @@ export const STAGES = [
     number: "02",
     name: "News Intelligence",
     desc: "Analyzes real-time press releases, funding rounds, and hiring shifts to find timely, irresistible conversation triggers.",
-    metrics: "94% Buying Intent · Trigger: $32M Series B",
+    metrics: "Found the latest news about the prospect",
     icon: Newspaper,
     color: "#7C3AED", // Purple
     accentColor: "#9333EA",
