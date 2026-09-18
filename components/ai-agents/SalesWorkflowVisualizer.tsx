@@ -89,6 +89,7 @@ export function SalesWorkflowVisualizer() {
   const [activeStage, setActiveStage] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   useEffect(() => {
     if (!isPlaying) return;
@@ -101,39 +102,49 @@ export function SalesWorkflowVisualizer() {
     };
   }, [isPlaying]);
 
+  useEffect(() => {
+    if (tabRefs.current[activeStage]) {
+      tabRefs.current[activeStage]?.scrollIntoView({
+        behavior: "smooth",
+        inline: "nearest",
+        block: "nearest",
+      });
+    }
+  }, [activeStage]);
+
   const stage = STAGES[activeStage];
 
   return (
-    <div className="relative w-full max-w-6xl mx-auto my-6">
+    <div className="relative w-full max-w-6xl mx-auto my-4 sm:my-6">
       {/* Ambient background glow matching site brand palette */}
       <div className="absolute -inset-3 bg-gradient-to-r from-[#5C0F26]/10 via-[#E8435A]/5 to-purple-500/10 rounded-[36px] blur-2xl opacity-60 pointer-events-none" />
 
       {/* Main Light Theme HUD Console */}
       <div
-        className="relative bg-white border border-gray-200/90 rounded-3xl shadow-xl overflow-hidden"
+        className="relative bg-white border border-gray-200/90 rounded-2xl sm:rounded-3xl shadow-xl overflow-hidden"
         onMouseEnter={() => setIsPlaying(false)}
         onMouseLeave={() => setIsPlaying(true)}
       >
         {/* Top Telemetry & Control Bar */}
-        <div className="flex flex-wrap items-center justify-between px-4 sm:px-6 py-3.5 border-b border-gray-100 bg-gray-50/80">
-          <div className="flex items-center gap-3">
-            <span className="relative flex h-2.5 w-2.5">
+        <div className="flex items-center justify-between px-3.5 sm:px-6 py-3 border-b border-gray-100 bg-gray-50/80 gap-2">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+            <span className="relative flex h-2.5 w-2.5 shrink-0">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
             </span>
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-gray-800 flex items-center gap-2">
-              <Cpu size={14} className="text-[#5C0F26]" />
-              Sales AI Agent · Live Simulation
+            <span className="text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider text-gray-800 flex items-center gap-1.5 sm:gap-2 truncate">
+              <Cpu size={14} className="text-[#5C0F26] shrink-0" />
+              <span className="truncate">Sales AI Agent · Live Simulation</span>
             </span>
           </div>
 
-          {/* Telemetry Chips */}
-          <div className="flex items-center gap-2 sm:gap-4 text-[11px] font-mono text-gray-500">
-            <div className="hidden sm:flex items-center gap-1.5 bg-white px-2.5 py-1 rounded-lg border border-gray-200 shadow-xs">
+          {/* Telemetry Chips & Controls */}
+          <div className="flex items-center gap-2 sm:gap-4 text-[11px] font-mono text-gray-500 shrink-0">
+            <div className="hidden md:flex items-center gap-1.5 bg-white px-2.5 py-1 rounded-lg border border-gray-200 shadow-xs">
               <Activity size={12} className="text-emerald-600 animate-pulse" />
               <span>Throughput: <strong className="text-gray-900">185 tok/s</strong></span>
             </div>
-            <div className="hidden sm:flex items-center gap-1.5 bg-white px-2.5 py-1 rounded-lg border border-gray-200 shadow-xs">
+            <div className="hidden md:flex items-center gap-1.5 bg-white px-2.5 py-1 rounded-lg border border-gray-200 shadow-xs">
               <Zap size={12} className="text-amber-500" />
               <span>Latency: <strong className="text-gray-900">14ms</strong></span>
             </div>
@@ -148,37 +159,40 @@ export function SalesWorkflowVisualizer() {
           </div>
         </div>
 
-        {/* Step Navigation Rail */}
-        <div className="grid grid-cols-5 border-b border-gray-200 bg-gray-50/50">
+        {/* Step Navigation Rail - Mobile Horizontal Scrollable / Desktop Grid */}
+        <div className="flex overflow-x-auto scrollbar-hide border-b border-gray-200 bg-gray-50/50 sm:grid sm:grid-cols-5 snap-x">
           {STAGES.map((s, idx) => {
             const SIcon = s.icon;
             const isActive = activeStage === idx;
             return (
               <button
                 key={s.id}
+                ref={(el) => {
+                  tabRefs.current[idx] = el;
+                }}
                 onClick={() => {
                   setActiveStage(idx);
                   setIsPlaying(false);
                 }}
-                className={`relative px-2 sm:px-4 py-3 sm:py-4 text-left transition-all duration-300 border-r border-gray-200/70 last:border-r-0 flex flex-col justify-between ${
+                className={`relative px-3.5 sm:px-4 py-3 sm:py-4 text-left transition-all duration-300 border-r border-gray-200/70 last:border-r-0 flex flex-col justify-between shrink-0 min-w-[135px] sm:min-w-0 sm:shrink snap-start cursor-pointer ${
                   isActive ? "bg-white shadow-xs" : "hover:bg-white/60 opacity-70 hover:opacity-100"
                 }`}
               >
-                <div className="flex items-center justify-between mb-1.5">
+                <div className="flex items-center justify-between mb-1.5 gap-1.5">
                   <span
-                    className="text-[10px] sm:text-[11px] font-mono font-bold"
+                    className="text-[10px] sm:text-[11px] font-mono font-bold whitespace-nowrap"
                     style={{ color: isActive ? s.color : "#6B7280" }}
                   >
                     PHASE {s.number}
                   </span>
                   <SIcon
                     size={14}
-                    className="hidden xs:block sm:block"
+                    className="shrink-0"
                     style={{ color: isActive ? s.color : "#9CA3AF" }}
                   />
                 </div>
                 <div
-                  className={`text-xs sm:text-sm font-bold truncate transition-colors ${
+                  className={`text-xs sm:text-sm font-bold whitespace-nowrap sm:whitespace-normal sm:truncate transition-colors ${
                     isActive ? "text-gray-900 font-extrabold" : "text-gray-600"
                   }`}
                 >
@@ -199,22 +213,22 @@ export function SalesWorkflowVisualizer() {
         </div>
 
         {/* Main Stage Viewport (Split: Left Story + Right Visual Hyperframe) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[460px]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[380px] sm:min-h-[460px]">
           
           {/* Left: Phase Narrative & Controller */}
-          <div className="lg:col-span-5 p-6 sm:p-8 lg:p-10 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-gray-100 bg-white">
+          <div className="lg:col-span-5 p-5 sm:p-8 lg:p-10 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-gray-100 bg-white">
             <div>
-              <h3 className="font-display font-extrabold text-2xl sm:text-3xl text-gray-900 tracking-tight mb-3">
+              <h3 className="font-display font-extrabold text-xl sm:text-2xl lg:text-3xl text-gray-900 tracking-tight mb-2.5 sm:mb-3">
                 {stage.name}
               </h3>
 
-              <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-6">
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-5 sm:mb-6">
                 {stage.desc}
               </p>
 
               {/* Live Metric Pill in Light Brand Theme */}
               <div
-                className="rounded-2xl p-4 mb-6 border transition-all"
+                className="rounded-xl sm:rounded-2xl p-3.5 sm:p-4 mb-5 sm:mb-6 border transition-all"
                 style={{
                   backgroundColor: stage.lightBg,
                   borderColor: stage.borderColor,
@@ -224,7 +238,7 @@ export function SalesWorkflowVisualizer() {
                   <Radio size={12} className="text-emerald-600 animate-ping" />
                   Live Execution Result
                 </div>
-                <div className="text-sm font-bold text-gray-900 flex items-center gap-2">
+                <div className="text-xs sm:text-sm font-bold text-gray-900 flex items-center gap-2">
                   <CheckCircle2 size={16} className="text-emerald-600 shrink-0" />
                   <span>{stage.metrics}</span>
                 </div>
@@ -232,7 +246,7 @@ export function SalesWorkflowVisualizer() {
             </div>
 
             {/* Quick Navigation Buttons */}
-            <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+            <div className="flex items-center justify-between pt-4 border-t border-gray-100 gap-2">
               <div className="text-xs font-mono text-gray-500">
                 Step <strong className="text-gray-900 font-bold">{activeStage + 1}</strong> of {STAGES.length}
               </div>
@@ -242,7 +256,7 @@ export function SalesWorkflowVisualizer() {
                     setActiveStage((prev) => (prev - 1 + STAGES.length) % STAGES.length);
                     setIsPlaying(false);
                   }}
-                  className="px-3.5 py-1.5 text-xs font-semibold rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-200 transition-colors"
+                  className="px-3 sm:px-3.5 py-1.5 text-xs font-semibold rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-200 transition-colors cursor-pointer"
                 >
                   Prev
                 </button>
@@ -251,7 +265,7 @@ export function SalesWorkflowVisualizer() {
                     setActiveStage((prev) => (prev + 1) % STAGES.length);
                     setIsPlaying(false);
                   }}
-                  className="px-4 py-1.5 text-xs font-bold rounded-xl text-white transition-all flex items-center gap-1 shadow-md hover:opacity-95"
+                  className="px-3.5 sm:px-4 py-1.5 text-xs font-bold rounded-xl text-white transition-all flex items-center gap-1 shadow-md hover:opacity-95 cursor-pointer"
                   style={{
                     background: `linear-gradient(135deg, ${stage.color}, ${stage.accentColor})`,
                   }}
@@ -263,7 +277,7 @@ export function SalesWorkflowVisualizer() {
           </div>
 
           {/* Right: The Light Theme Hyperframe Screen */}
-          <div className="lg:col-span-7 p-5 sm:p-8 lg:p-10 flex flex-col justify-center bg-gray-50/70 relative overflow-hidden">
+          <div className="lg:col-span-7 p-4 sm:p-8 lg:p-10 flex flex-col justify-center bg-gray-50/70 relative overflow-hidden">
             {/* Subtle light cyber grid */}
             <div
               className="absolute inset-0 opacity-40 pointer-events-none"
@@ -306,16 +320,16 @@ function StageDiscovery() {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.96, y: -15 }}
       transition={{ duration: 0.4 }}
-      className="relative z-10 w-full bg-white border border-gray-200/90 rounded-2xl p-5 sm:p-6 shadow-lg"
+      className="relative z-10 w-full bg-white border border-gray-200/90 rounded-2xl p-4 sm:p-6 shadow-lg"
     >
       {/* Top Scanner Line */}
-      <div className="flex items-center justify-between pb-3 mb-4 border-b border-gray-100 text-xs font-mono">
-        <span className="text-[#5C0F26] font-bold flex items-center gap-1.5">
-          <Search size={14} className="animate-spin text-[#5C0F26]" />
-          Autonomous Web &amp; LinkedIn Query
+      <div className="flex items-center justify-between pb-3 mb-4 border-b border-gray-100 text-xs font-mono gap-2">
+        <span className="text-[#5C0F26] font-bold flex items-center gap-1.5 truncate">
+          <Search size={14} className="animate-spin text-[#5C0F26] shrink-0" />
+          <span className="truncate">Autonomous Query Engine</span>
         </span>
-        <span className="text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200 font-bold text-[11px]">
-          Match Engine Active
+        <span className="text-emerald-700 bg-emerald-50 px-2 sm:px-2.5 py-0.5 rounded-full border border-emerald-200 font-bold text-[10px] sm:text-[11px] shrink-0">
+          Match Active
         </span>
       </div>
 
@@ -331,18 +345,18 @@ function StageDiscovery() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: i * 0.15 + 0.1 }}
-            className="flex items-center justify-between p-3.5 rounded-xl bg-gray-50/80 border border-gray-200/80 hover:bg-white hover:border-[#5C0F26]/30 hover:shadow-xs transition-all"
+            className="flex flex-col xs:flex-row xs:items-center justify-between p-3 sm:p-3.5 rounded-xl bg-gray-50/80 border border-gray-200/80 hover:bg-white hover:border-[#5C0F26]/30 hover:shadow-xs transition-all gap-2"
           >
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-[#FDF4F6] border border-[#F3D8DF] flex items-center justify-center text-[#5C0F26]">
-                <Building2 size={18} />
+            <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#FDF4F6] border border-[#F3D8DF] flex items-center justify-center text-[#5C0F26] shrink-0">
+                <Building2 size={16} className="sm:w-[18px] sm:h-[18px]" />
               </div>
-              <div>
-                <div className="text-xs sm:text-sm font-bold text-gray-900 flex items-center gap-2">
-                  {lead.name}
+              <div className="min-w-0">
+                <div className="text-xs sm:text-sm font-bold text-gray-900 flex flex-wrap items-center gap-1.5 sm:gap-2">
+                  <span className="truncate">{lead.name}</span>
                   <span className="text-[10px] font-mono text-gray-500 font-normal">{lead.location}</span>
                 </div>
-                <div className="text-[11px] text-gray-500 flex items-center gap-2 mt-0.5">
+                <div className="text-[11px] text-gray-500 flex items-center gap-1.5 sm:gap-2 mt-0.5">
                   <span>{lead.size}</span>
                   <span>•</span>
                   <span>{lead.funding}</span>
@@ -350,7 +364,7 @@ function StageDiscovery() {
               </div>
             </div>
 
-            <span className={`text-[10px] font-mono font-bold px-2.5 py-1 rounded-lg border ${lead.badgeBg}`}>
+            <span className={`text-[10px] font-mono font-bold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg border self-start xs:self-center shrink-0 ${lead.badgeBg}`}>
               {lead.match}
             </span>
           </motion.div>
@@ -371,7 +385,7 @@ function StageIntelligence() {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.96, y: -15 }}
       transition={{ duration: 0.4 }}
-      className="relative z-10 w-full bg-white border border-purple-200 rounded-2xl p-5 sm:p-6 shadow-lg overflow-hidden"
+      className="relative z-10 w-full bg-white border border-purple-200 rounded-2xl p-4 sm:p-6 shadow-lg overflow-hidden"
     >
       {/* Animated Laser Scanning Line */}
       <motion.div
@@ -380,30 +394,30 @@ function StageIntelligence() {
         className="absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-purple-500 to-transparent shadow-[0_0_10px_rgba(168,85,247,0.4)] z-20 pointer-events-none"
       />
 
-      <div className="flex items-center justify-between pb-3 mb-4 border-b border-gray-100 text-xs font-mono">
-        <span className="text-purple-700 font-bold flex items-center gap-1.5">
-          <Newspaper size={14} className="text-purple-600" />
-          Latest News About Leads
+      <div className="flex items-center justify-between pb-3 mb-4 border-b border-gray-100 text-xs font-mono gap-2">
+        <span className="text-purple-700 font-bold flex items-center gap-1.5 truncate">
+          <Newspaper size={14} className="text-purple-600 shrink-0" />
+          <span className="truncate">Latest News About Leads</span>
         </span>
-        <span className="text-purple-700 bg-purple-50 px-2.5 py-0.5 rounded-full border border-purple-200 text-[11px] font-bold">
-          High Buying Intent
+        <span className="text-purple-700 bg-purple-50 px-2 sm:px-2.5 py-0.5 rounded-full border border-purple-200 text-[10px] sm:text-[11px] font-bold shrink-0">
+          High Intent
         </span>
       </div>
 
       {/* Extracted Trigger Signals */}
       <div className="space-y-3">
-        <div className="p-3.5 rounded-xl bg-purple-50/60 border border-purple-200 text-xs leading-relaxed text-gray-800">
+        <div className="p-3 sm:p-3.5 rounded-xl bg-purple-50/60 border border-purple-200 text-xs leading-relaxed text-gray-800">
           <div className="flex items-center gap-2 mb-1.5">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="font-mono font-bold text-purple-900 uppercase text-[10px] tracking-wider">Trigger Event #1: Capital Expansion</span>
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+            <span className="font-mono font-bold text-purple-900 uppercase text-[10px] tracking-wider">Trigger #1: Capital Expansion</span>
           </div>
-          &ldquo;FinEdge Systems secures <strong className="text-purple-950 bg-purple-100/90 font-bold px-1.5 py-0.5 rounded border border-purple-200">Series B $32M funding</strong> to accelerate enterprise infrastructure &amp; international sales.&rdquo;
+          &ldquo;FinEdge Systems secures <strong className="text-purple-950 bg-purple-100/90 font-bold px-1.5 py-0.5 rounded border border-purple-200">Series B $32M funding</strong> to accelerate enterprise infrastructure.&rdquo;
         </div>
 
-        <div className="p-3.5 rounded-xl bg-blue-50/60 border border-blue-200 text-xs leading-relaxed text-gray-800">
+        <div className="p-3 sm:p-3.5 rounded-xl bg-blue-50/60 border border-blue-200 text-xs leading-relaxed text-gray-800">
           <div className="flex items-center gap-2 mb-1.5">
-            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-            <span className="font-mono font-bold text-blue-900 uppercase text-[10px] tracking-wider">Trigger Event #2: Executive Hire</span>
+            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse shrink-0" />
+            <span className="font-mono font-bold text-blue-900 uppercase text-[10px] tracking-wider">Trigger #2: Executive Hire</span>
           </div>
           &ldquo;Appoints new <strong className="text-blue-950 bg-blue-100/90 font-bold px-1.5 py-0.5 rounded border border-blue-200">VP of Technology Alex Rivera</strong> to overhaul cloud security &amp; automated workflows.&rdquo;
         </div>
@@ -423,11 +437,11 @@ function StageExtraction() {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.96, y: -15 }}
       transition={{ duration: 0.4 }}
-      className="relative z-10 w-full bg-white border border-sky-200 rounded-2xl p-5 sm:p-6 shadow-lg"
+      className="relative z-10 w-full bg-white border border-sky-200 rounded-2xl p-4 sm:p-6 shadow-lg"
     >
       <div className="flex items-center justify-between pb-3 mb-4 border-b border-gray-100 text-xs font-mono">
         <span className="text-sky-700 font-bold flex items-center gap-1.5">
-          <UserCheck size={14} className="text-sky-600" />
+          <UserCheck size={14} className="text-sky-600 shrink-0" />
           Contact Search
         </span>
       </div>
@@ -435,31 +449,31 @@ function StageExtraction() {
       {/* Contact Cards */}
       <div className="space-y-2.5">
         {[
-          { name: "Alex Rivera", role: "VP of Technology / CTO", email: "alex.rivera@finedge.io", company: "FinEdge Systems" },
+          { name: "Alex Rivera", role: "VP of Tech / CTO", email: "alex.rivera@finedge.io", company: "FinEdge Systems" },
           { name: "Sarah Chen", role: "Head of Infrastructure", email: "sarah.chen@apexflow.ai", company: "ApexFlow AI" },
-          { name: "Marcus Vance", role: "Director of IT Operations", email: "m.vance@cloudscale.net", company: "CloudScale Tech" },
+          { name: "Marcus Vance", role: "Director of IT Ops", email: "m.vance@cloudscale.net", company: "CloudScale Tech" },
         ].map((contact, i) => (
           <motion.div
             key={contact.email}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.15 + 0.1 }}
-            className="flex flex-col sm:flex-row sm:items-center justify-between p-3.5 rounded-xl bg-gray-50/80 border border-gray-200 hover:border-sky-300 hover:bg-white transition-all gap-2"
+            className="flex flex-col sm:flex-row sm:items-center justify-between p-3 sm:p-3.5 rounded-xl bg-gray-50/80 border border-gray-200 hover:border-sky-300 hover:bg-white transition-all gap-2"
           >
-            <div>
-              <div className="text-xs sm:text-sm font-bold text-gray-900 flex items-center gap-2">
-                {contact.name}
+            <div className="min-w-0">
+              <div className="text-xs sm:text-sm font-bold text-gray-900 flex flex-wrap items-center gap-1.5 sm:gap-2">
+                <span>{contact.name}</span>
                 <span className="text-[10px] font-mono text-sky-800 bg-sky-100/90 font-bold px-2 py-0.5 rounded border border-sky-200">
                   {contact.role}
                 </span>
               </div>
-              <div className="text-[11px] font-mono text-gray-500 mt-0.5">{contact.email}</div>
+              <div className="text-[11px] font-mono text-gray-500 mt-0.5 break-all sm:break-normal">{contact.email}</div>
             </div>
 
-            <div className="flex items-center gap-2 shrink-0">
-              <span className="text-[11px] font-mono text-gray-700 bg-white border border-gray-200 px-2.5 py-1 rounded-lg flex items-center gap-1.5 shadow-xs">
-                <Building2 size={12} className="text-sky-600" />
-                {contact.company}
+            <div className="flex items-center gap-2 shrink-0 self-start sm:self-center">
+              <span className="text-[10px] sm:text-[11px] font-mono text-gray-700 bg-white border border-gray-200 px-2 sm:px-2.5 py-1 rounded-lg flex items-center gap-1.5 shadow-xs">
+                <Building2 size={12} className="text-sky-600 shrink-0" />
+                <span className="truncate">{contact.company}</span>
               </span>
             </div>
           </motion.div>
@@ -480,11 +494,11 @@ function StageOutreach() {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.96, y: -15 }}
       transition={{ duration: 0.4 }}
-      className="relative z-10 w-full bg-white border border-amber-200 rounded-2xl p-5 sm:p-6 shadow-lg"
+      className="relative z-10 w-full bg-white border border-amber-200 rounded-2xl p-4 sm:p-6 shadow-lg"
     >
       <div className="flex items-center justify-between pb-3 mb-3 border-b border-gray-100 text-xs font-mono">
         <span className="text-amber-800 font-bold flex items-center gap-1.5">
-          <Send size={14} className="text-amber-600" />
+          <Send size={14} className="text-amber-600 shrink-0" />
           Outreach Generation
         </span>
         <span className="text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200 text-[11px] font-bold">
@@ -493,13 +507,13 @@ function StageOutreach() {
       </div>
 
       {/* Email Mock Header */}
-      <div className="bg-gray-50 rounded-xl p-3 border border-gray-200 text-[11px] font-mono space-y-1 mb-3 text-gray-700">
+      <div className="bg-gray-50 rounded-xl p-2.5 sm:p-3 border border-gray-200 text-[11px] font-mono space-y-1 mb-3 text-gray-700 break-words">
         <div><strong className="text-gray-500">To:</strong> Alex Rivera &lt;alex.rivera@finedge.io&gt;</div>
         <div><strong className="text-gray-500">Subject:</strong> FinEdge&apos;s $32M Series B &amp; scaling IT infrastructure</div>
       </div>
 
       {/* Email Body Preview with Contextual Tokens */}
-      <div className="p-4 rounded-xl bg-amber-50/30 border border-amber-200 text-xs sm:text-sm text-gray-800 leading-relaxed font-sans space-y-2.5">
+      <div className="p-3.5 sm:p-4 rounded-xl bg-amber-50/30 border border-amber-200 text-xs sm:text-sm text-gray-800 leading-relaxed font-sans space-y-2.5">
         <p>
           Hi Alex, congrats on FinEdge&apos;s <span className="bg-amber-100 text-amber-900 font-semibold px-1.5 py-0.5 rounded font-mono text-xs border border-amber-200">Series B $32M round</span> and your new role heading engineering.
         </p>
@@ -528,11 +542,11 @@ function StageFollowup() {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.96, y: -15 }}
       transition={{ duration: 0.4 }}
-      className="relative z-10 w-full bg-white border border-emerald-200 rounded-2xl p-5 sm:p-6 shadow-lg"
+      className="relative z-10 w-full bg-white border border-emerald-200 rounded-2xl p-4 sm:p-6 shadow-lg"
     >
       <div className="flex items-center justify-between pb-3 mb-4 border-b border-gray-100 text-xs font-mono">
         <span className="text-emerald-800 font-bold flex items-center gap-1.5">
-          <RefreshCw size={14} className="text-emerald-600" />
+          <RefreshCw size={14} className="text-emerald-600 shrink-0" />
           Automated Sequence
         </span>
         <span className="text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200 font-bold text-[11px]">
@@ -543,22 +557,22 @@ function StageFollowup() {
       {/* Multi-Touch Sequence Progression */}
       <div className="space-y-3">
         {/* Step 1: Initial */}
-        <div className="flex items-center justify-between p-3 rounded-xl bg-gray-50 border border-gray-200 text-xs text-gray-700">
+        <div className="flex items-center justify-between p-2.5 sm:p-3 rounded-xl bg-gray-50 border border-gray-200 text-xs text-gray-700">
           <div className="flex items-center gap-2">
-            <span className="w-6 h-6 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-mono font-bold text-[10px]">D1</span>
+            <span className="w-6 h-6 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-mono font-bold text-[10px] shrink-0">D1</span>
             <span>Initial Outreach Delivered</span>
           </div>
-          <span className="text-emerald-600 font-bold text-xs">✓ Opened</span>
+          <span className="text-emerald-600 font-bold text-xs shrink-0">✓ Opened</span>
         </div>
 
         {/* Step 2: Incoming Positive Reply */}
-        <div className="p-3.5 rounded-xl bg-emerald-50/80 border border-emerald-300 text-xs text-gray-900">
-          <div className="flex items-center justify-between mb-1.5">
+        <div className="p-3 sm:p-3.5 rounded-xl bg-emerald-50/80 border border-emerald-300 text-xs text-gray-900">
+          <div className="flex items-center justify-between mb-1.5 gap-2">
             <span className="font-mono font-bold text-emerald-800 text-[10px] uppercase flex items-center gap-1 tracking-wider">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-              Incoming Prospect Reply (Alex Rivera)
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping shrink-0" />
+              Incoming Reply (Alex Rivera)
             </span>
-            <span className="text-gray-500 text-[10px] font-mono">10 mins ago</span>
+            <span className="text-gray-500 text-[10px] font-mono shrink-0">10m ago</span>
           </div>
           <p className="italic text-gray-800 font-medium">
             &ldquo;Thanks for reaching out. Perfect timing — let&apos;s connect on Thursday at 2:30 PM. Sending invite.&rdquo;
@@ -566,12 +580,12 @@ function StageFollowup() {
         </div>
 
         {/* Auto Actions */}
-        <div className="grid grid-cols-2 gap-2 text-[11px] font-mono text-gray-800">
-          <div className="p-2.5 rounded-xl bg-white border border-gray-200 flex items-center gap-2 shadow-xs">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] font-mono text-gray-800">
+          <div className="p-2 sm:p-2.5 rounded-xl bg-white border border-gray-200 flex items-center gap-2 shadow-xs">
             <Check size={14} className="text-emerald-600 shrink-0" />
             <span className="truncate font-semibold">Google Calendar Synced</span>
           </div>
-          <div className="p-2.5 rounded-xl bg-white border border-gray-200 flex items-center gap-2 shadow-xs">
+          <div className="p-2 sm:p-2.5 rounded-xl bg-white border border-gray-200 flex items-center gap-2 shadow-xs">
             <Check size={14} className="text-emerald-600 shrink-0" />
             <span className="truncate font-semibold">HubSpot CRM Updated</span>
           </div>
