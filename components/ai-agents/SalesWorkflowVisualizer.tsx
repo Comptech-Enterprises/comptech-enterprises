@@ -198,7 +198,7 @@ export function SalesWorkflowVisualizer() {
               </button>
             </div>
 
-            {/* Mobile Hamburger Dropdown List */}
+            {/* Mobile Hamburger Dropdown List (Other Steps) */}
             <AnimatePresence>
               {isMenuOpen && (
                 <motion.div
@@ -209,8 +209,8 @@ export function SalesWorkflowVisualizer() {
                   className="overflow-hidden border-t border-gray-100 bg-gray-50/95 divide-y divide-gray-100 shadow-inner"
                 >
                   {STAGES.map((s, idx) => {
+                    if (idx === activeStage) return null;
                     const SIcon = s.icon;
-                    const isActive = activeStage === idx;
                     return (
                       <button
                         key={s.id}
@@ -219,46 +219,21 @@ export function SalesWorkflowVisualizer() {
                           setIsPlaying(false);
                           setIsMenuOpen(false);
                         }}
-                        className={`w-full px-4 py-3 flex items-center justify-between text-left transition-colors cursor-pointer ${
-                          isActive ? "bg-white" : "hover:bg-white/60 text-gray-700"
-                        }`}
+                        className="w-full px-4 py-3 flex items-center justify-between text-left transition-colors cursor-pointer hover:bg-white text-gray-700"
                       >
                         <div className="flex items-center gap-3">
-                          <div
-                            className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 border"
-                            style={{
-                              backgroundColor: isActive ? s.lightBg : "#FFFFFF",
-                              borderColor: isActive ? s.borderColor : "#E5E7EB",
-                              color: isActive ? s.color : "#6B7280",
-                            }}
-                          >
+                          <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 border bg-white border-gray-200 text-gray-600">
                             <SIcon size={15} />
                           </div>
                           <div>
-                            <div
-                              className="text-[10px] font-mono font-bold"
-                              style={{ color: isActive ? s.color : "#6B7280" }}
-                            >
+                            <div className="text-[10px] font-mono font-bold text-gray-500">
                               PHASE {s.number}
                             </div>
-                            <div className={`text-xs font-bold ${isActive ? "text-gray-900 font-extrabold" : "text-gray-700"}`}>
+                            <div className="text-xs font-bold text-gray-800">
                               {s.name}
                             </div>
                           </div>
                         </div>
-
-                        {isActive && (
-                          <span
-                            className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full border"
-                            style={{
-                              backgroundColor: s.lightBg,
-                              borderColor: s.borderColor,
-                              color: s.color,
-                            }}
-                          >
-                            Active
-                          </span>
-                        )}
                       </button>
                     );
                   })}

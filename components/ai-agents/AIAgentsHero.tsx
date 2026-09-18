@@ -10,7 +10,6 @@ interface AIAgentsHeroProps {
 }
 
 export function AIAgentsHero({ onBookLiveDemo }: AIAgentsHeroProps = {}) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
   const path1Ref = useRef<SVGPathElement>(null);
   const path2Ref = useRef<SVGPathElement>(null);
   const path3Ref = useRef<SVGPathElement>(null);
@@ -52,121 +51,6 @@ export function AIAgentsHero({ onBookLiveDemo }: AIAgentsHeroProps = {}) {
     };
   }, []);
 
-  // ── Canvas Neural Network Simulation (Exact parameters from homepage animation) ──
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    let animId: number;
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
-
-    const handleResize = () => {
-      if (!canvas) return;
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    };
-    window.addEventListener("resize", handleResize);
-
-    // Deterministic pseudo-random generator
-    let seed = 7766;
-    function random() {
-      const x = Math.sin(seed++) * 10000;
-      return x - Math.floor(x);
-    }
-
-    const numNodes = 70;
-    const colors = ["29, 78, 216", "139, 92, 246", "232, 67, 90", "75, 85, 99"];
-    interface SimNode {
-      baseX: number;
-      baseY: number;
-      freqX: number;
-      freqY: number;
-      ampX: number;
-      ampY: number;
-      phaseX: number;
-      phaseY: number;
-      r: number;
-      color: string;
-    }
-    const nodes: SimNode[] = [];
-
-    for (let i = 0; i < numNodes; i++) {
-      const kX = Math.floor(random() * 3) + 1;
-      const kY = Math.floor(random() * 3) + 1;
-      nodes.push({
-        baseX: random() * 1920,
-        baseY: random() * 1080,
-        freqX: (kX * Math.PI) / 6,
-        freqY: (kY * Math.PI) / 6,
-        ampX: 60 + random() * 70,
-        ampY: 60 + random() * 70,
-        phaseX: random() * Math.PI * 2,
-        phaseY: random() * Math.PI * 2,
-        r: 2.2 + random() * 3.2,
-        color: colors[Math.floor(random() * colors.length)],
-      });
-    }
-
-    let startTime = performance.now();
-
-    function renderLoop(now: number) {
-      if (!ctx || !canvas) return;
-      const elapsed = (now - startTime) / 1000;
-      ctx.clearRect(0, 0, width, height);
-
-      const scaleX = width / 1920;
-      const scaleY = height / 1080;
-
-      const pts = nodes.map((n) => {
-        const x = (n.baseX + Math.sin(elapsed * 0.4 * n.freqX + n.phaseX) * n.ampX) * scaleX;
-        const y = (n.baseY + Math.cos(elapsed * 0.4 * n.freqY + n.phaseY) * n.ampY) * scaleY;
-        return { x, y, r: n.r * Math.min(scaleX, scaleY), color: n.color };
-      });
-
-      // Draw connections
-      const linkDistance = 220 * Math.min(scaleX, scaleY);
-      for (let i = 0; i < pts.length; i++) {
-        const a = pts[i];
-        for (let j = i + 1; j < pts.length; j++) {
-          const b = pts[j];
-          const dx = a.x - b.x;
-          const dy = a.y - b.y;
-          const dist = Math.hypot(dx, dy);
-          if (dist < linkDistance) {
-            const alpha = (1 - dist / linkDistance) * 0.16;
-            ctx.strokeStyle = `rgba(139, 92, 246, ${alpha})`;
-            ctx.lineWidth = 0.9;
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
-            ctx.stroke();
-          }
-        }
-      }
-
-      // Draw nodes
-      for (let i = 0; i < pts.length; i++) {
-        const p = pts[i];
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${p.color}, 0.65)`;
-        ctx.fill();
-      }
-
-      animId = requestAnimationFrame(renderLoop);
-    }
-
-    animId = requestAnimationFrame(renderLoop);
-
-    return () => {
-      cancelAnimationFrame(animId);
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   return (
     <section
       id="sales-agent"
@@ -174,7 +58,7 @@ export function AIAgentsHero({ onBookLiveDemo }: AIAgentsHeroProps = {}) {
       style={{ minHeight: "100vh", paddingTop: "var(--nav-height)" }}
       aria-label="Sales AI Agent Hero"
     >
-      {/* ── 1. Gradient Mesh Blobs (Matches Homepage Hero) ── */}
+      {/* ── 1. Gradient Mesh Blobs ── */}
       <div className="absolute inset-0 pointer-events-none">
         <div
           className="absolute top-1/4 -left-20 w-[550px] h-[550px] rounded-full blur-3xl opacity-20"
@@ -186,14 +70,7 @@ export function AIAgentsHero({ onBookLiveDemo }: AIAgentsHeroProps = {}) {
         />
       </div>
 
-      {/* ── 2. Neural Canvas Network Background ── */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 w-full h-full pointer-events-none transition-opacity duration-1000 z-0"
-        style={{ opacity: showCanvasAndWaves ? 0.9 : 0 }}
-      />
-
-      {/* ── 3. SVG Fluid Flowing Glowing Waves ── */}
+      {/* ── 2. SVG Fluid Flowing Glowing Wave Lines (Vertical Flow) ── */}
       <svg
         className="absolute inset-0 w-full h-full pointer-events-none z-1 transition-opacity duration-1000"
         style={{ opacity: showCanvasAndWaves ? 0.45 : 0 }}
@@ -203,9 +80,9 @@ export function AIAgentsHero({ onBookLiveDemo }: AIAgentsHeroProps = {}) {
       >
         <motion.path
           ref={path1Ref}
-          d="M -100,540 C 350,150 650,900 960,540 C 1270,180 1570,930 2020,540"
+          d="M 600,-100 C 1500,250 200,600 1000,1180"
           stroke="#1D4ED8"
-          strokeWidth="7"
+          strokeWidth="6"
           strokeLinecap="round"
           initial={{ pathLength: 0 }}
           animate={showCanvasAndWaves ? { pathLength: 1 } : { pathLength: 0 }}
@@ -213,7 +90,7 @@ export function AIAgentsHero({ onBookLiveDemo }: AIAgentsHeroProps = {}) {
         />
         <motion.path
           ref={path2Ref}
-          d="M -100,640 C 450,950 750,50 1100,440 C 1450,830 1650,150 2020,440"
+          d="M 1300,-100 C 300,300 1600,750 800,1180"
           stroke="#8B5CF6"
           strokeWidth="5"
           strokeLinecap="round"
@@ -223,7 +100,7 @@ export function AIAgentsHero({ onBookLiveDemo }: AIAgentsHeroProps = {}) {
         />
         <motion.path
           ref={path3Ref}
-          d="M -100,440 C 250,350 550,950 800,640 C 1050,330 1350,50 2020,640"
+          d="M 960,-100 C 450,250 1450,650 700,1180"
           stroke="#E8435A"
           strokeWidth="4"
           strokeLinecap="round"
