@@ -14,7 +14,6 @@ import {
 } from "lucide-react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SalesWorkflowVisualizer } from "./SalesWorkflowVisualizer";
-import { SalesWorkflowExcalidraw } from "./SalesWorkflowExcalidraw";
 import Link from "next/link";
 
 /* ------------------------------------------------------------------ */
@@ -106,29 +105,6 @@ export function AIAgentsClient({ onBookLiveDemo }: AIAgentsClientProps = {}) {
         </div>
       </section>
 
-      {/* ── Sales AI Agent: Excalidraw Whiteboard Architecture ── */}
-      <section id="sales-agent-whiteboard" className="relative py-16 lg:py-24 bg-gradient-to-b from-gray-50 via-white to-gray-50/60 overflow-hidden border-b border-gray-100">
-        <div className="w-full max-w-[1720px] mx-auto px-3 sm:px-6 lg:px-10 relative z-10">
-          <div className="text-center mb-10 lg:mb-12 max-w-3xl mx-auto">
-            <SectionLabel className="justify-center">System Architecture</SectionLabel>
-            <h2
-              className="font-display font-extrabold text-gray-900 tracking-tight mt-3 mb-3"
-              style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}
-            >
-              Visualized in{" "}
-              <span className="font-handwritten text-[#6965DB] text-4xl sm:text-5xl lg:text-6xl font-bold ml-1">
-                Excalidraw Style
-              </span>
-            </h2>
-            <p className="text-gray-500 max-w-2xl mx-auto leading-relaxed text-base sm:text-lg">
-              Explore the end-to-end data pipeline from initial prospect scanning to the final booked calendar invite in a hand-drawn whiteboard view.
-            </p>
-          </div>
-
-          {/* Excalidraw Interactive Canvas Component */}
-          <SalesWorkflowExcalidraw />
-        </div>
-      </section>
 
       {/* ── Stats bar ── */}
       <section className="py-14 bg-gray-50 border-y border-gray-100">
