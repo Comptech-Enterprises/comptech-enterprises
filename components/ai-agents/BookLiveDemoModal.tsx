@@ -99,7 +99,7 @@ export function BookLiveDemoModal({ isOpen, onClose }: BookLiveDemoModalProps) {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -111,15 +111,15 @@ export function BookLiveDemoModal({ isOpen, onClose }: BookLiveDemoModalProps) {
 
           {/* Modal Container */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            initial={{ opacity: 0, scale: 0.95, y: 15 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100 z-10 my-8"
+            exit={{ opacity: 0, scale: 0.95, y: 15 }}
+            transition={{ duration: 0.22, ease: "easeOut" }}
+            className="relative w-full max-w-lg bg-white rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden border border-gray-100 z-10 my-auto sm:my-8 max-h-[calc(100dvh-1.5rem)] flex flex-col"
           >
             {/* Top Accent Gradient Bar */}
             <div
-              className="h-2 w-full"
+              className="h-1.5 sm:h-2 w-full shrink-0"
               style={{
                 background: "linear-gradient(90deg, #5C0F26 0%, #E8435A 50%, #7C3AED 100%)",
               }}
@@ -128,36 +128,36 @@ export function BookLiveDemoModal({ isOpen, onClose }: BookLiveDemoModalProps) {
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="absolute top-5 right-5 p-2 rounded-full text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-colors"
+              className="absolute top-3.5 right-3.5 sm:top-5 sm:right-5 p-1.5 sm:p-2 rounded-full text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-colors z-20"
               aria-label="Close modal"
             >
-              <X size={20} />
+              <X size={18} className="sm:w-5 sm:h-5" />
             </button>
 
-            <div className="p-6 sm:p-8">
+            <div className="p-5 sm:p-8 overflow-y-auto">
               {submitted ? (
                 /* Success Screen */
-                <div className="text-center py-6">
-                  <div className="w-16 h-16 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center mx-auto mb-5 shadow-sm">
-                    <CheckCircle2 size={32} />
+                <div className="text-center py-4 sm:py-6">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center mx-auto mb-4 sm:mb-5 shadow-sm">
+                    <CheckCircle2 size={28} className="sm:w-8 sm:h-8" />
                   </div>
-                  <h3 className="font-display font-black text-2xl text-gray-900 mb-2">
+                  <h3 className="font-display font-black text-xl sm:text-2xl text-gray-900 mb-2">
                     Live Demo Booked!
                   </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed mb-6 max-w-sm mx-auto">
+                  <p className="text-gray-600 text-xs sm:text-sm leading-relaxed mb-5 max-w-sm mx-auto">
                     Thank you, <strong className="text-gray-900">{form.name}</strong>! We have received your demo request for{" "}
-                    <strong className="text-gray-900">{form.company}</strong>. Our Sales AI team has been notified and will reach out to{" "}
+                    <strong className="text-gray-900">{form.company}</strong>. Our Sales AI team will reach out to{" "}
                     <strong className="text-gray-900">{form.email}</strong> shortly to confirm your interactive walkthrough.
                   </p>
 
-                  <div className="p-4 rounded-xl bg-gray-50 border border-gray-100 text-xs text-gray-500 mb-6 flex items-center justify-center gap-2">
+                  <div className="p-3.5 rounded-xl bg-gray-50 border border-gray-100 text-xs text-gray-500 mb-5 flex items-center justify-center gap-2">
                     <ShieldCheck size={16} className="text-emerald-600 shrink-0" />
                     <span>Notification dispatched to dedicated Sales AI desk.</span>
                   </div>
 
                   <button
                     onClick={onClose}
-                    className="w-full py-3.5 rounded-xl font-bold text-sm text-white transition-all shadow-md hover:opacity-95"
+                    className="w-full py-3 sm:py-3.5 rounded-xl font-bold text-sm text-white transition-all shadow-md hover:opacity-95 cursor-pointer"
                     style={{
                       background: "linear-gradient(135deg, #5C0F26 0%, #E8435A 100%)",
                     }}
@@ -168,22 +168,22 @@ export function BookLiveDemoModal({ isOpen, onClose }: BookLiveDemoModalProps) {
               ) : (
                 /* Booking Form */
                 <>
-                  <div className="mb-6">
-                    <h3 className="font-display font-black text-2xl sm:text-3xl text-gray-900 tracking-tight">
+                  <div className="mb-4 sm:mb-6 pr-6">
+                    <h3 className="font-display font-black text-xl sm:text-2xl md:text-3xl text-gray-900 tracking-tight">
                       Book a Live Demo
                     </h3>
-                    <p className="text-gray-500 text-sm mt-1.5 leading-relaxed">
+                    <p className="text-gray-500 text-xs sm:text-sm mt-1 leading-relaxed">
                       Experience how our Sales AI Agent qualifies prospects and automates outreach in real time.
                     </p>
                   </div>
 
                   {error && (
-                    <div className="mb-5 p-3 rounded-xl bg-red-50 border border-red-200 text-xs text-red-600 font-medium">
+                    <div className="mb-4 p-3 rounded-xl bg-red-50 border border-red-200 text-xs text-red-600 font-medium">
                       {error}
                     </div>
                   )}
 
-                  <form onSubmit={handleSubmit} className="space-y-4">
+                  <form onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-4">
                     {/* Honeypot field (hidden from real users) */}
                     <input
                       type="text"
@@ -197,7 +197,7 @@ export function BookLiveDemoModal({ isOpen, onClose }: BookLiveDemoModalProps) {
 
                     {/* Full Name */}
                     <div>
-                      <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
+                      <label className="block text-[11px] sm:text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
                         Your Name <span className="text-red-500">*</span>
                       </label>
                       <div className="relative">
@@ -208,14 +208,14 @@ export function BookLiveDemoModal({ isOpen, onClose }: BookLiveDemoModalProps) {
                           value={form.name}
                           onChange={(e) => setForm({ ...form, name: e.target.value })}
                           placeholder="Alex Rivera"
-                          className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder:text-gray-400 focus:bg-white focus:border-[#5C0F26] focus:ring-2 focus:ring-[#5C0F26]/10 outline-none transition-all"
+                          className="w-full pl-10 pr-3 sm:pr-4 py-2.5 sm:py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder:text-gray-400 focus:bg-white focus:border-[#5C0F26] focus:ring-2 focus:ring-[#5C0F26]/10 outline-none transition-all"
                         />
                       </div>
                     </div>
 
                     {/* Company Name */}
                     <div>
-                      <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
+                      <label className="block text-[11px] sm:text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
                         Company Name <span className="text-red-500">*</span>
                       </label>
                       <div className="relative">
@@ -226,14 +226,14 @@ export function BookLiveDemoModal({ isOpen, onClose }: BookLiveDemoModalProps) {
                           value={form.company}
                           onChange={(e) => setForm({ ...form, company: e.target.value })}
                           placeholder="FinEdge Systems"
-                          className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder:text-gray-400 focus:bg-white focus:border-[#5C0F26] focus:ring-2 focus:ring-[#5C0F26]/10 outline-none transition-all"
+                          className="w-full pl-10 pr-3 sm:pr-4 py-2.5 sm:py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder:text-gray-400 focus:bg-white focus:border-[#5C0F26] focus:ring-2 focus:ring-[#5C0F26]/10 outline-none transition-all"
                         />
                       </div>
                     </div>
 
                     {/* Work Email */}
                     <div>
-                      <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
+                      <label className="block text-[11px] sm:text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
                         Work Email <span className="text-red-500">*</span>
                       </label>
                       <div className="relative">
@@ -244,17 +244,17 @@ export function BookLiveDemoModal({ isOpen, onClose }: BookLiveDemoModalProps) {
                           value={form.email}
                           onChange={(e) => setForm({ ...form, email: e.target.value })}
                           placeholder="alex@finedge.io"
-                          className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder:text-gray-400 focus:bg-white focus:border-[#5C0F26] focus:ring-2 focus:ring-[#5C0F26]/10 outline-none transition-all"
+                          className="w-full pl-10 pr-3 sm:pr-4 py-2.5 sm:py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder:text-gray-400 focus:bg-white focus:border-[#5C0F26] focus:ring-2 focus:ring-[#5C0F26]/10 outline-none transition-all"
                         />
                       </div>
                     </div>
 
                     {/* Submit Button */}
-                    <div className="pt-3">
+                    <div className="pt-2">
                       <button
                         type="submit"
                         disabled={submitting}
-                        className="w-full py-4 rounded-xl font-bold text-base text-white transition-all duration-200 shadow-xl hover:scale-[1.01] hover:opacity-95 disabled:opacity-60 flex items-center justify-center gap-2"
+                        className="w-full py-3.5 sm:py-4 rounded-xl font-bold text-sm sm:text-base text-white transition-all duration-200 shadow-xl hover:scale-[1.01] hover:opacity-95 disabled:opacity-60 flex items-center justify-center gap-2 cursor-pointer"
                         style={{
                           background: "linear-gradient(135deg, #5C0F26 0%, #E8435A 100%)",
                           boxShadow: "0 8px 24px rgba(92, 15, 38, 0.25)",
@@ -267,15 +267,11 @@ export function BookLiveDemoModal({ isOpen, onClose }: BookLiveDemoModalProps) {
                           </>
                         ) : (
                           <>
-                            Book a Live Demo <ArrowRight size={17} />
+                            Book a Live Demo <ArrowRight size={16} />
                           </>
                         )}
                       </button>
                     </div>
-
-                    <p className="text-center text-[11px] text-gray-400">
-                      No credit card required. We respect your inbox privacy.
-                    </p>
                   </form>
                 </>
               )}

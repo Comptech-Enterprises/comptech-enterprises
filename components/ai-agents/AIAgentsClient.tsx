@@ -12,7 +12,6 @@ import {
   TrendingUp,
   Clock,
 } from "lucide-react";
-import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SalesWorkflowVisualizer } from "./SalesWorkflowVisualizer";
 import Link from "next/link";
 
@@ -24,7 +23,7 @@ const OTHER_AGENTS = [
   {
     id: "social-agent",
     icon: MessageSquare,
-    title: "Social AI Agent",
+    title: "Social Media AI Agent",
     description:
       "Monitors brand mentions, drafts on-brand replies, schedules content, and analyzes engagement — across every platform.",
     status: "Coming Soon",
@@ -33,7 +32,7 @@ const OTHER_AGENTS = [
   {
     id: "meeting-agent",
     icon: Calendar,
-    title: "Meet AI Agent",
+    title: "Google Meet AI Agent",
     description:
       "Coordinates scheduling, sends agendas, takes meeting notes, extracts action items, and follows up — automatically.",
     status: "Coming Soon",
@@ -70,7 +69,6 @@ export function AIAgentsClient({ onBookLiveDemo }: AIAgentsClientProps = {}) {
       <section id="sales-agent-interactive" className="relative py-16 lg:py-24 bg-white overflow-hidden border-b border-gray-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-10 lg:mb-12">
-            <SectionLabel className="justify-center">Interactive Workflow</SectionLabel>
             <h2
               className="font-display font-extrabold text-gray-900 tracking-tight mt-3 mb-4"
               style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}
@@ -135,12 +133,11 @@ export function AIAgentsClient({ onBookLiveDemo }: AIAgentsClientProps = {}) {
       <section id="more-agents" className="py-16 lg:py-24 bg-white">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
-            <SectionLabel className="justify-center">More Agents</SectionLabel>
             <h2
               className="font-display font-extrabold text-gray-900 tracking-tight mt-3"
               style={{ fontSize: "clamp(1.6rem, 2.8vw, 2.2rem)" }}
             >
-              The fleet is growing
+              Introducing More AI Employees
             </h2>
           </div>
 

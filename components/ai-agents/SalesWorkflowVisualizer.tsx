@@ -26,10 +26,9 @@ export const STAGES = [
   {
     id: "discovery",
     number: "01",
-    name: "Prospect Discovery",
-    tag: "Autonomous ICP Scanner",
+    name: "Lead Discovery",
     desc: "Finding potential customers for you according to your business and target criteria.",
-    metrics: "1,420 scanned · 38 high-match leads",
+    metrics: "2000 leads found",
     icon: Search,
     color: "#5C0F26", // Brand Burgundy
     accentColor: "#E8435A",
@@ -40,7 +39,6 @@ export const STAGES = [
     id: "intelligence",
     number: "02",
     name: "News Intelligence",
-    tag: "Real-Time NLP Semantic Engine",
     desc: "Analyzes real-time press releases, funding rounds, and hiring shifts to find timely, irresistible conversation triggers.",
     metrics: "94% Buying Intent · Trigger: $32M Series B",
     icon: Newspaper,
@@ -53,9 +51,8 @@ export const STAGES = [
     id: "extraction",
     number: "03",
     name: "Contact Search",
-    tag: "Neural Decision-Maker Graph",
-    desc: "Identifies key decision-makers, resolves direct verified corporate emails, and verifies deliverability with zero bounce.",
-    metrics: "Generated 200 emails today",
+    desc: "Found top three contacts from the lead company.",
+    metrics: "3 verified contacts found",
     icon: Mail,
     color: "#0284C7", // Sky/Blue
     accentColor: "#0EA5E9",
@@ -66,9 +63,8 @@ export const STAGES = [
     id: "outreach",
     number: "04",
     name: "Outreach Generation",
-    tag: "Contextual Generative Pitcher",
-    desc: "Drafts hyper-tailored emails referencing recent company news, pain points, and specific value propositions in real-time, showing how our company can help this list.",
-    metrics: "85% Predicted Open Rate · Ready to Dispatch",
+    desc: "Drafts emails referencing recent company news, pain points, and specific value propositions in real-time, showing how our company can help this lead.",
+    metrics: "Generated 200 emails today",
     icon: Send,
     color: "#D97706", // Amber
     accentColor: "#F59E0B",
@@ -79,9 +75,8 @@ export const STAGES = [
     id: "followup",
     number: "05",
     name: "Smart Follow-ups",
-    tag: "Automated Conversion & CRM Sync",
-    desc: "Executes polite, multi-touch follow-ups, detects positive replies, schedules calendar bookings, and syncs directly to your CRM.",
-    metrics: "Meeting Booked · Auto-Synced to CRM",
+    desc: "Executes polite, multi-touch follow-ups, detects positive replies, and syncs directly to your CRM.",
+    metrics: "Reply Detected · Auto-Synced to CRM",
     icon: RefreshCw,
     color: "#059669", // Emerald
     accentColor: "#10B981",
@@ -209,14 +204,6 @@ export function SalesWorkflowVisualizer() {
           {/* Left: Phase Narrative & Controller */}
           <div className="lg:col-span-5 p-6 sm:p-8 lg:p-10 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-gray-100 bg-white">
             <div>
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-mono font-bold uppercase tracking-wider mb-3"
-                style={{ backgroundColor: stage.lightBg, color: stage.color, borderColor: stage.borderColor, borderWidth: 1 }}
-              >
-                <span>Phase {stage.number}</span>
-                <span>•</span>
-                <span>{stage.tag}</span>
-              </div>
-
               <h3 className="font-display font-extrabold text-2xl sm:text-3xl text-gray-900 tracking-tight mb-3">
                 {stage.name}
               </h3>
@@ -396,7 +383,7 @@ function StageIntelligence() {
       <div className="flex items-center justify-between pb-3 mb-4 border-b border-gray-100 text-xs font-mono">
         <span className="text-purple-700 font-bold flex items-center gap-1.5">
           <Newspaper size={14} className="text-purple-600" />
-          NLP Document Parser &amp; Signal Extractor
+          Latest News About Leads
         </span>
         <span className="text-purple-700 bg-purple-50 px-2.5 py-0.5 rounded-full border border-purple-200 text-[11px] font-bold">
           High Buying Intent
@@ -441,10 +428,7 @@ function StageExtraction() {
       <div className="flex items-center justify-between pb-3 mb-4 border-b border-gray-100 text-xs font-mono">
         <span className="text-sky-700 font-bold flex items-center gap-1.5">
           <UserCheck size={14} className="text-sky-600" />
-          Contact Search &amp; Decision Maker Resolution
-        </span>
-        <span className="text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200 font-bold text-[11px]">
-          Deliverability: 100%
+          Contact Search
         </span>
       </div>
 
@@ -526,7 +510,7 @@ function StageOutreach() {
           Would you be open to a 10-min intro next Tuesday at 2 PM to see how we automate deployment?
         </p>
         <p className="text-amber-900 text-xs bg-amber-50 border border-amber-200 rounded-lg p-2.5 font-medium">
-          Here is how our company can help this list: We streamline enterprise cloud deployment and automate infrastructure scaling so your team accelerates go-to-market with zero downtime.
+          Here is how our company can help this lead: We streamline enterprise cloud deployment and automate infrastructure scaling so your team accelerates go-to-market with zero downtime.
         </p>
       </div>
     </motion.div>
@@ -548,8 +532,8 @@ function StageFollowup() {
     >
       <div className="flex items-center justify-between pb-3 mb-4 border-b border-gray-100 text-xs font-mono">
         <span className="text-emerald-800 font-bold flex items-center gap-1.5">
-          <Calendar size={14} className="text-emerald-600" />
-          Automated Sequence &amp; Calendar Booking
+          <RefreshCw size={14} className="text-emerald-600" />
+          Automated Sequence
         </span>
         <span className="text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200 font-bold text-[11px]">
           Conversion: Won 🚀
