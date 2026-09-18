@@ -59,7 +59,11 @@ export function Navbar({ transparent = false }: NavbarProps) {
     };
   }, [mobileOpen]);
 
-  const isWhiteHeader = pathname === "/" || pathname === "/contact";
+  const isWhiteHeader =
+    pathname === "/" ||
+    pathname === "/contact" ||
+    pathname?.startsWith("/ai-agents") ||
+    pathname?.startsWith("/ai-solutions");
   const isTransparent = transparent && !solid;
   const textColor = isTransparent
     ? (isWhiteHeader ? "text-gray-800" : "text-white/90")

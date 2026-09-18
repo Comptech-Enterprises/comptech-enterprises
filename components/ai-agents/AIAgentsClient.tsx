@@ -57,29 +57,32 @@ const STATS = [
 /*  Main client component                                              */
 /* ------------------------------------------------------------------ */
 
-export function AIAgentsClient() {
+interface AIAgentsClientProps {
+  onBookLiveDemo?: () => void;
+}
+
+export function AIAgentsClient({ onBookLiveDemo }: AIAgentsClientProps = {}) {
   const statsRef = useRef<HTMLDivElement>(null);
   const statsInView = useInView(statsRef, { once: true, margin: "-40px" });
 
   return (
     <>
       {/* ── Sales AI Agent Workflow Visualizer (Technical Live Simulation) ── */}
-      <section id="sales-agent" className="relative py-16 lg:py-24 bg-white overflow-hidden border-b border-gray-100">
+      <section id="sales-agent-interactive" className="relative py-16 lg:py-24 bg-white overflow-hidden border-b border-gray-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-10 lg:mb-12">
-            <SectionLabel className="justify-center">Sales AI Agent</SectionLabel>
+            <SectionLabel className="justify-center">Interactive Workflow</SectionLabel>
             <h2
               className="font-display font-extrabold text-gray-900 tracking-tight mt-3 mb-4"
               style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}
             >
-              From cold list to warm conversation —{" "}
+              Interactive Sales Pipeline{" "}
               <span className="text-transparent bg-clip-text" style={{ backgroundImage: "linear-gradient(135deg, #5C0F26, #E8435A 60%, #7C3AED)" }}>
-                fully automated
+                Engine
               </span>
             </h2>
             <p className="text-gray-500 max-w-2xl mx-auto leading-relaxed text-base sm:text-lg">
-              Our Sales AI agent handles the entire top-of-funnel pipeline: prospecting,
-              research, outreach, and follow-ups — while you focus on closing deals.
+              Watch how our autonomous agent qualifies leads, parses intents, enriches CRM data, and books sales appointments live.
             </p>
           </div>
 
@@ -87,23 +90,18 @@ export function AIAgentsClient() {
           <SalesWorkflowVisualizer />
 
           {/* Call to Action */}
-          <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/contact#quote"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl text-sm font-bold text-white transition-all duration-200 hover:opacity-90 hover:scale-[1.02] shadow-xl"
+          <div className="mt-12 flex items-center justify-center">
+            <button
+              type="button"
+              onClick={onBookLiveDemo}
+              className="inline-flex items-center gap-2.5 px-9 py-4 rounded-2xl text-base font-bold text-white transition-all duration-200 hover:scale-105 shadow-xl cursor-pointer"
               style={{
                 background: "linear-gradient(135deg, #5C0F26, #E8435A)",
-                boxShadow: "0 4px 24px rgba(92,15,38,0.35)",
+                boxShadow: "0 8px 30px rgba(92,15,38,0.35)",
               }}
             >
-              Deploy Sales AI for Your Team <ArrowRight size={16} />
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl text-sm font-semibold text-gray-700 border border-gray-200 bg-white hover:border-[#5C0F26]/30 hover:text-[#5C0F26] transition-all shadow-sm"
-            >
-              Book a Live Demo
-            </Link>
+              Book a Live Demo <ArrowRight size={17} />
+            </button>
           </div>
         </div>
       </section>

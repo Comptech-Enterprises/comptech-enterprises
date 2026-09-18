@@ -35,7 +35,7 @@ export const STAGES = [
     number: "01",
     name: "Prospect Discovery",
     tag: "Autonomous ICP Scanner",
-    desc: "Scans industry databases, LinkedIn, and corporate registries to pinpoint accounts matching your exact ICP.",
+    desc: "Finding potential customers for you according to your business.",
     metrics: "1,420 scanned · 38 high-match leads",
     icon: Search,
     color: "#3B82F6",
@@ -55,10 +55,10 @@ export const STAGES = [
   {
     id: "extraction",
     number: "03",
-    name: "Contact Extraction",
+    name: "Contact Search",
     tag: "Neural Decision-Maker Graph",
     desc: "Identifies key decision-makers, resolves direct verified corporate emails, and verifies deliverability with zero bounce.",
-    metrics: "100% SMTP Verified · 3 Key Decision Makers",
+    metrics: "Generated 200 emails today",
     icon: Mail,
     color: "#EC4899",
     gradient: "from-pink-500 to-rose-500",
@@ -66,10 +66,10 @@ export const STAGES = [
   {
     id: "outreach",
     number: "04",
-    name: "Personalized Outreach",
+    name: "Outreach Generation",
     tag: "Contextual Generative Pitcher",
-    desc: "Drafts hyper-tailored emails referencing recent company news, pain points, and specific value propositions in real-time.",
-    metrics: "Generated in 1.2s · 85% Predicted Open Rate",
+    desc: "Drafts hyper-tailored emails referencing recent company news, pain points, and specific value propositions in real-time, showing how our company can help this list.",
+    metrics: "85% Predicted Open Rate · Ready to Dispatch",
     icon: Send,
     color: "#F59E0B",
     gradient: "from-amber-500 to-orange-500",
@@ -126,7 +126,7 @@ export function SalesWorkflowVisualizer() {
             </span>
             <span className="text-xs font-mono font-bold uppercase tracking-widest text-gray-300 flex items-center gap-2">
               <Cpu size={14} className="text-blue-400" />
-              Sales AI Agent <span className="text-gray-500">·</span> Live Pipeline Sim
+              Sales AI Agent
             </span>
           </div>
 
@@ -202,11 +202,6 @@ export function SalesWorkflowVisualizer() {
           {/* Left: Phase Narrative & Controller */}
           <div className="lg:col-span-5 p-6 sm:p-8 lg:p-10 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/10 bg-gradient-to-b from-white/[0.02] to-transparent">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-semibold text-white bg-white/10 border border-white/15 mb-4">
-                <Icon size={13} style={{ color: stage.color }} />
-                <span>{stage.tag}</span>
-              </div>
-
               <h3 className="font-display font-black text-2xl sm:text-3xl text-white tracking-tight mb-3">
                 {stage.name}
               </h3>
@@ -317,9 +312,9 @@ function StageDiscovery() {
       {/* Discovered Lead Cards */}
       <div className="space-y-2.5">
         {[
-          { name: "FinEdge Systems", location: "San Francisco, CA", size: "180 Emp", funding: "Series B $32M", match: "99% ICP Match", color: "text-emerald-400", border: "border-emerald-500/30" },
-          { name: "Apex Logistics AI", location: "New York, NY", size: "320 Emp", funding: "Series A $14M", match: "97% ICP Match", color: "text-blue-400", border: "border-blue-500/30" },
-          { name: "Nova Health Tech", location: "Boston, MA", size: "95 Emp", funding: "Seed $4.5M", match: "94% ICP Match", color: "text-purple-400", border: "border-purple-500/30" },
+          { name: "FinEdge Systems", location: "San Francisco, CA", size: "180 Emp", funding: "Series B $32M", color: "text-emerald-400", border: "border-emerald-500/30" },
+          { name: "Apex Logistics AI", location: "New York, NY", size: "320 Emp", funding: "Series A $14M", color: "text-blue-400", border: "border-blue-500/30" },
+          { name: "Nova Health Tech", location: "Boston, MA", size: "95 Emp", funding: "Seed $4.5M", color: "text-purple-400", border: "border-purple-500/30" },
         ].map((lead, i) => (
           <motion.div
             key={lead.name}
@@ -344,16 +339,8 @@ function StageDiscovery() {
                 </div>
               </div>
             </div>
-            <span className={`text-[11px] font-mono font-bold ${lead.color} bg-white/5 px-2 py-1 rounded-md shrink-0`}>
-              {lead.match}
-            </span>
           </motion.div>
         ))}
-      </div>
-
-      <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[10px] font-mono text-gray-400">
-        <span>Filters: FinTech · Cloud · 50-500 Employees</span>
-        <span className="text-blue-400">Auto-Enriching Metadata...</span>
       </div>
     </motion.div>
   );
@@ -384,9 +371,6 @@ function StageIntelligence() {
           <Newspaper size={14} className="text-purple-400" />
           NLP Document Parser & Signal Extractor
         </span>
-        <span className="text-purple-300 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">
-          Laser Scan 98%
-        </span>
       </div>
 
       {/* Extracted Trigger Signals */}
@@ -406,14 +390,6 @@ function StageIntelligence() {
           </div>
           &ldquo;Appoints new <strong className="text-white bg-blue-500/20 px-1 py-0.5 rounded">VP of Technology Alex Rivera</strong> to overhaul cloud security & automated workflows.&rdquo;
         </div>
-      </div>
-
-      {/* Semantic Sentiment Tag */}
-      <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] font-mono">
-        <span className="text-gray-400">Buying Intent Score:</span>
-        <span className="text-emerald-400 font-bold bg-emerald-500/10 px-2.5 py-0.5 rounded-md border border-emerald-500/20 flex items-center gap-1">
-          <Flame size={12} /> Extremely High (94%)
-        </span>
       </div>
     </motion.div>
   );
@@ -435,7 +411,7 @@ function StageExtraction() {
       <div className="flex items-center justify-between pb-3 mb-4 border-b border-white/10 text-xs font-mono">
         <span className="text-pink-400 flex items-center gap-1.5">
           <UserCheck size={14} className="text-pink-400" />
-          Decision Maker Resolution & Email Verification
+          Contact Search &amp; Decision Maker Resolution
         </span>
         <span className="text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
           Deliverability: 100%
@@ -445,9 +421,9 @@ function StageExtraction() {
       {/* Contact Cards */}
       <div className="space-y-2.5">
         {[
-          { name: "Alex Rivera", role: "VP of Technology / CTO", email: "alex.rivera@finedge.io", status: "Verified Primary Target", badge: "SMTP 250 OK" },
-          { name: "Sarah Chen", role: "Head of Infrastructure", email: "sarah.chen@finedge.io", status: "Technical Influencer", badge: "SMTP 250 OK" },
-          { name: "Marcus Vance", role: "Director of IT Operations", email: "m.vance@finedge.io", status: "Operational Evaluator", badge: "SMTP 250 OK" },
+          { name: "Alex Rivera", role: "VP of Technology / CTO", email: "alex.rivera@finedge.io", status: "Verified Primary Target", company: "FinEdge Systems" },
+          { name: "Sarah Chen", role: "Head of Infrastructure", email: "sarah.chen@apexflow.ai", status: "Technical Influencer", company: "ApexFlow AI" },
+          { name: "Marcus Vance", role: "Director of IT Operations", email: "m.vance@cloudscale.net", status: "Operational Evaluator", company: "CloudScale Tech" },
         ].map((contact, i) => (
           <motion.div
             key={contact.email}
@@ -467,17 +443,13 @@ function StageExtraction() {
             </div>
 
             <div className="flex items-center gap-2 shrink-0">
-              <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded flex items-center gap-1">
-                <Check size={10} /> {contact.badge}
+              <span className="text-[11px] font-mono text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-md flex items-center gap-1.5">
+                <Building2 size={12} className="text-emerald-400" />
+                {contact.company}
               </span>
             </div>
           </motion.div>
         ))}
-      </div>
-
-      <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[10px] font-mono text-gray-400">
-        <span>MX Server: mail.protection.outlook.com</span>
-        <span className="text-emerald-400">Zero Spam Trap Risk</span>
       </div>
     </motion.div>
   );
@@ -499,10 +471,7 @@ function StageOutreach() {
       <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/10 text-xs font-mono">
         <span className="text-amber-400 flex items-center gap-1.5">
           <Send size={14} className="text-amber-400" />
-          Hyper-Personalized Email Generator
-        </span>
-        <span className="text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
-          Generated in 1.2s
+          Outreach Generation
         </span>
       </div>
 
@@ -520,17 +489,12 @@ function StageOutreach() {
         <p>
           Saw you&apos;re expanding into London. Fast-growing FinTech teams usually face severe staging bottlenecks and server deployment latency during global scale-up.
         </p>
-        <p className="text-gray-400 text-xs">
+        <p className="text-gray-300">
           Would you be open to a 10-min intro next Tuesday at 2 PM to see how we automate deployment?
         </p>
-      </div>
-
-      {/* Bottom Send Dispatcher */}
-      <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] font-mono">
-        <span className="text-gray-400">Spam Score: 0.01 / 10.0 (Optimal)</span>
-        <span className="text-amber-400 font-bold flex items-center gap-1">
-          <Zap size={12} /> Auto-Dispatched to Inbox
-        </span>
+        <p className="text-amber-300/90 text-xs bg-amber-500/10 border border-amber-500/20 rounded-lg p-2.5">
+          Here is how our company can help this list: We streamline enterprise cloud deployment and automate infrastructure scaling so your team accelerates go-to-market with zero downtime.
+        </p>
       </div>
     </motion.div>
   );
@@ -567,7 +531,6 @@ function StageFollowup() {
             <span className="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center font-mono text-[10px]">D1</span>
             <span>Initial Outreach Delivered</span>
           </div>
-          <span className="text-gray-400 font-mono text-[10px]">Opened 2x (SF)</span>
         </div>
 
         {/* Step 2: Incoming Positive Reply */}
@@ -595,11 +558,6 @@ function StageFollowup() {
             <span className="truncate">HubSpot / CRM Updated</span>
           </div>
         </div>
-      </div>
-
-      <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[10px] font-mono text-gray-400">
-        <span>Follow-up Sequence: Auto-Halted (Reply Detected)</span>
-        <span className="text-emerald-400 font-bold">Pipeline Value: +$45,000</span>
       </div>
     </motion.div>
   );

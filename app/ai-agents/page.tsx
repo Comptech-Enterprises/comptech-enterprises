@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { PageHero } from "@/components/sections/PageHero";
-import { AIAgentsClient } from "@/components/ai-agents/AIAgentsClient";
+import { AIAgentsPageContent } from "@/components/ai-agents/AIAgentsPageContent";
 
 export const metadata: Metadata = {
   title: "AI Agents | Comptech Enterprises",
@@ -31,26 +30,9 @@ export const metadata: Metadata = {
 export default function AIAgentsPage() {
   return (
     <>
-      <Navbar />
-      <main>
-        <PageHero
-          light
-          badge="AI Agents"
-          title={
-            <>
-              Intelligent agents that{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5C0F26] to-[#E8435A]">
-                work for you
-              </span>
-            </>
-          }
-          subtitle="Autonomous AI workflows that handle sales outreach, social media management, and meeting coordination — so your team focuses on closing, not clicking."
-          breadcrumbs={[
-            { label: "Home", href: "/" },
-            { label: "AI Agents" },
-          ]}
-        />
-        <AIAgentsClient />
+      <Navbar transparent />
+      <main className="glass-mesh-page">
+        <AIAgentsPageContent />
       </main>
       <Footer />
     </>
