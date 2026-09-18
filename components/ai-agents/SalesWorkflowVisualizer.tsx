@@ -10,7 +10,6 @@ import {
   RefreshCw,
   CheckCircle2,
   Cpu,
-  ChevronRight,
   Activity,
   Zap,
   Building2,
@@ -216,7 +215,7 @@ export function SalesWorkflowVisualizer() {
         <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[380px] sm:min-h-[460px]">
           
           {/* Left: Phase Narrative & Controller */}
-          <div className="lg:col-span-5 p-5 sm:p-8 lg:p-10 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-gray-100 bg-white">
+          <div className="lg:col-span-5 p-5 sm:p-8 lg:p-10 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-gray-100 bg-white">
             <div>
               <h3 className="font-display font-extrabold text-xl sm:text-2xl lg:text-3xl text-gray-900 tracking-tight mb-2.5 sm:mb-3">
                 {stage.name}
@@ -228,7 +227,7 @@ export function SalesWorkflowVisualizer() {
 
               {/* Live Metric Pill in Light Brand Theme */}
               <div
-                className="rounded-xl sm:rounded-2xl p-3.5 sm:p-4 mb-5 sm:mb-6 border transition-all"
+                className="rounded-xl sm:rounded-2xl p-3.5 sm:p-4 border transition-all"
                 style={{
                   backgroundColor: stage.lightBg,
                   borderColor: stage.borderColor,
@@ -242,36 +241,6 @@ export function SalesWorkflowVisualizer() {
                   <CheckCircle2 size={16} className="text-emerald-600 shrink-0" />
                   <span>{stage.metrics}</span>
                 </div>
-              </div>
-            </div>
-
-            {/* Quick Navigation Buttons */}
-            <div className="flex items-center justify-between pt-4 border-t border-gray-100 gap-2">
-              <div className="text-xs font-mono text-gray-500">
-                Step <strong className="text-gray-900 font-bold">{activeStage + 1}</strong> of {STAGES.length}
-              </div>
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => {
-                    setActiveStage((prev) => (prev - 1 + STAGES.length) % STAGES.length);
-                    setIsPlaying(false);
-                  }}
-                  className="px-3 sm:px-3.5 py-1.5 text-xs font-semibold rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-200 transition-colors cursor-pointer"
-                >
-                  Prev
-                </button>
-                <button
-                  onClick={() => {
-                    setActiveStage((prev) => (prev + 1) % STAGES.length);
-                    setIsPlaying(false);
-                  }}
-                  className="px-3.5 sm:px-4 py-1.5 text-xs font-bold rounded-xl text-white transition-all flex items-center gap-1 shadow-md hover:opacity-95 cursor-pointer"
-                  style={{
-                    background: `linear-gradient(135deg, ${stage.color}, ${stage.accentColor})`,
-                  }}
-                >
-                  Next Phase <ChevronRight size={14} />
-                </button>
               </div>
             </div>
           </div>
