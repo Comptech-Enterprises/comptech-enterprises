@@ -374,7 +374,7 @@ function StageDiscovery() {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.96, y: -15 }}
       transition={{ duration: 0.4 }}
-      className="relative z-10 w-full bg-white border border-gray-200/90 rounded-2xl p-4 sm:p-6 shadow-lg h-[370px] sm:h-[385px] flex flex-col justify-between"
+      className="relative z-10 w-full bg-white border border-gray-200/90 rounded-2xl p-4 sm:p-6 shadow-lg min-h-[350px] lg:h-[385px] flex flex-col justify-between"
     >
       {/* Top Scanner Line */}
       <div className="flex items-center justify-between pb-3 mb-3 border-b border-gray-100 text-xs font-mono gap-2">
@@ -439,7 +439,7 @@ function StageIntelligence() {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.96, y: -15 }}
       transition={{ duration: 0.4 }}
-      className="relative z-10 w-full bg-white border border-purple-200 rounded-2xl p-4 sm:p-6 shadow-lg overflow-hidden h-[370px] sm:h-[385px] flex flex-col justify-between"
+      className="relative z-10 w-full bg-white border border-purple-200 rounded-2xl p-4 sm:p-6 shadow-lg overflow-hidden min-h-[350px] lg:h-[385px] flex flex-col justify-between"
     >
       {/* Animated Laser Scanning Line */}
       <motion.div
@@ -491,7 +491,7 @@ function StageExtraction() {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.96, y: -15 }}
       transition={{ duration: 0.4 }}
-      className="relative z-10 w-full bg-white border border-sky-200 rounded-2xl p-4 sm:p-6 shadow-lg h-[370px] sm:h-[385px] flex flex-col justify-between"
+      className="relative z-10 w-full bg-white border border-sky-200 rounded-2xl p-4 sm:p-6 shadow-lg min-h-[350px] lg:h-[385px] flex flex-col justify-between"
     >
       <div className="flex items-center justify-between pb-3 mb-3 border-b border-gray-100 text-xs font-mono">
         <span className="text-sky-700 font-bold flex items-center gap-1.5">
@@ -548,36 +548,36 @@ function StageOutreach() {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.96, y: -15 }}
       transition={{ duration: 0.4 }}
-      className="relative z-10 w-full bg-white border border-amber-200 rounded-2xl p-4 sm:p-6 shadow-lg h-[370px] sm:h-[385px] flex flex-col justify-between"
+      className="relative z-10 w-full bg-white border border-amber-200 rounded-2xl p-3.5 sm:p-6 shadow-lg min-h-[350px] lg:h-[385px] flex flex-col justify-between"
     >
       <div className="flex items-center justify-between pb-2 mb-2 border-b border-gray-100 text-xs font-mono">
         <span className="text-amber-800 font-bold flex items-center gap-1.5">
           <Send size={14} className="text-amber-600 shrink-0" />
           Outreach Generation
         </span>
-        <span className="text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200 text-[11px] font-bold">
+        <span className="text-amber-800 bg-amber-50 px-2 sm:px-2.5 py-0.5 rounded-full border border-amber-200 text-[10px] sm:text-[11px] font-bold">
           Score: 98/100
         </span>
       </div>
 
       {/* Email Mock Header */}
-      <div className="bg-gray-50 rounded-xl p-2 sm:p-2.5 border border-gray-200 text-[11px] font-mono space-y-0.5 mb-2 text-gray-700 break-words">
+      <div className="bg-gray-50 rounded-xl p-2 sm:p-2.5 border border-gray-200 text-[10px] sm:text-[11px] font-mono space-y-0.5 mb-2 text-gray-700 break-words">
         <div><strong className="text-gray-500">To:</strong> Alex Rivera &lt;alex.rivera@finedge.io&gt;</div>
         <div><strong className="text-gray-500">Subject:</strong> FinEdge&apos;s $32M Series B &amp; scaling IT infrastructure</div>
       </div>
 
       {/* Email Body Preview with Contextual Tokens */}
-      <div className="p-3 sm:p-3.5 rounded-xl bg-amber-50/30 border border-amber-200 text-xs text-gray-800 leading-relaxed font-sans space-y-2 flex-1 flex flex-col justify-between">
+      <div className="p-2.5 sm:p-3.5 rounded-xl bg-amber-50/30 border border-amber-200 text-[11px] sm:text-xs text-gray-800 leading-relaxed font-sans space-y-1.5 sm:space-y-2 flex-1 flex flex-col justify-between">
         <p>
-          Hi Alex, congrats on FinEdge&apos;s <span className="bg-amber-100 text-amber-900 font-semibold px-1.5 py-0.5 rounded font-mono text-xs border border-amber-200">Series B $32M round</span> and your new role heading engineering.
+          Hi Alex, congrats on FinEdge&apos;s <span className="bg-amber-100 text-amber-900 font-semibold px-1.5 py-0.5 rounded font-mono text-[10px] sm:text-xs border border-amber-200">Series B $32M round</span> and your new role heading engineering.
         </p>
         <p>
-          Saw you&apos;re expanding into London. Fast-growing FinTech teams usually face severe staging bottlenecks and server deployment latency during global scale-up.
+          Saw you&apos;re expanding into London. Fast-growing FinTech teams usually face severe staging bottlenecks during global scale-up.
         </p>
         <p className="text-gray-700 font-medium">
           Would you be open to a 10-min intro next Tuesday at 2 PM to see how we automate deployment?
         </p>
-        <p className="text-amber-900 text-xs bg-amber-50 border border-amber-200 rounded-lg p-2 font-medium">
+        <p className="text-amber-900 text-[10px] sm:text-xs bg-amber-50 border border-amber-200 rounded-lg p-2 font-medium">
           Here is how our company can help this lead: We streamline enterprise cloud deployment and automate infrastructure scaling so your team accelerates go-to-market with zero downtime.
         </p>
       </div>
@@ -596,7 +596,7 @@ function StageFollowup() {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.96, y: -15 }}
       transition={{ duration: 0.4 }}
-      className="relative z-10 w-full bg-white border border-emerald-200 rounded-2xl p-4 sm:p-6 shadow-lg h-[370px] sm:h-[385px] flex flex-col justify-between"
+      className="relative z-10 w-full bg-white border border-emerald-200 rounded-2xl p-4 sm:p-6 shadow-lg min-h-[350px] lg:h-[385px] flex flex-col justify-between"
     >
       <div className="flex items-center justify-between pb-3 mb-3 border-b border-gray-100 text-xs font-mono">
         <span className="text-emerald-800 font-bold flex items-center gap-1.5">
