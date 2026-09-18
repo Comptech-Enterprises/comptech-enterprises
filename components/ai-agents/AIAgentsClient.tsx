@@ -180,32 +180,6 @@ export function AIAgentsClient({ onBookLiveDemo }: AIAgentsClientProps = {}) {
           </div>
         </div>
       </section>
-
-      {/* ── CTA ── */}
-      <section className="py-16 lg:py-20" style={{ background: "linear-gradient(135deg, #5C0F26 0%, #3F0A1A 100%)" }}>
-        <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <Bot size={36} className="mx-auto mb-5 text-white/60" />
-            <h2 className="font-display font-extrabold text-2xl sm:text-3xl text-white mb-4">
-              Ready to put AI agents to work?
-            </h2>
-            <p className="text-white/60 mb-8 max-w-lg mx-auto">
-              Tell us your workflow bottleneck. We&apos;ll show you what an agent can do in a live demo.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-semibold bg-white text-[#5C0F26] hover:bg-gray-100 transition-colors"
-            >
-              Talk to an Expert <ArrowRight size={16} />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
     </>
   );
 }

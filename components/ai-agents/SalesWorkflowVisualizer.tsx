@@ -8,25 +8,18 @@ import {
   Mail,
   Send,
   RefreshCw,
-  Sparkles,
   CheckCircle2,
   Cpu,
-  ArrowRight,
-  TrendingUp,
-  Target,
-  ShieldCheck,
-  Calendar,
-  Activity,
   ChevronRight,
+  Activity,
   Zap,
   Building2,
   UserCheck,
   Check,
-  Flame,
   Radio,
-  Clock,
   Play,
   Pause,
+  Calendar,
 } from "lucide-react";
 
 export const STAGES = [
@@ -35,11 +28,13 @@ export const STAGES = [
     number: "01",
     name: "Prospect Discovery",
     tag: "Autonomous ICP Scanner",
-    desc: "Finding potential customers for you according to your business.",
+    desc: "Finding potential customers for you according to your business and target criteria.",
     metrics: "1,420 scanned · 38 high-match leads",
     icon: Search,
-    color: "#3B82F6",
-    gradient: "from-blue-500 to-cyan-500",
+    color: "#5C0F26", // Brand Burgundy
+    accentColor: "#E8435A",
+    lightBg: "#FDF4F6",
+    borderColor: "#F3D8DF",
   },
   {
     id: "intelligence",
@@ -49,8 +44,10 @@ export const STAGES = [
     desc: "Analyzes real-time press releases, funding rounds, and hiring shifts to find timely, irresistible conversation triggers.",
     metrics: "94% Buying Intent · Trigger: $32M Series B",
     icon: Newspaper,
-    color: "#8B5CF6",
-    gradient: "from-purple-500 to-indigo-500",
+    color: "#7C3AED", // Purple
+    accentColor: "#9333EA",
+    lightBg: "#FAF5FF",
+    borderColor: "#E9D5FF",
   },
   {
     id: "extraction",
@@ -60,8 +57,10 @@ export const STAGES = [
     desc: "Identifies key decision-makers, resolves direct verified corporate emails, and verifies deliverability with zero bounce.",
     metrics: "Generated 200 emails today",
     icon: Mail,
-    color: "#EC4899",
-    gradient: "from-pink-500 to-rose-500",
+    color: "#0284C7", // Sky/Blue
+    accentColor: "#0EA5E9",
+    lightBg: "#F0F9FF",
+    borderColor: "#BAE6FD",
   },
   {
     id: "outreach",
@@ -71,8 +70,10 @@ export const STAGES = [
     desc: "Drafts hyper-tailored emails referencing recent company news, pain points, and specific value propositions in real-time, showing how our company can help this list.",
     metrics: "85% Predicted Open Rate · Ready to Dispatch",
     icon: Send,
-    color: "#F59E0B",
-    gradient: "from-amber-500 to-orange-500",
+    color: "#D97706", // Amber
+    accentColor: "#F59E0B",
+    lightBg: "#FFFBEB",
+    borderColor: "#FDE68A",
   },
   {
     id: "followup",
@@ -82,8 +83,10 @@ export const STAGES = [
     desc: "Executes polite, multi-touch follow-ups, detects positive replies, schedules calendar bookings, and syncs directly to your CRM.",
     metrics: "Meeting Booked · Auto-Synced to CRM",
     icon: RefreshCw,
-    color: "#10B981",
-    gradient: "from-emerald-500 to-teal-500",
+    color: "#059669", // Emerald
+    accentColor: "#10B981",
+    lightBg: "#ECFDF5",
+    borderColor: "#A7F3D0",
   },
 ];
 
@@ -104,55 +107,54 @@ export function SalesWorkflowVisualizer() {
   }, [isPlaying]);
 
   const stage = STAGES[activeStage];
-  const Icon = stage.icon;
 
   return (
     <div className="relative w-full max-w-6xl mx-auto my-6">
-      {/* Ambient background glow & parallax grid */}
-      <div className="absolute -inset-4 bg-gradient-to-r from-[#5C0F26]/20 via-purple-900/15 to-blue-900/20 rounded-[36px] blur-2xl opacity-70 pointer-events-none" />
+      {/* Ambient background glow matching site brand palette */}
+      <div className="absolute -inset-3 bg-gradient-to-r from-[#5C0F26]/10 via-[#E8435A]/5 to-purple-500/10 rounded-[36px] blur-2xl opacity-60 pointer-events-none" />
 
-      {/* Main HUD Console */}
+      {/* Main Light Theme HUD Console */}
       <div
-        className="relative bg-[#0A0C12] border border-white/10 rounded-3xl shadow-2xl overflow-hidden backdrop-blur-xl"
+        className="relative bg-white border border-gray-200/90 rounded-3xl shadow-xl overflow-hidden"
         onMouseEnter={() => setIsPlaying(false)}
         onMouseLeave={() => setIsPlaying(true)}
       >
         {/* Top Telemetry & Control Bar */}
-        <div className="flex flex-wrap items-center justify-between px-6 py-4 border-b border-white/10 bg-white/[0.02]">
+        <div className="flex flex-wrap items-center justify-between px-4 sm:px-6 py-3.5 border-b border-gray-100 bg-gray-50/80">
           <div className="flex items-center gap-3">
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
             </span>
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-gray-300 flex items-center gap-2">
-              <Cpu size={14} className="text-blue-400" />
-              Sales AI Agent
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-gray-800 flex items-center gap-2">
+              <Cpu size={14} className="text-[#5C0F26]" />
+              Sales AI Agent · Live Simulation
             </span>
           </div>
 
           {/* Telemetry Chips */}
-          <div className="hidden sm:flex items-center gap-4 text-[11px] font-mono text-gray-400">
-            <div className="flex items-center gap-1.5 bg-white/5 px-2.5 py-1 rounded-md border border-white/5">
-              <Activity size={12} className="text-emerald-400 animate-pulse" />
-              <span>Throughput: <strong className="text-gray-200">185 tok/s</strong></span>
+          <div className="flex items-center gap-2 sm:gap-4 text-[11px] font-mono text-gray-500">
+            <div className="hidden sm:flex items-center gap-1.5 bg-white px-2.5 py-1 rounded-lg border border-gray-200 shadow-xs">
+              <Activity size={12} className="text-emerald-600 animate-pulse" />
+              <span>Throughput: <strong className="text-gray-900">185 tok/s</strong></span>
             </div>
-            <div className="flex items-center gap-1.5 bg-white/5 px-2.5 py-1 rounded-md border border-white/5">
-              <Zap size={12} className="text-amber-400" />
-              <span>Latency: <strong className="text-gray-200">14ms</strong></span>
+            <div className="hidden sm:flex items-center gap-1.5 bg-white px-2.5 py-1 rounded-lg border border-gray-200 shadow-xs">
+              <Zap size={12} className="text-amber-500" />
+              <span>Latency: <strong className="text-gray-900">14ms</strong></span>
             </div>
             <button
               onClick={() => setIsPlaying(!isPlaying)}
               aria-label={isPlaying ? "Pause autoplay" : "Start autoplay"}
-              className="flex items-center gap-1.5 bg-white/10 hover:bg-white/15 text-white px-2.5 py-1 rounded-md border border-white/10 transition-colors cursor-pointer"
+              className="flex items-center gap-1.5 bg-white hover:bg-gray-100 text-gray-700 px-2.5 py-1 rounded-lg border border-gray-200 shadow-xs transition-colors cursor-pointer text-xs font-medium"
             >
-              {isPlaying ? <Pause size={12} /> : <Play size={12} />}
-              <span className="text-[10px]">{isPlaying ? "Pause" : "Auto-Play"}</span>
+              {isPlaying ? <Pause size={12} className="text-[#5C0F26]" /> : <Play size={12} className="text-[#5C0F26]" />}
+              <span className="text-[11px] font-semibold">{isPlaying ? "Pause" : "Auto-Play"}</span>
             </button>
           </div>
         </div>
 
         {/* Step Navigation Rail */}
-        <div className="grid grid-cols-5 border-b border-white/10 bg-black/30">
+        <div className="grid grid-cols-5 border-b border-gray-200 bg-gray-50/50">
           {STAGES.map((s, idx) => {
             const SIcon = s.icon;
             const isActive = activeStage === idx;
@@ -163,30 +165,35 @@ export function SalesWorkflowVisualizer() {
                   setActiveStage(idx);
                   setIsPlaying(false);
                 }}
-                className={`relative px-3 py-3.5 sm:px-4 sm:py-4 text-left transition-all duration-300 border-r border-white/5 last:border-r-0 flex flex-col justify-between ${
-                  isActive ? "bg-white/[0.06]" : "hover:bg-white/[0.02] opacity-60 hover:opacity-100"
+                className={`relative px-2 sm:px-4 py-3 sm:py-4 text-left transition-all duration-300 border-r border-gray-200/70 last:border-r-0 flex flex-col justify-between ${
+                  isActive ? "bg-white shadow-xs" : "hover:bg-white/60 opacity-70 hover:opacity-100"
                 }`}
               >
                 <div className="flex items-center justify-between mb-1.5">
                   <span
-                    className="text-[10px] font-mono font-black"
-                    style={{ color: isActive ? s.color : "#9CA3AF" }}
+                    className="text-[10px] sm:text-[11px] font-mono font-bold"
+                    style={{ color: isActive ? s.color : "#6B7280" }}
                   >
                     PHASE {s.number}
                   </span>
                   <SIcon
                     size={14}
-                    style={{ color: isActive ? s.color : "#6B7280" }}
+                    className="hidden xs:block sm:block"
+                    style={{ color: isActive ? s.color : "#9CA3AF" }}
                   />
                 </div>
-                <div className="text-xs sm:text-sm font-bold text-gray-200 truncate">
+                <div
+                  className={`text-xs sm:text-sm font-bold truncate transition-colors ${
+                    isActive ? "text-gray-900 font-extrabold" : "text-gray-600"
+                  }`}
+                >
                   {s.name}
                 </div>
 
-                {/* Active Underline Beam */}
+                {/* Active Underline Beam in Brand Color */}
                 {isActive && (
                   <motion.div
-                    layoutId="activeTabBeam"
+                    layoutId="activeTabBeamLight"
                     className="absolute bottom-0 left-0 right-0 h-0.5"
                     style={{ background: s.color }}
                   />
@@ -200,33 +207,47 @@ export function SalesWorkflowVisualizer() {
         <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[460px]">
           
           {/* Left: Phase Narrative & Controller */}
-          <div className="lg:col-span-5 p-6 sm:p-8 lg:p-10 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/10 bg-gradient-to-b from-white/[0.02] to-transparent">
+          <div className="lg:col-span-5 p-6 sm:p-8 lg:p-10 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-gray-100 bg-white">
             <div>
-              <h3 className="font-display font-black text-2xl sm:text-3xl text-white tracking-tight mb-3">
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-mono font-bold uppercase tracking-wider mb-3"
+                style={{ backgroundColor: stage.lightBg, color: stage.color, borderColor: stage.borderColor, borderWidth: 1 }}
+              >
+                <span>Phase {stage.number}</span>
+                <span>•</span>
+                <span>{stage.tag}</span>
+              </div>
+
+              <h3 className="font-display font-extrabold text-2xl sm:text-3xl text-gray-900 tracking-tight mb-3">
                 {stage.name}
               </h3>
 
-              <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-6">
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-6">
                 {stage.desc}
               </p>
 
-              {/* Live Metric Pill */}
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-4 mb-6">
-                <div className="text-[10px] font-mono uppercase tracking-widest text-gray-400 mb-1 flex items-center gap-1.5">
-                  <Radio size={12} className="text-emerald-400 animate-ping" />
+              {/* Live Metric Pill in Light Brand Theme */}
+              <div
+                className="rounded-2xl p-4 mb-6 border transition-all"
+                style={{
+                  backgroundColor: stage.lightBg,
+                  borderColor: stage.borderColor,
+                }}
+              >
+                <div className="text-[10px] font-mono uppercase tracking-widest text-gray-500 mb-1 flex items-center gap-1.5 font-bold">
+                  <Radio size={12} className="text-emerald-600 animate-ping" />
                   Live Execution Result
                 </div>
-                <div className="text-sm font-bold text-white flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-emerald-400 shrink-0" />
+                <div className="text-sm font-bold text-gray-900 flex items-center gap-2">
+                  <CheckCircle2 size={16} className="text-emerald-600 shrink-0" />
                   <span>{stage.metrics}</span>
                 </div>
               </div>
             </div>
 
             {/* Quick Navigation Buttons */}
-            <div className="flex items-center justify-between pt-4 border-t border-white/10">
-              <div className="text-xs font-mono text-gray-400">
-                Step <strong className="text-white">{activeStage + 1}</strong> of {STAGES.length}
+            <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+              <div className="text-xs font-mono text-gray-500">
+                Step <strong className="text-gray-900 font-bold">{activeStage + 1}</strong> of {STAGES.length}
               </div>
               <div className="flex items-center gap-2">
                 <button
@@ -234,7 +255,7 @@ export function SalesWorkflowVisualizer() {
                     setActiveStage((prev) => (prev - 1 + STAGES.length) % STAGES.length);
                     setIsPlaying(false);
                   }}
-                  className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-white/5 hover:bg-white/10 text-gray-300 border border-white/10 transition-colors"
+                  className="px-3.5 py-1.5 text-xs font-semibold rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-200 transition-colors"
                 >
                   Prev
                 </button>
@@ -243,8 +264,10 @@ export function SalesWorkflowVisualizer() {
                     setActiveStage((prev) => (prev + 1) % STAGES.length);
                     setIsPlaying(false);
                   }}
-                  className="px-3 py-1.5 text-xs font-semibold rounded-lg text-white transition-all flex items-center gap-1 shadow-sm"
-                  style={{ background: stage.color }}
+                  className="px-4 py-1.5 text-xs font-bold rounded-xl text-white transition-all flex items-center gap-1 shadow-md hover:opacity-95"
+                  style={{
+                    background: `linear-gradient(135deg, ${stage.color}, ${stage.accentColor})`,
+                  }}
                 >
                   Next Phase <ChevronRight size={14} />
                 </button>
@@ -252,20 +275,20 @@ export function SalesWorkflowVisualizer() {
             </div>
           </div>
 
-          {/* Right: The Videographic Hyperframe Screen */}
-          <div className="lg:col-span-7 p-6 sm:p-8 lg:p-10 flex flex-col justify-center bg-black/40 relative overflow-hidden">
-            {/* Background cyber grid */}
+          {/* Right: The Light Theme Hyperframe Screen */}
+          <div className="lg:col-span-7 p-5 sm:p-8 lg:p-10 flex flex-col justify-center bg-gray-50/70 relative overflow-hidden">
+            {/* Subtle light cyber grid */}
             <div
-              className="absolute inset-0 opacity-10 pointer-events-none"
+              className="absolute inset-0 opacity-40 pointer-events-none"
               style={{
-                backgroundImage: "linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px)",
+                backgroundImage: "linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px)",
                 backgroundSize: "24px 24px",
               }}
             />
 
-            {/* Ambient Aurora behind hyperframe */}
+            {/* Soft Ambient Aurora behind hyperframe */}
             <div
-              className="absolute w-72 h-72 rounded-full blur-[90px] opacity-25 pointer-events-none transition-all duration-700"
+              className="absolute w-72 h-72 rounded-full blur-[90px] opacity-15 pointer-events-none transition-all duration-700"
               style={{ background: stage.color }}
             />
 
@@ -296,15 +319,15 @@ function StageDiscovery() {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.96, y: -15 }}
       transition={{ duration: 0.4 }}
-      className="relative z-10 w-full bg-[#0F131E] border border-blue-500/30 rounded-2xl p-5 sm:p-6 shadow-2xl"
+      className="relative z-10 w-full bg-white border border-gray-200/90 rounded-2xl p-5 sm:p-6 shadow-lg"
     >
       {/* Top Scanner Line */}
-      <div className="flex items-center justify-between pb-3 mb-4 border-b border-white/10 text-xs font-mono">
-        <span className="text-blue-400 flex items-center gap-1.5">
-          <Search size={14} className="animate-spin text-blue-400" />
-          Autonomous Web & LinkedIn Query
+      <div className="flex items-center justify-between pb-3 mb-4 border-b border-gray-100 text-xs font-mono">
+        <span className="text-[#5C0F26] font-bold flex items-center gap-1.5">
+          <Search size={14} className="animate-spin text-[#5C0F26]" />
+          Autonomous Web &amp; LinkedIn Query
         </span>
-        <span className="text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+        <span className="text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200 font-bold text-[11px]">
           Match Engine Active
         </span>
       </div>
@@ -312,33 +335,37 @@ function StageDiscovery() {
       {/* Discovered Lead Cards */}
       <div className="space-y-2.5">
         {[
-          { name: "FinEdge Systems", location: "San Francisco, CA", size: "180 Emp", funding: "Series B $32M", color: "text-emerald-400", border: "border-emerald-500/30" },
-          { name: "Apex Logistics AI", location: "New York, NY", size: "320 Emp", funding: "Series A $14M", color: "text-blue-400", border: "border-blue-500/30" },
-          { name: "Nova Health Tech", location: "Boston, MA", size: "95 Emp", funding: "Seed $4.5M", color: "text-purple-400", border: "border-purple-500/30" },
+          { name: "FinEdge Systems", location: "San Francisco, CA", size: "180 Emp", funding: "Series B $32M", match: "99% ICP Match", badgeBg: "bg-emerald-50 text-emerald-700 border-emerald-200" },
+          { name: "Apex Logistics AI", location: "New York, NY", size: "320 Emp", funding: "Series A $14M", match: "97% ICP Match", badgeBg: "bg-blue-50 text-blue-700 border-blue-200" },
+          { name: "Nova Health Tech", location: "Boston, MA", size: "95 Emp", funding: "Seed $4.5M", match: "94% ICP Match", badgeBg: "bg-purple-50 text-purple-700 border-purple-200" },
         ].map((lead, i) => (
           <motion.div
             key={lead.name}
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: i * 0.15 + 0.1 }}
-            className={`flex items-center justify-between p-3 rounded-xl bg-white/[0.04] border ${lead.border} hover:bg-white/[0.07] transition-colors`}
+            className="flex items-center justify-between p-3.5 rounded-xl bg-gray-50/80 border border-gray-200/80 hover:bg-white hover:border-[#5C0F26]/30 hover:shadow-xs transition-all"
           >
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
+              <div className="w-9 h-9 rounded-xl bg-[#FDF4F6] border border-[#F3D8DF] flex items-center justify-center text-[#5C0F26]">
                 <Building2 size={18} />
               </div>
               <div>
-                <div className="text-xs sm:text-sm font-bold text-white flex items-center gap-2">
+                <div className="text-xs sm:text-sm font-bold text-gray-900 flex items-center gap-2">
                   {lead.name}
-                  <span className="text-[10px] font-mono text-gray-400 font-normal">{lead.location}</span>
+                  <span className="text-[10px] font-mono text-gray-500 font-normal">{lead.location}</span>
                 </div>
-                <div className="text-[11px] text-gray-400 flex items-center gap-2 mt-0.5">
+                <div className="text-[11px] text-gray-500 flex items-center gap-2 mt-0.5">
                   <span>{lead.size}</span>
                   <span>•</span>
                   <span>{lead.funding}</span>
                 </div>
               </div>
             </div>
+
+            <span className={`text-[10px] font-mono font-bold px-2.5 py-1 rounded-lg border ${lead.badgeBg}`}>
+              {lead.match}
+            </span>
           </motion.div>
         ))}
       </div>
@@ -347,7 +374,7 @@ function StageDiscovery() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Hyperframe 02: News Intelligence (NLP Laser Scan)                 */
+/*  Hyperframe 02: News Intelligence (NLP Semantic Scan)              */
 /* ------------------------------------------------------------------ */
 
 function StageIntelligence() {
@@ -357,38 +384,41 @@ function StageIntelligence() {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.96, y: -15 }}
       transition={{ duration: 0.4 }}
-      className="relative z-10 w-full bg-[#0F131E] border border-purple-500/30 rounded-2xl p-5 sm:p-6 shadow-2xl overflow-hidden"
+      className="relative z-10 w-full bg-white border border-purple-200 rounded-2xl p-5 sm:p-6 shadow-lg overflow-hidden"
     >
       {/* Animated Laser Scanning Line */}
       <motion.div
         animate={{ y: [0, 180, 0] }}
         transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-        className="absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-purple-400 to-transparent shadow-[0_0_12px_#A855F7] z-20 pointer-events-none"
+        className="absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-purple-500 to-transparent shadow-[0_0_10px_rgba(168,85,247,0.4)] z-20 pointer-events-none"
       />
 
-      <div className="flex items-center justify-between pb-3 mb-4 border-b border-white/10 text-xs font-mono">
-        <span className="text-purple-400 flex items-center gap-1.5">
-          <Newspaper size={14} className="text-purple-400" />
-          NLP Document Parser & Signal Extractor
+      <div className="flex items-center justify-between pb-3 mb-4 border-b border-gray-100 text-xs font-mono">
+        <span className="text-purple-700 font-bold flex items-center gap-1.5">
+          <Newspaper size={14} className="text-purple-600" />
+          NLP Document Parser &amp; Signal Extractor
+        </span>
+        <span className="text-purple-700 bg-purple-50 px-2.5 py-0.5 rounded-full border border-purple-200 text-[11px] font-bold">
+          High Buying Intent
         </span>
       </div>
 
       {/* Extracted Trigger Signals */}
       <div className="space-y-3">
-        <div className="p-3.5 rounded-xl bg-purple-950/30 border border-purple-500/30 text-xs leading-relaxed text-gray-300">
-          <div className="flex items-center gap-2 mb-1">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="font-mono font-bold text-purple-300 uppercase text-[10px]">Trigger Event #1: Capital Expansion</span>
+        <div className="p-3.5 rounded-xl bg-purple-50/60 border border-purple-200 text-xs leading-relaxed text-gray-800">
+          <div className="flex items-center gap-2 mb-1.5">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="font-mono font-bold text-purple-900 uppercase text-[10px] tracking-wider">Trigger Event #1: Capital Expansion</span>
           </div>
-          &ldquo;FinEdge Systems secures <strong className="text-white bg-purple-500/20 px-1 py-0.5 rounded">Series B $32M funding</strong> to accelerate enterprise infrastructure & international sales.&rdquo;
+          &ldquo;FinEdge Systems secures <strong className="text-purple-950 bg-purple-100/90 font-bold px-1.5 py-0.5 rounded border border-purple-200">Series B $32M funding</strong> to accelerate enterprise infrastructure &amp; international sales.&rdquo;
         </div>
 
-        <div className="p-3.5 rounded-xl bg-purple-950/30 border border-purple-500/30 text-xs leading-relaxed text-gray-300">
-          <div className="flex items-center gap-2 mb-1">
-            <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-            <span className="font-mono font-bold text-blue-300 uppercase text-[10px]">Trigger Event #2: Executive Hire</span>
+        <div className="p-3.5 rounded-xl bg-blue-50/60 border border-blue-200 text-xs leading-relaxed text-gray-800">
+          <div className="flex items-center gap-2 mb-1.5">
+            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+            <span className="font-mono font-bold text-blue-900 uppercase text-[10px] tracking-wider">Trigger Event #2: Executive Hire</span>
           </div>
-          &ldquo;Appoints new <strong className="text-white bg-blue-500/20 px-1 py-0.5 rounded">VP of Technology Alex Rivera</strong> to overhaul cloud security & automated workflows.&rdquo;
+          &ldquo;Appoints new <strong className="text-blue-950 bg-blue-100/90 font-bold px-1.5 py-0.5 rounded border border-blue-200">VP of Technology Alex Rivera</strong> to overhaul cloud security &amp; automated workflows.&rdquo;
         </div>
       </div>
     </motion.div>
@@ -406,14 +436,14 @@ function StageExtraction() {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.96, y: -15 }}
       transition={{ duration: 0.4 }}
-      className="relative z-10 w-full bg-[#0F131E] border border-pink-500/30 rounded-2xl p-5 sm:p-6 shadow-2xl"
+      className="relative z-10 w-full bg-white border border-sky-200 rounded-2xl p-5 sm:p-6 shadow-lg"
     >
-      <div className="flex items-center justify-between pb-3 mb-4 border-b border-white/10 text-xs font-mono">
-        <span className="text-pink-400 flex items-center gap-1.5">
-          <UserCheck size={14} className="text-pink-400" />
+      <div className="flex items-center justify-between pb-3 mb-4 border-b border-gray-100 text-xs font-mono">
+        <span className="text-sky-700 font-bold flex items-center gap-1.5">
+          <UserCheck size={14} className="text-sky-600" />
           Contact Search &amp; Decision Maker Resolution
         </span>
-        <span className="text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+        <span className="text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200 font-bold text-[11px]">
           Deliverability: 100%
         </span>
       </div>
@@ -421,30 +451,30 @@ function StageExtraction() {
       {/* Contact Cards */}
       <div className="space-y-2.5">
         {[
-          { name: "Alex Rivera", role: "VP of Technology / CTO", email: "alex.rivera@finedge.io", status: "Verified Primary Target", company: "FinEdge Systems" },
-          { name: "Sarah Chen", role: "Head of Infrastructure", email: "sarah.chen@apexflow.ai", status: "Technical Influencer", company: "ApexFlow AI" },
-          { name: "Marcus Vance", role: "Director of IT Operations", email: "m.vance@cloudscale.net", status: "Operational Evaluator", company: "CloudScale Tech" },
+          { name: "Alex Rivera", role: "VP of Technology / CTO", email: "alex.rivera@finedge.io", company: "FinEdge Systems" },
+          { name: "Sarah Chen", role: "Head of Infrastructure", email: "sarah.chen@apexflow.ai", company: "ApexFlow AI" },
+          { name: "Marcus Vance", role: "Director of IT Operations", email: "m.vance@cloudscale.net", company: "CloudScale Tech" },
         ].map((contact, i) => (
           <motion.div
             key={contact.email}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.15 + 0.1 }}
-            className="flex flex-col sm:flex-row sm:items-center justify-between p-3 rounded-xl bg-white/[0.04] border border-pink-500/20 hover:border-pink-500/40 transition-colors gap-2"
+            className="flex flex-col sm:flex-row sm:items-center justify-between p-3.5 rounded-xl bg-gray-50/80 border border-gray-200 hover:border-sky-300 hover:bg-white transition-all gap-2"
           >
             <div>
-              <div className="text-xs sm:text-sm font-bold text-white flex items-center gap-2">
+              <div className="text-xs sm:text-sm font-bold text-gray-900 flex items-center gap-2">
                 {contact.name}
-                <span className="text-[10px] font-mono text-pink-300 bg-pink-500/10 px-2 py-0.5 rounded">
+                <span className="text-[10px] font-mono text-sky-800 bg-sky-100/90 font-bold px-2 py-0.5 rounded border border-sky-200">
                   {contact.role}
                 </span>
               </div>
-              <div className="text-[11px] font-mono text-gray-400 mt-0.5">{contact.email}</div>
+              <div className="text-[11px] font-mono text-gray-500 mt-0.5">{contact.email}</div>
             </div>
 
             <div className="flex items-center gap-2 shrink-0">
-              <span className="text-[11px] font-mono text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-md flex items-center gap-1.5">
-                <Building2 size={12} className="text-emerald-400" />
+              <span className="text-[11px] font-mono text-gray-700 bg-white border border-gray-200 px-2.5 py-1 rounded-lg flex items-center gap-1.5 shadow-xs">
+                <Building2 size={12} className="text-sky-600" />
                 {contact.company}
               </span>
             </div>
@@ -466,33 +496,36 @@ function StageOutreach() {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.96, y: -15 }}
       transition={{ duration: 0.4 }}
-      className="relative z-10 w-full bg-[#0F131E] border border-amber-500/30 rounded-2xl p-5 sm:p-6 shadow-2xl"
+      className="relative z-10 w-full bg-white border border-amber-200 rounded-2xl p-5 sm:p-6 shadow-lg"
     >
-      <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/10 text-xs font-mono">
-        <span className="text-amber-400 flex items-center gap-1.5">
-          <Send size={14} className="text-amber-400" />
+      <div className="flex items-center justify-between pb-3 mb-3 border-b border-gray-100 text-xs font-mono">
+        <span className="text-amber-800 font-bold flex items-center gap-1.5">
+          <Send size={14} className="text-amber-600" />
           Outreach Generation
+        </span>
+        <span className="text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200 text-[11px] font-bold">
+          Score: 98/100
         </span>
       </div>
 
       {/* Email Mock Header */}
-      <div className="bg-white/5 rounded-xl p-3 border border-white/5 text-[11px] font-mono space-y-1 mb-3 text-gray-300">
-        <div><strong className="text-gray-400">To:</strong> Alex Rivera &lt;alex.rivera@finedge.io&gt;</div>
-        <div><strong className="text-gray-400">Subject:</strong> FinEdge&apos;s $32M Series B &amp; scaling IT infrastructure</div>
+      <div className="bg-gray-50 rounded-xl p-3 border border-gray-200 text-[11px] font-mono space-y-1 mb-3 text-gray-700">
+        <div><strong className="text-gray-500">To:</strong> Alex Rivera &lt;alex.rivera@finedge.io&gt;</div>
+        <div><strong className="text-gray-500">Subject:</strong> FinEdge&apos;s $32M Series B &amp; scaling IT infrastructure</div>
       </div>
 
       {/* Email Body Preview with Contextual Tokens */}
-      <div className="p-4 rounded-xl bg-white/[0.03] border border-amber-500/20 text-xs sm:text-sm text-gray-300 leading-relaxed font-sans space-y-2.5">
+      <div className="p-4 rounded-xl bg-amber-50/30 border border-amber-200 text-xs sm:text-sm text-gray-800 leading-relaxed font-sans space-y-2.5">
         <p>
-          Hi Alex, congrats on FinEdge&apos;s <span className="bg-amber-500/20 text-amber-300 px-1.5 py-0.5 rounded font-mono text-xs">Series B $32M round</span> and your new role heading engineering.
+          Hi Alex, congrats on FinEdge&apos;s <span className="bg-amber-100 text-amber-900 font-semibold px-1.5 py-0.5 rounded font-mono text-xs border border-amber-200">Series B $32M round</span> and your new role heading engineering.
         </p>
         <p>
           Saw you&apos;re expanding into London. Fast-growing FinTech teams usually face severe staging bottlenecks and server deployment latency during global scale-up.
         </p>
-        <p className="text-gray-300">
+        <p className="text-gray-700 font-medium">
           Would you be open to a 10-min intro next Tuesday at 2 PM to see how we automate deployment?
         </p>
-        <p className="text-amber-300/90 text-xs bg-amber-500/10 border border-amber-500/20 rounded-lg p-2.5">
+        <p className="text-amber-900 text-xs bg-amber-50 border border-amber-200 rounded-lg p-2.5 font-medium">
           Here is how our company can help this list: We streamline enterprise cloud deployment and automate infrastructure scaling so your team accelerates go-to-market with zero downtime.
         </p>
       </div>
@@ -511,14 +544,14 @@ function StageFollowup() {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.96, y: -15 }}
       transition={{ duration: 0.4 }}
-      className="relative z-10 w-full bg-[#0F131E] border border-emerald-500/30 rounded-2xl p-5 sm:p-6 shadow-2xl"
+      className="relative z-10 w-full bg-white border border-emerald-200 rounded-2xl p-5 sm:p-6 shadow-lg"
     >
-      <div className="flex items-center justify-between pb-3 mb-4 border-b border-white/10 text-xs font-mono">
-        <span className="text-emerald-400 flex items-center gap-1.5">
-          <Calendar size={14} className="text-emerald-400" />
+      <div className="flex items-center justify-between pb-3 mb-4 border-b border-gray-100 text-xs font-mono">
+        <span className="text-emerald-800 font-bold flex items-center gap-1.5">
+          <Calendar size={14} className="text-emerald-600" />
           Automated Sequence &amp; Calendar Booking
         </span>
-        <span className="text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+        <span className="text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200 font-bold text-[11px]">
           Conversion: Won 🚀
         </span>
       </div>
@@ -526,36 +559,37 @@ function StageFollowup() {
       {/* Multi-Touch Sequence Progression */}
       <div className="space-y-3">
         {/* Step 1: Initial */}
-        <div className="flex items-center justify-between p-2.5 rounded-xl bg-white/[0.03] border border-white/5 text-xs text-gray-300">
+        <div className="flex items-center justify-between p-3 rounded-xl bg-gray-50 border border-gray-200 text-xs text-gray-700">
           <div className="flex items-center gap-2">
-            <span className="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center font-mono text-[10px]">D1</span>
+            <span className="w-6 h-6 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-mono font-bold text-[10px]">D1</span>
             <span>Initial Outreach Delivered</span>
           </div>
+          <span className="text-emerald-600 font-bold text-xs">✓ Opened</span>
         </div>
 
         {/* Step 2: Incoming Positive Reply */}
-        <div className="p-3.5 rounded-xl bg-emerald-950/40 border border-emerald-500/40 text-xs text-white">
+        <div className="p-3.5 rounded-xl bg-emerald-50/80 border border-emerald-300 text-xs text-gray-900">
           <div className="flex items-center justify-between mb-1.5">
-            <span className="font-mono font-bold text-emerald-400 text-[10px] uppercase flex items-center gap-1">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+            <span className="font-mono font-bold text-emerald-800 text-[10px] uppercase flex items-center gap-1 tracking-wider">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
               Incoming Prospect Reply (Alex Rivera)
             </span>
-            <span className="text-gray-400 text-[10px] font-mono">10 mins ago</span>
+            <span className="text-gray-500 text-[10px] font-mono">10 mins ago</span>
           </div>
-          <p className="italic text-gray-200">
+          <p className="italic text-gray-800 font-medium">
             &ldquo;Thanks for reaching out. Perfect timing — let&apos;s connect on Thursday at 2:30 PM. Sending invite.&rdquo;
           </p>
         </div>
 
         {/* Auto Actions */}
-        <div className="grid grid-cols-2 gap-2 text-[11px] font-mono text-gray-300">
-          <div className="p-2.5 rounded-lg bg-white/5 border border-white/5 flex items-center gap-2">
-            <Check size={14} className="text-emerald-400 shrink-0" />
-            <span className="truncate">Google Calendar Synced</span>
+        <div className="grid grid-cols-2 gap-2 text-[11px] font-mono text-gray-800">
+          <div className="p-2.5 rounded-xl bg-white border border-gray-200 flex items-center gap-2 shadow-xs">
+            <Check size={14} className="text-emerald-600 shrink-0" />
+            <span className="truncate font-semibold">Google Calendar Synced</span>
           </div>
-          <div className="p-2.5 rounded-lg bg-white/5 border border-white/5 flex items-center gap-2">
-            <Check size={14} className="text-emerald-400 shrink-0" />
-            <span className="truncate">HubSpot / CRM Updated</span>
+          <div className="p-2.5 rounded-xl bg-white border border-gray-200 flex items-center gap-2 shadow-xs">
+            <Check size={14} className="text-emerald-600 shrink-0" />
+            <span className="truncate font-semibold">HubSpot CRM Updated</span>
           </div>
         </div>
       </div>
