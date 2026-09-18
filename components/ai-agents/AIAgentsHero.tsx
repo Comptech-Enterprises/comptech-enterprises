@@ -70,16 +70,15 @@ export function AIAgentsHero({ onBookLiveDemo }: AIAgentsHeroProps = {}) {
         />
       </div>
 
-      {/* ── 2. SVG Fluid Flowing Glowing Wave Lines (Vertical Flow) ── */}
+      {/* ── 2a. Mobile SVG Wave Lines (Vertical Flow for Mobile < md) ── */}
       <svg
-        className="absolute inset-0 w-full h-full pointer-events-none z-1 transition-opacity duration-1000"
+        className="absolute inset-0 w-full h-full pointer-events-none z-1 transition-opacity duration-1000 block md:hidden"
         style={{ opacity: showCanvasAndWaves ? 0.45 : 0 }}
         viewBox="0 0 1920 1080"
         preserveAspectRatio="none"
         fill="none"
       >
         <motion.path
-          ref={path1Ref}
           d="M 600,-100 C 1500,250 200,600 1000,1180"
           stroke="#1D4ED8"
           strokeWidth="6"
@@ -89,7 +88,6 @@ export function AIAgentsHero({ onBookLiveDemo }: AIAgentsHeroProps = {}) {
           transition={{ duration: 1.4, ease: [0.42, 0, 0.58, 1] }}
         />
         <motion.path
-          ref={path2Ref}
           d="M 1300,-100 C 300,300 1600,750 800,1180"
           stroke="#8B5CF6"
           strokeWidth="5"
@@ -99,8 +97,47 @@ export function AIAgentsHero({ onBookLiveDemo }: AIAgentsHeroProps = {}) {
           transition={{ duration: 1.2, delay: 0.15, ease: [0.42, 0, 0.58, 1] }}
         />
         <motion.path
-          ref={path3Ref}
           d="M 960,-100 C 450,250 1450,650 700,1180"
+          stroke="#E8435A"
+          strokeWidth="4"
+          strokeLinecap="round"
+          initial={{ pathLength: 0 }}
+          animate={showCanvasAndWaves ? { pathLength: 1 } : { pathLength: 0 }}
+          transition={{ duration: 1.0, delay: 0.3, ease: [0.42, 0, 0.58, 1] }}
+        />
+      </svg>
+
+      {/* ── 2b. Desktop SVG Wave Lines (Horizontal Flow for Laptop/Desktop >= md) ── */}
+      <svg
+        className="absolute inset-0 w-full h-full pointer-events-none z-1 transition-opacity duration-1000 hidden md:block"
+        style={{ opacity: showCanvasAndWaves ? 0.45 : 0 }}
+        viewBox="0 0 1920 1080"
+        preserveAspectRatio="none"
+        fill="none"
+      >
+        <motion.path
+          ref={path1Ref}
+          d="M -100,540 C 350,150 650,900 960,540 C 1270,180 1570,930 2020,540"
+          stroke="#1D4ED8"
+          strokeWidth="7"
+          strokeLinecap="round"
+          initial={{ pathLength: 0 }}
+          animate={showCanvasAndWaves ? { pathLength: 1 } : { pathLength: 0 }}
+          transition={{ duration: 1.4, ease: [0.42, 0, 0.58, 1] }}
+        />
+        <motion.path
+          ref={path2Ref}
+          d="M -100,640 C 450,950 750,50 1100,440 C 1450,830 1650,150 2020,440"
+          stroke="#8B5CF6"
+          strokeWidth="5"
+          strokeLinecap="round"
+          initial={{ pathLength: 0 }}
+          animate={showCanvasAndWaves ? { pathLength: 1 } : { pathLength: 0 }}
+          transition={{ duration: 1.2, delay: 0.15, ease: [0.42, 0, 0.58, 1] }}
+        />
+        <motion.path
+          ref={path3Ref}
+          d="M -100,440 C 250,350 550,950 800,640 C 1050,330 1350,50 2020,640"
           stroke="#E8435A"
           strokeWidth="4"
           strokeLinecap="round"
