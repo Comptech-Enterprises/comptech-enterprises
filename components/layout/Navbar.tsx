@@ -111,7 +111,7 @@ export function Navbar({ transparent = false }: NavbarProps) {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-6">
             {(NAV_LINKS as NavLink[]).map((link) =>
               link.groups ? (
                 <div key={link.label} className="relative" ref={dropdownRef}>
@@ -122,7 +122,7 @@ export function Navbar({ transparent = false }: NavbarProps) {
                       setHoveredGroup(next ? link.groups![0].label : null);
                     }}
                     className={clsx(
-                      `flex items-center gap-1 px-4 py-2 rounded-lg text-[15px] font-medium transition-all duration-200 ${hoverBg}`,
+                      `flex items-center gap-1.5 px-3 py-2 rounded-lg text-base lg:text-[17px] font-semibold transition-all duration-200 ${hoverBg}`,
                       textColor,
                       pathname.startsWith(link.href) && activeColor,
                     )}
@@ -131,7 +131,7 @@ export function Navbar({ transparent = false }: NavbarProps) {
                   >
                     {link.label}
                     <ChevronDown
-                      size={14}
+                      size={16}
                       className={clsx("transition-transform duration-200", dropdownOpen && "rotate-180")}
                     />
                   </button>
@@ -187,7 +187,7 @@ export function Navbar({ transparent = false }: NavbarProps) {
                   key={link.href}
                   href={link.href}
                   className={clsx(
-                    `px-4 py-2 rounded-lg text-[15px] font-medium transition-all duration-200 ${hoverBg}`,
+                    `px-3 py-2 rounded-lg text-base lg:text-[17px] font-semibold transition-all duration-200 ${hoverBg}`,
                     textColor,
                     pathname === link.href && activeColor,
                   )}
