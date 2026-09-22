@@ -56,35 +56,35 @@ export function Testimonials() {
 
           </div>
 
-          {/* ── Right: Continuous Downward Ticker + Scrollable Container ── */}
+          {/* ── Right: Continuous Horizontal Carousel ── */}
           <div
-            className="w-full flex-1 relative h-[560px] sm:h-[600px] overflow-hidden rounded-3xl"
+            className="w-full flex-1 relative overflow-hidden"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
-            {/* Top & Bottom gradient fade masks for seamless ticker look */}
+            {/* Left & Right gradient fade masks for seamless ticker look */}
             <div
-              className="absolute top-0 left-0 right-0 h-16 z-20 pointer-events-none"
-              style={{ background: "linear-gradient(to bottom, #ede8f2 0%, transparent 100%)" }}
+              className="absolute top-0 bottom-0 left-0 w-12 sm:w-20 z-20 pointer-events-none"
+              style={{ background: "linear-gradient(to right, #ede8f2 0%, transparent 100%)" }}
             />
             <div
-              className="absolute bottom-0 left-0 right-0 h-16 z-20 pointer-events-none"
-              style={{ background: "linear-gradient(to top, #ede8f2 0%, transparent 100%)" }}
+              className="absolute top-0 bottom-0 right-0 w-12 sm:w-20 z-20 pointer-events-none"
+              style={{ background: "linear-gradient(to left, #ede8f2 0%, transparent 100%)" }}
             />
 
-            {/* Scrollable ticker wrapper */}
-            <div className="h-full overflow-y-auto scrollbar-hide py-4 px-1">
+            {/* Auto-scrolling ticker wrapper */}
+            <div className="overflow-hidden py-2">
               <div
-                className="flex flex-col gap-4"
+                className="flex gap-4 w-max"
                 style={{
-                  animation: "ticker-down 32s linear infinite",
+                  animation: "ticker-scroll 36s linear infinite",
                   animationPlayState: isPaused ? "paused" : "running",
                 }}
               >
                 {allTestimonials.map((t, idx) => (
                   <div
                     key={`${t.name}-${idx}`}
-                    className="glass-card rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:border-[#5C0F26]/30 bg-white/90 backdrop-blur-md"
+                    className="glass-card rounded-2xl p-6 w-[320px] sm:w-[360px] shrink-0 transition-all duration-300 hover:shadow-lg hover:border-[#5C0F26]/30 bg-white/90 backdrop-blur-md"
                   >
                     {/* Top row with 5 stars and quote mark */}
                     <div className="flex items-start justify-between mb-3.5">
