@@ -32,20 +32,6 @@ const SOCIALS = [
 export function Footer() {
   return (
     <footer className="bg-[#e8e8e8] text-gray-900" role="contentinfo">
-
-      {/* Big brand display */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-20 pb-10">
-                <p className="font-display font-extrabold text-2xl tracking-tight mb-4" style={{ color: "#5C0F26" }}>
-          Comptech Enterprises
-        </p>
-        <p className="text-gray-600 text-base max-w-md leading-relaxed">
-          Custom AI solutions built around how your business works. For IT infrastructure enquiries: mohit@comptech.in
-        </p>
-      </div>
-
-      {/* Divider */}
-      <div className="border-t border-gray-300" />
-
       {/* Links grid + Map */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-14">
         <div className="flex flex-col lg:flex-row gap-12">

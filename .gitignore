@@ -21,6 +21,8 @@ yarn-error.log*
 .DS_Store
 *.pem
 Thumbs.db
+.claude/
+renders/
 
 # vercel
 .vercel

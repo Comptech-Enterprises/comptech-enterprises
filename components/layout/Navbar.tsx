@@ -59,7 +59,11 @@ export function Navbar({ transparent = false }: NavbarProps) {
     };
   }, [mobileOpen]);
 
-  const isWhiteHeader = pathname === "/" || pathname === "/contact";
+  const isWhiteHeader =
+    pathname === "/" ||
+    pathname === "/contact" ||
+    pathname?.startsWith("/ai-agents") ||
+    pathname?.startsWith("/ai-solutions");
   const isTransparent = transparent && !solid;
   const textColor = isTransparent
     ? (isWhiteHeader ? "text-gray-800" : "text-white/90")
@@ -78,9 +82,7 @@ export function Navbar({ transparent = false }: NavbarProps) {
     <>
       <nav
         className={clsx(
-          "fixed top-0 left-0 right-0 z-[999] transition-all duration-500",
-          // While the mobile panel is open, drop the solid white bar so it doesn't cover
-          // the panel's own header, and let clicks fall through to the panel.
+          "fixed top-0 left-0 right-0 z-[999] transition-all duration-300",
           solid && !mobileOpen ? "navbar-solid" : "navbar-transparent",
           mobileOpen && "pointer-events-none",
         )}
@@ -109,7 +111,7 @@ export function Navbar({ transparent = false }: NavbarProps) {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-6">
             {(NAV_LINKS as NavLink[]).map((link) =>
               link.groups ? (
                 <div key={link.label} className="relative" ref={dropdownRef}>
@@ -120,7 +122,7 @@ export function Navbar({ transparent = false }: NavbarProps) {
                       setHoveredGroup(next ? link.groups![0].label : null);
                     }}
                     className={clsx(
-                      `flex items-center gap-1 px-4 py-2 rounded-lg text-[15px] font-medium transition-all duration-200 ${hoverBg}`,
+                      `flex items-center gap-1.5 px-3 py-2 rounded-lg text-base lg:text-[17px] font-semibold transition-all duration-200 ${hoverBg}`,
                       textColor,
                       pathname.startsWith(link.href) && activeColor,
                     )}
@@ -129,7 +131,7 @@ export function Navbar({ transparent = false }: NavbarProps) {
                   >
                     {link.label}
                     <ChevronDown
-                      size={14}
+                      size={16}
                       className={clsx("transition-transform duration-200", dropdownOpen && "rotate-180")}
                     />
                   </button>
@@ -185,7 +187,7 @@ export function Navbar({ transparent = false }: NavbarProps) {
                   key={link.href}
                   href={link.href}
                   className={clsx(
-                    `px-4 py-2 rounded-lg text-[15px] font-medium transition-all duration-200 ${hoverBg}`,
+                    `px-3 py-2 rounded-lg text-base lg:text-[17px] font-semibold transition-all duration-200 ${hoverBg}`,
                     textColor,
                     pathname === link.href && activeColor,
                   )}
@@ -202,9 +204,11 @@ export function Navbar({ transparent = false }: NavbarProps) {
               href="/contact"
               className={clsx(
                 "text-sm font-semibold px-5 py-2.5 rounded-xl border transition-all duration-200",
-                isTransparent && !isWhiteHeader
-                  ? "border-white/30 text-white hover:bg-white/10"
-                  : "border-gray-200 text-gray-700 hover:border-[#5C0F26]/30 hover:text-[#5C0F26]",
+                pathname === "/contact"
+                  ? "border-[#5C0F26] text-[#5C0F26] bg-[#FDF4F6]"
+                  : isTransparent && !isWhiteHeader
+                    ? "border-white/30 text-white hover:bg-white/10"
+                    : "border-gray-200 text-gray-700 hover:border-[#5C0F26]/30 hover:text-[#5C0F26] bg-white/50 hover:bg-white",
               )}
             >
               Contact

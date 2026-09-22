@@ -63,11 +63,11 @@ export function ServicesSection() {
   };
 
   return (
-    <section id="services" className="relative py-12 sm:py-16 lg:py-28 overflow-hidden" aria-labelledby="services-title">
+    <section id="services" className="relative py-10 sm:py-12 lg:py-14 overflow-hidden" aria-labelledby="services-title">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}
-        <div className="mb-8 sm:mb-12">
+        <div className="mb-6 sm:mb-8">
           <SectionLabel>IT Infrastructure</SectionLabel>
           <h2
             id="services-title"

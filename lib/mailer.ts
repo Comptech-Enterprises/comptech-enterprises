@@ -13,6 +13,9 @@ const IT_INBOX = inboxes(process.env.CONTACT_EMAIL_IT, [
 ]);
 
 function resolveRecipients(service: string): string[] {
+  if (/sales ai|live demo/i.test(service)) {
+    return ["paawanpurdhani@gmail.com", ...AI_INBOX];
+  }
   if (service === "Multiple Services") return [...new Set([...AI_INBOX, ...IT_INBOX])];
   // Covers every AI dropdown value across both forms: "AI Audit",
   // "Custom AI Agents", "AI Automation", "AI Training & Workshops",
@@ -132,12 +135,15 @@ function buildText(data: ContactSubmission) {
 export async function sendContactNotification(data: ContactSubmission) {
   const recipients = resolveRecipients(data.service);
   const transport = getTransport();
+  const isSalesDemo = /sales ai|live demo/i.test(data.service);
 
   await transport.sendMail({
     from: process.env.SMTP_FROM || `"Comptech Website" <${process.env.SMTP_USER}>`,
     to: recipients,
     replyTo: data.email,
-    subject: `New enquiry: ${data.service} — ${data.company}`,
+    subject: isSalesDemo
+      ? `🎯 Live Demo Request: Sales AI Agent — ${data.company} (${data.firstName})`
+      : `New enquiry: ${data.service} — ${data.company}`,
     text: buildText(data),
     html: buildHtml(data),
   });

@@ -21,7 +21,6 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { PageHero } from "@/components/sections/PageHero";
 import { RevealWrapper } from "@/components/ui/RevealWrapper";
 import { SpotlightCard } from "@/components/home/BorderBeamCard";
-import { AIUseCaseExplorer } from "./AIUseCaseExplorer";
 
 const AI_OFFERINGS = [
   {
@@ -248,78 +247,83 @@ export function AISolutionsClient() {
               const Icon = off.icon;
               return (
                 <RevealWrapper key={off.id} delay={i * 120} className="h-full">
-                <SpotlightCard
-                  beamFrom={off.beamFrom}
-                  beamTo={off.beamTo}
-                  spotlightColor={off.spotlight}
-                  beamDuration={4.5}
-                  className="h-full group hover:-translate-y-1.5"
-                >
-                  {/* Top Badge + Icon */}
-                  <div className="flex items-center justify-between mb-5">
-                    <div
-                      className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-xs"
-                      style={{ background: off.iconBg }}
+                  <Link
+                    href={`/ai-agents#${off.id}`}
+                    className="block h-full cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#5C0F26] rounded-3xl"
+                    aria-label={`Deploy ${off.title}`}
+                  >
+                    <SpotlightCard
+                      beamFrom={off.beamFrom}
+                      beamTo={off.beamTo}
+                      spotlightColor={off.spotlight}
+                      beamDuration={4.5}
+                      className="h-full group hover:-translate-y-1.5 cursor-pointer"
                     >
-                      <Icon size={22} style={{ color: off.iconColor }} />
-                    </div>
-                    <span
-                      className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border"
-                      style={{
-                        borderColor: `${off.beamFrom}25`,
-                        background: off.iconBg,
-                        color: off.iconColor,
-                      }}
-                    >
-                      {off.badge}
-                    </span>
-                  </div>
-
-                  <h3 className="font-display font-extrabold text-gray-900 text-2xl leading-tight mb-3">
-                    {off.title}
-                  </h3>
-
-                  <p className="text-gray-600 text-sm leading-relaxed mb-6">
-                    {off.desc}
-                  </p>
-
-                  {/* Stats snippet */}
-                  <div className="grid grid-cols-2 gap-2 mb-6">
-                    {off.stats.map((st) => (
-                      <div key={st.label} className="p-3 rounded-xl bg-gray-50 border border-gray-100">
-                        <p className="font-display font-extrabold text-xl text-gray-900 leading-none mb-1" style={{ color: off.iconColor }}>
-                          {st.value}
-                        </p>
-                        <p className="text-[10px] text-gray-500 font-medium leading-tight">{st.label}</p>
+                      {/* Top Badge + Icon */}
+                      <div className="flex items-center justify-between mb-5">
+                        <div
+                          className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-xs"
+                          style={{ background: off.iconBg }}
+                        >
+                          <Icon size={22} style={{ color: off.iconColor }} />
+                        </div>
+                        <span
+                          className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border"
+                          style={{
+                            borderColor: `${off.beamFrom}25`,
+                            background: off.iconBg,
+                            color: off.iconColor,
+                          }}
+                        >
+                          {off.badge}
+                        </span>
                       </div>
-                    ))}
-                  </div>
 
-                  {/* Bullet points */}
-                  <ul className="flex flex-col gap-2.5 mb-8">
-                    {off.points.map((p) => (
-                      <li key={p} className="flex items-start gap-2.5">
-                        <CheckCircle2 size={15} className="shrink-0 mt-0.5" style={{ color: off.iconColor }} />
-                        <span className="text-xs sm:text-sm text-gray-700 font-medium leading-relaxed">{p}</span>
-                      </li>
-                    ))}
-                  </ul>
+                      <h3 className="font-display font-extrabold text-gray-900 text-2xl leading-tight mb-3">
+                        {off.title}
+                      </h3>
 
-                  {/* CTA Button */}
-                  <div className="mt-auto pt-2">
-                    <Link
-                      href="/contact#quote"
-                      className="inline-flex items-center justify-center gap-2 text-sm font-bold w-full py-3 rounded-2xl transition-all duration-200 group/btn"
-                      style={{
-                        background: off.iconBg,
-                        color: off.iconColor,
-                      }}
-                    >
-                      Deploy {off.title}
-                      <ArrowRight size={15} className="group-hover/btn:translate-x-1 transition-transform duration-200" />
-                    </Link>
-                  </div>
-                </SpotlightCard>
+                      <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                        {off.desc}
+                      </p>
+
+                      {/* Stats snippet */}
+                      <div className="grid grid-cols-2 gap-2 mb-6">
+                        {off.stats.map((st) => (
+                          <div key={st.label} className="p-3 rounded-xl bg-gray-50 border border-gray-100">
+                            <p className="font-display font-extrabold text-xl text-gray-900 leading-none mb-1" style={{ color: off.iconColor }}>
+                              {st.value}
+                            </p>
+                            <p className="text-[10px] text-gray-500 font-medium leading-tight">{st.label}</p>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Bullet points */}
+                      <ul className="flex flex-col gap-2.5 mb-8">
+                        {off.points.map((p) => (
+                          <li key={p} className="flex items-start gap-2.5">
+                            <CheckCircle2 size={15} className="shrink-0 mt-0.5" style={{ color: off.iconColor }} />
+                            <span className="text-xs sm:text-sm text-gray-700 font-medium leading-relaxed">{p}</span>
+                          </li>
+                        ))}
+                      </ul>
+
+                      {/* CTA Button */}
+                      <div className="mt-auto pt-2">
+                        <div
+                          className="inline-flex items-center justify-center gap-2 text-sm font-bold w-full py-3 rounded-2xl transition-all duration-200"
+                          style={{
+                            background: off.iconBg,
+                            color: off.iconColor,
+                          }}
+                        >
+                          Deploy {off.title}
+                          <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform duration-200" />
+                        </div>
+                      </div>
+                    </SpotlightCard>
+                  </Link>
                 </RevealWrapper>
               );
             })}
@@ -327,9 +331,6 @@ export function AISolutionsClient() {
 
         </div>
       </section>
-
-      {/* ── Industry Use-Case Explorer ── */}
-      <AIUseCaseExplorer />
 
       {/* ── Final High-Impact CTA Banner ── */}
       <section className="py-20 lg:py-24 bg-white relative overflow-hidden text-center">
