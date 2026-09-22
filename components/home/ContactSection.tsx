@@ -19,7 +19,7 @@ const CONTACT_METHODS = [
 export function ContactSection() {
   const [form, setForm] = useState({
     firstName: "", lastName: "", email: "", company: "",
-    phone: "", service: "", requirements: "", downloadProfile: false,
+    phone: "", service: "", requirements: "",
   });
   const [website, setWebsite] = useState(""); // honeypot
   const [formRenderedAt] = useState(() => Date.now());
@@ -197,13 +197,6 @@ export function ContactSection() {
                   placeholder="Describe what you need, your current setup, and your goals..."
                   value={form.requirements} onChange={(e) => setForm({ ...form, requirements: e.target.value })} />
               </div>
-
-              <label className="flex items-center gap-3 mb-6 cursor-pointer">
-                <input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-blue-700 focus:ring-blue-500"
-                  checked={form.downloadProfile}
-                  onChange={(e) => setForm({ ...form, downloadProfile: e.target.checked })} />
-                <span className="text-sm text-gray-600">I'd like to download the Company Profile PDF</span>
-              </label>
 
               {error && <p className="text-sm text-red-600 mb-4">{error}</p>}
 
