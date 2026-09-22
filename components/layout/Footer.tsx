@@ -94,19 +94,9 @@ export function Footer() {
               <div>
                 <h3 className="text-[11px] font-bold uppercase tracking-widest text-gray-500 mb-5">Contact</h3>
                 <div className="flex flex-col gap-4">
-                  <a href="mailto:paawan@comptech.in" className="flex items-start gap-2.5 group">
-                    <Mail size={14} className="shrink-0 mt-0.5 text-gray-900" />
-                    <span className="flex flex-col">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400">AI Solutions</span>
-                      <span className="text-sm text-gray-700 group-hover:text-gray-900 transition-colors">paawan@comptech.in</span>
-                    </span>
-                  </a>
-                  <a href={`mailto:${COMPANY.email}`} className="flex items-start gap-2.5 group">
-                    <Mail size={14} className="shrink-0 mt-0.5 text-gray-900" />
-                    <span className="flex flex-col">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400">IT Services</span>
-                      <span className="text-sm text-gray-700 group-hover:text-gray-900 transition-colors">{COMPANY.email}</span>
-                    </span>
+                  <a href={`mailto:${COMPANY.email}`} className="flex items-center gap-2.5 text-sm text-gray-700 hover:text-gray-900 transition-colors">
+                    <Mail size={14} className="shrink-0 text-gray-900" />
+                    {COMPANY.email}
                   </a>
                   <a href={`tel:${COMPANY.phone}`} className="flex items-center gap-2.5 text-sm text-gray-700 hover:text-gray-900 transition-colors">
                     <Phone size={14} className="shrink-0 text-gray-900" />
