@@ -21,7 +21,6 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { PageHero } from "@/components/sections/PageHero";
 import { RevealWrapper } from "@/components/ui/RevealWrapper";
 import { SpotlightCard } from "@/components/home/BorderBeamCard";
-import { AIUseCaseExplorer } from "./AIUseCaseExplorer";
 
 const AI_OFFERINGS = [
   {
@@ -332,9 +331,6 @@ export function AISolutionsClient() {
 
         </div>
       </section>
-
-      {/* ── Industry Use-Case Explorer ── */}
-      <AIUseCaseExplorer />
 
       {/* ── Final High-Impact CTA Banner ── */}
       <section className="py-20 lg:py-24 bg-white relative overflow-hidden text-center">

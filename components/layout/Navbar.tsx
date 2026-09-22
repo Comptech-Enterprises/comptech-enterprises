@@ -82,9 +82,7 @@ export function Navbar({ transparent = false }: NavbarProps) {
     <>
       <nav
         className={clsx(
-          "fixed top-0 left-0 right-0 z-[999] transition-all duration-500",
-          // While the mobile panel is open, drop the solid white bar so it doesn't cover
-          // the panel's own header, and let clicks fall through to the panel.
+          "fixed top-0 left-0 right-0 z-[999] transition-all duration-300",
           solid && !mobileOpen ? "navbar-solid" : "navbar-transparent",
           mobileOpen && "pointer-events-none",
         )}
@@ -206,12 +204,14 @@ export function Navbar({ transparent = false }: NavbarProps) {
               href="/contact"
               className={clsx(
                 "text-sm font-semibold px-5 py-2.5 rounded-xl border transition-all duration-200",
-                isTransparent && !isWhiteHeader
-                  ? "border-white/30 text-white hover:bg-white/10"
-                  : "border-gray-200 text-gray-700 hover:border-[#5C0F26]/30 hover:text-[#5C0F26]",
+                pathname === "/contact"
+                  ? "border-[#5C0F26] text-[#5C0F26] bg-[#FDF4F6]"
+                  : isTransparent && !isWhiteHeader
+                    ? "border-white/30 text-white hover:bg-white/10"
+                    : "border-gray-200 text-gray-700 hover:border-[#5C0F26]/30 hover:text-[#5C0F26] bg-white/50 hover:bg-white",
               )}
             >
-              Talk to an Expert
+              Contact
             </Link>
           </div>
 
@@ -284,7 +284,7 @@ export function Navbar({ transparent = false }: NavbarProps) {
             onClick={() => setMobileOpen(false)}
             className="w-full py-4 rounded-2xl border-2 border-[#5C0F26] text-[#5C0F26] text-[15px] font-bold text-center hover:bg-[#FDF4F6] transition-colors"
           >
-            Talk to an Expert
+            Contact
           </Link>
         </div>
       </div>

@@ -4,31 +4,24 @@ import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ArrowRight } from "lucide-react";
 
-interface AIAgentsHeroProps {
+interface SocialMediaHeroProps {
   onBookLiveDemo?: () => void;
 }
 
-export function AIAgentsHero({ onBookLiveDemo }: AIAgentsHeroProps = {}) {
+export function SocialMediaHero({ onBookLiveDemo }: SocialMediaHeroProps = {}) {
   const path1Ref = useRef<SVGPathElement>(null);
   const path2Ref = useRef<SVGPathElement>(null);
   const path3Ref = useRef<SVGPathElement>(null);
 
-  // Stage:
-  // 0 = Step 1: "From cold list"
-  // 1 = Step 2: "to warm conversation,"
-  // 2 = Final: "From cold list to warm conversation — fully automated."
   const [stage, setStage] = useState<number>(0);
   const [showCanvasAndWaves, setShowCanvasAndWaves] = useState<boolean>(false);
   const [buttonsVisible, setButtonsVisible] = useState<boolean>(false);
 
-  // ── Animation Sequencer (Fast, responsive pacing) ──
   useEffect(() => {
-    // Step 1: 0s -> 0.8s
     const t1 = setTimeout(() => {
       setStage(1);
     }, 850);
 
-    // Step 2: 0.85s -> 1.7s
     const t2 = setTimeout(() => {
       setShowCanvasAndWaves(true);
     }, 1500);
@@ -37,7 +30,6 @@ export function AIAgentsHero({ onBookLiveDemo }: AIAgentsHeroProps = {}) {
       setStage(2);
     }, 1700);
 
-    // Buttons appear right after final reveal
     const t4 = setTimeout(() => {
       setButtonsVisible(true);
     }, 2100);
@@ -52,23 +44,23 @@ export function AIAgentsHero({ onBookLiveDemo }: AIAgentsHeroProps = {}) {
 
   return (
     <section
-      id="sales-agent"
+      id="social-media-agent-hero"
       className="relative overflow-hidden w-full max-w-full min-h-[92vh] sm:min-h-screen flex flex-col justify-between items-center bg-white pt-24 sm:pt-28 pb-8 sm:pb-12"
-      aria-label="Sales AI Agent Hero"
+      aria-label="Social Media AI Agent Hero"
     >
-      {/* ── 1. Gradient Mesh Ambient Blobs ── */}
+      {/* Ambient Gradient Blobs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div
           className="absolute top-1/6 -left-16 sm:-left-20 w-[280px] sm:w-[550px] h-[280px] sm:h-[550px] rounded-full blur-3xl opacity-20"
-          style={{ background: "#5C0F26" }}
+          style={{ background: "#E8435A" }}
         />
         <div
           className="absolute bottom-1/4 -right-12 sm:right-0 w-[260px] sm:w-[450px] h-[260px] sm:h-[450px] rounded-full blur-3xl opacity-15"
-          style={{ background: "#1D4ED8" }}
+          style={{ background: "#7C3AED" }}
         />
       </div>
 
-      {/* ── 2a. Mobile SVG Wave Lines (Softer stroke & opacity so text stays 100% readable) ── */}
+      {/* Mobile SVG Wave Lines */}
       <svg
         className="absolute inset-0 w-full h-full pointer-events-none z-1 transition-opacity duration-1000 block md:hidden overflow-hidden"
         style={{ opacity: showCanvasAndWaves ? 0.2 : 0 }}
@@ -78,7 +70,7 @@ export function AIAgentsHero({ onBookLiveDemo }: AIAgentsHeroProps = {}) {
       >
         <motion.path
           d="M 200,-50 C 900,450 100,1200 650,1950"
-          stroke="#1D4ED8"
+          stroke="#E8435A"
           strokeWidth="3.5"
           strokeLinecap="round"
           initial={{ pathLength: 0 }}
@@ -96,7 +88,7 @@ export function AIAgentsHero({ onBookLiveDemo }: AIAgentsHeroProps = {}) {
         />
         <motion.path
           d="M 540,-50 C 100,500 1000,1150 500,1950"
-          stroke="#E8435A"
+          stroke="#5C0F26"
           strokeWidth="2.5"
           strokeLinecap="round"
           initial={{ pathLength: 0 }}
@@ -105,7 +97,7 @@ export function AIAgentsHero({ onBookLiveDemo }: AIAgentsHeroProps = {}) {
         />
       </svg>
 
-      {/* ── 2b. Desktop SVG Wave Lines (Horizontal Flow for Laptop/Desktop >= md) ── */}
+      {/* Desktop SVG Wave Lines */}
       <svg
         className="absolute inset-0 w-full h-full pointer-events-none z-1 transition-opacity duration-1000 hidden md:block overflow-hidden"
         style={{ opacity: showCanvasAndWaves ? 0.45 : 0 }}
@@ -116,7 +108,7 @@ export function AIAgentsHero({ onBookLiveDemo }: AIAgentsHeroProps = {}) {
         <motion.path
           ref={path1Ref}
           d="M -100,540 C 350,150 650,900 960,540 C 1270,180 1570,930 2020,540"
-          stroke="#1D4ED8"
+          stroke="#E8435A"
           strokeWidth="7"
           strokeLinecap="round"
           initial={{ pathLength: 0 }}
@@ -136,7 +128,7 @@ export function AIAgentsHero({ onBookLiveDemo }: AIAgentsHeroProps = {}) {
         <motion.path
           ref={path3Ref}
           d="M -100,440 C 250,350 550,950 800,640 C 1050,330 1350,50 2020,640"
-          stroke="#E8435A"
+          stroke="#5C0F26"
           strokeWidth="4"
           strokeLinecap="round"
           initial={{ pathLength: 0 }}
@@ -145,7 +137,7 @@ export function AIAgentsHero({ onBookLiveDemo }: AIAgentsHeroProps = {}) {
         />
       </svg>
 
-      {/* ── 3. Bottom Fade to blend into sections below ── */}
+      {/* Bottom Fade */}
       <div
         className="absolute bottom-0 left-0 right-0 h-32 sm:h-40 pointer-events-none z-10"
         style={{
@@ -154,7 +146,7 @@ export function AIAgentsHero({ onBookLiveDemo }: AIAgentsHeroProps = {}) {
         }}
       />
 
-      {/* ── 4. Main Storytelling Content (Center Stack) ── */}
+      {/* Main Storytelling Content */}
       <div className="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center my-auto w-full">
         <AnimatePresence mode="wait">
           {/* STEP 1 */}
@@ -175,7 +167,7 @@ export function AIAgentsHero({ onBookLiveDemo }: AIAgentsHeroProps = {}) {
                   lineHeight: 1.12,
                 }}
               >
-                From cold list
+                From raw ideas
               </h1>
             </motion.div>
           )}
@@ -198,7 +190,7 @@ export function AIAgentsHero({ onBookLiveDemo }: AIAgentsHeroProps = {}) {
                   lineHeight: 1.12,
                 }}
               >
-                to warm conversation,
+                to viral engagement,
               </h1>
             </motion.div>
           )}
@@ -212,7 +204,6 @@ export function AIAgentsHero({ onBookLiveDemo }: AIAgentsHeroProps = {}) {
               transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
               className="flex flex-col items-center w-full"
             >
-              {/* Main Headline */}
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -224,7 +215,7 @@ export function AIAgentsHero({ onBookLiveDemo }: AIAgentsHeroProps = {}) {
                   lineHeight: 1.12,
                 }}
               >
-                From cold list to warm conversation —{" "}
+                From raw ideas to viral engagement —{" "}
                 <span
                   className="text-transparent bg-clip-text"
                   style={{
@@ -236,18 +227,15 @@ export function AIAgentsHero({ onBookLiveDemo }: AIAgentsHeroProps = {}) {
                 </span>
               </motion.h1>
 
-              {/* Subtitle */}
               <motion.p
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.2 }}
                 className="mt-4 sm:mt-6 text-gray-600 max-w-2xl text-sm sm:text-base lg:text-lg leading-relaxed font-normal px-4"
               >
-                Our Sales AI agent handles the entire top-of-funnel pipeline: prospecting,
-                research, outreach, and follow-ups — while you focus on closing deals.
+                Our Social Media AI Agent creates on-brand content, monitors industry trends, schedules posts across channels, and replies to comments 24/7 — while you focus on growing your business.
               </motion.p>
 
-              {/* Inline Action Button (Stays visible & perfectly positioned on mobile) */}
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 animate={{
@@ -274,7 +262,7 @@ export function AIAgentsHero({ onBookLiveDemo }: AIAgentsHeroProps = {}) {
         </AnimatePresence>
       </div>
 
-      {/* ── 5. Scroll Indicator (Anchored cleanly at bottom) ── */}
+      {/* Scroll Indicator */}
       <div className="relative z-20 flex flex-col items-center gap-0 pointer-events-none mt-4 sm:mt-6">
         {[0, 1, 2].map((i) => (
           <motion.div
