@@ -1,11 +1,11 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=1080, height=1920" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1080, height=1920">
     <title>Comptech AI Mobile Animation</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;850&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
     <style>
@@ -73,14 +73,6 @@
         letter-spacing: -1px;
         line-height: 1.3;
       }
-      #neural-canvas {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 2;
-        opacity: 0;
-      }
       #svg-container {
         position: absolute;
         inset: 0;
@@ -92,111 +84,32 @@
     </style>
   </head>
   <body>
-    <div
-      id="root"
-      data-composition-id="main"
-      data-start="0"
-      data-duration="12"
-      data-width="1080"
-      data-height="1920"
-    >
+    <div data-hf-id="hf-umm9" id="root" data-composition-id="main" data-start="0" data-duration="12" data-width="1080" data-height="1920">
       <!-- Text 1 -->
-      <div id="step-1" class="text-container">
-        <h1 id="text-1" class="slide-text">The future runs on AI.</h1>
+      <div data-hf-id="hf-rdud" id="step-1" class="text-container">
+        <h1 data-hf-id="hf-mqpr" id="text-1" class="slide-text">The future runs on AI.</h1>
       </div>
 
       <!-- Text 2 -->
-      <div id="step-2" class="text-container">
-        <h1 id="text-2" class="slide-text">We build yours.</h1>
+      <div data-hf-id="hf-vbye" id="step-2" class="text-container">
+        <h1 data-hf-id="hf-6ub5" id="text-2" class="slide-text">We build yours.</h1>
       </div>
 
-      <!-- Beautiful Animation: Canvas + SVG -->
-      <canvas id="neural-canvas" width="1080" height="1920"></canvas>
-      <svg id="svg-container" data-layout-allow-overflow viewBox="0 0 1080 1920" fill="none">
-        <path id="network-path-1" d="M 540,-100 C 150,350 900,650 540,960 C 180,1270 930,1570 540,2020" stroke="#1D4ED8" stroke-width="7" stroke-linecap="round" />
-        <path id="network-path-2" d="M 640,-100 C 950,450 50,750 440,1100 C 830,1450 150,1650 440,2020" stroke="#8B5CF6" stroke-width="5" stroke-linecap="round" />
-        <path id="network-path-3" d="M 440,-100 C 350,250 950,550 640,800 C 330,1050 50,1350 640,2020" stroke="#E8435A" stroke-width="4" stroke-linecap="round" />
+      <!-- Wave Lines -->
+      <svg data-hf-id="hf-3znh" id="svg-container" data-layout-allow-overflow="" viewBox="0 0 1080 1920" fill="none">
+        <path data-hf-id="hf-lfc7" id="network-path-1" d="M -60,960 C 195,570 365,1320 540,960 C 716,600 885,1350 1140,960" stroke="#1D4ED8" stroke-width="7" stroke-linecap="round" />
+        <path data-hf-id="hf-tqpo" id="network-path-2" d="M -60,1060 C 251,1370 421,470 619,860 C 817,1250 931,570 1140,860" stroke="#8B5CF6" stroke-width="5" stroke-linecap="round" />
+        <path data-hf-id="hf-atzs" id="network-path-3" d="M -60,860 C 138,770 308,1370 449,1060 C 591,750 761,470 1140,1060" stroke="#E8435A" stroke-width="4" stroke-linecap="round" />
       </svg>
 
       <!-- Final Text -->
-      <div id="step-3" class="text-container" style="opacity: 0;">
-        <h1 id="final-title" class="final-title">Comptech<br>Enterprises</h1>
-        <p id="final-subtitle" class="final-subtitle">Custom agents. Real results.</p>
+      <div data-hf-id="hf-n8id" id="step-3" class="text-container" style="opacity: 0;">
+        <h1 data-hf-id="hf-tsin" id="final-title" class="final-title">Comptech<br data-hf-id="hf-x5px">Enterprises</h1>
+        <p data-hf-id="hf-88ji" id="final-subtitle" class="final-subtitle">Custom agents. Real results.</p>
       </div>
     </div>
 
     <script>
-      const canvas = document.getElementById("neural-canvas");
-      const ctx = canvas.getContext("2d");
-
-      // Math seed random helper for determinism
-      let seed = 7766;
-      function random() {
-        let x = Math.sin(seed++) * 10000;
-        return x - Math.floor(x);
-      }
-
-      const numNodes = 60;
-      const nodes = [];
-      const colors = ["29, 78, 216", "139, 92, 246", "232, 67, 90", "75, 85, 99"];
-
-      for (let i = 0; i < numNodes; i++) {
-        const kX = Math.floor(random() * 3) + 1;
-        const kY = Math.floor(random() * 3) + 1;
-        
-        nodes.push({
-          baseX: random() * 1080,
-          baseY: random() * 1920,
-          freqX: kX * Math.PI / 6, // loops perfectly over 12s
-          freqY: kY * Math.PI / 6, // loops perfectly over 12s
-          ampX: 50 + random() * 60,
-          ampY: 50 + random() * 60,
-          phaseX: random() * Math.PI * 2,
-          phaseY: random() * Math.PI * 2,
-          r: 2.2 + random() * 3.5,
-          color: colors[Math.floor(random() * colors.length)]
-        });
-      }
-
-      function drawFrame(progress) {
-        const time = progress * 12;
-        ctx.clearRect(0, 0, 1080, 1920);
-
-        const pts = nodes.map(n => {
-          const x = n.baseX + Math.sin(time * 0.35 * n.freqX + n.phaseX) * n.ampX;
-          const y = n.baseY + Math.cos(time * 0.35 * n.freqY + n.phaseY) * n.ampY;
-          return { x, y, r: n.r, color: n.color };
-        });
-
-        const linkDistance = 220;
-        for (let i = 0; i < pts.length; i++) {
-          const a = pts[i];
-          for (let j = i + 1; j < pts.length; j++) {
-            const b = pts[j];
-            const dx = a.x - b.x;
-            const dy = a.y - b.y;
-            const dist = Math.hypot(dx, dy);
-            if (dist < linkDistance) {
-              const alpha = (1 - dist / linkDistance) * 0.16;
-              ctx.strokeStyle = `rgba(139, 92, 246, ${alpha})`;
-              ctx.lineWidth = 0.9;
-              ctx.beginPath();
-              ctx.moveTo(a.x, a.y);
-              ctx.lineTo(b.x, b.y);
-              ctx.stroke();
-            }
-          }
-        }
-
-        for (let i = 0; i < pts.length; i++) {
-          const p = pts[i];
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(${p.color}, 0.7)`;
-          ctx.fill();
-        }
-      }
-
       window.__timelines = window.__timelines || {};
       const tl = gsap.timeline({ paused: true });
 
@@ -209,8 +122,7 @@
       tl.to("#text-2", { opacity: 0, y: -30, duration: 0.4, ease: "power3.in" }, 3.5);
 
       // 3. Beautiful animations
-      tl.to("#neural-canvas", { opacity: 1, duration: 0.6 }, 4.0);
-      tl.to("#svg-container", { opacity: 0.4, duration: 0.6 }, 4.0);
+      tl.to("#svg-container", { opacity: 0.55, duration: 0.6 }, 4.0);
 
       const path1 = document.getElementById("network-path-1");
       const path2 = document.getElementById("network-path-2");
@@ -232,16 +144,6 @@
       tl.to("#step-3", { opacity: 1, duration: 0.5 }, 7.0);
       tl.from("#final-title", { y: 40, duration: 0.5, ease: "power3.out" }, 7.0);
       tl.from("#final-subtitle", { y: 40, duration: 0.5, ease: "power3.out" }, 7.2);
-
-      const animState = { progress: 0 };
-      tl.to(animState, {
-        progress: 1,
-        duration: 12,
-        ease: "none",
-        onUpdate: () => {
-          drawFrame(animState.progress);
-        }
-      }, 0);
 
       window.__timelines["main"] = tl;
     </script>

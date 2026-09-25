@@ -42,6 +42,7 @@ export function Hero() {
           video file is ever requested (see the effect above). */}
       {videoReady ? (
         <video
+          key={isMobile ? "mobile-hero" : "desktop-hero"}
           ref={videoRef}
           autoPlay
           muted

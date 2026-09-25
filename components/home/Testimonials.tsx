@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Star, Quote } from "lucide-react";
 import { TESTIMONIALS } from "@/lib/constants";
 import { SectionLabel } from "@/components/ui/SectionLabel";
@@ -154,12 +155,18 @@ function TestimonialCard({
 
       {/* Author info */}
       <div className="flex items-center gap-3">
-        <div
-          className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0 shadow-xs"
-          style={{ background: AVATAR_COLORS[idx % AVATAR_COLORS.length] }}
-        >
-          {t.initials}
-        </div>
+        {t.logo ? (
+          <div className="w-9 h-9 rounded-full overflow-hidden bg-white flex items-center justify-center shrink-0 shadow-xs border border-gray-100">
+            <Image src={t.logo} alt={t.title} width={36} height={36} className="w-full h-full object-contain p-1" />
+          </div>
+        ) : (
+          <div
+            className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0 shadow-xs"
+            style={{ background: AVATAR_COLORS[idx % AVATAR_COLORS.length] }}
+          >
+            {t.initials}
+          </div>
+        )}
         <div>
           <p className="text-sm font-semibold text-gray-900 leading-none mb-1">{t.name}</p>
           <p className="text-xs text-gray-400 font-medium">{t.title}</p>

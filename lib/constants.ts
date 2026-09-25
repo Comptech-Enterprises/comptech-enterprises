@@ -262,6 +262,7 @@ export const TESTIMONIALS = [
     name: "Kavita Rai",
     title: "HL Mando",
     initials: "KR",
+    logo: "/clients/hl-mando.webp",
   },
   {
     quote:
@@ -269,6 +270,7 @@ export const TESTIMONIALS = [
     name: "Aruna Jha",
     title: "Vice Principal, SRCC",
     initials: "AJ",
+    logo: "/clients/srcc.webp",
   },
 ];
 
