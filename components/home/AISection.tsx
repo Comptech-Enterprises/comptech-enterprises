@@ -5,31 +5,32 @@ import { ArrowRight, Bot, Blocks, Target, GraduationCap } from "lucide-react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { AI_PILLARS } from "@/lib/constants";
 
-const CLIENTS = [
-  "Diageo",
-  "BCG",
-  "DLF",
-  "Casio",
-  "ITC",
-  "Starbucks India",
-  "Zomato",
-  "Pernod Ricard",
-  "Leela Hotels",
-  "Urban Company",
-  "Bata India",
-  "SRCC",
-  "IIT Delhi",
-  "Beanly Coffee",
-  "Rebel Foods",
-  "Coca-Cola",
-  "HL Mando",
-  "Shervani Hotels",
-  "Summit Hotels",
-  "William Grant & Sons",
-  "Radico Khaitan",
-  "Stanley",
-  "Canara Bank",
-  "Fabstract",
+// `logo` is a file in /public/clients; clients without one render as a name pill.
+const CLIENTS: { name: string; logo?: string }[] = [
+  { name: "Diageo", logo: "diageo" },
+  { name: "BCG", logo: "bcg" },
+  { name: "DLF", logo: "dlf" },
+  { name: "Casio", logo: "casio" },
+  { name: "ITC", logo: "itc" },
+  { name: "Starbucks India", logo: "starbucks-india" },
+  { name: "Zomato", logo: "zomato" },
+  { name: "Pernod Ricard", logo: "pernod-ricard" },
+  { name: "Leela Hotels", logo: "leela-hotels" },
+  { name: "Urban Company", logo: "urban-company" },
+  { name: "Bata India", logo: "bata-india" },
+  { name: "SRCC", logo: "srcc" },
+  { name: "IIT Delhi", logo: "iit-delhi" },
+  { name: "Beanly Coffee", logo: "beanly-coffee" },
+  { name: "Rebel Foods", logo: "rebel-foods" },
+  { name: "Coca-Cola", logo: "coca-cola" },
+  { name: "HL Mando", logo: "hl-mando" },
+  { name: "Shervani Hotels" },
+  { name: "Summit Hotels" },
+  { name: "William Grant & Sons", logo: "william-grant-sons" },
+  { name: "Radico Khaitan", logo: "radico-khaitan" },
+  { name: "Stanley" },
+  { name: "Canara Bank", logo: "canara-bank" },
+  { name: "Fabstract" },
 ];
 
 const ICONS = {
@@ -70,10 +71,21 @@ export function AISection() {
           >
             {CLIENTS.concat(CLIENTS).map((client, i) => (
               <span
-                key={`${client}-${i}`}
-                className="shrink-0 inline-flex items-center px-8 sm:px-11 py-3.5 sm:py-4 rounded-full text-base sm:text-lg lg:text-xl font-bold text-gray-800 glass-card bg-white/80 border border-white/90 shadow-sm hover:border-gray-300 hover:bg-white hover:shadow-md transition-all whitespace-nowrap"
+                key={`${client.name}-${i}`}
+                className="shrink-0 inline-flex items-center justify-center h-[60px] sm:h-[72px] px-7 sm:px-10 rounded-full text-base sm:text-lg lg:text-xl font-bold text-gray-800 glass-card bg-white/80 border border-white/90 shadow-sm hover:border-gray-300 hover:bg-white hover:shadow-md transition-all whitespace-nowrap"
               >
-                {client}
+                {client.logo ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={`/clients/${client.logo}.webp`}
+                    alt={client.name}
+                    loading="lazy"
+                    draggable={false}
+                    className="h-7 sm:h-9 w-auto max-w-[130px] sm:max-w-[170px] object-contain"
+                  />
+                ) : (
+                  client.name
+                )}
               </span>
             ))}
           </div>
