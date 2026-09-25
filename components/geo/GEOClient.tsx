@@ -299,125 +299,272 @@ const GEO_STATS = [
   { value: 0, suffix: "", label: "organic reach", desc: "if AI engines can't find you", special: true },
 ];
 
+/* ─── OpenAI ChatGPT Logo SVG ─── */
+function OpenAILogo({ className = "w-5 h-5 text-white" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+      <path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0811 4.7792-2.7582a.7944.7944 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.5045 4.5045 0 0 1-4.4954 4.4951zM3.6023 18.2321a4.4755 4.4755 0 0 1-.5351-3.0137l.142.0859 4.7839 2.7582a.7944.7944 0 0 0 .7853 0l5.833-3.3692v2.3324a.0806.0806 0 0 1-.0332.0617l-4.8345 2.7867a4.5045 4.5045 0 0 1-6.1414-1.642zm-1.898-10.23a4.4755 4.4755 0 0 1 2.3413-1.9314l-.0047.1637v5.5163a.7944.7944 0 0 0 .3927.6813l5.833 3.3692-2.02 1.1686a.0758.0758 0 0 1-.0712.0095l-4.8345-2.7915a4.4998 4.4998 0 0 1-1.6366-6.1857zm16.597 2.3842-5.833-3.3692 2.02-1.1686a.0758.0758 0 0 1 .0712-.0095l4.8345 2.7915a4.4998 4.4998 0 0 1 1.6366 6.1857 4.4755 4.4755 0 0 1-2.3413 1.9314l.0047-.1637v-5.5163a.7944.7944 0 0 0-.3927-.6813zm2.0152-3.8212a4.4755 4.4755 0 0 1 .5351 3.0137l-.142-.0859-4.7839-2.7582a.7944.7944 0 0 0-.7853 0l-5.833 3.3692v-2.3324a.0806.0806 0 0 1 .0332-.0617l4.8345-2.7867a4.5045 4.5045 0 0 1 6.1414 1.642zm-15.659 4.3976 2.02-1.1686a.071.071 0 0 1 .038-.052v-5.5826a4.5045 4.5045 0 0 1 7.3718-3.4543l-.1419.0811-4.7792 2.7582a.7944.7944 0 0 0-.3927.6813v6.7369z"/>
+    </svg>
+  );
+}
+
+function ChatGPTDemo() {
+  const [streamedText, setStreamedText] = useState("");
+  const [isSearching, setIsSearching] = useState(true);
+
+  const fullResponse =
+    "Based on verified enterprise data and AI knowledge graph index, **Comptech Enterprises** is a leading networking and AI services company based in New Delhi, India.\n\n### Core Capabilities:\n• **Custom AI Agents & Workflows**: Autonomous sales, support, and operational agents.\n• **Enterprise Networking & IT Security**: Infrastructure engineering, AMC, & cloud solutions.\n• **Generative Engine Optimization (GEO)**: Ensuring brand citation across ChatGPT, Gemini, & Perplexity.\n\n### Contact Details Found:\n• 📍 **Location**: Janakpuri, New Delhi, India\n• ✉️ **Email**: mohit@comptech.in\n• 📞 **Phone**: +91 8595073837\n• 🌐 **Website**: comptech.in";
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsSearching(false);
+      let charIndex = 0;
+      const interval = setInterval(() => {
+        if (charIndex <= fullResponse.length) {
+          setStreamedText(fullResponse.slice(0, charIndex));
+          charIndex += 5;
+        } else {
+          setStreamedText(fullResponse);
+          clearInterval(interval);
+        }
+      }, 12);
+    }, 800);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <div className="w-full max-w-4xl mx-auto font-sans">
+      {/* Real ChatGPT Light Container (#ffffff) */}
+      <div className="rounded-2xl border border-gray-200/90 bg-white text-gray-900 shadow-xl shadow-gray-200/70 overflow-hidden">
+        
+        {/* Real ChatGPT Light Top Header Bar */}
+        <div className="px-5 py-3.5 bg-[#f9f9f9] border-b border-gray-200 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-gray-800">
+              <div className="w-6 h-6 rounded-full bg-[#10a37f] flex items-center justify-center">
+                <OpenAILogo className="w-3.5 h-3.5 text-white" />
+              </div>
+              <span className="text-sm font-semibold text-gray-900">ChatGPT</span>
+              <span className="text-xs text-gray-500 font-normal">4o</span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/70 text-[11px] font-semibold text-emerald-800">
+              <Globe size={12} className="text-emerald-600" />
+              <span>Searched 4 web sources</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Chat Thread Body */}
+        <div className="p-6 sm:p-8 space-y-6 bg-white">
+          {/* User Message Bubble */}
+          <div className="flex items-start justify-end">
+            <div className="bg-[#f4f4f4] text-gray-900 text-sm font-normal px-4 py-2.5 rounded-2xl rounded-tr-md max-w-[85%] shadow-sm border border-gray-200/60">
+              networking and AI services company
+            </div>
+          </div>
+
+          {/* ChatGPT Response Stream */}
+          <div className="flex items-start gap-4">
+            <div className="w-8 h-8 rounded-full bg-[#10a37f] flex items-center justify-center shrink-0 shadow-sm mt-0.5">
+              <OpenAILogo className="w-4 h-4 text-white" />
+            </div>
+
+            <div className="flex-1 space-y-4">
+              {/* Searching Status Pill */}
+              {isSearching && (
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-50 border border-emerald-200 text-xs text-emerald-800 font-medium">
+                  <Search size={13} className="animate-spin text-emerald-600" />
+                  <span>Searching web &amp; entity database for &quot;networking and AI services company&quot;...</span>
+                </div>
+              )}
+
+              {/* Response Text */}
+              {streamedText && (
+                <div className="text-sm text-gray-800 leading-relaxed space-y-3 font-normal whitespace-pre-wrap">
+                  {streamedText}
+                </div>
+              )}
+
+              {/* Verified Citation Footer */}
+              {!isSearching && streamedText && (
+                <div className="mt-4 pt-4 border-t border-gray-100 flex flex-wrap items-center justify-between gap-3 text-xs">
+                  <div className="inline-flex items-center gap-2 text-emerald-800 font-semibold bg-emerald-50 border border-emerald-200/80 px-3.5 py-2 rounded-lg">
+                    <Check size={14} className="text-emerald-600" />
+                    <span>Cited Source #1: Comptech Enterprises (Verified Knowledge Graph)</span>
+                  </div>
+                  <span className="text-gray-500 text-[11px] font-medium">AI Citation Rank: #1</span>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ════════════════════════════════════
    MAIN COMPONENT
    ════════════════════════════════════ */
 export function GEOClient() {
   return (
-    <main className="relative overflow-hidden">
+    <main className="relative overflow-hidden bg-white text-gray-900">
       <ScrollProgress />
 
       {/* ─── HERO ─── */}
-      <section className="relative min-h-[90vh] flex items-center bg-gradient-to-br from-gray-950 via-gray-900 to-emerald-950 overflow-hidden">
+      <section className="relative min-h-[90vh] flex items-center bg-gradient-to-b from-[#f8fafc] via-[#f1f5f9] to-white border-b border-gray-200/70 overflow-hidden">
         {/* Animated grid background */}
-        <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 opacity-40">
           <div
             className="absolute inset-0"
             style={{
               backgroundImage:
-                "linear-gradient(rgba(16,185,129,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(16,185,129,0.15) 1px, transparent 1px)",
+                "linear-gradient(rgba(16,185,129,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(16,185,129,0.12) 1px, transparent 1px)",
               backgroundSize: "60px 60px",
             }}
           />
         </div>
 
         {/* Gradient orbs */}
-        <div className="absolute top-20 -left-32 w-96 h-96 bg-emerald-500/20 rounded-full blur-[120px]" />
-        <div className="absolute bottom-20 -right-32 w-96 h-96 bg-cyan-500/15 rounded-full blur-[120px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal-500/10 rounded-full blur-[160px]" />
+        <div className="absolute top-20 -left-32 w-96 h-96 bg-emerald-400/20 rounded-full blur-[120px]" />
+        <div className="absolute bottom-20 -right-32 w-96 h-96 bg-cyan-400/15 rounded-full blur-[120px]" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-[#5C0F26]/10 rounded-full blur-[140px]" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-32 lg:py-40">
-          <div className="max-w-4xl">
-            <RevealWrapper>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 mb-8">
-                <Sparkles size={14} className="text-emerald-400" />
-                <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">
-                  Generative Engine Optimization
-                </span>
-              </div>
-            </RevealWrapper>
-
-            <RevealWrapper delay={100}>
-              <h1
-                className="font-display font-extrabold tracking-tight leading-[0.95]"
-                style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
-              >
-                <span className="text-white">Be the answer.</span>
-                <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">
-                  Not just a result.
-                </span>
-              </h1>
-            </RevealWrapper>
-
-            <RevealWrapper delay={200}>
-              <p className="mt-6 text-lg lg:text-xl text-gray-400 max-w-2xl leading-relaxed">
-                When people ask ChatGPT, Gemini, or Perplexity about your industry — does your brand come up?
-                GEO ensures you get cited, recommended, and ranked in every AI-generated answer.
-              </p>
-            </RevealWrapper>
-
-            <RevealWrapper delay={300}>
-              <div className="mt-10 flex flex-wrap gap-4">
-                <Link
-                  href="/contact"
-                  className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-bold text-base hover:shadow-lg hover:shadow-emerald-500/25 transition-all duration-300"
-                >
-                  Get Your AI Visibility Score
-                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <a
-                  href="#how-it-works"
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-white/20 text-white/90 font-semibold text-base hover:bg-white/5 transition-all duration-300"
-                >
-                  How it works
-                </a>
-              </div>
-            </RevealWrapper>
-          </div>
-
-          {/* Hero data card */}
-          <RevealWrapper delay={400} direction="right">
-            <div className="hidden lg:block absolute top-1/2 right-8 xl:right-16 -translate-y-1/2 w-[340px]">
-              <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 space-y-5">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-500/20 flex items-center justify-center">
-                    <TrendingUp size={20} className="text-emerald-400" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-gray-500 font-medium">AI Visibility Score</p>
-                    <p className="text-2xl font-extrabold text-white">87<span className="text-emerald-400">/100</span></p>
-                  </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-24 lg:py-32">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+            {/* Left Column — Text Content */}
+            <div className="lg:col-span-7">
+              <RevealWrapper>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-600/20 bg-emerald-500/10 mb-8">
+                  <Sparkles size={14} className="text-emerald-700" />
+                  <span className="text-xs font-bold uppercase tracking-widest text-emerald-800">
+                    Generative Engine Optimization
+                  </span>
                 </div>
-                <div className="h-px bg-white/10" />
-                <div className="space-y-3">
-                  {[
-                    { engine: "ChatGPT", status: "Cited", color: "text-emerald-400" },
-                    { engine: "Gemini", status: "Recommended", color: "text-blue-400" },
-                    { engine: "Perplexity", status: "Top 3", color: "text-purple-400" },
-                    { engine: "Copilot", status: "Mentioned", color: "text-amber-400" },
-                  ].map((row) => (
-                    <div key={row.engine} className="flex items-center justify-between">
-                      <span className="text-sm text-gray-400">{row.engine}</span>
-                      <span className={`text-sm font-bold ${row.color}`}>{row.status}</span>
-                    </div>
-                  ))}
+              </RevealWrapper>
+
+              <RevealWrapper delay={100}>
+                <h1
+                  className="font-display font-extrabold tracking-tight leading-[1.02] text-gray-900"
+                  style={{ fontSize: "clamp(2.5rem, 5.5vw, 4.5rem)" }}
+                >
+                  <span>Be the answer.</span>
+                  <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700">
+                    Not just a result.
+                  </span>
+                </h1>
+              </RevealWrapper>
+
+              <RevealWrapper delay={200}>
+                <p className="mt-6 text-lg lg:text-xl text-gray-600 max-w-xl leading-relaxed">
+                  When people ask ChatGPT, Gemini, or Perplexity about your industry — does your brand come up?
+                  GEO ensures you get cited, recommended, and ranked in every AI-generated answer.
+                </p>
+              </RevealWrapper>
+
+              <RevealWrapper delay={300}>
+                <div className="mt-10 flex flex-wrap gap-4 items-center">
+                  <Link
+                    href="/contact"
+                    className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold text-base hover:shadow-lg hover:shadow-emerald-600/25 transition-all duration-300"
+                  >
+                    Get Your AI Visibility Score
+                    <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                  <a
+                    href="#how-it-works"
+                    className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-gray-300 bg-white/80 text-gray-800 font-semibold text-base hover:bg-gray-100 transition-all duration-300"
+                  >
+                    How it works
+                  </a>
                 </div>
-                <div className="h-px bg-white/10" />
-                <p className="text-[11px] text-gray-600 text-center">Sample GEO Dashboard</p>
-              </div>
+              </RevealWrapper>
             </div>
-          </RevealWrapper>
+
+            {/* Right Column — Hero Data Card */}
+            <div className="lg:col-span-5 flex justify-center lg:justify-end">
+              <RevealWrapper delay={400} direction="right">
+                <div className="w-full max-w-sm rounded-2xl border border-gray-200/90 bg-white/90 backdrop-blur-2xl p-6 sm:p-7 space-y-6 shadow-xl shadow-gray-200/80">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0">
+                      <TrendingUp size={22} className="text-emerald-600" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-gray-500 font-medium">AI Visibility Score</p>
+                      <p className="text-3xl font-extrabold text-gray-900">87<span className="text-emerald-600">/100</span></p>
+                    </div>
+                  </div>
+                  <div className="h-px bg-gray-100" />
+                  <div className="space-y-3.5">
+                    {[
+                      { engine: "ChatGPT", status: "Cited", color: "text-emerald-700", bg: "bg-emerald-50 border border-emerald-200" },
+                      { engine: "Gemini", status: "Recommended", color: "text-blue-700", bg: "bg-blue-50 border border-blue-200" },
+                      { engine: "Perplexity", status: "Top 3", color: "text-purple-700", bg: "bg-purple-50 border border-purple-200" },
+                      { engine: "Copilot", status: "Mentioned", color: "text-amber-700", bg: "bg-amber-50 border border-amber-200" },
+                    ].map((row) => (
+                      <div key={row.engine} className="flex items-center justify-between py-1">
+                        <span className="text-sm font-medium text-gray-700">{row.engine}</span>
+                        <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${row.bg} ${row.color}`}>
+                          {row.status}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="h-px bg-gray-100" />
+                  <p className="text-[11px] text-gray-400 text-center tracking-wide font-medium uppercase">
+                    Sample GEO Visibility Report
+                  </p>
+                </div>
+              </RevealWrapper>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ─── AI ENGINE MARQUEE ─── */}
-      <section className="py-8 bg-gray-50 border-y border-gray-200">
+      <section className="py-8 bg-gray-50 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <p className="text-center text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">
             Optimize for every AI engine
           </p>
           <EngineMarquee />
+        </div>
+      </section>
+
+      {/* ─── LIVE CHATGPT GEO SIMULATION DEMO ─── */}
+      <section className="py-20 lg:py-28 bg-gradient-to-b from-[#f8fafc] via-white to-[#f1f5f9] border-b border-gray-200/80 text-gray-900 relative overflow-hidden">
+        {/* Background glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+          <RevealWrapper>
+            <div className="text-center max-w-3xl mx-auto mb-14">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-600/20 bg-emerald-50 text-emerald-800 text-xs font-bold uppercase tracking-widest mb-4">
+                <Sparkles size={13} className="text-emerald-600" />
+                Live GEO Citation Preview
+              </div>
+              <h2
+                className="font-display font-extrabold tracking-tight text-gray-900"
+                style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)" }}
+              >
+                See how AI engines answer when people search for{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700">
+                  your industry
+                </span>
+              </h2>
+              <p className="mt-4 text-gray-600 text-lg">
+                Try typing a prompt like &quot;networking and AI services company&quot; below. Without GEO, your competitors get cited. With GEO, your brand is the default recommendation.
+              </p>
+            </div>
+          </RevealWrapper>
+
+          <RevealWrapper delay={200}>
+            <ChatGPTDemo />
+          </RevealWrapper>
         </div>
       </section>
 
@@ -516,17 +663,17 @@ export function GEOClient() {
       </section>
 
       {/* ─── HOW IT WORKS (process) ─── */}
-      <section id="how-it-works" className="py-20 lg:py-28 bg-gray-950 text-white scroll-mt-20">
+      <section id="how-it-works" className="py-20 lg:py-28 bg-slate-50 border-b border-gray-200/80 text-gray-900 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <RevealWrapper>
             <div className="text-center max-w-3xl mx-auto mb-16">
               <SectionLabel>Our Process</SectionLabel>
               <h2
-                className="font-display font-extrabold tracking-tight mt-3"
+                className="font-display font-extrabold tracking-tight mt-3 text-gray-900"
                 style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)" }}
               >
                 How we make you{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700">
                   AI-visible
                 </span>
               </h2>
@@ -536,20 +683,20 @@ export function GEOClient() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {PROCESS_STEPS.map((step, i) => (
               <RevealWrapper key={step.title} delay={i * 100}>
-                <div className="group relative rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-7 hover:border-emerald-500/30 hover:bg-white/[0.08] transition-all duration-300 h-full">
+                <div className="group relative rounded-2xl border border-gray-200/90 bg-white p-7 shadow-sm hover:shadow-md hover:border-emerald-500/40 transition-all duration-300 h-full">
                   <div className="flex items-start gap-4 mb-4">
                     <div
                       className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
-                      style={{ backgroundColor: `${step.color}20` }}
+                      style={{ backgroundColor: `${step.color}15` }}
                     >
                       <step.icon size={22} style={{ color: step.color }} />
                     </div>
-                    <span className="text-5xl font-extrabold text-white/5 absolute top-4 right-6 select-none">
+                    <span className="text-5xl font-extrabold text-gray-200 absolute top-4 right-6 select-none font-display">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-2">{step.title}</h3>
-                  <p className="text-sm text-gray-400 leading-relaxed">{step.desc}</p>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">{step.title}</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">{step.desc}</p>
                 </div>
               </RevealWrapper>
             ))}
@@ -574,7 +721,7 @@ export function GEOClient() {
 
           <RevealWrapper delay={100}>
             <div className="max-w-4xl mx-auto">
-              <div className="grid grid-cols-3 gap-0 rounded-2xl overflow-hidden border border-gray-200">
+              <div className="grid grid-cols-3 gap-0 rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
                 {/* Header */}
                 <div className="p-5 bg-gray-50 border-b border-r border-gray-200">
                   <span className="text-sm font-bold text-gray-400 uppercase tracking-wider">Aspect</span>
@@ -634,31 +781,31 @@ export function GEOClient() {
             {TIERS.map((tier, i) => (
               <RevealWrapper key={tier.name} delay={i * 120}>
                 <div
-                  className={`relative rounded-2xl p-7 h-full flex flex-col transition-shadow duration-300 ${
+                  className={`relative rounded-2xl p-7 h-full flex flex-col transition-all duration-300 ${
                     tier.popular
-                      ? "bg-gray-950 text-white shadow-2xl shadow-emerald-500/10 ring-2 ring-emerald-500/40"
-                      : "glass-card bg-white hover:shadow-lg"
+                      ? "bg-[#5C0F26] text-white shadow-xl shadow-[#5C0F26]/20 ring-2 ring-[#5C0F26]"
+                      : "bg-white border border-gray-200/90 hover:shadow-lg"
                   }`}
                 >
                   {tier.popular && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 text-xs font-bold text-white uppercase tracking-wider">
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-emerald-500 text-xs font-bold text-gray-950 uppercase tracking-wider shadow-md">
                       Most Popular
                     </div>
                   )}
                   <h3 className={`text-xl font-bold mb-1 ${tier.popular ? "text-white" : "text-gray-900"}`}>
                     {tier.name}
                   </h3>
-                  <p className={`text-sm mb-5 ${tier.popular ? "text-gray-400" : "text-gray-500"}`}>
+                  <p className={`text-sm mb-5 ${tier.popular ? "text-gray-200" : "text-gray-500"}`}>
                     {tier.desc}
                   </p>
-                  <p className={`text-3xl font-extrabold mb-6 ${tier.popular ? "text-emerald-400" : "text-gray-900"}`}>
+                  <p className={`text-3xl font-extrabold mb-6 ${tier.popular ? "text-white" : "text-gray-900"}`}>
                     {tier.price}
                   </p>
                   <ul className="space-y-3 mb-8 flex-1">
                     {tier.features.map((f) => (
                       <li key={f} className="flex items-start gap-2.5 text-sm">
                         <Check size={16} className={`shrink-0 mt-0.5 ${tier.popular ? "text-emerald-400" : "text-emerald-600"}`} />
-                        <span className={tier.popular ? "text-gray-300" : "text-gray-600"}>{f}</span>
+                        <span className={tier.popular ? "text-gray-100" : "text-gray-600"}>{f}</span>
                       </li>
                     ))}
                   </ul>
@@ -666,8 +813,8 @@ export function GEOClient() {
                     href="/contact"
                     className={`w-full py-3.5 rounded-xl text-center text-sm font-bold transition-all duration-300 block ${
                       tier.popular
-                        ? "bg-gradient-to-r from-emerald-500 to-teal-500 text-white hover:shadow-lg hover:shadow-emerald-500/25"
-                        : "border-2 border-gray-200 text-gray-700 hover:border-emerald-500 hover:text-emerald-700"
+                        ? "bg-white text-[#5C0F26] hover:bg-gray-100 shadow-md"
+                        : "border-2 border-gray-200 text-gray-700 hover:border-emerald-600 hover:text-emerald-700"
                     }`}
                   >
                     Contact Us
@@ -680,18 +827,18 @@ export function GEOClient() {
       </section>
 
       {/* ─── CTA ─── */}
-      <section className="py-20 lg:py-28 bg-gradient-to-br from-gray-950 via-emerald-950 to-gray-950 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-30">
+      <section className="py-20 lg:py-28 bg-gradient-to-br from-[#5C0F26] via-[#4A0C1F] to-[#2E0713] text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
           <div
             className="absolute inset-0"
             style={{
               backgroundImage:
-                "radial-gradient(circle at 1px 1px, rgba(16,185,129,0.3) 1px, transparent 0)",
+                "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0)",
               backgroundSize: "40px 40px",
             }}
           />
         </div>
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-emerald-500/10 rounded-full blur-[150px]" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-emerald-500/15 rounded-full blur-[150px]" />
 
         <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <RevealWrapper>
@@ -700,13 +847,13 @@ export function GEOClient() {
               style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
             >
               Ready to be the{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-teal-200">
                 AI&apos;s first answer?
               </span>
             </h2>
           </RevealWrapper>
           <RevealWrapper delay={100}>
-            <p className="mt-5 text-lg text-gray-400 max-w-2xl mx-auto">
+            <p className="mt-5 text-lg text-gray-200 max-w-2xl mx-auto">
               Get a free AI visibility audit. We&apos;ll show you exactly how your brand appears in ChatGPT, Gemini, Perplexity, and more — and what to fix.
             </p>
           </RevealWrapper>
@@ -714,16 +861,16 @@ export function GEOClient() {
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2 px-10 py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-bold text-base hover:shadow-lg hover:shadow-emerald-500/25 transition-all duration-300"
+                className="group inline-flex items-center gap-2 px-10 py-4 rounded-xl bg-white text-[#5C0F26] font-bold text-base hover:bg-gray-100 shadow-xl transition-all duration-300"
               >
                 Get Free Audit
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform text-[#5C0F26]" />
               </Link>
               <a
                 href={`https://wa.me/${COMPANY.whatsapp}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-10 py-4 rounded-xl border border-white/20 text-white/90 font-semibold text-base hover:bg-white/5 transition-all duration-300"
+                className="inline-flex items-center gap-2 px-10 py-4 rounded-xl border border-white/30 text-white font-semibold text-base hover:bg-white/10 transition-all duration-300"
               >
                 <MessageSquare size={18} />
                 WhatsApp Us

@@ -36,7 +36,7 @@ export function Footer() {
         <div className="flex flex-col lg:flex-row gap-12">
 
           {/* Left — links */}
-          <div className="flex-1 grid grid-cols-2 md:grid-cols-4 gap-10">
+          <div className="flex-1 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-10 min-w-0">
 
             {/* AI Services */}
             <div>
@@ -75,17 +75,17 @@ export function Footer() {
             </div>
 
             {/* Contact + Socials */}
-            <div className="flex flex-col gap-10">
+            <div className="flex flex-col gap-10 min-w-0">
               <div>
                 <h3 className="text-[11px] font-bold uppercase tracking-widest text-gray-500 mb-5">Contact</h3>
-                <div className="flex flex-col gap-4">
-                  <a href={`mailto:${COMPANY.email}`} className="flex items-center gap-2.5 text-sm text-gray-700 hover:text-gray-900 transition-colors">
+                <div className="flex flex-col gap-4 min-w-0">
+                  <a href={`mailto:${COMPANY.email}`} className="flex items-center gap-2 text-xs sm:text-sm text-gray-700 hover:text-gray-900 transition-colors min-w-0 break-all">
                     <Mail size={14} className="shrink-0 text-gray-900" />
-                    {COMPANY.email}
+                    <span className="min-w-0 break-all">{COMPANY.email}</span>
                   </a>
-                  <a href={`tel:${COMPANY.phone}`} className="flex items-center gap-2.5 text-sm text-gray-700 hover:text-gray-900 transition-colors">
+                  <a href={`tel:${COMPANY.phone}`} className="flex items-center gap-2 text-xs sm:text-sm text-gray-700 hover:text-gray-900 transition-colors">
                     <Phone size={14} className="shrink-0 text-gray-900" />
-                    {COMPANY.phone}
+                    <span>{COMPANY.phone}</span>
                   </a>
                 </div>
               </div>

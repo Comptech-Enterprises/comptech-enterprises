@@ -12,6 +12,7 @@ export const COMPANY = {
 export const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "AI", href: "/ai-solutions" },
+  { label: "GEO", href: "/geo" },
   { label: "Careers", href: "/careers" },
 ];
 
