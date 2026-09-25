@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1080">
+    <title>Comptech GEO Animation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1920px; height: 1080px;
+        overflow: hidden;
+        background: #030712;
+        font-family: 'Syne', sans-serif;
+      }
+      #root {
+        position: relative;
+        width: 1920px; height: 1080px;
+        overflow: hidden;
+        background: #030712;
+      }
+
+      /* Grid background */
+      .grid-bg {
+        position: absolute; inset: 0;
+        background-image:
+          linear-gradient(rgba(16,185,129,0.08) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(16,185,129,0.08) 1px, transparent 1px);
+        background-size: 80px 80px;
+        opacity: 0;
+      }
+
+      /* Gradient orbs */
+      .orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(100px);
+        opacity: 0;
+      }
+      .orb-1 { width: 600px; height: 600px; background: rgba(16,185,129,0.25); top: -100px; left: -100px; }
+      .orb-2 { width: 500px; height: 500px; background: rgba(6,182,212,0.2); bottom: -100px; right: -100px; }
+      .orb-3 { width: 400px; height: 400px; background: rgba(139,92,246,0.15); top: 50%; left: 50%; transform: translate(-50%,-50%); }
+
+      /* Text layers */
+      .text-layer {
+        position: absolute; inset: 0;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        z-index: 10;
+        text-align: center;
+      }
+      .headline {
+        font-size: 120px; font-weight: 800;
+        line-height: 1.05; letter-spacing: -4px;
+        opacity: 0;
+      }
+      .headline-white { color: #ffffff; }
+      .headline-gradient {
+        color: #6EE7B7;
+      }
+      .subtitle {
+        font-family: 'Inter', sans-serif;
+        font-size: 36px; font-weight: 500;
+        color: #9CA3AF;
+        margin-top: 30px;
+        opacity: 0;
+        letter-spacing: -0.5px;
+      }
+
+      /* Engine pills */
+      .engines {
+        position: absolute; bottom: 120px; left: 0; right: 0;
+        display: flex; justify-content: center; gap: 24px;
+        z-index: 10;
+      }
+      .engine-pill {
+        display: flex; align-items: center; gap: 10px;
+        padding: 14px 28px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,0.1);
+        background: rgba(255,255,255,0.05);
+        backdrop-filter: blur(10px);
+        font-family: 'Inter', sans-serif;
+        font-size: 18px; font-weight: 700;
+        color: #E5E7EB;
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      .engine-dot {
+        width: 10px; height: 10px;
+        border-radius: 50%;
+      }
+
+      /* Score card */
+      .score-card {
+        position: absolute; right: 140px; top: 50%; transform: translateY(-50%);
+        width: 320px;
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.1);
+        background: rgba(255,255,255,0.05);
+        backdrop-filter: blur(20px);
+        padding: 32px;
+        z-index: 10;
+        opacity: 0;
+      }
+      .score-value {
+        font-size: 72px; font-weight: 800;
+        color: #10B981;
+        line-height: 1;
+      }
+      .score-label {
+        font-family: 'Inter', sans-serif;
+        font-size: 14px; font-weight: 500;
+        color: #9CA3AF;
+        margin-top: 4px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+      .score-bar-row {
+        display: flex; align-items: center; gap: 12px;
+        margin-top: 16px;
+      }
+      .score-bar-label {
+        font-family: 'Inter', sans-serif;
+        font-size: 14px; color: #9CA3AF;
+        width: 80px;
+      }
+      .score-bar-track {
+        flex: 1; height: 8px; border-radius: 4px;
+        background: rgba(255,255,255,0.1);
+        overflow: hidden;
+      }
+      .score-bar-fill {
+        height: 100%; border-radius: 4px;
+        width: 0%;
+      }
+
+      /* SVG wave lines */
+      #wave-svg {
+        position: absolute; inset: 0;
+        width: 100%; height: 100%;
+        z-index: 2;
+        opacity: 0;
+      }
+
+      /* Final branding */
+      .final-brand {
+        position: absolute; inset: 0;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        z-index: 20;
+        opacity: 0;
+      }
+      .brand-name {
+        font-size: 100px; font-weight: 800;
+        color: #fff;
+        letter-spacing: -3px;
+      }
+      .brand-tag {
+        font-family: 'Inter', sans-serif;
+        font-size: 32px; font-weight: 500;
+        color: #10B981;
+        margin-top: 16px;
+        letter-spacing: 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="geo-hero" data-start="0" data-duration="14" data-width="1920" data-height="1080">
+
+      <!-- Background elements -->
+      <div class="grid-bg" id="grid-bg"></div>
+      <div class="orb orb-1" id="orb-1" data-layout-allow-overflow></div>
+      <div class="orb orb-2" id="orb-2" data-layout-allow-overflow></div>
+      <div class="orb orb-3" id="orb-3" data-layout-allow-overflow></div>
+
+      <!-- Wave SVG -->
+      <svg id="wave-svg" data-layout-allow-overflow viewBox="0 0 1920 1080" fill="none">
+        <path id="wave-1" d="M -100,540 C 320,200 640,880 960,540 C 1280,200 1600,880 2020,540" stroke="#10B981" stroke-width="3" stroke-linecap="round" opacity="0.6" />
+        <path id="wave-2" d="M -100,440 C 380,700 700,180 1020,440 C 1340,700 1580,280 2020,440" stroke="#06B6D4" stroke-width="2.5" stroke-linecap="round" opacity="0.5" />
+        <path id="wave-3" d="M -100,640 C 280,380 560,900 880,640 C 1200,380 1520,900 2020,640" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round" opacity="0.4" />
+      </svg>
+
+      <!-- Step 1: "Be the answer" -->
+      <div class="text-layer" id="step-1">
+        <div class="headline headline-white" id="h1-line1">Be the answer.</div>
+        <div class="headline headline-gradient" id="h1-line2">Not just a result.</div>
+        <p class="subtitle" id="h1-sub">Generative Engine Optimization</p>
+      </div>
+
+      <!-- Step 2: AI engines -->
+      <div class="text-layer" id="step-2" style="opacity: 0; align-items: flex-start; padding-left: 140px;">
+        <div class="headline headline-white" id="h2-line1" style="font-size: 90px;">Cited by every</div>
+        <div class="headline headline-gradient" id="h2-line2" style="font-size: 90px;">AI search engine.</div>
+      </div>
+
+      <!-- Engine pills -->
+      <div class="engines" id="engines">
+        <div class="engine-pill" id="pill-1"><div class="engine-dot" style="background:#10B981"></div>ChatGPT</div>
+        <div class="engine-pill" id="pill-2"><div class="engine-dot" style="background:#3B82F6"></div>Gemini</div>
+        <div class="engine-pill" id="pill-3"><div class="engine-dot" style="background:#8B5CF6"></div>Perplexity</div>
+        <div class="engine-pill" id="pill-4"><div class="engine-dot" style="background:#F59E0B"></div>Copilot</div>
+      </div>
+
+      <!-- Score card -->
+      <div class="score-card" id="score-card">
+        <div class="score-value" id="score-num">87</div>
+        <div class="score-label">AI Visibility Score</div>
+        <div class="score-bar-row">
+          <span class="score-bar-label">ChatGPT</span>
+          <div class="score-bar-track"><div class="score-bar-fill" id="bar-1" style="background:#10B981"></div></div>
+        </div>
+        <div class="score-bar-row">
+          <span class="score-bar-label">Gemini</span>
+          <div class="score-bar-track"><div class="score-bar-fill" id="bar-2" style="background:#3B82F6"></div></div>
+        </div>
+        <div class="score-bar-row">
+          <span class="score-bar-label">Perplexity</span>
+          <div class="score-bar-track"><div class="score-bar-fill" id="bar-3" style="background:#8B5CF6"></div></div>
+        </div>
+      </div>
+
+      <!-- Final brand -->
+      <div class="final-brand" id="final">
+        <div class="brand-name" id="brand-name">Comptech GEO</div>
+        <div class="brand-tag" id="brand-tag">Be the AI's first answer.</div>
+      </div>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+
+      // 0-1.5s: Grid + orbs fade in
+      tl.to("#grid-bg", { opacity: 1, duration: 1, ease: "power2.out" }, 0);
+      tl.to("#orb-1", { opacity: 1, duration: 1.2 }, 0.2);
+      tl.to("#orb-2", { opacity: 1, duration: 1.2 }, 0.4);
+      tl.to("#orb-3", { opacity: 1, duration: 1 }, 0.6);
+
+      // 0.5-2.5s: Wave lines draw in
+      tl.to("#wave-svg", { opacity: 1, duration: 0.5 }, 0.5);
+      const waves = ["#wave-1", "#wave-2", "#wave-3"];
+      waves.forEach((sel, i) => {
+        const el = document.querySelector(sel);
+        const len = el.getTotalLength();
+        gsap.set(el, { strokeDasharray: len, strokeDashoffset: len });
+        tl.to(el, { strokeDashoffset: 0, duration: 2, ease: "power2.inOut" }, 0.8 + i * 0.3);
+      });
+
+      // 1-3s: "Be the answer" text
+      tl.fromTo("#h1-line1", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 1);
+      tl.fromTo("#h1-line2", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 1.3);
+      tl.to("#h1-sub", { opacity: 1, duration: 0.5 }, 1.8);
+
+      // 3.5-4s: Fade out step 1
+      tl.to("#step-1", { opacity: 0, duration: 0.5 }, 3.5);
+
+      // 4-6s: Step 2 — "Cited by every AI search engine"
+      tl.to("#step-2", { opacity: 1, duration: 0.3 }, 4.2);
+      tl.fromTo("#h2-line1", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 4.2);
+      tl.fromTo("#h2-line2", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 4.5);
+
+      // 5-6s: Engine pills stagger in
+      ["#pill-1", "#pill-2", "#pill-3", "#pill-4"].forEach((sel, i) => {
+        tl.to(sel, { opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.5)" }, 5 + i * 0.2);
+      });
+
+      // 6.5-8s: Score card slides in
+      tl.fromTo("#score-card", { opacity: 0, x: 80 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 6.5);
+      tl.to("#bar-1", { width: "85%", duration: 0.8, ease: "power2.out" }, 7);
+      tl.to("#bar-2", { width: "72%", duration: 0.8, ease: "power2.out" }, 7.15);
+      tl.to("#bar-3", { width: "68%", duration: 0.8, ease: "power2.out" }, 7.3);
+
+      // 9-10s: Clear everything for final
+      tl.to("#step-2", { opacity: 0, duration: 0.5 }, 9.5);
+      tl.to("#engines", { opacity: 0, duration: 0.5 }, 9.5);
+      tl.to("#score-card", { opacity: 0, duration: 0.5 }, 9.5);
+      tl.to("#wave-svg", { opacity: 0.3, duration: 0.5 }, 9.5);
+
+      // 10.5-12s: Final brand reveal
+      tl.to("#final", { opacity: 1, duration: 0.6 }, 10.5);
+      tl.fromTo("#brand-name", { y: 50 }, { y: 0, duration: 0.6, ease: "power3.out" }, 10.5);
+      tl.fromTo("#brand-tag", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 11);
+
+      // Orbs gentle drift
+      tl.to("#orb-1", { x: 50, y: 30, duration: 12, ease: "sine.inOut" }, 0);
+      tl.to("#orb-2", { x: -40, y: -20, duration: 12, ease: "sine.inOut" }, 0);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["geo-hero"] = tl;
+    </script>
+  </body>
+</html>

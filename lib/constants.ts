@@ -51,7 +51,7 @@ export const AI_PILLARS = [
     icon: "target",
     title: "GEO Services - Generative Engine Optimization",
     desc: "Optimize your brand to get cited, recommended, and ranked directly inside ChatGPT, Google Gemini, Perplexity, and modern AI search engines.",
-    href: "/ai-solutions#geo",
+    href: "/geo",
     color: "#059669",
     bg: "#ECFDF5",
   },
@@ -227,6 +227,7 @@ export const TESTIMONIALS = [
     name: "Ashiwini Palaha",
     title: "MD, Fabstract Clothing Pvt. Ltd.",
     initials: "AP",
+    logo: "/clients/fabstract.webp",
   },
   {
     quote:
@@ -255,6 +256,7 @@ export const TESTIMONIALS = [
     name: "Shuchir Suri",
     title: "Anthem",
     initials: "SS",
+    logo: "/clients/anthem.webp",
   },
   {
     quote:

@@ -6,8 +6,7 @@ import { COMPANY } from "@/lib/constants";
 
 const AI_SERVICES = [
   { label: "Custom AI Agents",        href: "/ai-solutions#agents" },
-  { label: "AI Automation",           href: "/ai-solutions#automation" },
-  { label: "AI Audits",               href: "/ai-solutions#audit" },
+  { label: "GEO Services",             href: "/geo" },
   { label: "AI Training & Workshops", href: "/ai-solutions#training" },
 ];
 
