@@ -51,7 +51,7 @@ export const AI_PILLARS = [
     icon: "target",
     title: "GEO Services - Generative Engine Optimization",
     desc: "Optimize your brand to get cited, recommended, and ranked directly inside ChatGPT, Google Gemini, Perplexity, and modern AI search engines.",
-    href: "/ai-solutions#geo",
+    href: "/geo",
     color: "#059669",
     bg: "#ECFDF5",
   },
