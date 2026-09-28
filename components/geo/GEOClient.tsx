@@ -90,100 +90,240 @@ function ScrollProgress() {
   );
 }
 
-/* ─── Animated visibility bar chart (mock data viz) ─── */
-function VisibilityChart() {
+/* ─── Interactive AI Visibility Engine Data ─── */
+interface EngineDetail {
+  id: string;
+  label: string;
+  pct: number;
+  color: string;
+  rank: string;
+  queries: string;
+  sampleQuery: string;
+  topCitation: string;
+  sentiment: string;
+}
+
+const ENGINE_DATA: EngineDetail[] = [
+  {
+    id: "chatgpt",
+    label: "ChatGPT 4o",
+    pct: 85,
+    color: "#10B981",
+    rank: "#1 Recommended Source",
+    queries: "1,420+ queries/mo",
+    sampleQuery: "Best networking and AI services company in India",
+    topCitation: "Comptech Enterprises cited as primary IT infrastructure & AI provider.",
+    sentiment: "99% Positive",
+  },
+  {
+    id: "gemini",
+    label: "Google Gemini",
+    pct: 72,
+    color: "#3B82F6",
+    rank: "#1 Verified Citation",
+    queries: "980+ queries/mo",
+    sampleQuery: "Top enterprise IT audit agency Delhi",
+    topCitation: "Comptech Enterprises listed for certified network security & AMC.",
+    sentiment: "96% Positive",
+  },
+  {
+    id: "perplexity",
+    label: "Perplexity AI",
+    pct: 68,
+    color: "#8B5CF6",
+    rank: "Top 3 Source",
+    queries: "650+ queries/mo",
+    sampleQuery: "Custom AI agent development services",
+    topCitation: "Cited as expert developer of autonomous sales & support AI agents.",
+    sentiment: "98% Positive",
+  },
+  {
+    id: "copilot",
+    label: "MS Copilot",
+    pct: 58,
+    color: "#F59E0B",
+    rank: "Featured Source",
+    queries: "520+ queries/mo",
+    sampleQuery: "Enterprise cloud solutions and IT AMC support",
+    topCitation: "Included in enterprise vendor directory for Delhi NCR.",
+    sentiment: "94% Positive",
+  },
+  {
+    id: "claude",
+    label: "Claude 3.5",
+    pct: 52,
+    color: "#EC4899",
+    rank: "Verified Entity",
+    queries: "410+ queries/mo",
+    sampleQuery: "Generative Engine Optimization services company",
+    topCitation: "Recognized authority in GEO & AI search optimization.",
+    sentiment: "97% Positive",
+  },
+];
+
+/* ─── Interactive Visibility Bar Chart with Live Inspection ─── */
+function VisibilityChart({
+  selectedEngine,
+  onSelectEngine,
+}: {
+  selectedEngine: EngineDetail;
+  onSelectEngine: (engine: EngineDetail) => void;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const obs = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) { setVisible(true); obs.unobserve(el); }
-    }, { threshold: 0.2 });
+    const obs = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          setVisible(true);
+          obs.unobserve(el);
+        }
+      },
+      { threshold: 0.2 }
+    );
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
 
-  const bars = [
-    { label: "ChatGPT", pct: 85, color: "#10B981" },
-    { label: "Gemini", pct: 72, color: "#3B82F6" },
-    { label: "Perplexity", pct: 68, color: "#8B5CF6" },
-    { label: "Copilot", pct: 58, color: "#F59E0B" },
-    { label: "Claude", pct: 52, color: "#EC4899" },
-  ];
-
   return (
-    <div ref={ref} className="space-y-4">
-      {bars.map((b, i) => (
-        <div key={b.label} className="space-y-1.5">
-          <div className="flex justify-between text-sm">
-            <span className="font-semibold text-gray-800">{b.label}</span>
-            <span className="font-bold" style={{ color: b.color }}>
-              {visible ? b.pct : 0}%
-            </span>
+    <div ref={ref} className="space-y-3">
+      {ENGINE_DATA.map((b, i) => {
+        const isSelected = selectedEngine.id === b.id;
+        return (
+          <div
+            key={b.id}
+            onClick={() => onSelectEngine(b)}
+            className={`p-3 rounded-xl border transition-all duration-300 cursor-pointer group ${
+              isSelected
+                ? "border-emerald-500 bg-emerald-50/50 shadow-sm ring-1 ring-emerald-500/30"
+                : "border-gray-100 bg-gray-50/50 hover:border-gray-300 hover:bg-white"
+            }`}
+          >
+            <div className="flex justify-between items-center text-sm mb-1.5">
+              <div className="flex items-center gap-2">
+                <span className="font-bold text-gray-900 group-hover:text-emerald-700 transition-colors">
+                  {b.label}
+                </span>
+                {isSelected && (
+                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-600 text-white font-bold uppercase tracking-wider animate-pulse">
+                    Active Inspection
+                  </span>
+                )}
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs text-gray-400 font-medium hidden sm:inline">
+                  {b.rank}
+                </span>
+                <span className="font-extrabold text-base" style={{ color: b.color }}>
+                  {visible ? b.pct : 0}%
+                </span>
+              </div>
+            </div>
+            <div className="h-3 rounded-full bg-gray-200/80 overflow-hidden relative">
+              <div
+                className="h-full rounded-full transition-all duration-1000 ease-out relative"
+                style={{
+                  width: visible ? `${b.pct}%` : "0%",
+                  backgroundColor: b.color,
+                  transitionDelay: `${i * 100}ms`,
+                }}
+              />
+            </div>
           </div>
-          <div className="h-3 rounded-full bg-gray-100 overflow-hidden">
-            <div
-              className="h-full rounded-full transition-all duration-1000 ease-out"
-              style={{
-                width: visible ? `${b.pct}%` : "0%",
-                backgroundColor: b.color,
-                transitionDelay: `${i * 120}ms`,
-              }}
-            />
-          </div>
-        </div>
-      ))}
+        );
+      })}
+      <p className="text-[11px] text-gray-400 text-center italic pt-1">
+        💡 Tap any engine above to inspect live AI query metrics and verified citation quotes.
+      </p>
     </div>
   );
 }
 
-/* ─── Animated citation score ring ─── */
-function CitationRing({ score, label }: { score: number; label: string }) {
+/* ─── Interactive Animated Citation Ring ─── */
+function CitationRing({
+  score,
+  label,
+  sublabel,
+  color = "#10B981",
+}: {
+  score: number;
+  label: string;
+  sublabel?: string;
+  color?: string;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const obs = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) { setVisible(true); obs.unobserve(el); }
-    }, { threshold: 0.3 });
+    const obs = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          setVisible(true);
+          obs.unobserve(el);
+        }
+      },
+      { threshold: 0.3 }
+    );
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
 
-  const r = 54;
+  const r = 52;
   const circ = 2 * Math.PI * r;
   const offset = circ - (score / 100) * circ;
 
   return (
-    <div ref={ref} className="flex flex-col items-center gap-3">
-      <div className="relative w-32 h-32">
-        <svg viewBox="0 0 120 120" className="w-full h-full -rotate-90">
-          <circle cx="60" cy="60" r={r} fill="none" stroke="#E5E7EB" strokeWidth="8" />
+    <div
+      ref={ref}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="flex flex-col items-center gap-2.5 cursor-pointer group transition-transform duration-300 hover:-translate-y-1"
+    >
+      <div className="relative w-28 h-28 sm:w-32 sm:h-32">
+        {/* Glow aura on hover */}
+        <div
+          className={`absolute inset-0 rounded-full blur-xl transition-opacity duration-300 ${
+            isHovered ? "opacity-30" : "opacity-0"
+          }`}
+          style={{ backgroundColor: color }}
+        />
+
+        <svg viewBox="0 0 120 120" className="w-full h-full -rotate-90 relative z-10">
+          <circle cx="60" cy="60" r={r} fill="none" stroke="#F1F5F9" strokeWidth="9" />
           <circle
-            cx="60" cy="60" r={r} fill="none" stroke="url(#grad)" strokeWidth="8"
+            cx="60"
+            cy="60"
+            r={r}
+            fill="none"
+            stroke={color}
+            strokeWidth="9"
             strokeLinecap="round"
             strokeDasharray={circ}
             strokeDashoffset={visible ? offset : circ}
-            style={{ transition: "stroke-dashoffset 1.2s ease-out" }}
+            style={{ transition: "stroke-dashoffset 1.4s cubic-bezier(0.34, 1.56, 0.64, 1)" }}
           />
-          <defs>
-            <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#10B981" />
-              <stop offset="100%" stopColor="#06B6D4" />
-            </linearGradient>
-          </defs>
         </svg>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-2xl font-extrabold text-gray-900">
+
+        <div className="absolute inset-0 flex flex-col items-center justify-center z-20">
+          <span className="text-2xl sm:text-3xl font-extrabold text-gray-900 group-hover:scale-105 transition-transform">
             <AnimatedNumber value={score} />
           </span>
+          {sublabel && (
+            <span className="text-[10px] text-emerald-600 font-bold uppercase tracking-wider">
+              {sublabel}
+            </span>
+          )}
         </div>
       </div>
-      <span className="text-sm font-semibold text-gray-500 uppercase tracking-wider">{label}</span>
+      <span className="text-xs sm:text-sm font-bold text-gray-700 uppercase tracking-wider group-hover:text-emerald-700 transition-colors">
+        {label}
+      </span>
     </div>
   );
 }
@@ -410,6 +550,8 @@ function ChatGPTDemo() {
    MAIN COMPONENT
    ════════════════════════════════════ */
 export function GEOClient() {
+  const [selectedEngine, setSelectedEngine] = useState<EngineDetail>(ENGINE_DATA[0]);
+
   return (
     <main className="relative overflow-hidden bg-white text-gray-900">
       <ScrollProgress />
@@ -644,17 +786,74 @@ export function GEOClient() {
               </RevealWrapper>
             </div>
 
-            {/* Right — bar chart */}
+            {/* Right — bar chart & live engine detail card */}
             <div className="flex-1 w-full">
               <RevealWrapper delay={200} direction="right">
-                <div className="glass-card rounded-2xl p-8 bg-white shadow-lg">
-                  <div className="flex items-center justify-between mb-6">
-                    <h3 className="font-bold text-gray-900">Brand Visibility by Engine</h3>
-                    <span className="text-xs font-semibold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full">
-                      Live
+                <div className="glass-card rounded-2xl p-6 sm:p-8 bg-white shadow-lg space-y-6 border border-gray-100">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h3 className="font-bold text-gray-900 text-lg">Brand Visibility by Engine</h3>
+                      <p className="text-xs text-gray-400">Click any engine to inspect live citation data</p>
+                    </div>
+                    <span className="text-xs font-semibold text-emerald-600 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                      Live Interactive
                     </span>
                   </div>
-                  <VisibilityChart />
+
+                  <VisibilityChart
+                    selectedEngine={selectedEngine}
+                    onSelectEngine={setSelectedEngine}
+                  />
+
+                  {/* Live Engine Inspector Detail Card */}
+                  <div className="pt-4 border-t border-gray-100">
+                    <div className="p-4 rounded-xl bg-slate-50/80 border border-gray-200/80 space-y-3 transition-all duration-300">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <div
+                            className="w-3 h-3 rounded-full"
+                            style={{ backgroundColor: selectedEngine.color }}
+                          />
+                          <span className="font-bold text-gray-900 text-sm">
+                            {selectedEngine.label} Inspector
+                          </span>
+                        </div>
+                        <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
+                          {selectedEngine.sentiment}
+                        </span>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-2 text-xs">
+                        <div className="p-2.5 rounded-lg bg-white border border-gray-100 shadow-sm">
+                          <span className="text-gray-400 block font-medium text-[10px] uppercase">
+                            Query Volume
+                          </span>
+                          <span className="font-bold text-gray-800">{selectedEngine.queries}</span>
+                        </div>
+                        <div className="p-2.5 rounded-lg bg-white border border-gray-100 shadow-sm">
+                          <span className="text-gray-400 block font-medium text-[10px] uppercase">
+                            Citation Rank
+                          </span>
+                          <span className="font-bold text-gray-800">{selectedEngine.rank}</span>
+                        </div>
+                      </div>
+
+                      <div className="p-3 rounded-lg bg-white border border-gray-100 shadow-sm space-y-1.5 text-xs">
+                        <div className="flex items-center gap-1.5 text-gray-500 text-[11px] font-semibold">
+                          <Search size={12} className="text-emerald-600" />
+                          <span>Sample Query Analyzed:</span>
+                        </div>
+                        <p className="text-gray-800 italic bg-gray-50 p-2 rounded border border-gray-100 font-normal">
+                          &quot;{selectedEngine.sampleQuery}&quot;
+                        </p>
+                        <div className="flex items-start gap-1.5 text-emerald-700 text-[11px] pt-1">
+                          <Check size={13} className="shrink-0 mt-0.5 text-emerald-600" />
+                          <span className="font-medium">{selectedEngine.topCitation}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </RevealWrapper>
             </div>

@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "logo.clearbit.com",
       },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
     ],
   },
   experimental: {
@@ -23,11 +27,6 @@ const nextConfig: NextConfig = {
       {
         source: "/partners-and-brands",
         destination: "/partners",
-        permanent: true,
-      },
-      {
-        source: "/blog",
-        destination: "/",
         permanent: true,
       },
     ];

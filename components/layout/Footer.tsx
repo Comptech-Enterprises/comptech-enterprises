@@ -18,6 +18,7 @@ const IT_SERVICES = [
 ];
 
 const COMPANY_LINKS = [
+  { label: "Blog",        href: "/blog" },
   { label: "Partners",     href: "/partners" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Careers",      href: "/careers" },

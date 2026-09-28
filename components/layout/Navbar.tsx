@@ -63,7 +63,9 @@ export function Navbar({ transparent = false }: NavbarProps) {
     pathname === "/" ||
     pathname === "/contact" ||
     pathname?.startsWith("/ai-agents") ||
-    pathname?.startsWith("/ai-solutions");
+    pathname?.startsWith("/ai-solutions") ||
+    pathname?.startsWith("/geo") ||
+    pathname?.startsWith("/blog");
   const isTransparent = transparent && !solid;
   const textColor = isTransparent
     ? (isWhiteHeader ? "text-gray-800" : "text-white/90")
@@ -189,7 +191,7 @@ export function Navbar({ transparent = false }: NavbarProps) {
                   className={clsx(
                     `px-3 py-2 rounded-lg text-base lg:text-[17px] font-semibold transition-all duration-200 ${hoverBg}`,
                     textColor,
-                    pathname === link.href && activeColor,
+                    (pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href))) && activeColor,
                   )}
                 >
                   {link.label}

@@ -13,6 +13,7 @@ export const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "AI", href: "/ai-solutions" },
   { label: "GEO", href: "/geo" },
+  { label: "Blog", href: "/blog" },
   { label: "Careers", href: "/careers" },
 ];
 
