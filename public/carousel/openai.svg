@@ -1,0 +1,22 @@
+<svg width="600" height="600" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="grad-openai" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#10A37F" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="1"/>
+    </radialGradient>
+    <pattern id="grid-openai" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="#0F172A"/>
+  <rect width="100%" height="100%" fill="url(#grad-openai)"/>
+  <rect width="100%" height="100%" fill="url(#grid-openai)"/>
+  <circle cx="300" cy="210" r="75" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+  <g transform="translate(252, 162) scale(4)">
+    <path fill="#10A37F" d="M22.28 9.82a5.98 5.98 0 0 0-.52-4.91 6.05 6.05 0 0 0-6.51-2.9A6.07 6.07 0 0 0 4.98 4.18a5.98 5.98 0 0 0-4 2.9 6.05 6.05 0 0 0 .74 7.1 5.98 5.98 0 0 0 .51 4.91 6.05 6.05 0 0 0 6.51 2.9A5.98 5.98 0 0 0 13.26 24a6.06 6.06 0 0 0 5.77-4.2 5.99 5.99 0 0 0 4-2.9 6.06 6.06 0 0 0-.75-7.08z"/>
+  </g>
+  <text x="300" y="360" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="800" fill="#FFFFFF" text-anchor="middle" letter-spacing="-0.5">OpenAI SearchGPT</text>
+  <text x="300" y="405" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="500" fill="rgba(255,255,255,0.7)" text-anchor="middle">Conversational Citations & Synthesis</text>
+  <rect x="210" y="455" width="180" height="38" rx="19" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+  <text x="300" y="479" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#10A37F" text-anchor="middle" letter-spacing="1.5">GEO CITATION ENGINE</text>
+</svg>
