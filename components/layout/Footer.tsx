@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { Mail, Phone, MapPin, Linkedin, Instagram, ArrowUpRight, Sparkles, ShieldCheck } from "lucide-react";
+import { Mail, MapPin, Linkedin, Instagram, ShieldCheck } from "lucide-react";
 import { COMPANY } from "@/lib/constants";
+import { Logo } from "@/components/ui/Logo";
 
 const AI_SERVICES = [
   { label: "GEO (Generative Engine Optimization)", href: "/geo" },
@@ -55,59 +56,22 @@ export function Footer() {
       />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-        {/* Top Pre-Footer Banner */}
-        <div className="py-12 border-b border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div>
-            <div className="flex items-center gap-2 mb-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">
-                All AI &amp; Infrastructure Systems Operational
-              </span>
-            </div>
-            <h2 className="font-display font-extrabold text-2xl sm:text-3xl text-white tracking-tight">
-              Ready to engineer your generative AI authority?
-            </h2>
-            <p className="text-sm text-gray-400 mt-1">
-              Speak directly with our AI agents &amp; enterprise infrastructure team.
-            </p>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-3">
-            <Link
-              href="/contact#quote"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold text-white bg-gradient-to-r from-[#5C0F26] to-[#E8435A] hover:scale-105 shadow-lg shadow-[#5C0F26]/30 transition-all duration-300"
-            >
-              <Sparkles size={15} />
-              <span>Request Strategic Audit</span>
-            </Link>
-            <a
-              href={`tel:${COMPANY.phone}`}
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-full text-sm font-semibold text-gray-300 bg-white/5 hover:bg-white/10 border border-white/10 transition-colors"
-            >
-              <Phone size={14} className="text-[#E8435A]" />
-              <span>{COMPANY.phone}</span>
-            </a>
-          </div>
-        </div>
-
         {/* Main Links Grid */}
         <div className="py-14 sm:py-16 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-12 gap-10 lg:gap-8">
           {/* Brand & Mission (Col 1-4) */}
           <div className="col-span-2 md:col-span-4 lg:col-span-4 flex flex-col justify-between pr-4">
             <div>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#5C0F26] to-[#E8435A] flex items-center justify-center font-display font-black text-white text-xl shadow-md">
-                  C
-                </div>
+              <Link href="/" className="inline-flex items-center gap-3 mb-4 group">
+                <Logo className="w-10 h-10 shrink-0 group-hover:scale-105 transition-transform duration-200" />
                 <div>
-                  <span className="font-display font-black text-lg tracking-tight text-white block leading-none">
+                  <span className="font-display font-black text-lg tracking-tight text-white block leading-none group-hover:text-pink-300 transition-colors">
                     COMPTECH
                   </span>
                   <span className="text-[10px] tracking-[0.2em] uppercase font-bold text-gray-400">
                     ENTERPRISES
                   </span>
                 </div>
-              </div>
+              </Link>
               <p className="text-sm text-gray-400 leading-relaxed mb-6">
                 Pioneering enterprise AI solutions, autonomous agent engineering, and Generative Engine Optimization across India and global markets.
               </p>
