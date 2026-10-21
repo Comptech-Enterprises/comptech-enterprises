@@ -1,0 +1,22 @@
+<svg width="600" height="600" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="grad-perplexity" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#2DD4BF" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#18181B" stop-opacity="1"/>
+    </radialGradient>
+    <pattern id="grid-perplexity" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="#18181B"/>
+  <rect width="100%" height="100%" fill="url(#grad-perplexity)"/>
+  <rect width="100%" height="100%" fill="url(#grid-perplexity)"/>
+  <circle cx="300" cy="210" r="75" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+  <g transform="translate(252, 162) scale(4)">
+    <path fill="#2DD4BF" d="M22.4 7.09h-2.31V.07l-7.51 6.35V.16h-1.16v6.2L4.49 0v7.09H1.6v10.4h2.89V24l6.93-6.36v6.2h1.16v-6.05l6.93 6.18v-6.49h2.89V7.09z"/>
+  </g>
+  <text x="300" y="360" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="800" fill="#FFFFFF" text-anchor="middle" letter-spacing="-0.5">Perplexity AI</text>
+  <text x="300" y="405" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="500" fill="rgba(255,255,255,0.7)" text-anchor="middle">Footnote Citations & Domain Trust</text>
+  <rect x="210" y="455" width="180" height="38" rx="19" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+  <text x="300" y="479" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#2DD4BF" text-anchor="middle" letter-spacing="1.5">GEO CITATION ENGINE</text>
+</svg>
