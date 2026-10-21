@@ -25,6 +25,16 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/services-4",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/network-solutions-1",
+        destination: "/services#networking",
+        permanent: true,
+      },
+      {
         source: "/partners-and-brands",
         destination: "/partners",
         permanent: true,
