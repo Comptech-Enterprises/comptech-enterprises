@@ -85,6 +85,8 @@ export function BlogClient() {
     <main className="min-h-screen bg-white text-[#121317]">
       {/* .grid-container.blog: 40px gutters, 205px top, 120px bottom */}
       <div className="mx-auto max-w-[1440px] px-5 pb-[120px] pt-32 sm:px-10 md:pt-[205px]">
+        <h1 className="sr-only">Comptech Blog: AI Agents, GEO and Enterprise IT Insights</h1>
+
         {/* Featured: text left, wide 16:9 media right */}
         {featured && (
           <section data-snap className="grid grid-cols-1 items-center gap-10 md:grid-cols-2">

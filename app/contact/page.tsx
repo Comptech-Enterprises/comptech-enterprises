@@ -123,9 +123,9 @@ export default function ContactPage() {
             <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
               <RevealWrapper>
                 <SectionLabel>Corporate AI Workshops</SectionLabel>
-                <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-gray-900 mb-4 sm:mb-5 leading-tight">
+                <h1 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-gray-900 mb-4 sm:mb-5 leading-tight">
                   Upskill Your Team in Practical AI
-                </h2>
+                </h1>
                 <p className="text-gray-500 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8">
                   Whether you want your engineering team to build custom AI agents or non-technical staff to 10x their productivity with generative AI tools, we design tailored enterprise workshops.
                 </p>

@@ -7,7 +7,10 @@ export const metadata: Metadata = {
   title: "Blog & Insights | AI Agents, GEO & Enterprise Infrastructure",
   description:
     "Explore the latest insights on autonomous AI agents, Generative Engine Optimization (GEO), enterprise IT infrastructure, and AI benchmarks from the Comptech team.",
+  alternates: { canonical: "/blog" },
   openGraph: {
+    type: "website",
+    images: [{ url: "/images/logo.webp" }],
     title: "Blog & Insights | Comptech Enterprises",
     description:
       "Explore the latest insights on autonomous AI agents, Generative Engine Optimization (GEO), enterprise IT infrastructure, and AI benchmarks.",

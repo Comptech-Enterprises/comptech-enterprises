@@ -35,6 +35,31 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/services-1",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/end-user-computer",
+        destination: "/services#euc",
+        permanent: true,
+      },
+      {
+        source: "/security-solutions-1",
+        destination: "/services#security",
+        permanent: true,
+      },
+      {
+        source: "/data-centre-solutions-1",
+        destination: "/services#datacenter",
+        permanent: true,
+      },
+      {
+        source: "/copy-of-ai-vision",
+        destination: "/ai-solutions",
+        permanent: true,
+      },
+      {
         source: "/partners-and-brands",
         destination: "/partners",
         permanent: true,
