@@ -62,6 +62,8 @@ export function Hero() {
         />
       )}
 
+      <h1 className="sr-only">Comptech Enterprises: Enterprise IT and AI Solutions in India</h1>
+
       {/* Gradient mesh blobs for glass depth */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 -left-20 w-[500px] h-[500px] rounded-full blur-3xl opacity-20" style={{ background: "#5C0F26" }} />
