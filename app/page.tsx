@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/home/Hero";
@@ -8,6 +9,22 @@ import { ServicesSection } from "@/components/home/ServicesSection";
 import { Testimonials } from "@/components/home/Testimonials";
 import { ContactSection } from "@/components/home/ContactSection";
 import { PageThread } from "@/components/ui/PageThread";
+
+export const metadata: Metadata = {
+  title: { absolute: "AI Agents, Custom Solutions & Training for Business | Comptech Enterprises" },
+  description:
+    "Custom AI agents, automation, GEO services, and AI training for business and tech teams. Enterprise IT support worldwide.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    siteName: "Comptech Enterprises",
+    title: "AI Agents, Custom Solutions & Training for Business | Comptech Enterprises",
+    description:
+      "Custom AI agents, automation, GEO services, and AI training for business and tech teams. Enterprise IT support worldwide.",
+    images: [{ url: "/images/logo.webp" }],
+  },
+};
 
 export default function HomePage() {
   return (

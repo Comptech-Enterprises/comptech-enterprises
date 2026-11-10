@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: "Contact Us for AI Solutions & IT Support",
   description:
-    "Get in touch with Comptech Enterprises for AI Services, AI Trainings, Software Development, or enterprise IT support.",
+    "Get in touch for AI agents, custom solutions, AI training, or enterprise IT support. Free AI audit available.",
   alternates: {
     canonical: "/contact",
   },
@@ -11,9 +11,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     siteName: "Comptech Enterprises",
-    title: "Contact Us | Comptech Enterprises",
+    title: "Contact Us for AI Solutions & IT Support | Comptech Enterprises",
     description:
-      "Get in touch with Comptech Enterprises for AI Services, AI Trainings, Software Development, or enterprise IT support.",
+      "Get in touch for AI agents, custom solutions, AI training, or enterprise IT support. Free AI audit available.",
     images: [{ url: "/images/logo.webp" }],
   },
 };

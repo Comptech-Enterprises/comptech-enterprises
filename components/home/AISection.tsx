@@ -6,14 +6,12 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { AI_PILLARS } from "@/lib/constants";
 
 // `logo` is a file in /public/clients; clients without one render as a name pill.
-const CLIENTS: { name: string; logo?: string }[] = [
-  { name: "Diageo", logo: "diageo" },
+const CLIENTS: { name: string; logo?: string; tall?: boolean }[] = [
   { name: "BCG", logo: "bcg" },
   { name: "DLF", logo: "dlf" },
   { name: "Casio", logo: "casio" },
   { name: "ITC", logo: "itc" },
   { name: "Starbucks India", logo: "starbucks-india" },
-  { name: "Zomato", logo: "zomato" },
   { name: "Pernod Ricard", logo: "pernod-ricard" },
   { name: "Leela Hotels", logo: "leela-hotels" },
   { name: "Urban Company", logo: "urban-company" },
@@ -24,13 +22,11 @@ const CLIENTS: { name: string; logo?: string }[] = [
   { name: "Rebel Foods", logo: "rebel-foods" },
   { name: "Coca-Cola", logo: "coca-cola" },
   { name: "HL Mando", logo: "hl-mando" },
-  { name: "Shervani Hotels" },
-  { name: "Summit Hotels" },
+  { name: "Shervani Hotels", logo: "shervani-hotels" },
+  { name: "Summit Hotels", logo: "summit-hotels", tall: true },
   { name: "William Grant & Sons", logo: "william-grant-sons" },
-  { name: "Radico Khaitan", logo: "radico-khaitan" },
-  { name: "Stanley" },
   { name: "Canara Bank", logo: "canara-bank" },
-  { name: "Fabstract" },
+  { name: "Fabstract", logo: "fabstract", tall: true },
   { name: "CoreWeave", logo: "coreweave" },
   { name: "N1 Care", logo: "n1-care" },
   { name: "BreezeLearn", logo: "breezelearn" },
@@ -84,7 +80,7 @@ export function AISection() {
                     alt={client.name}
                     loading="lazy"
                     draggable={false}
-                    className="h-7 sm:h-9 w-auto max-w-[130px] sm:max-w-[170px] object-contain"
+                    className={`${client.tall ? "h-10 sm:h-12" : "h-7 sm:h-9"} w-auto max-w-[130px] sm:max-w-[170px] object-contain`}
                   />
                 ) : (
                   client.name
