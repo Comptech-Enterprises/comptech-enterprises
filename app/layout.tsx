@@ -18,7 +18,7 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://comptech.in"),
   title: {
-    default: "Comptech Enterprises | Enterprise IT & AI Solutions India",
+    default: "Comptech Enterprises | AI Agents, Solutions & Training for Business",
     template: "%s | Comptech Enterprises",
   },
   description:
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     siteName: "Comptech Enterprises",
-    title: "Comptech Enterprises | Enterprise IT & AI Solutions India",
+    title: "Comptech Enterprises | AI Agents, Solutions & Training for Business",
     description: "Empowering MSMEs and Corporates across India to adopt practical AI.",
     images: [{ url: "/images/logo.webp" }],
   },

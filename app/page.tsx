@@ -11,7 +11,7 @@ import { ContactSection } from "@/components/home/ContactSection";
 import { PageThread } from "@/components/ui/PageThread";
 
 export const metadata: Metadata = {
-  title: { absolute: "AI Agents, Custom Solutions & Training for Business | Comptech Enterprises" },
+  title: { absolute: "Comptech Enterprises | AI Agents, Solutions & Training for Business" },
   description:
     "Custom AI agents, automation, GEO services, and AI training for business and tech teams. Enterprise IT support worldwide.",
   alternates: { canonical: "/" },
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     siteName: "Comptech Enterprises",
-    title: "AI Agents, Custom Solutions & Training for Business | Comptech Enterprises",
+    title: "Comptech Enterprises | AI Agents, Solutions & Training for Business",
     description:
       "Custom AI agents, automation, GEO services, and AI training for business and tech teams. Enterprise IT support worldwide.",
     images: [{ url: "/images/logo.webp" }],
