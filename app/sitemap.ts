@@ -22,6 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/hardware", changeFrequency: "monthly", priority: 0.7 },
     { path: "/partners", changeFrequency: "monthly", priority: 0.7 },
     { path: "/careers", changeFrequency: "monthly", priority: 0.7 },
+    { path: "/faq", changeFrequency: "monthly", priority: 0.7 },
     { path: "/contact", changeFrequency: "yearly", priority: 0.6 },
   ];
 

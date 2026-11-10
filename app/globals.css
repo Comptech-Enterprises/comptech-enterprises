@@ -40,6 +40,8 @@
 html,
 body {
   overflow-x: hidden;
+  /* clip avoids creating a scroll container, so position: sticky keeps working */
+  overflow-x: clip;
   max-width: 100%;
   width: 100%;
 }
