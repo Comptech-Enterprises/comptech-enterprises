@@ -24,6 +24,7 @@ const COMPANY_LINKS = [
   { label: "Enterprise Partners", href: "/partners" },
   { label: "Verified Case Studies", href: "/case-studies" },
   { label: "Careers & Culture", href: "/careers" },
+  { label: "FAQs", href: "/faq" },
   { label: "About Comptech", href: "/" },
 ];
 
