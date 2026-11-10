@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Careers",
+  title: { absolute: "Careers at Comptech Enterprises" },
   description:
-    "Join Comptech Enterprises — build enterprise IT, AI, and infrastructure projects with a team of 50+ certified engineers across India.",
+    "Join Comptech Enterprises. Work on AI agents, enterprise solutions, and cutting-edge infrastructure.",
   alternates: {
     canonical: "/careers",
   },
@@ -11,9 +11,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     siteName: "Comptech Enterprises",
-    title: "Careers | Comptech Enterprises",
+    title: "Careers at Comptech Enterprises",
     description:
-      "Join Comptech Enterprises — build enterprise IT, AI, and infrastructure projects with a team of 50+ certified engineers across India.",
+      "Join Comptech Enterprises. Work on AI agents, enterprise solutions, and cutting-edge infrastructure.",
     images: [{ url: "/images/logo.webp" }],
   },
 };

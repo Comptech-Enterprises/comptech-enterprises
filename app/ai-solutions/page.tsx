@@ -3,9 +3,9 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { AISolutionsClient } from "@/components/ai-solutions/AISolutionsClient";
 
-const TITLE = "AI Services in India | AI Agents, Training & Automation";
+const TITLE = "Custom AI Agents & Solutions for Mid-Size Businesses";
 const DESCRIPTION =
-  "Comptech Enterprises offers AI services in Delhi NCR and across India: custom AI agents, corporate AI training workshops, RAG and LLM integration, and AI automation for MSMEs and enterprises.";
+  "Autonomous AI agents, RAG pipelines, API integrations, and AI automation built around your workflows.";
 
 export const metadata: Metadata = {
   title: TITLE,

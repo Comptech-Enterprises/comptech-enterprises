@@ -33,9 +33,9 @@ import { GEOCarouselSection } from "@/components/geo/GEOCarouselSection";
 import { GEOAuditFolder } from "@/components/geo/GEOAuditFolder";
 
 export const metadata: Metadata = {
-  title: "GEO Services — Generative Engine Optimization",
+  title: "Generative Engine Optimization (GEO) Services",
   description:
-    "Get your brand cited, recommended, and ranked inside ChatGPT, Google Gemini, Perplexity, and Claude. Comptech's GEO services optimize your digital presence for AI search engines.",
+    "Get your brand cited and recommended in ChatGPT, Perplexity, Google Gemini, and AI search engines.",
   keywords: [
     "GEO",
     "Generative Engine Optimization",
@@ -47,9 +47,9 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://comptech.in/geo" },
   openGraph: {
-    title: "GEO Services — Generative Engine Optimization | Comptech Enterprises",
+    title: "Generative Engine Optimization (GEO) Services | Comptech Enterprises",
     description:
-      "Get your brand cited, recommended, and ranked inside ChatGPT, Google Gemini, Perplexity, and Claude.",
+      "Get your brand cited and recommended in ChatGPT, Perplexity, Google Gemini, and AI search engines.",
     siteName: "Comptech Enterprises",
     locale: "en_IN",
     images: [{ url: "/images/logo.webp" }],

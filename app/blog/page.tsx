@@ -4,16 +4,16 @@ import { Footer } from "@/components/layout/Footer";
 import { BlogClient } from "@/components/blog/BlogClient";
 
 export const metadata: Metadata = {
-  title: "Blog & Insights | AI Agents, GEO & Enterprise Infrastructure",
+  title: "Blog: AI Agents, GEO & Enterprise Insights",
   description:
-    "Explore the latest insights on autonomous AI agents, Generative Engine Optimization (GEO), enterprise IT infrastructure, and AI benchmarks from the Comptech team.",
+    "Insights on AI agents, generative engine optimization, enterprise infrastructure, and practical AI adoption.",
   alternates: { canonical: "/blog" },
   openGraph: {
     type: "website",
     images: [{ url: "/images/logo.webp" }],
-    title: "Blog & Insights | Comptech Enterprises",
+    title: "Blog: AI Agents, GEO & Enterprise Insights | Comptech Enterprises",
     description:
-      "Explore the latest insights on autonomous AI agents, Generative Engine Optimization (GEO), enterprise IT infrastructure, and AI benchmarks.",
+      "Insights on AI agents, generative engine optimization, enterprise infrastructure, and practical AI adoption.",
   },
 };
 
