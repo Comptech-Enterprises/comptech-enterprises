@@ -1,16 +1,18 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ChevronDown, ArrowRight } from "lucide-react";
 import { FreeAuditButton } from "@/components/ui/FreeAuditButton";
 
+// The 12s intro video plays at this speed, so the buttons appear sooner (~7s at 1.75x).
+const HERO_VIDEO_SPEED = 1.75;
+
 export function Hero() {
   const [isMobile, setIsMobile] = useState(false);
   const [videoReady, setVideoReady] = useState(false);
   const [buttonsVisible, setButtonsVisible] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
 
   // Determine device size once before mounting the <video> at all — mounting
   // it immediately (desktop-first, since SSR can't know the real viewport)
@@ -22,14 +24,6 @@ export function Hero() {
     const onResize = () => setIsMobile(window.innerWidth < 768);
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
-  }, []);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    const onEnded = () => setButtonsVisible(true);
-    video.addEventListener("ended", onEnded);
-    return () => video.removeEventListener("ended", onEnded);
   }, []);
 
   return (
@@ -44,7 +38,13 @@ export function Hero() {
       {videoReady ? (
         <video
           key={isMobile ? "mobile-hero" : "desktop-hero"}
-          ref={videoRef}
+          onLoadedMetadata={(e) => {
+            e.currentTarget.playbackRate = HERO_VIDEO_SPEED;
+          }}
+          onPlay={(e) => {
+            e.currentTarget.playbackRate = HERO_VIDEO_SPEED;
+          }}
+          onEnded={() => setButtonsVisible(true)}
           autoPlay
           muted
           playsInline
@@ -83,7 +83,7 @@ export function Hero() {
         style={{
           opacity: buttonsVisible ? 1 : 0,
           transform: buttonsVisible ? "translateY(0)" : "translateY(12px)",
-          transition: "opacity 1s ease, transform 1s ease",
+          transition: "opacity 0.5s ease, transform 0.5s ease",
           pointerEvents: buttonsVisible ? "auto" : "none",
         }}
       >
@@ -123,9 +123,9 @@ export function Hero() {
             key={i}
             animate={{ opacity: [0, 1, 0] }}
             transition={{
-              duration: 1.6,
+              duration: 1,
               repeat: Infinity,
-              delay: i * 0.3,
+              delay: i * 0.18,
               ease: "easeInOut",
             }}
           >
