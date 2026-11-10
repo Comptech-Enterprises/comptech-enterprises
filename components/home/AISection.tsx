@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowRight, Bot, Blocks, Target, GraduationCap } from "lucide-react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { FreeAuditButton } from "@/components/ui/FreeAuditButton";
 import { AI_PILLARS } from "@/lib/constants";
 
 // `logo` is a file in /public/clients; clients without one render as a name pill.
@@ -167,16 +168,16 @@ export function AISection() {
 
         {/* Bottom CTA Buttons */}
         <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row gap-4 items-center justify-center">
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-bold text-white shadow-md hover:scale-105 transition-all duration-200"
+          <FreeAuditButton
+            source="Homepage AI Section - Free AI Audit Popup"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-bold text-white shadow-md hover:scale-105 transition-all duration-200 cursor-pointer"
             style={{
               background: "linear-gradient(135deg, #5C0F26 0%, #E8435A 100%)",
               boxShadow: "0 8px 24px rgba(92, 15, 38, 0.25)",
             }}
           >
             Book a Free AI Audit <ArrowRight size={16} />
-          </Link>
+          </FreeAuditButton>
           <Link
             href="/ai-solutions"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold text-gray-700 border border-gray-200 bg-white/80 backdrop-blur-md transition-all duration-200 hover:border-gray-400 hover:bg-white hover:text-gray-900 shadow-xs"

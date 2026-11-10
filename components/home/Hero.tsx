@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ChevronDown, ArrowRight } from "lucide-react";
+import { FreeAuditButton } from "@/components/ui/FreeAuditButton";
 
 export function Hero() {
   const [isMobile, setIsMobile] = useState(false);
@@ -87,9 +88,9 @@ export function Hero() {
         }}
       >
         <div className="flex flex-wrap gap-4 justify-center px-6">
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 rounded-xl px-7 py-3.5 font-semibold text-sm text-white transition-all duration-200 hover:-translate-y-px hover:brightness-110"
+          <FreeAuditButton
+            source="Homepage Hero - Free AI Audit Popup"
+            className="inline-flex items-center gap-2 rounded-xl px-7 py-3.5 font-semibold text-sm text-white transition-all duration-200 hover:-translate-y-px hover:brightness-110 cursor-pointer"
             style={{
               background: "rgba(92,15,38,0.75)",
               backdropFilter: "blur(16px)",
@@ -99,7 +100,7 @@ export function Hero() {
             }}
           >
             Book a Free AI Audit <ArrowRight size={15} />
-          </Link>
+          </FreeAuditButton>
           <Link
             href="/contact"
             className="inline-flex items-center gap-2 rounded-xl px-7 py-3.5 font-semibold text-sm text-white transition-all duration-200 hover:-translate-y-px hover:bg-white/20"

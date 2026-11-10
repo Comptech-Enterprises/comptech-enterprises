@@ -15,9 +15,31 @@ import {
 interface BookLiveDemoModalProps {
   isOpen: boolean;
   onClose: () => void;
+  /** Copy and submission metadata. Defaults describe the Sales AI Agent live demo. */
+  title?: string;
+  description?: string;
+  submitLabel?: string;
+  submittingLabel?: string;
+  successTitle?: string;
+  successMessage?: string;
+  service?: string;
+  requirements?: string;
+  source?: string;
 }
 
-export function BookLiveDemoModal({ isOpen, onClose }: BookLiveDemoModalProps) {
+export function BookLiveDemoModal({
+  isOpen,
+  onClose,
+  title = "Book a Live Demo",
+  description = "Experience how our Sales AI Agent qualifies prospects and automates outreach in real time.",
+  submitLabel = "Book a Live Demo",
+  submittingLabel = "Booking Your Demo...",
+  successTitle = "Live Demo Booked!",
+  successMessage = "We have received your demo request. Our Sales AI team will reach out shortly to confirm your interactive walkthrough.",
+  service = "Sales AI Agent",
+  requirements = "Live Demo Request for Sales AI Agent",
+  source = "Sales AI Agent - Book Live Demo Modal",
+}: BookLiveDemoModalProps) {
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -74,9 +96,9 @@ export function BookLiveDemoModal({ isOpen, onClose }: BookLiveDemoModalProps) {
           name: form.name.trim(),
           email: form.email.trim(),
           company: form.company.trim(),
-          service: "Sales AI Agent",
-          requirements: "Live Demo Request for Sales AI Agent",
-          source: "Sales AI Agent - Book Live Demo Modal",
+          service,
+          requirements,
+          source,
           website,
           formRenderedAt,
         }),
@@ -142,17 +164,17 @@ export function BookLiveDemoModal({ isOpen, onClose }: BookLiveDemoModalProps) {
                     <CheckCircle2 size={28} className="sm:w-8 sm:h-8" />
                   </div>
                   <h3 className="font-display font-black text-xl sm:text-2xl text-gray-900 mb-2">
-                    Live Demo Booked!
+                    {successTitle}
                   </h3>
                   <p className="text-gray-600 text-xs sm:text-sm leading-relaxed mb-5 max-w-sm mx-auto">
-                    Thank you, <strong className="text-gray-900">{form.name}</strong>! We have received your demo request for{" "}
-                    <strong className="text-gray-900">{form.company}</strong>. Our Sales AI team will reach out to{" "}
-                    <strong className="text-gray-900">{form.email}</strong> shortly to confirm your interactive walkthrough.
+                    Thank you, <strong className="text-gray-900">{form.name}</strong>! {successMessage} We&apos;ll contact{" "}
+                    <strong className="text-gray-900">{form.email}</strong> for{" "}
+                    <strong className="text-gray-900">{form.company}</strong>.
                   </p>
 
                   <div className="p-3.5 rounded-xl bg-gray-50 border border-gray-100 text-xs text-gray-500 mb-5 flex items-center justify-center gap-2">
                     <ShieldCheck size={16} className="text-emerald-600 shrink-0" />
-                    <span>Notification dispatched to dedicated Sales AI desk.</span>
+                    <span>Your request has been sent to our team.</span>
                   </div>
 
                   <button
@@ -170,10 +192,10 @@ export function BookLiveDemoModal({ isOpen, onClose }: BookLiveDemoModalProps) {
                 <>
                   <div className="mb-4 sm:mb-6 pr-6">
                     <h3 className="font-display font-black text-xl sm:text-2xl md:text-3xl text-gray-900 tracking-tight">
-                      Book a Live Demo
+                      {title}
                     </h3>
                     <p className="text-gray-500 text-xs sm:text-sm mt-1 leading-relaxed">
-                      Experience how our Sales AI Agent qualifies prospects and automates outreach in real time.
+                      {description}
                     </p>
                   </div>
 
@@ -263,11 +285,11 @@ export function BookLiveDemoModal({ isOpen, onClose }: BookLiveDemoModalProps) {
                         {submitting ? (
                           <>
                             <span className="inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                            Booking Your Demo...
+                            {submittingLabel}
                           </>
                         ) : (
                           <>
-                            Book a Live Demo <ArrowRight size={16} />
+                            {submitLabel} <ArrowRight size={16} />
                           </>
                         )}
                       </button>
