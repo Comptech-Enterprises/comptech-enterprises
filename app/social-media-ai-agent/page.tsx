@@ -4,7 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { SocialMediaPageContent } from "@/components/social-media-ai-agent/SocialMediaPageContent";
 
 export const metadata: Metadata = {
-  title: "Social Media AI Agent | Comptech Enterprises",
+  title: "Social Media AI Agent",
   description:
     "Automate your brand presence 24/7. Comptech's Social Media AI Agent creates on-brand visual and written posts, tracks trending topics, and manages community engagement on autopilot.",
   keywords: [

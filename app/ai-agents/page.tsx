@@ -4,7 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { AIAgentsPageContent } from "@/components/ai-agents/AIAgentsPageContent";
 
 export const metadata: Metadata = {
-  title: "AI Agents | Comptech Enterprises",
+  title: "AI Agents",
   description:
     "See how Comptech's AI agents automate sales outreach, social media, and meetings — end-to-end workflows that run on autopilot.",
   keywords: [

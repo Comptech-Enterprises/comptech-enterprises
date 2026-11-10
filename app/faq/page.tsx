@@ -5,6 +5,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { PageHero } from "@/components/sections/PageHero";
 import { FAQList } from "@/components/faq/FAQList";
+import { HOME_FAQS, faqJsonLd } from "@/lib/faqs";
 import { FreeAuditButton } from "@/components/ui/FreeAuditButton";
 import { RevealWrapper } from "@/components/ui/RevealWrapper";
 import { SectionLabel } from "@/components/ui/SectionLabel";
@@ -27,39 +28,6 @@ export const metadata: Metadata = {
   },
 };
 
-const FAQS = [
-  {
-    q: "What are custom AI agents and how can they help my business?",
-    a: "Custom AI agents are autonomous software systems built around your specific business workflows. They research, draft, execute, and escalate tasks without manual intervention. Unlike generic AI tools like ChatGPT, custom AI agents integrate directly with your existing tools such as CRMs, calendars, and communication platforms. Businesses use them to automate sales outreach, customer support, content creation, and internal operations, saving hundreds of hours per month. Comptech Enterprises builds custom AI agents tailored for mid-size businesses that want to scale without hiring large tech teams.",
-  },
-  {
-    q: "What is Generative Engine Optimization (GEO) and how is it different from SEO?",
-    a: "Generative Engine Optimization (GEO) is the practice of optimizing your brand to get cited, recommended, and ranked inside AI-powered search engines like ChatGPT, Google Gemini, and Perplexity. Traditional SEO focuses on ranking in Google’s link-based search results, while GEO focuses on getting your business mentioned in AI-generated answers. Both are important. SEO drives website traffic, GEO builds brand visibility where more and more people are searching. Comptech Enterprises offers both SEO and GEO services to ensure your business is visible across traditional and AI search.",
-  },
-  {
-    q: "How can mid-size businesses start adopting AI without a technical team?",
-    a: "Mid-size businesses can start with AI by identifying repetitive, time-consuming tasks like lead qualification, meeting notes, or social media management and automating them with pre-built AI employees or custom AI agents. You don’t need an in-house tech team because companies like Comptech Enterprises handle the entire process: auditing your workflows, building the AI solution, integrating it with your existing tools, and providing ongoing support. Most businesses go live with their first AI system within 30 days. We also offer hands-on AI training workshops so your teams can confidently work alongside AI.",
-  },
-  {
-    q: "What industries and countries does Comptech Enterprises serve?",
-    a: "Comptech Enterprises serves mid-size businesses across industries including hospitality, education, manufacturing, retail, automotive, and professional services. We work with clients in the United Arab Emirates, Canada, the United Kingdom, Australia, Germany, and across Europe, in addition to India. Our AI solutions, GEO services, and AI training workshops are delivered remotely and on-site, making it easy to work with teams across time zones. Whether you’re a 50-person company or a 500-person enterprise, our solutions are designed to scale with your needs.",
-  },
-  {
-    q: "What does a free AI audit include and how do I get started?",
-    a: "The free AI audit is a detailed assessment of your current workflows to identify where AI can save time, cut costs, and improve output. We analyze your sales process, customer support, content operations, and internal tools to recommend specific AI agents or automations that fit your business. The audit takes one consultation call and you receive a clear action plan with estimated timelines and results. To get started, simply fill out the contact form on our website or message us on WhatsApp at +91 9958847613.",
-  },
-];
-
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: FAQS.map(({ q, a }) => ({
-    "@type": "Question",
-    name: q,
-    acceptedAnswer: { "@type": "Answer", text: a },
-  })),
-};
-
 const GRADIENT = "linear-gradient(135deg, #5C0F26, #E8435A)";
 
 export default function FAQPage() {
@@ -67,7 +35,7 @@ export default function FAQPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(HOME_FAQS)) }}
       />
       <Navbar />
       <main className="glass-mesh-page">
@@ -97,7 +65,7 @@ export default function FAQPage() {
                 <RevealWrapper className="hidden lg:block">
                   <SectionLabel>Quick Links</SectionLabel>
                   <nav className="glass-card mt-4 hidden divide-y divide-gray-200/60 overflow-hidden p-2 lg:block">
-                    {FAQS.map(({ q }, i) => (
+                    {HOME_FAQS.map(({ q }, i) => (
                       <a
                         key={q}
                         href={`#faq-${i + 1}`}
@@ -146,7 +114,7 @@ export default function FAQPage() {
 
             {/* Q&A: cards on desktop, accordion on mobile */}
             <div className="lg:col-span-8">
-              <FAQList items={FAQS} />
+              <FAQList items={HOME_FAQS} />
             </div>
           </div>
         </section>

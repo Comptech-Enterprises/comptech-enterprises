@@ -9,7 +9,7 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { ResellerTicker } from "@/components/home/PartnersStrip";
 
 export const metadata: Metadata = {
-  title: "Enterprise Hardware & Authorized Reseller | Comptech Enterprises",
+  title: "Enterprise Hardware & Authorized Reseller",
   description:
     "Authorized OEM hardware partner for Dell, HP, Lenovo, Apple, Intel, NVIDIA, and Cisco. Genuine enterprise servers, storage, PCs, networking, and CCTV.",
   alternates: {

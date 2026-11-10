@@ -8,6 +8,8 @@ import { WhatWeDelivered, CertifiedWith } from "@/components/home/PartnersStrip"
 import { ServicesSection } from "@/components/home/ServicesSection";
 import { Testimonials } from "@/components/home/Testimonials";
 import { ContactSection } from "@/components/home/ContactSection";
+import { FAQSection } from "@/components/faq/FAQSection";
+import { HOME_FAQS } from "@/lib/faqs";
 import { PageThread } from "@/components/ui/PageThread";
 
 export const metadata: Metadata = {
@@ -54,6 +56,11 @@ export default function HomePage() {
           <Testimonials />
           <ContactSection />
         </div>
+
+        <FAQSection
+          items={HOME_FAQS}
+          intro="Straight answers about custom AI agents, GEO, adopting AI without a technical team, and how to get started."
+        />
       </main>
       <Footer />
     </>
