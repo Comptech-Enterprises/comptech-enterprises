@@ -31,6 +31,9 @@ const CLIENTS: { name: string; logo?: string }[] = [
   { name: "Stanley" },
   { name: "Canara Bank", logo: "canara-bank" },
   { name: "Fabstract" },
+  { name: "CoreWeave", logo: "coreweave" },
+  { name: "N1 Care", logo: "n1-care" },
+  { name: "BreezeLearn", logo: "breezelearn" },
 ];
 
 const ICONS = {
