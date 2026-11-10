@@ -126,9 +126,9 @@ export default function FAQPage() {
                         <Sparkles size={13} className="text-pink-300" />
                         Free AI Audit
                       </div>
-                      <h3 className="font-display text-xl font-extrabold leading-snug">
+                      <p className="font-display text-xl font-extrabold leading-snug">
                         Still have questions?
-                      </h3>
+                      </p>
                       <p className="mt-2 text-sm leading-relaxed text-white/80">
                         Book one consultation call and get a clear action plan with timelines and expected results.
                       </p>
