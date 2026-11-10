@@ -4,6 +4,7 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { PageHero } from "@/components/sections/PageHero";
+import { FAQList } from "@/components/faq/FAQList";
 import { FreeAuditButton } from "@/components/ui/FreeAuditButton";
 import { RevealWrapper } from "@/components/ui/RevealWrapper";
 import { SectionLabel } from "@/components/ui/SectionLabel";
@@ -90,23 +91,6 @@ export default function FAQPage() {
 
         <section className="py-16 lg:py-24">
           <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-12 lg:gap-14 lg:px-8">
-            {/* Mobile: compact jump chips so answers start right away */}
-            <nav
-              aria-label="Jump to question"
-              className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:-mx-6 sm:px-6 lg:hidden [&::-webkit-scrollbar]:hidden"
-            >
-              {FAQS.map(({ q }, i) => (
-                <a
-                  key={q}
-                  href={`#faq-${i + 1}`}
-                  aria-label={q}
-                  className="glass-card shrink-0 rounded-full px-5 py-2.5 text-sm font-extrabold text-[#5C0F26]"
-                >
-                  Q{i + 1}
-                </a>
-              ))}
-            </nav>
-
             {/* Desktop: sticky quick-nav + CTA. On mobile only the CTA shows, after the answers. */}
             <aside className="order-last lg:order-none lg:col-span-4">
               <div className="space-y-6 lg:sticky lg:top-28">
@@ -160,31 +144,9 @@ export default function FAQPage() {
               </div>
             </aside>
 
-            {/* Q&A cards — every answer stays visible for indexing */}
-            <div className="space-y-6 lg:col-span-8">
-              {FAQS.map(({ q, a }, i) => (
-                <RevealWrapper key={q} delay={i * 60}>
-                  <article
-                    id={`faq-${i + 1}`}
-                    className="glass-card scroll-mt-28 p-5 sm:p-9"
-                  >
-                    <div className="flex flex-col items-start gap-2 sm:flex-row sm:gap-6">
-                      <span
-                        className="font-display text-3xl font-extrabold leading-none text-transparent bg-clip-text sm:text-5xl"
-                        style={{ backgroundImage: GRADIENT }}
-                      >
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <div>
-                        <h2 className="font-display text-lg font-extrabold leading-snug tracking-tight text-gray-900 sm:text-2xl">
-                          {q}
-                        </h2>
-                        <p className="mt-3 text-[15px] leading-relaxed text-gray-600 sm:mt-4 sm:text-base">{a}</p>
-                      </div>
-                    </div>
-                  </article>
-                </RevealWrapper>
-              ))}
+            {/* Q&A: cards on desktop, accordion on mobile */}
+            <div className="lg:col-span-8">
+              <FAQList items={FAQS} />
             </div>
           </div>
         </section>
