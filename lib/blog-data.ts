@@ -14,6 +14,8 @@ export interface BlogPost {
   };
   featured?: boolean;
   coverImage: string;
+  /** Descriptive alt text for the cover (SEO / accessibility). Falls back to the title. */
+  coverAlt?: string;
   tags: string[];
 }
 
@@ -36,8 +38,9 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "AI Education",
     publishDate: "Nov 11, 2026",
     readTime: "9 min read",
-    // TODO: replace with the WhatsApp cover image from the content doc.
-    coverImage: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80",
+    coverImage: "/blog/what-is-an-ai-agent.webp",
+    coverAlt:
+      "AI agent workflow diagram showing how an artificial intelligence agent combines abilities, goals, and prior knowledge with observations from its environment to make decisions for businesses",
     tags: ["AI Agents", "AI Education", "Business Automation", "Agentic AI"],
     author: {
       name: "Mohit Negi",

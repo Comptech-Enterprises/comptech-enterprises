@@ -179,7 +179,7 @@ export function BlogClient() {
                   >
                     <Image
                       src={post.coverImage}
-                      alt={post.title}
+                      alt={post.coverAlt ?? post.title}
                       fill
                       sizes="160px"
                       className="object-cover"

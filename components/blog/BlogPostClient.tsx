@@ -70,10 +70,10 @@ export function BlogPostClient({ post, relatedPosts }: { post: BlogPost; related
 
       {/* Hero: wider than text column */}
       <div className="mx-auto mt-10 max-w-[1323px] px-5 sm:px-10">
-        <div className="relative aspect-[3/2] w-full overflow-hidden rounded-[32px] bg-[#121317]">
+        <div className="relative aspect-[1200/630] w-full overflow-hidden rounded-[32px] bg-[#121317]">
           <Image
             src={post.coverImage}
-            alt={post.title}
+            alt={post.coverAlt ?? post.title}
             fill
             priority
             sizes="(min-width: 1323px) 1323px, 100vw"
