@@ -25,7 +25,8 @@ import {
   MetaAILogo,
 } from "@/components/geo/AIEngineLogos";
 import { GEOTrustStrip } from "@/components/geo/GEOTrustStrip";
-import { GEOFAQ } from "@/components/geo/GEOFAQ";
+import { FAQSection } from "@/components/faq/FAQSection";
+import { GEO_FAQS } from "@/lib/faqs";
 import TechText from "@/components/reactbits/TechText";
 import OptionWheel from "@/components/reactbits/OptionWheel";
 import LogoLoop from "@/components/reactbits/LogoLoop";
@@ -246,7 +247,12 @@ export default function GEOPage() {
         </section>
 
         {/* ── Frequently Asked Questions ── */}
-        <GEOFAQ />
+        <div className="glass-mesh-page">
+          <FAQSection
+            items={GEO_FAQS}
+            intro="What GEO is, how it differs from SEO, how we measure it, and how long results take."
+          />
+        </div>
 
         {/* ── High-Converting GEO Audit CTA Banner ── */}
         <section className="py-20 bg-white">

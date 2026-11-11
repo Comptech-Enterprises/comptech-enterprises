@@ -1,5 +1,4 @@
-// FAQ copy per page. Source: "FAQs Comptech Website" doc. Pages still marked "to be added" there
-// (GEO, AI Training, AI Employees, IT Infrastructure) get an entry here once copy is supplied.
+// FAQ copy per page. Source: "FAQs Comptech Website" doc. IT Infrastructure is still "to be added" there.
 
 export interface FAQItem {
   q: string;
@@ -50,6 +49,75 @@ export const AI_AGENTS_FAQS: FAQItem[] = [
   {
     q: "Is my business data safe when using AI agents?",
     a: "Yes. All custom AI agents built by Comptech Enterprises follow strict data security protocols. Your data stays within your own systems and is not used to train any third-party AI models. We use encrypted API connections, role-based access controls, and audit logs so you always know what the agent accessed and when. With over 100 deployments serving clients across multiple countries, data security is built into every stage of our process. For businesses with specific compliance requirements, we build agents that meet industry standards for data privacy and security.",
+  },
+];
+
+export const GEO_FAQS: FAQItem[] = [
+  {
+    q: "What is Generative Engine Optimization (GEO) and why does my business need it?",
+    a: "GEO is the process of making your brand visible in AI search engines like ChatGPT, Perplexity, Google Gemini, and Claude. More than half of information searches now start with AI instead of Google. If AI engines do not cite your brand when someone asks about your industry, you are invisible to that audience. Unlike traditional SEO where you can still appear on page 2, AI gives one answer. Either you are in it or you are not.",
+  },
+  {
+    q: "How is GEO different from traditional SEO?",
+    a: "SEO helps you rank as a blue link on Google. GEO helps you get named and cited inside AI-generated answers. SEO uses keywords and backlinks to climb search rankings. GEO uses entity authority, structured data, knowledge graph alignment, and content that AI models can parse and trust. You need both. SEO brings Google traffic. GEO ensures AI engines recommend your brand by name.",
+  },
+  {
+    q: "How do you measure GEO results?",
+    a: "We run your top commercial search queries through ChatGPT, Google Gemini, Perplexity, and Claude every month. We track how often your brand is cited, whether it is cited accurately, and how your citation share compares to competitors. You get a monthly report showing citation count, citation accuracy, share of model voice, and progress against your 90-day GEO roadmap.",
+  },
+  {
+    q: "How long does it take to see results from GEO?",
+    a: "Most businesses start seeing initial AI citations within 60 to 90 days after GEO execution begins. Full optimization across all major AI engines typically takes 4 to 6 months. AI models update their knowledge at different speeds. ChatGPT and Perplexity pull live web data more frequently, so citations there appear faster. Models with fixed training data take longer to reflect changes.",
+  },
+  {
+    q: "Do I need GEO if I already do SEO?",
+    a: "Yes. SEO and GEO serve different search channels. SEO drives traffic from Google. GEO gets your brand cited in AI engines like ChatGPT, Perplexity, and Gemini. Over 50% of information searches now start with AI instead of Google, and that number is growing every quarter. If you only do SEO, you are missing the fastest-growing search channel. The best strategy is both working together. SEO builds your web authority, which also strengthens your GEO signals.",
+  },
+];
+
+export const AI_TRAINING_FAQS: FAQItem[] = [
+  {
+    q: "What is AI training for businesses and why is it necessary?",
+    a: "AI training for businesses is structured education that teaches teams how to use artificial intelligence tools in their daily work. It is necessary because AI is changing how every industry operates. According to McKinsey, companies that invest in AI skills training see 20 to 30% productivity gains within the first year. A 2025 World Economic Forum report found that 60% of employers expect AI to significantly transform their business by 2027, but only 50% of employees have adequate AI training. Companies that train their teams now gain a competitive advantage. Without training, teams either avoid AI entirely or use it incorrectly, both of which cost businesses time and money.",
+  },
+  {
+    q: "What is the difference between AI training for technical teams and non-technical teams?",
+    a: "AI training for non-technical teams focuses on using AI tools like ChatGPT, Copilot, and automation platforms to speed up everyday tasks such as writing, research, data analysis, and customer communication. No coding is needed. AI training for technical teams covers building custom AI solutions, prompt engineering at an advanced level, fine-tuning models, deploying AI agents, and integrating AI into existing software systems. LinkedIn’s 2025 Workplace Learning Report found that AI literacy is now the fastest-growing skill demand across all industries globally. Most mid-size businesses need both tracks. Comptech Enterprises offers separate workshop programs for each, with over 70% of our clients being non-tech companies.",
+  },
+  {
+    q: "How long does it take for a team to start using AI after training?",
+    a: "Most teams start using AI tools in their daily work within the first week after training. Simple use cases like AI-assisted writing, email drafting, and meeting summaries can be applied on day one. More complex workflows like AI-powered data analysis, automated reporting, and CRM integrations typically take two to four weeks of practice. A Harvard Business School study found that consultants using AI completed tasks 25.1% faster and produced 40% higher quality results than those without AI training. Comptech provides 30 days of follow-up support after every workshop so teams have help during this transition period.",
+  },
+  {
+    q: "What topics should a good AI training program cover in 2026?",
+    a: "A good AI training program in 2026 should cover prompt engineering and effective use of large language models, AI-powered automation for business workflows, building and using custom AI agents, data privacy and security when using AI tools, AI for sales and marketing automation, AI for customer support and operations, and how to evaluate which AI tools are right for specific business problems. Gartner predicts that by 2027, 80% of enterprises will have deployed AI agents in some form, up from less than 10% in 2024. The best programs use hands-on exercises with real business data, not just theory. Comptech workshops include all of these topics with exercises built around your actual workflows and tools.",
+  },
+  {
+    q: "Can AI training be customized for a specific industry?",
+    a: "Yes. Generic AI training gives teams a basic understanding, but customized training delivers results faster because teams learn with examples from their own industry. PwC estimates that AI could contribute up to $15.7 trillion to the global economy by 2030, with the biggest gains in retail, healthcare, manufacturing, and financial services. A hospitality company needs AI training focused on guest experience, booking automation, and review management. A manufacturing company needs training on supply chain optimization, quality control, and predictive maintenance. Comptech has delivered customized AI training for companies in hospitality, education, manufacturing, retail, automotive, and professional services across India, the UAE, Europe, Canada, and Australia.",
+  },
+];
+
+export const AI_EMPLOYEES_FAQS: FAQItem[] = [
+  {
+    q: "What is an AI agent and how is it different from a chatbot?",
+    a: "An AI agent is an autonomous software system that performs complete business tasks on its own, similar to a human employee following a job description. A chatbot only answers questions when someone types a message. An AI agent takes initiative, follows multi-step workflows, makes decisions based on your business rules, and integrates with your existing tools like CRMs, calendars, and communication platforms. Gartner predicts that by 2027, AI agents will autonomously handle 80% of common customer service interactions without human involvement. Comptech’s AI agents handle sales, social media, and meeting management end to end, not just question-and-answer.",
+  },
+  {
+    q: "How does Comptech build and deploy custom AI agents for businesses?",
+    a: "Comptech follows a 4-step process to build and deploy custom AI agents. First, we run a workflow audit to map out the exact tasks you want automated. Second, we design the AI agent around your business rules, data, and existing tools. Third, we integrate the agent with your platforms like Zoho, HubSpot, Salesforce, Google Workspace, Slack, or WhatsApp Business and test it with real scenarios. Fourth, we go live and provide ongoing support. Most AI agents are deployed within 30 days. Comptech has completed over 100 live deployments using this process. All agents run on private infrastructure with encrypted connections and role-based access controls. McKinsey reports that companies deploying AI automation see measurable ROI within 6 to 12 months of implementation.",
+  },
+  {
+    q: "How much does an AI agent cost compared to hiring a human employee?",
+    a: "AI agents typically cost 70 to 90% less than hiring a full-time human employee for the same tasks. A human sales development representative in the US costs $50,000 to $70,000 per year in salary alone. An AI sales agent handles the same lead qualification and outreach tasks for a fraction of that cost, works 24/7, and does not need benefits, training, or vacation time. According to IBM, businesses using AI automation save an average of $14.7 billion annually across operations. AI agents do not replace your entire team. They handle repetitive tasks so your human team focuses on strategy and relationships.",
+  },
+  {
+    q: "How long does it take to deploy an AI agent?",
+    a: "Most AI agents go live within 30 days. The process starts with a workflow audit to map the tasks you want automated. Then we build, integrate with your existing tools, and test with real scenarios before going live. Simpler deployments like a Meeting AI Agent can be ready in under two weeks. Comptech has completed over 100 live deployments with a 12-hour average support response time for any issues after launch. McKinsey reports that companies deploying AI automation see measurable ROI within 6 to 12 months of implementation.",
+  },
+  {
+    q: "How do I know where to use AI in my business?",
+    a: "Start by identifying tasks that are repetitive, rule-based, and time-consuming for your team. Common starting points include lead qualification, appointment scheduling, data entry, customer follow-ups, social media posting, meeting notes, and report generation. If a task follows a predictable pattern and takes your team hours every week, it is a strong candidate for AI automation. According to McKinsey, 60% of all occupations have at least 30% of activities that can be automated with current AI technology. Comptech’s free AI audit helps you find exactly these opportunities. Our engineers analyze your sales process, customer support, content operations, and internal tools, then deliver a clear action plan showing which tasks to automate first, estimated timelines, and expected ROI. After the audit, Comptech handles the full process: building custom AI agents for your workflows, integrating them with your existing tools, and providing ongoing support with a 12-hour response time. Over 70% of Comptech’s clients are non-tech companies that started with one audit and now run multiple AI agents across their operations.",
   },
 ];
 
