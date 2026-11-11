@@ -70,7 +70,7 @@ export function BlogPostClient({ post, relatedPosts }: { post: BlogPost; related
 
       {/* Hero: wider than text column */}
       <div className="mx-auto mt-10 max-w-[1323px] px-5 sm:px-10">
-        <div className="relative aspect-[1200/630] w-full overflow-hidden rounded-[32px] bg-[#121317]">
+        <div className="relative aspect-[1200/630] w-full overflow-hidden rounded-[32px] border border-black/10 bg-[#f1f3f4]">
           <Image
             src={post.coverImage}
             alt={post.coverAlt ?? post.title}
@@ -132,7 +132,7 @@ export function BlogPostClient({ post, relatedPosts }: { post: BlogPost; related
                 </div>
                 <Link
                   href={`/blog/${rel.slug}`}
-                  className="relative block aspect-[1200/630] w-full shrink-0 overflow-hidden rounded-2xl bg-[#121317] sm:aspect-auto sm:h-[160px] sm:w-[160px]"
+                  className="relative block aspect-[1200/630] w-full shrink-0 overflow-hidden rounded-2xl border border-black/10 bg-[#f1f3f4] sm:aspect-auto sm:h-[160px] sm:w-[160px]"
                 >
                   <Image src={rel.coverImage} alt={rel.title} fill sizes="(min-width: 640px) 160px, 100vw" className="object-cover" />
                 </Link>

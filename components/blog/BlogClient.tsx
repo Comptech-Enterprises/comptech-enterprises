@@ -111,7 +111,7 @@ export function BlogClient() {
             </div>
             <Link
               href={`/blog/${featured.slug}`}
-              className="relative order-first block aspect-video w-full overflow-hidden rounded-3xl bg-[#121317] md:order-none"
+              className="relative order-first block aspect-video w-full overflow-hidden rounded-3xl border border-black/10 bg-[#f1f3f4] md:order-none"
             >
               <Image
                 src={featured.coverImage}
@@ -175,7 +175,7 @@ export function BlogClient() {
                   </div>
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="relative block aspect-[1200/630] w-full shrink-0 overflow-hidden rounded-2xl bg-[#121317] sm:aspect-auto sm:h-[160px] sm:w-[160px]"
+                    className="relative block aspect-[1200/630] w-full shrink-0 overflow-hidden rounded-2xl border border-black/10 bg-[#f1f3f4] sm:aspect-auto sm:h-[160px] sm:w-[160px]"
                   >
                     <Image
                       src={post.coverImage}
