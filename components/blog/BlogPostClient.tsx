@@ -70,7 +70,7 @@ export function BlogPostClient({ post, relatedPosts }: { post: BlogPost; related
 
       {/* Hero: wider than text column */}
       <div className="mx-auto mt-10 max-w-[1323px] px-5 sm:px-10">
-        <div className="relative aspect-[1200/630] w-full overflow-hidden rounded-[32px] bg-[#121317]">
+        <div className="relative aspect-[1200/630] w-full overflow-hidden rounded-[32px] border border-black/10 bg-[#f1f3f4]">
           <Image
             src={post.coverImage}
             alt={post.coverAlt ?? post.title}
@@ -118,9 +118,9 @@ export function BlogPostClient({ post, relatedPosts }: { post: BlogPost; related
             {relatedPosts.slice(0, 4).map((rel) => (
               <div
                 key={rel.slug}
-                className="flex items-center justify-between gap-12 border-b border-[rgba(33,34,38,0.06)] pb-9"
+                className="flex flex-col-reverse gap-6 border-b border-[rgba(33,34,38,0.06)] pb-9 sm:flex-row sm:items-center sm:justify-between sm:gap-12"
               >
-                <div className="flex max-w-[440px] flex-col gap-5">
+                <div className="flex min-w-0 max-w-[440px] flex-col gap-5">
                   <Link href={`/blog/${rel.slug}`}>
                     <h3 className="text-[24px] leading-[1.15] tracking-[-0.01em] text-[#2f3034]" style={{ fontWeight: 450 }}>
                       {rel.title}
@@ -132,9 +132,9 @@ export function BlogPostClient({ post, relatedPosts }: { post: BlogPost; related
                 </div>
                 <Link
                   href={`/blog/${rel.slug}`}
-                  className="relative block h-[100px] w-[100px] shrink-0 overflow-hidden rounded-2xl bg-[#121317] sm:h-[160px] sm:w-[160px]"
+                  className="relative block aspect-[1200/630] w-full shrink-0 overflow-hidden rounded-2xl border border-black/10 bg-[#f1f3f4] sm:w-[200px]"
                 >
-                  <Image src={rel.coverImage} alt={rel.title} fill sizes="160px" className="object-cover" />
+                  <Image src={rel.coverImage} alt={rel.title} fill sizes="(min-width: 640px) 200px, 100vw" className="object-cover" />
                 </Link>
               </div>
             ))}
