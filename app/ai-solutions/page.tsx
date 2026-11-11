@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { AISolutionsClient } from "@/components/ai-solutions/AISolutionsClient";
+import { FAQSection } from "@/components/faq/FAQSection";
+import { AI_AGENTS_FAQS, AI_TRAINING_FAQS } from "@/lib/faqs";
 
 const TITLE = "Custom AI Agents & Solutions for Mid-Size Businesses";
 const DESCRIPTION =
@@ -72,6 +74,15 @@ export default function AISolutionsPage() {
       />
       <Navbar />
       <AISolutionsClient />
+      <div className="glass-mesh-page">
+        <FAQSection
+          groups={[
+            { title: "Custom AI Agents", items: AI_AGENTS_FAQS },
+            { title: "AI Training", items: AI_TRAINING_FAQS },
+          ]}
+          intro="Answers about custom AI agents and AI training workshops for business teams."
+        />
+      </div>
       <Footer />
     </>
   );

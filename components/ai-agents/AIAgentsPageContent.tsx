@@ -5,7 +5,7 @@ import { AIAgentsHero } from "./AIAgentsHero";
 import { AIAgentsClient } from "./AIAgentsClient";
 import { BookLiveDemoModal } from "./BookLiveDemoModal";
 import { FAQSection } from "@/components/faq/FAQSection";
-import { AI_AGENTS_FAQS } from "@/lib/faqs";
+import { AI_EMPLOYEES_FAQS } from "@/lib/faqs";
 
 export function AIAgentsPageContent() {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
@@ -15,8 +15,8 @@ export function AIAgentsPageContent() {
       <AIAgentsHero onBookLiveDemo={() => setIsDemoModalOpen(true)} />
       <AIAgentsClient onBookLiveDemo={() => setIsDemoModalOpen(true)} />
       <FAQSection
-        items={AI_AGENTS_FAQS}
-        intro="What custom AI agents are, how they differ from ChatGPT, what they can automate, and how data stays safe."
+        items={AI_EMPLOYEES_FAQS}
+        intro="How AI employees differ from chatbots, how we build and deploy them, what they cost, and where to use them first."
       />
       <BookLiveDemoModal
         isOpen={isDemoModalOpen}

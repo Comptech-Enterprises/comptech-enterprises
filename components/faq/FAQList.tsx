@@ -10,13 +10,24 @@ const GRADIENT = "linear-gradient(135deg, #5C0F26, #E8435A)";
  * Accordion on every screen size, one answer open at a time (first open by default).
  * Collapsed answers stay in the HTML (hidden attribute), so the full text is still in the page source.
  */
-export function FAQList({ items }: { items: { q: string; a: string }[] }) {
+export function FAQList({
+  items,
+  headingLevel = 2,
+  idPrefix = "faq",
+}: {
+  items: { q: string; a: string }[];
+  /** Heading level for each question, so the page outline stays in order. */
+  headingLevel?: 2 | 3 | 4;
+  /** Prefix for element ids, to keep ids unique when a page has several lists. */
+  idPrefix?: string;
+}) {
+  const Heading = `h${headingLevel}` as "h2" | "h3" | "h4";
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   // Quick-link anchors (#faq-3) open the matching question.
   useEffect(() => {
     const openFromHash = () => {
-      const m = window.location.hash.match(/^#faq-(\d+)$/);
+      const m = window.location.hash.match(new RegExp(`^#${idPrefix}-(\\d+)$`));
       if (m) {
         const idx = Number(m[1]) - 1;
         if (idx >= 0 && idx < items.length) setOpenIndex(idx);
@@ -25,7 +36,7 @@ export function FAQList({ items }: { items: { q: string; a: string }[] }) {
     openFromHash();
     window.addEventListener("hashchange", openFromHash);
     return () => window.removeEventListener("hashchange", openFromHash);
-  }, [items.length]);
+  }, [items.length, idPrefix]);
 
   return (
     <div className="space-y-3 sm:space-y-6">
@@ -33,12 +44,12 @@ export function FAQList({ items }: { items: { q: string; a: string }[] }) {
         const expanded = openIndex === i;
         return (
           <RevealWrapper key={q} delay={i * 60}>
-            <article id={`faq-${i + 1}`} className="glass-card scroll-mt-28 p-4 sm:p-6 lg:px-9 lg:py-7">
-              <h2 className="m-0">
+            <article id={`${idPrefix}-${i + 1}`} className="glass-card scroll-mt-28 p-4 sm:p-6 lg:px-9 lg:py-7">
+              <Heading className="m-0">
                 <button
                   type="button"
                   aria-expanded={expanded}
-                  aria-controls={`faq-answer-${i + 1}`}
+                  aria-controls={`${idPrefix}-answer-${i + 1}`}
                   onClick={() => setOpenIndex(expanded ? null : i)}
                   className="flex w-full cursor-pointer items-center gap-3 text-left sm:gap-6"
                 >
@@ -62,10 +73,10 @@ export function FAQList({ items }: { items: { q: string; a: string }[] }) {
                     <Plus size={18} />
                   </span>
                 </button>
-              </h2>
+              </Heading>
 
               <div
-                id={`faq-answer-${i + 1}`}
+                id={`${idPrefix}-answer-${i + 1}`}
                 hidden={!expanded}
                 className="pt-4 sm:pl-[4.5rem]"
               >
