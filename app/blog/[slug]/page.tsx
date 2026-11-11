@@ -36,7 +36,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "article",
       publishedTime: post.publishDate,
       authors: [post.author.name],
-      images: [{ url: post.coverImage }],
+      images: [
+        {
+          url: post.coverImage,
+          alt: post.coverAlt ?? post.title,
+          // Local covers are exported at the OG standard size.
+          ...(post.coverImage.startsWith("/") ? { width: 1200, height: 630 } : {}),
+        },
+      ],
     },
   };
 }

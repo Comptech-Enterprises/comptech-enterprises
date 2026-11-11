@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import ShapeWaves from "@/components/reactbits/ShapeWaves";
 
 const TRUSTED_CLIENTS = [
   { name: "Bata India", logo: "/clients/bata-india.webp" },
@@ -18,18 +17,6 @@ const TRUSTED_CLIENTS = [
 export function GEOTrustStrip() {
   return (
     <section className="relative py-16 lg:py-20 bg-[#080709] text-white border-y border-white/10 overflow-hidden select-none">
-      {/* Interactive Shape Waves Background: dark base, illuminates red/maroon on pointer hover */}
-      <ShapeWaves
-        bgColor="#070608"
-        baseColor="rgba(50, 12, 25, 0.35)"
-        hoverColor="#8A1237"
-        hoverRadius={220}
-        speed={1.0}
-        waveFrequency={0.07}
-        shapeCountX={28}
-        shapeCountY={12}
-      />
-
       {/* Ambient gradient overlay */}
       <div className="absolute inset-0 bg-radial from-transparent via-[#070608]/40 to-[#070608]/80 pointer-events-none" />
 
@@ -59,7 +46,7 @@ export function GEOTrustStrip() {
         </div>
 
         <p className="text-center text-[11px] text-gray-400 mt-8 tracking-wide">
-          Hover to illuminate interactive citation topology • Enterprise partners verified across multi-LLM queries
+          Enterprise partners verified across multi-LLM queries
         </p>
       </div>
     </section>

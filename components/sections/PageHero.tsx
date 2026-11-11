@@ -67,7 +67,7 @@ export function PageHero({ badge, title, subtitle, breadcrumbs, actions, dark, l
                 ? "hero-anim inline-flex items-center gap-2 bg-[#FDF4F6] border border-gray-200 rounded-full px-4 py-1.5 text-xs font-semibold text-[#5C0F26] uppercase tracking-widest mb-5"
                 : "hero-anim inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-xs font-semibold text-white/80 uppercase tracking-widest mb-5"
             }
-            style={{ animationDelay: "0.08s" }}
+            style={{ animationDelay: "0.04s" }}
           >
             {badge}
           </div>
@@ -75,7 +75,7 @@ export function PageHero({ badge, title, subtitle, breadcrumbs, actions, dark, l
 
         <h1
           className={`hero-anim font-display font-extrabold text-display-lg text-balance max-w-3xl mb-4 leading-tight ${light ? "text-gray-900" : "text-white"}`}
-          style={{ animationDelay: "0.16s" }}
+          style={{ animationDelay: "0.08s" }}
         >
           {title}
         </h1>
@@ -83,14 +83,14 @@ export function PageHero({ badge, title, subtitle, breadcrumbs, actions, dark, l
         {subtitle && (
           <p
             className={`hero-anim text-lg max-w-2xl leading-relaxed mb-8 ${light ? "text-gray-500" : "text-white/70"}`}
-            style={{ animationDelay: "0.24s" }}
+            style={{ animationDelay: "0.12s" }}
           >
             {subtitle}
           </p>
         )}
 
         {actions && (
-          <div className="hero-anim flex gap-4 flex-wrap" style={{ animationDelay: "0.32s" }}>{actions}</div>
+          <div className="hero-anim flex gap-4 flex-wrap" style={{ animationDelay: "0.16s" }}>{actions}</div>
         )}
       </div>
     </section>
