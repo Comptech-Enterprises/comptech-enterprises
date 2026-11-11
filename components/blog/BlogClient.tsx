@@ -175,13 +175,13 @@ export function BlogClient() {
                   </div>
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="relative block aspect-[1200/630] w-full shrink-0 overflow-hidden rounded-2xl border border-black/10 bg-[#f1f3f4] sm:w-[200px]"
+                    className="relative block aspect-[1200/630] w-full shrink-0 overflow-hidden rounded-2xl border border-black/10 bg-[#f1f3f4] sm:w-[260px] md:w-[340px]"
                   >
                     <Image
                       src={post.coverImage}
                       alt={post.coverAlt ?? post.title}
                       fill
-                      sizes="(min-width: 640px) 200px, 100vw"
+                      sizes="(min-width: 768px) 340px, (min-width: 640px) 260px, 100vw"
                       className="object-cover"
                     />
                   </Link>
