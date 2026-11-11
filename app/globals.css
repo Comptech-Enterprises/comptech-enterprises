@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Blog article body: base typography for plain HTML in lib/blog-data.ts.
+   Inside @layer components via :where() zero-specificity selectors so inline Tailwind utilities still override. */
+@layer components {
+  .blog-body :where(h2) { font-size: 2rem; line-height: 1.15; letter-spacing: -0.02em; font-weight: 450; color: #121317; margin: 3.5rem 0 1rem; }
+  .blog-body :where(h3) { font-size: 1.5rem; line-height: 1.25; letter-spacing: -0.01em; font-weight: 500; color: #121317; margin: 2.5rem 0 0.75rem; }
+  .blog-body :where(p) { margin: 1.25rem 0; }
+  .blog-body :where(p.lead) { font-size: 1.25rem; line-height: 1.6; color: #4b5563; }
+  .blog-body :where(ul) { list-style: disc; padding-left: 1.5rem; margin: 1.25rem 0; }
+  .blog-body :where(ol) { list-style: decimal; padding-left: 1.5rem; margin: 1.25rem 0; }
+  .blog-body :where(li) { margin: 0.6rem 0; padding-left: 0.25rem; }
+  .blog-body :where(strong) { color: #121317; font-weight: 600; }
+  .blog-body :where(a) { color: #5C0F26; text-decoration: underline; text-underline-offset: 3px; }
+  .blog-body :where(table) { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem; }
+  .blog-body :where(th, td) { text-align: left; padding: 0.75rem 1rem; border-bottom: 1px solid rgba(33, 34, 38, 0.1); vertical-align: top; }
+  .blog-body :where(th) { font-weight: 600; color: #121317; background: #f6f7f8; }
+}
+
 /* ================================================================
    CSS CUSTOM PROPERTIES — Design Tokens
    ================================================================ */
