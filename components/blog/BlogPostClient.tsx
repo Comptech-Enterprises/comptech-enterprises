@@ -118,7 +118,7 @@ export function BlogPostClient({ post, relatedPosts }: { post: BlogPost; related
             {relatedPosts.slice(0, 4).map((rel) => (
               <div
                 key={rel.slug}
-                className="flex items-center justify-between gap-12 border-b border-[rgba(33,34,38,0.06)] pb-9"
+                className="flex flex-col-reverse gap-6 border-b border-[rgba(33,34,38,0.06)] pb-9 sm:flex-row sm:items-center sm:justify-between sm:gap-12"
               >
                 <div className="flex max-w-[440px] flex-col gap-5">
                   <Link href={`/blog/${rel.slug}`}>
@@ -132,9 +132,9 @@ export function BlogPostClient({ post, relatedPosts }: { post: BlogPost; related
                 </div>
                 <Link
                   href={`/blog/${rel.slug}`}
-                  className="relative block h-[100px] w-[100px] shrink-0 overflow-hidden rounded-2xl bg-[#121317] sm:h-[160px] sm:w-[160px]"
+                  className="relative block aspect-[1200/630] w-full shrink-0 overflow-hidden rounded-2xl bg-[#121317] sm:aspect-auto sm:h-[160px] sm:w-[160px]"
                 >
-                  <Image src={rel.coverImage} alt={rel.title} fill sizes="160px" className="object-cover" />
+                  <Image src={rel.coverImage} alt={rel.title} fill sizes="(min-width: 640px) 160px, 100vw" className="object-cover" />
                 </Link>
               </div>
             ))}

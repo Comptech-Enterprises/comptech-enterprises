@@ -111,7 +111,7 @@ export function BlogClient() {
             </div>
             <Link
               href={`/blog/${featured.slug}`}
-              className="relative block aspect-video w-full overflow-hidden rounded-3xl bg-[#121317]"
+              className="relative order-first block aspect-video w-full overflow-hidden rounded-3xl bg-[#121317] md:order-none"
             >
               <Image
                 src={featured.coverImage}
@@ -158,7 +158,7 @@ export function BlogClient() {
           <div className="mt-12 grid grid-cols-1 gap-x-12 gap-y-12 lg:grid-cols-2">
             {posts.map((post) => (
               <div key={post.slug} data-snap>
-                <div className="flex items-center justify-between gap-12 border-b border-[rgba(33,34,38,0.06)] pb-9">
+                <div className="flex flex-col-reverse gap-6 border-b border-[rgba(33,34,38,0.06)] pb-9 sm:flex-row sm:items-center sm:justify-between sm:gap-12">
                   <div className="flex max-w-[440px] flex-col gap-6">
                     <Link href={`/blog/${post.slug}`}>
                       <h3
@@ -175,13 +175,13 @@ export function BlogClient() {
                   </div>
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="relative block h-[100px] w-[100px] shrink-0 overflow-hidden rounded-2xl bg-[#121317] sm:h-[160px] sm:w-[160px]"
+                    className="relative block aspect-[1200/630] w-full shrink-0 overflow-hidden rounded-2xl bg-[#121317] sm:aspect-auto sm:h-[160px] sm:w-[160px]"
                   >
                     <Image
                       src={post.coverImage}
                       alt={post.coverAlt ?? post.title}
                       fill
-                      sizes="160px"
+                      sizes="(min-width: 640px) 160px, 100vw"
                       className="object-cover"
                     />
                   </Link>
