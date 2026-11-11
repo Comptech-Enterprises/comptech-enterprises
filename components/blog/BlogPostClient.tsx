@@ -120,7 +120,7 @@ export function BlogPostClient({ post, relatedPosts }: { post: BlogPost; related
                 key={rel.slug}
                 className="flex flex-col-reverse gap-6 border-b border-[rgba(33,34,38,0.06)] pb-9 sm:flex-row sm:items-center sm:justify-between sm:gap-12"
               >
-                <div className="flex max-w-[440px] flex-col gap-5">
+                <div className="flex min-w-0 max-w-[440px] flex-col gap-5">
                   <Link href={`/blog/${rel.slug}`}>
                     <h3 className="text-[24px] leading-[1.15] tracking-[-0.01em] text-[#2f3034]" style={{ fontWeight: 450 }}>
                       {rel.title}
@@ -132,9 +132,9 @@ export function BlogPostClient({ post, relatedPosts }: { post: BlogPost; related
                 </div>
                 <Link
                   href={`/blog/${rel.slug}`}
-                  className="relative block aspect-[1200/630] w-full shrink-0 overflow-hidden rounded-2xl border border-black/10 bg-[#f1f3f4] sm:aspect-auto sm:h-[160px] sm:w-[160px]"
+                  className="relative block aspect-[1200/630] w-full shrink-0 overflow-hidden rounded-2xl border border-black/10 bg-[#f1f3f4] sm:w-[200px]"
                 >
-                  <Image src={rel.coverImage} alt={rel.title} fill sizes="(min-width: 640px) 160px, 100vw" className="object-cover" />
+                  <Image src={rel.coverImage} alt={rel.title} fill sizes="(min-width: 640px) 200px, 100vw" className="object-cover" />
                 </Link>
               </div>
             ))}
