@@ -31,7 +31,7 @@ const ROW2 = PARTNERS.slice(MID);
 
 const CERTIFIED_WITH = [
   { name: "OpenAI",    logo: "/logos/openai.svg"    },
-  { name: "Anthropic", logo: "/logos/anthropic.svg" },
+  { name: "Anthropic", logo: "/logos/claude.svg"    },
   { name: "Gemini",    logo: "/logos/gemini.svg"    },
   { name: "AWS",       logo: "/logos/aws.svg"       },
   { name: "Azure",     logo: "/logos/azure.svg"     },
