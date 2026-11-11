@@ -155,11 +155,11 @@ export function BlogClient() {
             </ul>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 gap-x-12 gap-y-12 lg:grid-cols-2">
+          <div className="mt-12 grid grid-cols-1 gap-y-12">
             {posts.map((post) => (
               <div key={post.slug} data-snap>
                 <div className="flex flex-col-reverse gap-6 border-b border-[rgba(33,34,38,0.06)] pb-9 sm:flex-row sm:items-center sm:justify-between sm:gap-12">
-                  <div className="flex min-w-0 max-w-[440px] flex-col gap-6">
+                  <div className="flex min-w-0 max-w-[760px] flex-col gap-6">
                     <Link href={`/blog/${post.slug}`}>
                       <h3
                         className="text-[24px] leading-[1.15] tracking-[-0.01em] text-[#2f3034] lg:text-[28px]"
