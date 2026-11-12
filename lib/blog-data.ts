@@ -1,7 +1,13 @@
+import type { FAQItem } from "@/lib/faqs";
+
 export interface BlogPost {
   slug: string;
   title: string;
+  /** Optional SEO title tag when distinct from the on-page H1 headline. */
+  metaTitle?: string;
   excerpt: string;
+  /** Optional concise <=155 char SERP meta description (defaults to excerpt). */
+  metaDescription?: string;
   content: string;
   category: "AI Education" | "Product Updates" | "AI Research" | "GEO & Search" | "Engineering & Infrastructure" | "Guides & Tutorials";
   publishDate: string;
@@ -14,9 +20,12 @@ export interface BlogPost {
   };
   featured?: boolean;
   coverImage: string;
+  coverWidth?: number;
+  coverHeight?: number;
   /** Descriptive alt text for the cover (SEO / accessibility). Falls back to the title. */
   coverAlt?: string;
   tags: string[];
+  faqs?: FAQItem[];
 }
 
 export const BLOG_CATEGORIES = [
@@ -31,10 +40,214 @@ export const BLOG_CATEGORIES = [
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "what-is-geo",
+    title: "What Is GEO (Generative Engine Optimization)? A Complete Guide for Businesses",
+    metaTitle: "What Is GEO? Generative Engine Optimization Guide (2026)",
+    excerpt:
+      "Learn what Generative Engine Optimization (GEO) is, how it works, and why businesses need it in 2026. Discover how to get your brand cited by ChatGPT, Perplexity, and Gemini.",
+    metaDescription:
+      "Learn what Generative Engine Optimization (GEO) is, how it works, and how to get your brand cited by ChatGPT, Perplexity, and Google Gemini in 2026.",
+    category: "GEO & Search",
+    publishDate: "Nov 12, 2026",
+    readTime: "9 min read",
+    coverImage: "/blog/what-is-geo-generative-engine-optimization.webp",
+    coverWidth: 1280,
+    coverHeight: 720,
+    coverAlt:
+      "What is GEO and How to Do It illustration showing global search vectors, location pins, analytics chart, and multi-platform AI search discovery",
+    tags: ["GEO", "Generative Engine Optimization", "AI Search", "ChatGPT Citation", "SEO vs GEO"],
+    faqs: [
+      {
+        q: "How is GEO different from SEO, and does Comptech Enterprises offer both?",
+        a: "SEO optimizes for Google search rankings, while GEO optimizes for AI-generated citations in tools like ChatGPT, Gemini, and Perplexity. Comptech offers both as complementary services because businesses need visibility in traditional and AI-powered search. With Gartner projecting a 25% shift from traditional search volume toward AI assistants, GEO has become essential alongside SEO.",
+      },
+      {
+        q: "How long does it take to see results from Comptech’s GEO services?",
+        a: "Most businesses see measurable improvements in AI brand mentions within 3-6 months. GEO builds cumulatively — each optimized page, FAQ section, and third-party citation strengthens your overall AI visibility. Comptech provides monthly AI visibility reports so you can track progress across ChatGPT, Gemini, and Perplexity.",
+      },
+      {
+        q: "Can small and mid-size businesses compete with large enterprises in AI search results?",
+        a: "Yes. AI models prioritize authority, clarity, and source verification over brand size. A mid-size company with well-structured, stat-backed content and strong E-E-A-T signals can outperform a Fortune 500 competitor with a poorly optimized website. Comptech specializes in helping mid-size businesses build AI authority that punches above their weight.",
+      },
+      {
+        q: "What does Comptech’s GEO audit include?",
+        a: "Comptech’s GEO audit tests your brand across all major AI platforms, identifies authority gaps, evaluates your content structure for AI readability, reviews your FAQ and schema implementation, and benchmarks you against competitors in AI responses. The audit delivers a prioritized action plan grounded in empirical GEO practices shown to raise generative engine visibility by up to 40% (Source: Aggarwal et al., 2024).",
+      },
+    ],
+    author: {
+      name: "Rohit Sharma",
+      role: "Head of Growth & GEO Strategy",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+      bio: "Specialist in AI entity knowledge graph optimization and LLM citation mechanics.",
+    },
+    content: `
+<h2 id="what-is-geo">What Is GEO (Generative Engine Optimization)?</h2>
+<p class="lead">
+  <strong>GEO &mdash; Generative Engine Optimization</strong> &mdash; is the practice of optimizing your business&rsquo;s online presence so that AI-powered search engines cite and recommend your brand in their responses.
+</p>
+<p>
+  When someone asks ChatGPT, Google Gemini, or Perplexity a question like &ldquo;Which companies offer AI consulting in Europe?&rdquo;, the AI generates an answer by pulling from sources it considers authoritative. GEO is how you become one of those sources.
+</p>
+<p>
+  Traditional SEO focuses on ranking in Google&rsquo;s blue links. GEO focuses on something different: being the answer that AI gives directly.
+</p>
+<p>
+  According to Gartner, traditional search engine volume was projected to drop 25% by 2026 as consumers shift to AI-powered search assistants (Source: Gartner, 2024). Businesses that ignore GEO risk becoming invisible to a growing segment of buyers who never scroll through traditional search results at all.
+</p>
+
+<h2 id="how-does-geo-work">How Does GEO Work?</h2>
+<p>
+  AI search engines don&rsquo;t rank pages the way Google traditionally has. They read, evaluate, and synthesize information from across the web, then generate a single answer. Understanding how they choose sources is the key to GEO.
+</p>
+<p>The AI citation process works in three stages:</p>
+<ol>
+  <li><strong>Crawling and indexing:</strong> AI models are trained on, or retrieve from, web content. Your website, blog posts, third-party mentions, and structured data all feed into what AI models know about your business.</li>
+  <li><strong>Authority evaluation:</strong> When generating a response, the AI assesses which sources are most trustworthy. It looks for signals like statistics with citations, expert authorship, consistent information across multiple sources, and structured content that&rsquo;s easy to parse.</li>
+  <li><strong>Citation generation:</strong> The AI includes your brand, data, or recommendation in its answer, sometimes with a direct link. This is the GEO equivalent of a #1 Google ranking.</li>
+</ol>
+<p>
+  A study published in the proceedings of the 2024 ACM SIGKDD Conference (Aggarwal et al., 2024) found that GEO-optimized content saw up to a 40% increase in visibility within AI-generated responses. The signals that mattered most were authoritative citations, relevant statistics, and clear, quotable phrasing.
+</p>
+
+<h2 id="geo-vs-seo">GEO vs SEO &mdash; What&rsquo;s the Difference?</h2>
+<p>
+  Many businesses assume SEO covers everything. It doesn&rsquo;t. GEO and SEO share some foundations but differ in how they deliver results.
+</p>
+<div style="overflow-x:auto">
+<table>
+  <thead>
+    <tr><th>Factor</th><th>SEO</th><th>GEO</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Goal</strong></td><td>Rank in Google search results</td><td>Get cited in AI-generated answers</td></tr>
+    <tr><td><strong>How users find you</strong></td><td>Clicking blue links</td><td>AI mentions your brand directly</td></tr>
+    <tr><td><strong>Key signals</strong></td><td>Backlinks, page speed, keywords</td><td>Authority, stats, structured data, E-E-A-T</td></tr>
+    <tr><td><strong>Content format</strong></td><td>Optimized for scanners and crawlers</td><td>Optimized for AI comprehension</td></tr>
+    <tr><td><strong>Competition</strong></td><td>Millions of pages per keyword</td><td>Fewer brands mentioned per answer</td></tr>
+    <tr><td><strong>Measurement</strong></td><td>Rankings, clicks, impressions</td><td>AI citations, brand mentions in AI responses</td></tr>
+    <tr><td><strong>Time horizon</strong></td><td>Months to rank</td><td>Builds cumulatively as AI adoption grows</td></tr>
+  </tbody>
+</table>
+</div>
+<p>
+  <strong>The critical difference:</strong> In Google, ten results share page one. In an AI response, typically one to three brands get mentioned. The stakes per mention are higher, and the barrier to entry is different &mdash; it&rsquo;s authority and structured clarity over raw backlink volume.
+</p>
+<p>
+  Businesses need both. SEO captures traditional search traffic today. GEO captures the growing wave of AI-first search behavior.
+</p>
+
+<h2 id="why-businesses-need-geo">Why Businesses Need GEO in 2026</h2>
+<p>
+  The shift from traditional search to AI-powered discovery has accelerated rapidly across consumer and B2B buying journeys.
+</p>
+<p><strong>Key adoption benchmarks:</strong></p>
+<ul>
+  <li>ChatGPT surpassed 200 million weekly active users as early as August 2024, doubling within a year and expanding rapidly through 2025&ndash;2026 (Source: OpenAI).</li>
+  <li>79% of consumers use AI-powered tools for product and service research at least once per week (Source: Capgemini Research Institute, 2025).</li>
+  <li>Perplexity AI scaled past 100 million queries per week (Source: Perplexity AI, 2024).</li>
+  <li>Google integrated AI Overviews directly into search results, appearing prominently across commercial and informational queries (Source: Search Engine Land, 2025).</li>
+</ul>
+<p>
+  <strong>What this means for your business:</strong> A potential customer in London, Toronto, or Dubai types &ldquo;best AI consulting firms for mid-size businesses&rdquo; into ChatGPT. If the AI mentions three companies and yours is not one of them, you have effectively lost that prospect before they ever visited your website.
+</p>
+<p>
+  Unlike SEO, where you can still get clicks from position 5 or 6, AI responses are winner-take-most. Being mentioned is everything. Not being mentioned means you don&rsquo;t exist in that channel.
+</p>
+
+<h2 id="how-ai-models-choose">How AI Models Choose Which Brands to Cite</h2>
+<p>
+  Understanding what makes AI models cite one business over another is the foundation of any GEO strategy. AI models evaluate content differently than traditional ranking algorithms.
+</p>
+<ol>
+  <li><strong>E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness):</strong> AI models favor content that demonstrates real experience and domain expertise. An &ldquo;About&rdquo; page with team credentials, case studies with specific results, and industry certifications all strengthen E-E-A-T signals.</li>
+  <li><strong>Statistics with sources:</strong> Content that includes specific numbers backed by named sources is far more likely to be cited. &ldquo;Our clients see 40% cost reduction&rdquo; is weak. &ldquo;According to McKinsey, companies implementing AI automation see 20&ndash;40% cost reduction in operational processes (Source: McKinsey Digital, 2024)&rdquo; is citable.</li>
+  <li><strong>Structured content:</strong> FAQ sections, clear heading hierarchies, definition-style paragraphs, and comparison tables make it easy for AI to extract and cite specific answers. Schema markup (FAQ schema, Organization schema) reinforces this.</li>
+  <li><strong>Third-party validation:</strong> AI models cross-reference information across sources. If your brand is mentioned on industry directories, in guest articles, in press coverage, and on your own site with consistent details, citation probability increases significantly.</li>
+  <li><strong>Consistent NAP and brand presence:</strong> Name, address, and positioning should be identical everywhere. Inconsistency confuses AI models the same way it confuses Google.</li>
+</ol>
+
+<h2 id="geo-strategies">GEO Strategies That Actually Work</h2>
+<p>
+  GEO is not a single tactic. It&rsquo;s a system of signals that, combined, make your business the obvious source for AI to cite.
+</p>
+<ol>
+  <li><strong>FAQ optimization with schema markup:</strong> Write FAQ sections on every key page with questions that match what people ask AI assistants. Implement FAQ schema so search engines and AI crawlers parse them easily. Each answer should include your brand name naturally and provide a direct, citable response.</li>
+  <li><strong>Stat-backed content:</strong> Every major claim on your site should be supported by a statistic from a named source. AI models weight factual, cited content higher than opinions or unsupported claims. According to the GEO research study by researchers at Princeton, IIT Delhi, and Georgia Tech, adding authoritative citations and statistics delivered up to 40% higher visibility across tested generative queries (Source: Aggarwal et al., 2024).</li>
+  <li><strong>Structured &ldquo;definition&rdquo; content:</strong> Blog posts that clearly define industry terms (like this article) rank in both Google and AI responses. Use a clear first-paragraph definition, then expand with practical detail. AI models frequently pull definitions from content structured this way.</li>
+  <li><strong>Third-party citation building:</strong> Get your brand mentioned on industry directories, partner websites, guest blog posts, and press outlets. Each third-party mention reinforces your authority in AI models&rsquo; training data and retrieval systems.</li>
+  <li><strong>Geo-localized authority pages:</strong> If you serve multiple markets, create dedicated pages for each with localized content. AI models consider geographic relevance when answering location-specific queries. A page targeting &ldquo;AI consulting in Canada&rdquo; with Canadian market data, PIPEDA compliance mentions, and local industry context will outperform a generic global page.</li>
+  <li><strong>Regular content publishing:</strong> AI models favor brands that consistently produce expert content. Publishing 8&ndash;12 quality articles per month builds authority faster than publishing occasionally &mdash; each article is another surface area to be cited.</li>
+</ol>
+
+<h2 id="industries-geo">Industries That Benefit Most from GEO</h2>
+<p>
+  GEO applies to any business, but certain industries see outsized returns because their buyers rely heavily on research before purchasing:
+</p>
+<ul>
+  <li><strong>Professional services (consulting, legal, accounting):</strong> Buyers research extensively before choosing a provider, and AI assistants are increasingly the first stop. Firms that appear in AI recommendations gain a meaningful pipeline advantage.</li>
+  <li><strong>Technology and SaaS:</strong> Tech buyers adopt AI search tools at higher rates than most demographics. According to HubSpot&rsquo;s 2025 State of AI survey, 82% of technology buyers used AI-powered search tools during their purchasing process.</li>
+  <li><strong>Healthcare and life sciences:</strong> Medical professionals and health systems increasingly use AI for vendor evaluation, especially around compliance and regulatory readiness.</li>
+  <li><strong>Financial services:</strong> Banks, insurance companies, and fintech firms serve information-hungry customers who ask AI about products, rates, and providers.</li>
+  <li><strong>Education and training:</strong> Organizations evaluating training providers or educational technology frequently use AI assistants for comparison and recommendation queries.</li>
+</ul>
+<p>
+  <strong>The common thread:</strong> Any industry where the buying decision involves research and comparison benefits from GEO. If your prospects Google before buying, they&rsquo;re increasingly asking AI before buying too.
+</p>
+
+<h2 id="how-comptech-helps">How Comptech Enterprises Helps Businesses with GEO</h2>
+<p>
+  Comptech Enterprises offers <a href="/geo">GEO as a dedicated service</a> because earning AI citations requires a different engineering and content workflow than traditional SEO.
+</p>
+<p><strong>Comptech&rsquo;s GEO process includes:</strong></p>
+<ul>
+  <li><strong>AI visibility audit:</strong> Comptech tests how your brand currently appears across ChatGPT, Gemini, and Perplexity. Many businesses discover they&rsquo;re completely absent from AI responses, even for queries pairing their brand name with their industry.</li>
+  <li><strong>Authority gap analysis:</strong> Comptech identifies where your E-E-A-T signals are weak &mdash; missing team pages, uncited statistics, missing FAQ schema, and gaps in third-party mentions.</li>
+  <li><strong>Content optimization:</strong> Comptech restructures existing content and creates new assets engineered for AI citation, including stat-backed blog posts, FAQ sections with schema markup, and definition-style educational pages.</li>
+  <li><strong>Third-party citation building:</strong> Comptech helps build the off-site mentions that AI models use to validate authority: directory listings, guest content, partner pages, and industry profiles.</li>
+  <li><strong>Ongoing monitoring:</strong> AI models update their retrieval indices and weights regularly. Comptech monitors your brand&rsquo;s AI visibility across platforms monthly and adapts strategy as AI search behavior evolves.</li>
+</ul>
+<p>
+  According to BrightEdge (2025), companies investing in AI search optimization saw 3x more brand mentions in AI-generated responses within six months compared to those relying on traditional SEO alone. Comptech&rsquo;s ISO 9001:2015 certification ensures every GEO engagement follows a documented, repeatable process &mdash; not guesswork.
+</p>
+
+<h2 id="geo-faqs">FAQs About Generative Engine Optimization</h2>
+<h3>How is GEO different from SEO, and does Comptech Enterprises offer both?</h3>
+<p>
+  SEO optimizes for Google search rankings, while GEO optimizes for AI-generated citations in tools like ChatGPT, Gemini, and Perplexity. Comptech offers both as complementary services because businesses need visibility in traditional and AI-powered search. With Gartner projecting a 25% shift from traditional search volume toward AI assistants, GEO has become essential alongside SEO.
+</p>
+<h3>How long does it take to see results from Comptech&rsquo;s GEO services?</h3>
+<p>
+  Most businesses see measurable improvements in AI brand mentions within 3&ndash;6 months. GEO builds cumulatively &mdash; each optimized page, FAQ section, and third-party citation strengthens your overall AI visibility. Comptech provides monthly AI visibility reports so you can track progress across ChatGPT, Gemini, and Perplexity.
+</p>
+<h3>Can small and mid-size businesses compete with large enterprises in AI search results?</h3>
+<p>
+  Yes. AI models prioritize authority, clarity, and source verification over brand size. A mid-size company with well-structured, stat-backed content and strong E-E-A-T signals can outperform a Fortune 500 competitor with a poorly optimized website. Comptech specializes in helping mid-size businesses build AI authority that punches above their weight.
+</p>
+<h3>What does Comptech&rsquo;s GEO audit include?</h3>
+<p>
+  Comptech&rsquo;s GEO audit tests your brand across all major AI platforms, identifies authority gaps, evaluates your content structure for AI readability, reviews your <a href="/faq">FAQ and schema implementation</a>, and benchmarks you against competitors in AI responses. The audit delivers a prioritized action plan grounded in empirical GEO practices shown to raise generative engine visibility by up to 40% (Source: Aggarwal et al., 2024).
+</p>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>
+  Generative Engine Optimization is not a future trend &mdash; it&rsquo;s a current reality. Every day, millions of potential customers ask AI assistants for business recommendations instead of scrolling through search links. Businesses that optimize for AI citation today will capture this growing channel; those that wait risk becoming invisible to an increasingly AI-first audience.
+</p>
+<p>
+  Comptech Enterprises helps businesses across Europe, Canada, Australia, and the UAE build AI visibility through structured GEO strategies and <a href="/ai-solutions">enterprise AI consulting</a>. Explore real outcomes in our <a href="/case-studies">client case studies</a> or read our guide on <a href="/blog/what-is-an-ai-agent">how AI agents work for business</a>.
+</p>
+<p>
+  <strong>Ready to see how AI search platforms describe your brand?</strong> Explore our <a href="/geo">GEO Services</a> or <a href="/contact">contact Comptech Enterprises for a free AI visibility audit &rarr;</a>
+</p>
+`,
+  },
+  {
     slug: "what-is-an-ai-agent",
     title: "What Is an AI Agent? How AI Agents Work for Business in 2026",
+    metaTitle: "What Is an AI Agent? Business Guide 2026 | Comptech",
     excerpt:
       "Learn what AI agents are, how they work, and how businesses use them to automate tasks, reduce costs, and scale operations. Explore types, examples, and benefits.",
+    metaDescription:
+      "Learn what AI agents are, how they work, and how businesses use them to automate tasks, cut costs, and scale. Explore types, examples, and ROI.",
     category: "AI Education",
     publishDate: "Nov 11, 2026",
     readTime: "9 min read",
@@ -42,6 +255,24 @@ export const BLOG_POSTS: BlogPost[] = [
     coverAlt:
       "AI agent workflow diagram showing how an artificial intelligence agent combines abilities, goals, and prior knowledge with observations from its environment to make decisions for businesses",
     tags: ["AI Agents", "AI Education", "Business Automation", "Agentic AI"],
+    faqs: [
+      {
+        q: "How much does it cost to build an AI agent?",
+        a: "Costs vary depending on complexity. A simple task-based agent can start from a few thousand dollars, while enterprise multi-agent systems with custom integrations range higher. The ROI typically justifies the investment within 3-6 months. PwC reports that 54% of companies see measurable returns from AI within the first year.",
+      },
+      {
+        q: "Can AI agents replace human employees?",
+        a: "AI agents automate repetitive tasks, not entire jobs. The World Economic Forum’s Future of Jobs Report 2025 projects 170 million new roles created and 92 million displaced by 2030, a net gain. The goal is to make human workers more productive, not redundant.",
+      },
+      {
+        q: "Are AI agents secure?",
+        a: "Security depends on implementation. Reputable AI solutions include data encryption, access controls, audit trails, and compliance with regulations like GDPR and HIPAA. Comptech Enterprises builds AI agents with enterprise-grade security standards and ISO 9001:2015 certified processes.",
+      },
+      {
+        q: "How long does it take to deploy an AI agent?",
+        a: "A basic AI agent can be deployed in 2-4 weeks. Complex multi-agent systems with multiple integrations typically take 6-12 weeks. Comptech’s process includes an AI audit, development, testing, and team training.",
+      },
+    ],
     author: {
       name: "Mohit Negi",
       role: "Lead AI Architect & Founder",
