@@ -54,7 +54,7 @@ export const BLOG_POSTS: BlogPost[] = [
     coverWidth: 1280,
     coverHeight: 720,
     coverAlt:
-      "'What Is RAG' illustration of the Retrieve, Augment and Generate steps, showing documents, a database, an AI chip and a screen with a chat bubble on a blue background",
+      "Illustration of RAG's Retrieve, Augment and Generate steps with documents, a database, an AI chip and a screen",
     tags: ["RAG", "Retrieval-Augmented Generation", "Enterprise AI", "AI Education", "LLM Hallucinations"],
     faqs: [
       {
@@ -253,7 +253,7 @@ export const BLOG_POSTS: BlogPost[] = [
     coverWidth: 1280,
     coverHeight: 720,
     coverAlt:
-      "'What is GEO and How to Do It' illustration of two hands interacting with a globe, map pins, search bars and a bar chart on a blue circuit-board background",
+      "'What is GEO and How to Do It' illustration with hands on a globe, map pins, search bars and a chart",
     tags: ["GEO", "Generative Engine Optimization", "AI Search", "ChatGPT Citation", "SEO vs GEO"],
     faqs: [
       {
@@ -454,7 +454,7 @@ export const BLOG_POSTS: BlogPost[] = [
     coverWidth: 1200,
     coverHeight: 630,
     coverAlt:
-      "AI agent workflow diagram showing how an artificial intelligence agent combines abilities, goals, and prior knowledge with observations from its environment to make decisions for businesses",
+      "Diagram of an AI agent combining abilities, goals and prior knowledge with observations from its environment",
     tags: ["AI Agents", "AI Education", "Business Automation", "Agentic AI"],
     faqs: [
       {
@@ -613,7 +613,7 @@ export const BLOG_POSTS: BlogPost[] = [
     coverWidth: 1280,
     coverHeight: 720,
     coverAlt:
-      "Abstract gradient of flowing purple, blue and orange waves illustrating Nano Banana Pro multimodal AI in Google Antigravity",
+      "Abstract purple, blue and orange gradient waves illustrating Nano Banana Pro multimodal AI in Google Antigravity",
     tags: ["Nano Banana Pro", "Google Antigravity", "Multimodal AI", "Agentic IDE"],
     author: {
       name: "Mohit Negi",
@@ -681,7 +681,7 @@ export const BLOG_POSTS: BlogPost[] = [
     coverWidth: 1280,
     coverHeight: 720,
     coverAlt:
-      "Abstract gradient of flowing purple, blue and orange waves illustrating Gemini 3.8 Flash enterprise AI integration in the Comptech AI Suite",
+      "Abstract purple, blue and orange gradient waves illustrating Gemini 3.8 Flash enterprise AI integration",
     tags: ["Gemini 3.8", "AI Agents", "Enterprise Workflows", "LLM Benchmark"],
     author: {
       name: "Mohit Negi",
@@ -768,7 +768,7 @@ export const BLOG_POSTS: BlogPost[] = [
     coverWidth: 1280,
     coverHeight: 720,
     coverAlt:
-      "Night view of Earth from space with glowing city lights, representing global AI search visibility and Generative Engine Optimization",
+      "Earth at night from space with glowing city lights, representing global AI search visibility",
     tags: ["GEO", "AI Search", "ChatGPT Citation", "SEO vs GEO"],
     author: {
       name: "Rohit Sharma",
@@ -844,7 +844,7 @@ export const BLOG_POSTS: BlogPost[] = [
     coverWidth: 1280,
     coverHeight: 720,
     coverAlt:
-      "Two developers reviewing code on a laptop and monitor in an office while building autonomous AI sales and support agents",
+      "Two developers reviewing code on a laptop and monitor while building AI sales and support agents",
     tags: ["AI Agents", "Sales Automation", "Human-in-the-loop", "Workflow Safeguards"],
     author: {
       name: "Mohit Negi",
@@ -896,7 +896,7 @@ export const BLOG_POSTS: BlogPost[] = [
     coverWidth: 1280,
     coverHeight: 720,
     coverAlt:
-      "Dark data center server racks with colorful network cables and green status lights, representing enterprise cloud and hybrid IT infrastructure",
+      "Data center server racks with colorful network cables and green status lights for enterprise hybrid IT",
     tags: ["IT Infrastructure", "Dell Servers", "Cybersecurity", "AMC"],
     author: {
       name: "Pankaj Sharma",
@@ -932,7 +932,7 @@ export const BLOG_POSTS: BlogPost[] = [
     coverWidth: 1280,
     coverHeight: 720,
     coverAlt:
-      "Colleagues working together on laptops around a wooden table, representing a hands-on corporate AI workshop",
+      "Colleagues working on laptops around a wooden table at a hands-on corporate AI workshop",
     tags: ["AI Workshops", "Corporate Training", "Productivity", "Custom Workflows"],
     author: {
       name: "Rohit Sharma",
@@ -964,7 +964,7 @@ export const BLOG_POSTS: BlogPost[] = [
     coverWidth: 1280,
     coverHeight: 720,
     coverAlt:
-      "Stream of green code characters on a black screen, representing a custom RAG pipeline with vector search",
+      "Green code characters streaming down a black screen, representing a custom RAG pipeline",
     tags: ["RAG", "Vector Search", "Privacy", "Milvus", "AI"],
     author: {
       name: "Mohit Negi",

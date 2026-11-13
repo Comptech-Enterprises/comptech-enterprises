@@ -20,13 +20,15 @@ export function generateStaticParams() {
   }));
 }
 
+// Posts only store a calendar date, so emit a full ISO 8601 timestamp at a fixed
+// 09:00 India Standard Time (+05:30), which schema.org / Google prefer over date-only.
 function toIsoDate(dateStr: string): string {
   const parsed = new Date(dateStr);
   if (Number.isNaN(parsed.getTime())) return dateStr;
   const y = parsed.getFullYear();
   const m = String(parsed.getMonth() + 1).padStart(2, "0");
   const d = String(parsed.getDate()).padStart(2, "0");
-  return `${y}-${m}-${d}`;
+  return `${y}-${m}-${d}T09:00:00+05:30`;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
