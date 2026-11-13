@@ -54,7 +54,7 @@ export const BLOG_POSTS: BlogPost[] = [
     coverWidth: 1280,
     coverHeight: 720,
     coverAlt:
-      "What is RAG diagram showing the retrieve, augment, and generate steps of Retrieval-Augmented Generation connecting documents, a database, an AI model, and answers",
+      "'What Is RAG' illustration of the Retrieve, Augment and Generate steps, showing documents, a database, an AI chip and a screen with a chat bubble on a blue background",
     tags: ["RAG", "Retrieval-Augmented Generation", "Enterprise AI", "AI Education", "LLM Hallucinations"],
     faqs: [
       {
@@ -253,7 +253,7 @@ export const BLOG_POSTS: BlogPost[] = [
     coverWidth: 1280,
     coverHeight: 720,
     coverAlt:
-      "What is GEO and How to Do It illustration showing global search vectors, location pins, analytics chart, and multi-platform AI search discovery",
+      "'What is GEO and How to Do It' illustration of two hands interacting with a globe, map pins, search bars and a bar chart on a blue circuit-board background",
     tags: ["GEO", "Generative Engine Optimization", "AI Search", "ChatGPT Citation", "SEO vs GEO"],
     faqs: [
       {
@@ -450,7 +450,9 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "AI Education",
     publishDate: "Nov 11, 2026",
     readTime: "9 min read",
-    coverImage: "/blog/what-is-an-ai-agent.webp",
+    coverImage: "/blog/what-is-an-ai-agent-workflow-diagram.webp",
+    coverWidth: 1200,
+    coverHeight: 630,
     coverAlt:
       "AI agent workflow diagram showing how an artificial intelligence agent combines abilities, goals, and prior knowledge with observations from its environment to make decisions for businesses",
     tags: ["AI Agents", "AI Education", "Business Automation", "Agentic AI"],
@@ -607,7 +609,11 @@ export const BLOG_POSTS: BlogPost[] = [
     publishDate: "Sep 28, 2026",
     readTime: "6 min read",
     featured: true,
-    coverImage: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80",
+    coverImage: "/blog/nano-banana-pro-google-antigravity-multimodal-ai-agents.webp",
+    coverWidth: 1280,
+    coverHeight: 720,
+    coverAlt:
+      "Abstract gradient of flowing purple, blue and orange waves illustrating Nano Banana Pro multimodal AI in Google Antigravity",
     tags: ["Nano Banana Pro", "Google Antigravity", "Multimodal AI", "Agentic IDE"],
     author: {
       name: "Mohit Negi",
@@ -671,7 +677,11 @@ export const BLOG_POSTS: BlogPost[] = [
     publishDate: "Sep 24, 2026",
     readTime: "5 min read",
     featured: false,
-    coverImage: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80",
+    coverImage: "/blog/gemini-3-8-flash-enterprise-ai-integration.webp",
+    coverWidth: 1280,
+    coverHeight: 720,
+    coverAlt:
+      "Abstract gradient of flowing purple, blue and orange waves illustrating Gemini 3.8 Flash enterprise AI integration in the Comptech AI Suite",
     tags: ["Gemini 3.8", "AI Agents", "Enterprise Workflows", "LLM Benchmark"],
     author: {
       name: "Mohit Negi",
@@ -754,7 +764,11 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "GEO & Search",
     publishDate: "Sep 20, 2026",
     readTime: "7 min read",
-    coverImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+    coverImage: "/blog/generative-engine-optimization-geo-guide-2026.webp",
+    coverWidth: 1280,
+    coverHeight: 720,
+    coverAlt:
+      "Night view of Earth from space with glowing city lights, representing global AI search visibility and Generative Engine Optimization",
     tags: ["GEO", "AI Search", "ChatGPT Citation", "SEO vs GEO"],
     author: {
       name: "Rohit Sharma",
@@ -826,7 +840,11 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "AI Research",
     publishDate: "Sep 15, 2026",
     readTime: "8 min read",
-    coverImage: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80",
+    coverImage: "/blog/autonomous-ai-sales-support-agents-development.webp",
+    coverWidth: 1280,
+    coverHeight: 720,
+    coverAlt:
+      "Two developers reviewing code on a laptop and monitor in an office while building autonomous AI sales and support agents",
     tags: ["AI Agents", "Sales Automation", "Human-in-the-loop", "Workflow Safeguards"],
     author: {
       name: "Mohit Negi",
@@ -874,7 +892,11 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Engineering & Infrastructure",
     publishDate: "Sep 10, 2026",
     readTime: "6 min read",
-    coverImage: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
+    coverImage: "/blog/enterprise-cloud-hybrid-it-infrastructure-security.webp",
+    coverWidth: 1280,
+    coverHeight: 720,
+    coverAlt:
+      "Dark data center server racks with colorful network cables and green status lights, representing enterprise cloud and hybrid IT infrastructure",
     tags: ["IT Infrastructure", "Dell Servers", "Cybersecurity", "AMC"],
     author: {
       name: "Pankaj Sharma",
@@ -906,7 +928,11 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Guides & Tutorials",
     publishDate: "Sep 02, 2026",
     readTime: "5 min read",
-    coverImage: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
+    coverImage: "/blog/corporate-ai-workshops-hands-on-team-training.webp",
+    coverWidth: 1280,
+    coverHeight: 720,
+    coverAlt:
+      "Colleagues working together on laptops around a wooden table, representing a hands-on corporate AI workshop",
     tags: ["AI Workshops", "Corporate Training", "Productivity", "Custom Workflows"],
     author: {
       name: "Rohit Sharma",
@@ -934,7 +960,11 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Engineering & Infrastructure",
     publishDate: "Aug 26, 2026",
     readTime: "9 min read",
-    coverImage: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80",
+    coverImage: "/blog/custom-rag-pipeline-vector-search-architecture.webp",
+    coverWidth: 1280,
+    coverHeight: 720,
+    coverAlt:
+      "Stream of green code characters on a black screen, representing a custom RAG pipeline with vector search",
     tags: ["RAG", "Vector Search", "Privacy", "Milvus", "AI"],
     author: {
       name: "Mohit Negi",

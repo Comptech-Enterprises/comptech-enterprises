@@ -51,7 +51,7 @@ export function BlogPostClient({ post, relatedPosts }: { post: BlogPost; related
           <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
             <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-[#5f6368]">
               <span className="relative h-8 w-8 overflow-hidden rounded-full bg-[#f1f3f4]">
-                <Image src={post.author.avatar} alt={post.author.name} fill className="object-cover" />
+                <Image src={post.author.avatar} alt={`${post.author.name}, ${post.author.role}`} fill className="object-cover" />
               </span>
               <span className="font-medium text-[#121317]">{post.author.name}</span>
               <span aria-hidden>·</span>
@@ -111,7 +111,7 @@ export function BlogPostClient({ post, relatedPosts }: { post: BlogPost; related
           {post.author.bio && (
             <div className="mt-10 flex items-start gap-4 rounded-2xl border border-[rgba(33,34,38,0.08)] bg-[#f8f9fa] p-6">
               <span className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full bg-[#e4e6e8]">
-                <Image src={post.author.avatar} alt={post.author.name} fill className="object-cover" />
+                <Image src={post.author.avatar} alt={`${post.author.name}, ${post.author.role}`} fill className="object-cover" />
               </span>
               <div className="min-w-0">
                 <p className="text-sm font-semibold text-[#121317]">{post.author.name}</p>
