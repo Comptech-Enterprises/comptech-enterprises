@@ -46,10 +46,10 @@ export function Testimonials() {
                 { value: "30+",  label: "Years"   },
                 { value: "50+",  label: "Agents Deployed" },
               ].map(({ value, label }) => (
-                <div key={label} className="glass-card rounded-2xl p-4 text-center">
+                <div key={label} className="glass-card rounded-2xl p-3 sm:p-4 text-center flex flex-col items-center justify-center">
                   <p className="font-display font-extrabold text-xl text-gray-900 leading-none mb-1"
                     style={{ color: "#5C0F26" }}>{value}</p>
-                  <p className="text-[11px] font-semibold uppercase tracking-widest text-gray-400">{label}</p>
+                  <p className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-gray-400 pl-[0.05em] text-balance">{label}</p>
                 </div>
               ))}
             </div>
