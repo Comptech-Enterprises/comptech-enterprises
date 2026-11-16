@@ -82,6 +82,8 @@ export function AISection() {
                   <img
                     src={`/clients/${client.logo}.webp`}
                     alt={client.name}
+                    width={client.tall ? 140 : 120}
+                    height={client.tall ? 48 : 36}
                     loading="lazy"
                     draggable={false}
                     className={`${client.tall ? "h-10 sm:h-12" : "h-7 sm:h-9"} w-auto max-w-[130px] sm:max-w-[170px] object-contain`}

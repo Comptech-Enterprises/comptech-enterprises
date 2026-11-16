@@ -1,12 +1,23 @@
 # Comptech Enterprises
 
-Enterprise IT infrastructure and AI implementation partner based in New Delhi, India. Specializing in helping **MSMEs** and **Corporates** adopt, deploy, and scale AI across their daily business operations.
+> Enterprise IT infrastructure and AI implementation partner based in New Delhi, India. Specializing in helping MSMEs and Corporates adopt, deploy, and scale AI across their daily business operations.
+
+## Key Links & Navigation
+- [Home](https://comptech.in/): Overview of Comptech Enterprises, AI adoption, infrastructure, and trusted enterprise clients.
+- [AI Solutions](https://comptech.in/ai-solutions): Enterprise AI adoption, custom LLM integration, private RAG, and business automations.
+- [Generative Engine Optimization (GEO)](https://comptech.in/geo): AI search optimization, LLM ranking, and GEO services for modern brand discoverability.
+- [AI Agents](https://comptech.in/ai-agents): Autonomous workflow, customer support, lead qualification, and sales outreach agents.
+- [Services](https://comptech.in/services): Full suite of IT infrastructure, hardware AMC, enterprise servers, and custom software development.
+- [Blog](https://comptech.in/blog): Insights, guides, and practical playbooks on enterprise AI adoption, GEO, and tech infrastructure.
+- [Case Studies](https://comptech.in/case-studies): Real-world client transformations and enterprise IT implementations.
+- [FAQ](https://comptech.in/faq): Frequently asked questions on pricing, data privacy, security, deployment, and onboarding.
+- [Contact](https://comptech.in/contact): Connect with our engineering and AI consulting team in Janakpuri, New Delhi.
 
 ## Contact & Location
 - **Address:** 207, DDA-1, District Center, JanakPuri, New Delhi, India
 - **Phone:** +91 8595073837
 - **Email:** mohit@comptech.in
-- **Website:** https://comptech-enterprises.com
+- **Website:** [https://comptech.in](https://comptech.in)
 - **Founded:** 1996
 
 ## AI Adoption Programs (MSMEs & Corporates)

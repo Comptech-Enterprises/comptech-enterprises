@@ -104,7 +104,7 @@ export function HomeAIAgentsSection() {
 
                   {/* 3 Step Working Flow */}
                   <div className="space-y-3 mb-6">
-                    <div className="text-[11px] font-bold uppercase tracking-wider text-gray-400">
+                    <div className="text-[11px] font-bold uppercase tracking-wider text-gray-600">
                       How It Works:
                     </div>
                     {agent.steps.map((st) => (
