@@ -235,7 +235,11 @@ export function Navbar({ transparent = false }: NavbarProps) {
       </nav>
 
       {/* Mobile Nav */}
-      <div className={clsx("mobile-nav", mobileOpen && "open")} aria-hidden={!mobileOpen}>
+      <div
+        className={clsx("mobile-nav", mobileOpen && "open")}
+        aria-hidden={!mobileOpen}
+        inert={!mobileOpen ? true : undefined}
+      >
         {/* Header row */}
         <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100">
           <Link href="/" onClick={() => setMobileOpen(false)}>
