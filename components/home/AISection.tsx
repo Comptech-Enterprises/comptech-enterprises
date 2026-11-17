@@ -34,6 +34,7 @@ const CLIENTS: { name: string; logo?: string; tall?: boolean }[] = [
   { name: "Anthem", logo: "anthem" },
   { name: "Food Talk", logo: "food-talk", tall: true },
   { name: "Onward Workspaces", logo: "onward-workspaces" },
+  { name: "Stark Partners", logo: "stark-partners" },
 ];
 
 const ICONS = {
