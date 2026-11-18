@@ -3,6 +3,7 @@
 import { useEffect, useState, type CSSProperties, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { BookLiveDemoModal } from "@/components/ai-agents/BookLiveDemoModal";
+import { trackEvent } from "@/lib/analytics";
 
 /** A button that opens the free AI audit request form in a popup instead of navigating away. */
 export function FreeAuditButton({
@@ -23,7 +24,10 @@ export function FreeAuditButton({
 
   return (
     <>
-      <button type="button" onClick={() => setOpen(true)} className={className} style={style}>
+      <button type="button" onClick={() => {
+          trackEvent("book_free_ai_audit_click", { button_location: source });
+          setOpen(true);
+        }} className={className} style={style}>
         {children}
       </button>
       {mounted &&

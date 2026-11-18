@@ -3,8 +3,9 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Check, Share2 } from "lucide-react";
+import { Check, Share2 } from "lucide-react";
 import { BlogPost } from "@/lib/blog-data";
+import { BlogScrollTracker } from "@/components/blog/BlogScrollTracker";
 
 export function BlogPostClient({ post, relatedPosts }: { post: BlogPost; relatedPosts: BlogPost[] }) {
   const [copied, setCopied] = useState(false);
@@ -25,24 +26,13 @@ export function BlogPostClient({ post, relatedPosts }: { post: BlogPost; related
   };
 
   return (
-    <main className="min-h-screen bg-white pb-[120px] pt-28 text-[#121317] md:pt-40">
+    <main className="min-h-screen bg-white pb-[120px] pt-36 text-[#121317] md:pt-40">
+      <BlogScrollTracker slug={post.slug} title={post.title} />
       <article>
         {/* Header: narrow column */}
         <header className="mx-auto max-w-[1045px] px-5 sm:px-10">
-          <div className="flex items-center gap-2 text-[13px] text-[#5f6368]">
-            <Link
-              href="/blog"
-              className="inline-flex items-center gap-1.5 rounded-full bg-[#f1f3f4] px-3 py-1.5 text-[#3c4043] transition-colors hover:bg-[#e4e6e8]"
-            >
-              <ArrowLeft size={14} />
-              All posts
-            </Link>
-            <span aria-hidden>/</span>
-            <span>{post.category}</span>
-          </div>
-
           <h1
-            className="mt-8 text-[36px] leading-[1.05] tracking-[-0.03em] md:text-[56px]"
+            className="text-[36px] leading-[1.05] tracking-[-0.03em] md:text-[56px]"
             style={{ fontWeight: 450 }}
           >
             {post.title}

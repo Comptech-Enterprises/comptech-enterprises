@@ -4,13 +4,13 @@ import { PageHero } from "@/components/sections/PageHero";
 import { RevealWrapper } from "@/components/ui/RevealWrapper";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import type { Metadata } from "next";
+import { pageAlternates } from "@/lib/seo";
+import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Case Studies",
   description: "Real enterprise IT results — hospitals, universities, government, and corporations across India.",
-  alternates: {
-    canonical: "/case-studies",
-  },
+  alternates: pageAlternates("/case-studies"),
   openGraph: {
     type: "website",
     locale: "en_IN",
@@ -78,12 +78,12 @@ export default function CaseStudiesPage() {
   return (
     <>
       <Navbar />
+      <Breadcrumbs path="/case-studies" />
       <main>
         <PageHero
           badge="Case Studies"
           title="Real Results for Real Enterprises"
           subtitle="See how we've solved complex IT challenges for hospitals, universities, government bodies, and corporations across India."
-          breadcrumbs={[{ label: "Home", href: "/" }, { label: "Case Studies" }]}
         />
 
         {/* Filter tabs */}

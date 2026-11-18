@@ -9,6 +9,8 @@ import { HOME_FAQS, faqJsonLd } from "@/lib/faqs";
 import { FreeAuditButton } from "@/components/ui/FreeAuditButton";
 import { RevealWrapper } from "@/components/ui/RevealWrapper";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { pageAlternates } from "@/lib/seo";
+import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 
 const TITLE = "FAQs: AI Agents, GEO & AI Adoption for Business";
 const DESCRIPTION =
@@ -17,7 +19,7 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
-  alternates: { canonical: "/faq" },
+  alternates: pageAlternates("/faq"),
   openGraph: {
     type: "website",
     locale: "en_IN",
@@ -38,6 +40,7 @@ export default function FAQPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(HOME_FAQS)) }}
       />
       <Navbar />
+      <Breadcrumbs path="/faq" />
       <main className="glass-mesh-page">
         <PageHero
           light
@@ -54,7 +57,6 @@ export default function FAQPage() {
             </>
           }
           subtitle="Straight answers about custom AI agents, GEO, adopting AI without a technical team, and how to get started."
-          breadcrumbs={[{ label: "Home", href: "/" }, { label: "FAQs" }]}
         />
 
         <section className="py-16 lg:py-24">

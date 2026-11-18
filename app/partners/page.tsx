@@ -6,14 +6,14 @@ import { Footer } from "@/components/layout/Footer";
 import { PageHero } from "@/components/sections/PageHero";
 import { RevealWrapper } from "@/components/ui/RevealWrapper";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { pageAlternates } from "@/lib/seo";
+import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Technology Partners",
   description:
     "Comptech is a certified Dell Titanium, HP Gold, Lenovo Silver, and Microsoft Gold partner — genuine products, official warranty, expert deployment.",
-  alternates: {
-    canonical: "/partners",
-  },
+  alternates: pageAlternates("/partners"),
   openGraph: {
     type: "website",
     locale: "en_IN",
@@ -116,12 +116,12 @@ export default function PartnersPage() {
   return (
     <>
       <Navbar />
+      <Breadcrumbs path="/partners" />
       <main>
         <PageHero
           badge="Technology Partners"
           title="Certified by the World's Best"
           subtitle="Comptech is an authorized reseller and certified partner for leading enterprise technology brands — ensuring you get genuine products, official support, and expert deployment."
-          breadcrumbs={[{ label: "Home", href: "/" }, { label: "Partners" }]}
         />
 
         {/* ── Stats row ── */}

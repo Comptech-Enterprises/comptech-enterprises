@@ -6,6 +6,8 @@ import { Footer } from "@/components/layout/Footer";
 import { RevealWrapper } from "@/components/ui/RevealWrapper";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Phone, Mail, MessageCircle, MapPin, ArrowRight, Calendar, Sparkles, Users, Cpu } from "lucide-react";
+import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
+import { trackEvent } from "@/lib/analytics";
 
 const TRAINING_CLIENTS = [
   "Anthem",
@@ -53,6 +55,7 @@ export default function ContactPage() {
   return (
     <>
       <Navbar />
+      <Breadcrumbs path="/contact" />
       <main>
         {/* Responsive AI Training Storytelling Hero Video */}
         <section
@@ -180,6 +183,7 @@ export default function ContactPage() {
                           }),
                         });
                         if (!res.ok) throw new Error("Request failed");
+                        trackEvent("contact_form_submit", { form_location: "contact_page" });
                         setSubmitted(true);
                       } catch {
                         setError("Something went wrong. Please try again or call us directly.");

@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
+import { pageAlternates } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: { absolute: "Careers at Comptech Enterprises" },
   description:
     "Join Comptech Enterprises. Work on AI agents, enterprise solutions, and cutting-edge infrastructure.",
-  alternates: {
-    canonical: "/careers",
-  },
+  alternates: pageAlternates("/careers"),
   openGraph: {
     type: "website",
     locale: "en_IN",

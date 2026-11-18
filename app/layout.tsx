@@ -75,14 +75,13 @@ const jsonLd = {
     "longitude": 77.0782
   },
   "areaServed": [
-    {
-      "@type": "AdministrativeArea",
-      "name": "Delhi"
-    },
-    {
-      "@type": "Country",
-      "name": "India"
-    }
+    { "@type": "Country", "name": "India" },
+    { "@type": "Country", "name": "United Arab Emirates" },
+    { "@type": "Country", "name": "Canada" },
+    { "@type": "Country", "name": "United Kingdom" },
+    { "@type": "Country", "name": "Australia" },
+    { "@type": "Country", "name": "Germany" },
+    { "@type": "AdministrativeArea", "name": "Europe" }
   ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",

@@ -3,6 +3,8 @@ import type { FAQItem } from "@/lib/faqs";
 export interface BlogPost {
   slug: string;
   title: string;
+  /** Short label for breadcrumbs when the full title is long. */
+  shortTitle?: string;
   /** Optional SEO title tag when distinct from the on-page H1 headline. */
   metaTitle?: string;
   excerpt: string;
@@ -41,6 +43,7 @@ export const BLOG_CATEGORIES = [
 export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "what-is-rag",
+    shortTitle: "What Is RAG?",
     title: "What Is RAG (Retrieval-Augmented Generation)? A Business Guide",
     metaTitle: "What Is RAG? Retrieval-Augmented Generation Guide (2026)",
     excerpt:
@@ -240,6 +243,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "what-is-geo",
+    shortTitle: "What Is GEO?",
     title: "What Is GEO (Generative Engine Optimization)? A Complete Guide for Businesses",
     metaTitle: "What Is GEO? Generative Engine Optimization Guide (2026)",
     excerpt:
@@ -441,6 +445,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "what-is-an-ai-agent",
+    shortTitle: "What Is an AI Agent?",
     title: "What Is an AI Agent? How AI Agents Work for Business in 2026",
     metaTitle: "What Is an AI Agent? Business Guide 2026 | Comptech",
     excerpt:

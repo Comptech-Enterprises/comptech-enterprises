@@ -7,6 +7,7 @@ import { PageHero } from "@/components/sections/PageHero";
 import { RevealWrapper } from "@/components/ui/RevealWrapper";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { ArrowRight, Upload, HeartHandshake, TrendingUp, Users } from "lucide-react";
+import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 
 const inputClass =
   "w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10 outline-none transition-all bg-white";
@@ -41,13 +42,13 @@ export default function CareersPage() {
   return (
     <>
       <Navbar />
+      <Breadcrumbs path="/careers" />
       <main>
         <PageHero
           light
           badge="Careers"
           title="Build Your Career With Comptech"
           subtitle="Join a team that powers enterprise IT, AI, and infrastructure across India. Send us your details and resume — we're always looking for great people."
-          breadcrumbs={[{ label: "Home", href: "/" }, { label: "Careers" }]}
         />
 
         <section className="bg-gray-50 py-24">
