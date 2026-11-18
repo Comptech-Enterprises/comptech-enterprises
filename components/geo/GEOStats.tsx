@@ -284,7 +284,7 @@ export function GEOStats() {
 
           <TrendLineChart />
 
-          <p className="text-xs text-gray-400 mt-6 text-center">
+          <p className="text-xs text-gray-500 mt-6 text-center">
             Source: Estimated from industry reports on AI search adoption trends (Gartner, Spark Toro, SimilarWeb)
           </p>
         </div>

@@ -58,7 +58,7 @@ export default function OptionWheel({
         {/* Left Column: 3D Option Wheel Selector */}
         <div className="lg:col-span-5 flex flex-col items-center">
           <div className="flex items-center justify-between w-full max-w-sm mb-3 px-2">
-            <span className="text-[11px] font-bold uppercase tracking-widest text-gray-400">
+            <span className="text-[11px] font-bold uppercase tracking-widest text-gray-500">
               Select Strategic Pillar
             </span>
             <div className="flex items-center gap-1.5">
@@ -153,7 +153,7 @@ export default function OptionWheel({
                         {option.title}
                       </p>
                       {option.tag && (
-                        <p className={`text-[11px] truncate font-medium ${isSelected ? "text-pink-200" : "text-gray-400"}`}>
+                        <p className={`text-[11px] truncate font-medium ${isSelected ? "text-pink-200" : "text-gray-500"}`}>
                           {option.tag}
                         </p>
                       )}

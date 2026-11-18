@@ -51,7 +51,7 @@ export function Hero() {
           preload="auto"
           // @ts-expect-error - fetchPriority is valid on <video> but missing from React's video element types
           fetchPriority="high"
-          poster={isMobile ? "/hero-poster-mobile.jpg" : "/hero-poster.jpg"}
+          poster={isMobile ? "/hero-poster-mobile.webp" : "/hero-poster.webp"}
           className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
         >
           <source src={isMobile ? "/hero-bg-mobile.mp4" : "/hero-bg.mp4"} type="video/mp4" />
@@ -59,7 +59,7 @@ export function Hero() {
       ) : (
         <div
           className="absolute inset-0 w-full h-full bg-cover bg-center"
-          style={{ backgroundImage: "url(/hero-poster.jpg)" }}
+          style={{ backgroundImage: "url(/hero-poster.webp)" }}
         />
       )}
 

@@ -67,6 +67,7 @@ export function BlogPostClient({ post, relatedPosts }: { post: BlogPost; related
               alt={post.coverAlt ?? post.title}
               fill
               priority
+                fetchPriority="high"
               sizes="(min-width: 1323px) 1323px, 100vw"
               className="object-cover"
             />
