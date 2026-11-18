@@ -67,3 +67,14 @@ jobs:
       - name: Cleanup SSH key
         if: always()
         run: rm -f ~/.ssh/deploy_key
+
+      # IndexNow ping (Bing etc.). Non-blocking: a failure here must never fail a deploy.
+      - name: Checkout (for the IndexNow script)
+        continue-on-error: true
+        uses: actions/checkout@v4
+
+      - name: Submit sitemap URLs to IndexNow
+        continue-on-error: true
+        run: |
+          sleep 20
+          node scripts/indexnow.mjs

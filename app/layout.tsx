@@ -126,6 +126,59 @@ const jsonLd = {
   }
 };
 
+// Organization + WebSite entities (complements the LocalBusiness block above).
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://comptech.in/#organization",
+  name: "Comptech Enterprises",
+  legalName: "Comptech Enterprises",
+  url: "https://comptech.in",
+  logo: {
+    "@type": "ImageObject",
+    url: "https://comptech.in/images/logo.webp",
+    width: 210,
+    height: 123,
+  },
+  description:
+    "Custom AI agents, Generative Engine Optimization (GEO), AI training, and enterprise IT infrastructure for businesses in India and worldwide.",
+  foundingDate: "1996",
+  email: "mohit@comptech.in",
+  telephone: "+91-8595073837",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "207, DDA-1, District Center, JanakPuri",
+    addressLocality: "New Delhi",
+    addressRegion: "Delhi",
+    postalCode: "110058",
+    addressCountry: "IN",
+  },
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      contactType: "sales",
+      telephone: "+91-8595073837",
+      email: "mohit@comptech.in",
+      areaServed: ["IN", "AE", "CA", "GB", "AU", "DE"],
+      availableLanguage: ["English", "Hindi"],
+    },
+  ],
+  sameAs: [
+    "https://www.linkedin.com/company/comptech-enterprises1",
+    "https://www.instagram.com/comptechenterprises",
+  ],
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://comptech.in/#website",
+  url: "https://comptech.in",
+  name: "Comptech Enterprises",
+  inLanguage: "en",
+  publisher: { "@id": "https://comptech.in/#organization" },
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -155,6 +208,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify([organizationJsonLd, websiteJsonLd]) }}
         />
         {children}
       </body>
