@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
+import { pageAlternates } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Contact Us for AI Solutions & IT Support",
   description:
     "Get in touch for AI agents, custom solutions, AI training, or enterprise IT support. Free AI audit available.",
-  alternates: {
-    canonical: "/contact",
-  },
+  alternates: pageAlternates("/contact"),
   openGraph: {
     type: "website",
     locale: "en_IN",

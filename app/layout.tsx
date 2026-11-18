@@ -75,14 +75,13 @@ const jsonLd = {
     "longitude": 77.0782
   },
   "areaServed": [
-    {
-      "@type": "AdministrativeArea",
-      "name": "Delhi"
-    },
-    {
-      "@type": "Country",
-      "name": "India"
-    }
+    { "@type": "Country", "name": "India" },
+    { "@type": "Country", "name": "United Arab Emirates" },
+    { "@type": "Country", "name": "Canada" },
+    { "@type": "Country", "name": "United Kingdom" },
+    { "@type": "Country", "name": "Australia" },
+    { "@type": "Country", "name": "Germany" },
+    { "@type": "AdministrativeArea", "name": "Europe" }
   ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
@@ -135,9 +134,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${manrope.variable}`}>
       <body>
+        {/* gtag.js (~180 KB) loads when idle. Events queue in dataLayer (see ga4 snippet) and are flushed on load. */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-ZXLEG612KN"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
         <Script id="ga4" strategy="afterInteractive">
           {`window.dataLayer = window.dataLayer || [];
@@ -145,7 +145,7 @@ export default function RootLayout({
             gtag('js', new Date());
             gtag('config', 'G-ZXLEG612KN');`}
         </Script>
-        <Script id="ms-clarity" strategy="afterInteractive">
+        <Script id="ms-clarity" strategy="lazyOnload">
           {`(function(c,l,a,r,i,t,y){
               c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
               t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;

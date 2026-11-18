@@ -347,7 +347,7 @@ export function ChatMock() {
           <div className="max-w-3xl mx-auto">
             <div className="flex items-center gap-3 border border-gray-200 rounded-full px-4 py-3 bg-white shadow-xs focus-within:border-gray-400 transition-colors">
               <Plus size={18} className="text-gray-400 shrink-0" />
-              <span className="flex-1 text-sm text-gray-400 select-none">Ask a follow-up query...</span>
+              <span className="flex-1 text-sm text-gray-500 select-none">Ask a follow-up query...</span>
               <Mic size={17} className="text-gray-400 shrink-0" />
               <div className="w-7 h-7 rounded-full bg-[#10A37F] flex items-center justify-center shrink-0 shadow-xs">
                 <ArrowUp size={15} className="text-white" />

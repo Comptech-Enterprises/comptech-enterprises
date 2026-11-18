@@ -10,15 +10,15 @@ import { PageHero } from "@/components/sections/PageHero";
 import { RevealWrapper } from "@/components/ui/RevealWrapper";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { ResellerTicker } from "@/components/home/PartnersStrip";
+import { pageAlternates, serviceJsonLd, SERVICE_COUNTRIES } from "@/lib/seo";
+import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "IT Infrastructure & Software Development Services",
   description:
     "Enterprise IT services from Comptech Enterprises — Software Development, networking, data centre, cloud, CCTV, and AMC support across India.",
   keywords: ["Software Development", "Software Development India", "IT services Delhi", "enterprise IT infrastructure", "AMC services"],
-  alternates: {
-    canonical: "/services",
-  },
+  alternates: pageAlternates("/services"),
   openGraph: {
     type: "website",
     locale: "en_IN",
@@ -114,15 +114,26 @@ const REPAIR_CARDS = [
   { title: "Peripherals",          desc: "Printers, scanners, UPS units, and other peripherals serviced and restored by certified technicians.", Icon: HardDrive },
 ];
 
+const serviceSchema = serviceJsonLd({
+  serviceType: "Enterprise IT Infrastructure and Software Development",
+  areaServed: ["India"],
+  description:
+    "Enterprise IT services — custom software, networking, data centre, cloud, CCTV, and AMC support.",
+});
+
 export default function ServicesPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
       <Navbar />
+      <Breadcrumbs path="/services" />
       <PageHero
         badge="Our Services"
         title="Enterprise IT Services, Built for Scale"
         subtitle="From infrastructure to AI — Comptech delivers certified, end-to-end IT solutions for enterprise organizations."
-        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Services" }]}
         actions={
           <>
             <Link href="/contact#quote" className="btn-accent btn btn-lg">Get a Quote</Link>

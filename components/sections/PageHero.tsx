@@ -1,15 +1,10 @@
-import Link from "next/link";
-import { ChevronRight } from "lucide-react";
 import { ReactNode } from "react";
 import Image from "next/image";
-
-interface Breadcrumb { label: string; href?: string }
 
 interface PageHeroProps {
   badge?: string;
   title: ReactNode;
   subtitle?: string;
-  breadcrumbs?: Breadcrumb[];
   actions?: ReactNode;
   dark?: boolean;
   /** Plain white background instead of the colored gradient, with dark text. */
@@ -18,7 +13,7 @@ interface PageHeroProps {
   children?: ReactNode;
 }
 
-export function PageHero({ badge, title, subtitle, breadcrumbs, actions, dark, light, backgroundImage, children }: PageHeroProps) {
+export function PageHero({ badge, title, subtitle, actions, dark, light, backgroundImage, children }: PageHeroProps) {
   const bgClass = dark
     ? "bg-ai-gradient"
     : light
@@ -39,26 +34,6 @@ export function PageHero({ badge, title, subtitle, breadcrumbs, actions, dark, l
         />
       )}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-        {/* Breadcrumb */}
-        {breadcrumbs && (
-          <nav
-            className={`hero-anim flex items-center gap-1.5 text-sm mb-6 ${light ? "text-gray-400" : "text-white/50"}`}
-            style={{ animationDelay: "0s" }}
-            aria-label="Breadcrumb"
-          >
-            {breadcrumbs.map((crumb, i) => (
-              <span key={i} className="flex items-center gap-1.5">
-                {i > 0 && <ChevronRight size={14} className={light ? "text-gray-300" : "text-white/30"} />}
-                {crumb.href ? (
-                  <Link href={crumb.href} className={`transition-colors ${light ? "hover:text-gray-600" : "hover:text-white/80"}`}>{crumb.label}</Link>
-                ) : (
-                  <span className={light ? "text-gray-600" : "text-white/70"} aria-current="page">{crumb.label}</span>
-                )}
-              </span>
-            ))}
-          </nav>
-        )}
-
         {/* Badge */}
         {badge && (
           <div

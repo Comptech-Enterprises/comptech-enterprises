@@ -4,6 +4,8 @@ import { Footer } from "@/components/layout/Footer";
 import { AISolutionsClient } from "@/components/ai-solutions/AISolutionsClient";
 import { FAQSection } from "@/components/faq/FAQSection";
 import { AI_AGENTS_FAQS, AI_TRAINING_FAQS } from "@/lib/faqs";
+import { pageAlternates, serviceJsonLd as serviceBlock, SERVICE_COUNTRIES } from "@/lib/seo";
+import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 
 const TITLE = "Custom AI Agents & Solutions for Mid-Size Businesses";
 const DESCRIPTION =
@@ -23,9 +25,7 @@ export const metadata: Metadata = {
     "AI automation for MSMEs",
     "custom RAG and LLM solutions",
   ],
-  alternates: {
-    canonical: "/ai-solutions",
-  },
+  alternates: pageAlternates("/ai-solutions"),
   openGraph: {
     type: "website",
     locale: "en_IN",
@@ -37,18 +37,14 @@ export const metadata: Metadata = {
 };
 
 const serviceJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Service",
+  ...serviceBlock({
+    serviceType: "AI Solutions and Custom AI Agent Development",
+    areaServed: SERVICE_COUNTRIES,
+    description:
+      "Custom AI agents, RAG pipelines, API integrations, and AI automation built around your business workflows.",
+    url: "https://comptech.in/ai-solutions",
+  }),
   name: "AI Services",
-  serviceType: "Artificial Intelligence Services",
-  url: "https://comptech.in/ai-solutions",
-  description: DESCRIPTION,
-  provider: { "@id": "https://comptech.in/#localbusiness" },
-  areaServed: [
-    { "@type": "City", name: "New Delhi" },
-    { "@type": "AdministrativeArea", name: "Delhi NCR" },
-    { "@type": "Country", name: "India" },
-  ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "AI Services",
@@ -73,6 +69,7 @@ export default function AISolutionsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
       />
       <Navbar />
+      <Breadcrumbs path="/ai-solutions" />
       <AISolutionsClient />
       <div className="glass-mesh-page">
         <FAQSection

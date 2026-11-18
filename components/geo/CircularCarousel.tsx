@@ -82,7 +82,6 @@ export function CircularCarousel({ items, className = "" }: CircularCarouselProp
               key={item.step}
               type="button"
               className={styles.card}
-              aria-label={`${item.step}: ${item.title}`}
               aria-current={isActive ? "step" : undefined}
               onClick={() => setActive(index)}
               style={

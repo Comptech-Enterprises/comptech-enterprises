@@ -29,6 +29,8 @@ import TechText from "@/components/reactbits/TechText";
 import OptionWheel from "@/components/reactbits/OptionWheel";
 import LogoLoop from "@/components/reactbits/LogoLoop";
 import { GEOCarouselSection } from "@/components/geo/GEOCarouselSection";
+import { pageAlternates, serviceJsonLd, SERVICE_COUNTRIES } from "@/lib/seo";
+import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Generative Engine Optimization (GEO) Services",
@@ -43,7 +45,7 @@ export const metadata: Metadata = {
     "Perplexity optimization",
     "Google AI Overviews",
   ],
-  alternates: { canonical: "https://comptech.in/geo" },
+  alternates: pageAlternates("/geo"),
   openGraph: {
     title: "Generative Engine Optimization (GEO) Services | Comptech Enterprises",
     description:
@@ -90,10 +92,22 @@ const WHY_COMPTECH = [
   },
 ];
 
+const serviceSchema = serviceJsonLd({
+  serviceType: "Generative Engine Optimization (GEO)",
+  areaServed: SERVICE_COUNTRIES,
+  description:
+    "Optimize your brand to get cited and recommended in ChatGPT, Google Gemini, Perplexity, and AI search engines.",
+});
+
 export default function GEOPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
       <Navbar />
+      <Breadcrumbs path="/geo" />
       <PageHero
         light
         badge="GEO Services"
@@ -109,7 +123,6 @@ export default function GEOPage() {
           </>
         }
         subtitle="Generative Engine Optimization (GEO) ensures your brand is recommended, cited, and ranked inside ChatGPT, Google Gemini, Perplexity, and every AI-powered search engine."
-        breadcrumbs={[{ label: "Home", href: "/" }, { label: "AI Solutions", href: "/ai-solutions" }, { label: "GEO" }]}
         actions={
           <>
             <Link

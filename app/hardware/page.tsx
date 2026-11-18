@@ -7,14 +7,14 @@ import { PageHero } from "@/components/sections/PageHero";
 import { RevealWrapper } from "@/components/ui/RevealWrapper";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { ResellerTicker } from "@/components/home/PartnersStrip";
+import { pageAlternates } from "@/lib/seo";
+import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Enterprise Hardware & Authorized Reseller",
   description:
     "Authorized OEM hardware partner for Dell, HP, Lenovo, Apple, Intel, NVIDIA, and Cisco. Genuine enterprise servers, storage, PCs, networking, and CCTV.",
-  alternates: {
-    canonical: "/hardware",
-  },
+  alternates: pageAlternates("/hardware"),
 };
 
 const HARDWARE_PILLARS = [
@@ -52,6 +52,7 @@ export default function HardwarePage() {
   return (
     <>
       <Navbar />
+      <Breadcrumbs path="/hardware" />
       <main className="glass-mesh-page">
         {/* Page Hero */}
         <PageHero

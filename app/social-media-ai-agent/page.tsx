@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { SocialMediaPageContent } from "@/components/social-media-ai-agent/SocialMediaPageContent";
+import { pageAlternates } from "@/lib/seo";
+import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Social Media AI Agent",
@@ -14,7 +16,7 @@ export const metadata: Metadata = {
     "social media automation India",
     "enterprise social media AI",
   ],
-  alternates: { canonical: "/social-media-ai-agent" },
+  alternates: pageAlternates("/social-media-ai-agent"),
   openGraph: {
     type: "website",
     locale: "en_IN",
@@ -30,6 +32,7 @@ export default function SocialMediaAIAgentPage() {
   return (
     <>
       <Navbar transparent />
+      <Breadcrumbs path="/social-media-ai-agent" />
       <main className="glass-mesh-page">
         <SocialMediaPageContent />
       </main>

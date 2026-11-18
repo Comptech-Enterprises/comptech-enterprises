@@ -11,6 +11,7 @@ import {
   User,
   ShieldCheck,
 } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 interface BookLiveDemoModalProps {
   isOpen: boolean;
@@ -110,6 +111,7 @@ export function BookLiveDemoModal({
         throw new Error(data.error || "Failed to submit demo request. Please try again.");
       }
 
+      trackEvent("contact_form_submit", { form_location: source, service });
       setSubmitted(true);
     } catch (err: any) {
       setError(err.message || "An error occurred. Please try again.");

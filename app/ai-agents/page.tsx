@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { AIAgentsPageContent } from "@/components/ai-agents/AIAgentsPageContent";
+import { pageAlternates, serviceJsonLd, SERVICE_COUNTRIES } from "@/lib/seo";
+import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "AI Agents",
@@ -15,7 +17,7 @@ export const metadata: Metadata = {
     "AI automation India",
     "enterprise AI agents",
   ],
-  alternates: { canonical: "/ai-agents" },
+  alternates: pageAlternates("/ai-agents"),
   openGraph: {
     type: "website",
     locale: "en_IN",
@@ -27,10 +29,22 @@ export const metadata: Metadata = {
   },
 };
 
+const serviceSchema = serviceJsonLd({
+  serviceType: "Pre-built AI Agents for Sales, Social Media, and Meetings",
+  areaServed: SERVICE_COUNTRIES,
+  description:
+    "Autonomous AI agents that automate sales outreach, social media management, and meeting workflows.",
+});
+
 export default function AIAgentsPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
       <Navbar transparent />
+      <Breadcrumbs path="/ai-agents" />
       <main className="glass-mesh-page">
         <AIAgentsPageContent />
       </main>

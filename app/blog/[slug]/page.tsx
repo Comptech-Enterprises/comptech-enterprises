@@ -5,6 +5,9 @@ import { Footer } from "@/components/layout/Footer";
 import { BLOG_POSTS } from "@/lib/blog-data";
 import { BlogPostClient } from "@/components/blog/BlogPostClient";
 import { faqJsonLd } from "@/lib/faqs";
+import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
+import { blogPostTrail } from "@/lib/breadcrumbs";
+import { pageAlternates } from "@/lib/seo";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://comptech.in";
 
@@ -49,7 +52,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: seoDescription,
     keywords: post.tags,
     authors: [{ name: post.author.name }],
-    alternates: { canonical: `/blog/${post.slug}` },
+    alternates: pageAlternates(`/blog/${post.slug}`),
     robots: {
       index: true,
       follow: true,
@@ -141,25 +144,11 @@ export default async function BlogPostPage({ params }: Props) {
     },
   };
 
-  const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-      { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
-      { "@type": "ListItem", position: 3, name: post.title, item: canonicalUrl },
-    ],
-  };
-
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       {post.faqs && post.faqs.length > 0 && (
         <script
@@ -168,6 +157,7 @@ export default async function BlogPostPage({ params }: Props) {
         />
       )}
       <Navbar transparent />
+      <Breadcrumbs trail={blogPostTrail(post.slug, post.shortTitle ?? post.title)} />
       <BlogPostClient post={post} relatedPosts={relatedPosts} />
       <Footer />
     </>

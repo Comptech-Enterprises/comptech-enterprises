@@ -157,7 +157,7 @@ export function ResellerTicker() {
     <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 lg:py-8 overflow-hidden">
       <div className="flex items-center gap-4 mb-5">
         <div className="flex-1 h-px bg-gray-200" />
-        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 whitespace-nowrap">
+        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500 whitespace-nowrap">
           Authorized Reseller
         </p>
         <div className="flex-1 h-px bg-gray-200" />

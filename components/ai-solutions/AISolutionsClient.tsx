@@ -125,7 +125,6 @@ export function AISolutionsClient() {
       <PageHero
         light
         badge="AI Solutions"
-        breadcrumbs={[{ label: "Home", href: "/" }, { label: "AI" }]}
         title={
           <>
             Practical AI for Enterprises:{" "}

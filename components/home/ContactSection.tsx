@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ArrowRight, Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 import { COMPANY } from "@/lib/constants";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { trackEvent } from "@/lib/analytics";
 
 const inputClass =
   "w-full rounded-2xl px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500/20 outline-none transition-all"
@@ -96,6 +97,7 @@ export function ContactSection() {
                     body: JSON.stringify({ ...form, source: "Homepage Contact Section", website, formRenderedAt }),
                   });
                   if (!res.ok) throw new Error("Request failed");
+                  trackEvent("contact_form_submit", { form_location: "home_contact_section" });
                   setSubmitted(true);
                 } catch {
                   setError("Something went wrong. Please try again or call us directly.");

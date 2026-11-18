@@ -3,6 +3,8 @@ import type { FAQItem } from "@/lib/faqs";
 export interface BlogPost {
   slug: string;
   title: string;
+  /** Short label for breadcrumbs when the full title is long. */
+  shortTitle?: string;
   /** Optional SEO title tag when distinct from the on-page H1 headline. */
   metaTitle?: string;
   excerpt: string;
@@ -41,6 +43,7 @@ export const BLOG_CATEGORIES = [
 export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "what-is-rag",
+    shortTitle: "What Is RAG?",
     title: "What Is RAG (Retrieval-Augmented Generation)? A Business Guide",
     metaTitle: "What Is RAG? Retrieval-Augmented Generation Guide (2026)",
     excerpt:
@@ -236,10 +239,19 @@ export const BLOG_POSTS: BlogPost[] = [
 <p>
   <strong>Ready to put your own data to work?</strong> <a href="/contact">Contact Comptech Enterprises for a free AI audit &rarr;</a> and discover how RAG can transform your business operations.
 </p>
+
+<h2 id="related-reading">Related Reading</h2>
+<ul>
+  <li><a href="/blog/what-is-an-ai-agent">What Is an AI Agent? A business guide</a></li>
+  <li><a href="/blog/what-is-geo">What Is GEO? Generative Engine Optimization explained</a></li>
+  <li><a href="/ai-agents">Comptech pre-built AI agents</a></li>
+  <li><a href="/case-studies">Client case studies and results</a></li>
+</ul>
 `,
   },
   {
     slug: "what-is-geo",
+    shortTitle: "What Is GEO?",
     title: "What Is GEO (Generative Engine Optimization)? A Complete Guide for Businesses",
     metaTitle: "What Is GEO? Generative Engine Optimization Guide (2026)",
     excerpt:
@@ -437,10 +449,19 @@ export const BLOG_POSTS: BlogPost[] = [
 <p>
   <strong>Ready to see how AI search platforms describe your brand?</strong> Explore our <a href="/geo">GEO Services</a> or <a href="/contact">contact Comptech Enterprises for a free AI visibility audit &rarr;</a>
 </p>
+
+<h2 id="related-reading">Related Reading</h2>
+<ul>
+  <li><a href="/blog/what-is-an-ai-agent">What Is an AI Agent? A business guide</a></li>
+  <li><a href="/blog/what-is-rag">What Is RAG? Retrieval-Augmented Generation explained</a></li>
+  <li><a href="/ai-solutions">Custom AI agents and AI automation from Comptech</a></li>
+  <li><a href="/case-studies">Client case studies and results</a></li>
+</ul>
 `,
   },
   {
     slug: "what-is-an-ai-agent",
+    shortTitle: "What Is an AI Agent?",
     title: "What Is an AI Agent? How AI Agents Work for Business in 2026",
     metaTitle: "What Is an AI Agent? Business Guide 2026 | Comptech",
     excerpt:
@@ -598,6 +619,14 @@ export const BLOG_POSTS: BlogPost[] = [
 <p>
   <strong>Ready to explore AI agents for your business?</strong> Comptech Enterprises helps companies across Europe, Canada, Australia, and the UAE implement custom AI solutions, from initial audit to deployment and training. <a href="/contact">Get in touch &rarr;</a>
 </p>
+
+<h2 id="related-reading">Related Reading</h2>
+<ul>
+  <li><a href="/blog/what-is-rag">What Is RAG? How AI agents answer from your own business data</a></li>
+  <li><a href="/blog/what-is-geo">What Is GEO? Get your brand cited by ChatGPT, Gemini and Perplexity</a></li>
+  <li><a href="/ai-agents">Comptech pre-built AI agents for sales, social media and meetings</a></li>
+  <li><a href="/case-studies">Client case studies and results</a></li>
+</ul>
 `,
   },
   {
