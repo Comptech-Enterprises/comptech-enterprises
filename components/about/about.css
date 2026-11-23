@@ -1,0 +1,85 @@
+/* About page: dark grid backgrounds, marquee and flow animations */
+.about-grid-bg {
+  background-color: #11080b;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+.about-mask {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.about-marquee {
+  display: flex;
+  width: max-content;
+  animation: about-marq 90s linear infinite;
+}
+.about-mask:hover .about-marquee {
+  animation-play-state: paused;
+}
+@keyframes about-marq {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.about-flow {
+  stroke-dasharray: 7 93;
+  animation: about-run 5s linear infinite;
+}
+@keyframes about-run {
+  from {
+    stroke-dashoffset: 100;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.about-halo {
+  transform-origin: center;
+  animation: about-halo 3.2s ease-in-out infinite;
+}
+@keyframes about-halo {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.12;
+  }
+}
+.about-scroll {
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+}
+.about-scroll::-webkit-scrollbar {
+  display: none;
+}
+.about-snap {
+  scroll-snap-align: start;
+}
+details[open] .about-plus {
+  transform: rotate(45deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-marquee,
+  .about-flow,
+  .about-halo {
+    animation: none;
+  }
+  .about-marquee {
+    width: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 16px;
+  }
+  .about-marquee [aria-hidden] {
+    display: none;
+  }
+  .about-mask {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
