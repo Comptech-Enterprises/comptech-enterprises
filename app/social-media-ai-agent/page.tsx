@@ -4,6 +4,8 @@ import { Footer } from "@/components/layout/Footer";
 import { SocialMediaPageContent } from "@/components/social-media-ai-agent/SocialMediaPageContent";
 import { pageAlternates } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
+import { FAQSection } from "@/components/faq/FAQSection";
+import { SOCIAL_MEDIA_FAQS } from "@/lib/faqs";
 
 export const metadata: Metadata = {
   title: "Social Media AI Agent",
@@ -35,6 +37,10 @@ export default function SocialMediaAIAgentPage() {
       <Breadcrumbs path="/social-media-ai-agent" />
       <main className="glass-mesh-page">
         <SocialMediaPageContent />
+        <FAQSection
+          items={SOCIAL_MEDIA_FAQS}
+          intro="How custom social media AI agents compare with free tools, keep your brand voice, and run Instagram, LinkedIn and more on autopilot."
+        />
       </main>
       <Footer />
     </>
