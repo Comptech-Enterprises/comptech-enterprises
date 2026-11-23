@@ -25,7 +25,7 @@ const COMPANY_LINKS = [
   { label: "Verified Case Studies", href: "/case-studies" },
   { label: "Careers & Culture", href: "/careers" },
   { label: "FAQs", href: "/faq" },
-  { label: "About Comptech", href: "/" },
+  { label: "About Comptech", href: "/about" },
 ];
 
 const SOCIALS = [

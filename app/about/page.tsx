@@ -8,6 +8,7 @@ import { AboutProcess } from "@/components/about/AboutProcess";
 import { AboutWho } from "@/components/about/AboutWho";
 import { AboutFAQ } from "@/components/about/AboutFAQ";
 import { AboutContact } from "@/components/about/AboutContact";
+import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { pageAlternates } from "@/lib/seo";
 import "@/components/about/about.css";
 
@@ -15,7 +16,7 @@ const DESCRIPTION =
   "About Comptech Enterprises: 30+ years of delivery, 50+ AI engineers and 100+ live deployments. Custom AI agents, software, GEO and training, built around your business.";
 
 export const metadata: Metadata = {
-  title: "About Comptech Enterprises | AI Partners for Ambitious Businesses",
+  title: "About Us: AI Partners for Ambitious Businesses",
   description: DESCRIPTION,
   alternates: pageAlternates("/about"),
   openGraph: {
@@ -31,6 +32,7 @@ export default function AboutPage() {
   return (
     <>
       <Navbar transparent />
+      <Breadcrumbs path="/about" />
       <main>
         <AboutHero />
         <AboutSolutions />

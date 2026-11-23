@@ -24,6 +24,7 @@ export const BREADCRUMB_TRAILS: Record<string, Crumb[]> = {
   "/careers": [HOME, { label: "Careers", href: "/careers" }],
   "/partners": [HOME, { label: "Partners", href: "/partners" }],
   "/faq": [HOME, { label: "FAQs", href: "/faq" }],
+  "/about": [HOME, { label: "About", href: "/about" }],
   "/privacy": [HOME, { label: "Privacy Policy", href: "/privacy" }],
   "/terms": [HOME, { label: "Terms of Service", href: "/terms" }],
 };
