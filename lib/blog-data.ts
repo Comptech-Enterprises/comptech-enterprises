@@ -274,7 +274,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         q: "How long does it take to see results from Comptech’s GEO services?",
-        a: "Most businesses see measurable improvements in AI brand mentions within 3-6 months. GEO builds cumulatively — each optimized page, FAQ section, and third-party citation strengthens your overall AI visibility. Comptech provides monthly AI visibility reports so you can track progress across ChatGPT, Gemini, and Perplexity.",
+        a: "Most businesses see measurable improvements in AI brand mentions within 3–6 months. GEO builds cumulatively — each optimized page, FAQ section, and third-party citation strengthens your overall AI visibility. Comptech provides monthly AI visibility reports so you can track progress across ChatGPT, Gemini, and Perplexity.",
       },
       {
         q: "Can small and mid-size businesses compete with large enterprises in AI search results?",
