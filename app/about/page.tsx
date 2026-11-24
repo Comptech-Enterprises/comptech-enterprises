@@ -39,7 +39,7 @@ export default function AboutPage() {
         <AIEmployees />
         <AboutProcess />
         <AboutWho />
-        <AboutFAQ />
+        <AboutFAQ schema={false} />
         <AboutContact />
       </main>
       <Footer />

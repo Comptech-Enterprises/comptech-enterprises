@@ -3,13 +3,15 @@ import { ABOUT_FAQS } from "@/components/about/data";
 import { faqJsonLd } from "@/lib/faqs";
 
 /** Simple FAQ rows (native <details>) plus FAQPage JSON-LD. */
-export function AboutFAQ() {
+export function AboutFAQ({ schema = true }: { schema?: boolean }) {
   return (
     <section className="bg-[#F6F7FA] py-16 lg:py-20" aria-labelledby="about-faq">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(ABOUT_FAQS.map((f) => ({ q: f.q, a: f.a })))) }}
-      />
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(ABOUT_FAQS.map((f) => ({ q: f.q, a: f.a })))) }}
+        />
+      )}
       <div className="mx-auto max-w-3xl px-6">
         <h2
           id="about-faq"

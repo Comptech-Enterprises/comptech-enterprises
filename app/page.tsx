@@ -1,17 +1,19 @@
 import type { Metadata } from "next";
+import { Sora, Instrument_Sans } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { Hero } from "@/components/home/Hero";
-import { AISection } from "@/components/home/AISection";
-import { HomeAIAgentsSection } from "@/components/home/HomeAIAgentsSection";
-import { WhatWeDelivered, CertifiedWith } from "@/components/home/PartnersStrip";
-import { ServicesSection } from "@/components/home/ServicesSection";
-import { Testimonials } from "@/components/home/Testimonials";
-import { ContactSection } from "@/components/home/ContactSection";
-import { FAQSection } from "@/components/faq/FAQSection";
-import { HOME_FAQS } from "@/lib/faqs";
-import { PageThread } from "@/components/ui/PageThread";
+import { AboutHero } from "@/components/about/AboutHero";
+import { AboutSolutions } from "@/components/about/AboutSolutions";
+import { AIEmployees } from "@/components/about/AIEmployees";
+import { AboutProcess } from "@/components/about/AboutProcess";
+import { AboutWho } from "@/components/about/AboutWho";
+import { AboutFAQ } from "@/components/about/AboutFAQ";
+import { AboutContact } from "@/components/about/AboutContact";
 import { pageAlternates } from "@/lib/seo";
+import "@/components/about/about.css";
+
+const sora = Sora({ subsets: ["latin"], variable: "--font-sora", display: "swap" });
+const instrument = Instrument_Sans({ subsets: ["latin"], variable: "--font-instrument", display: "swap" });
 
 export const metadata: Metadata = {
   title: { absolute: "Comptech Enterprises | AI Agents, Solutions & Training for Business" },
@@ -31,39 +33,18 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <>
-      <Navbar />
-      <main className="glass-mesh-page">
-        {/* 1. Hero / Animation Video */}
-        <Hero />
-
-        {/* 2. Tailored AI Solutions Section */}
-        <AISection />
-
-        {/* 3. 3 Flagship AI Agents */}
-        <HomeAIAgentsSection />
-
-        {/* 4. What We Have Delivered */}
-        <WhatWeDelivered />
-
-        {/* 5. Certified With (Logos + Names) */}
-        <CertifiedWith />
-
-        {/* 6. Core IT Services */}
-        <ServicesSection />
-
-        <div className="relative">
-          <PageThread />
-          <Testimonials />
-          <ContactSection />
-        </div>
-
-        <FAQSection
-          items={HOME_FAQS}
-          intro="Straight answers about custom AI agents, GEO, adopting AI without a technical team, and how to get started."
-        />
+    <div className={`${sora.variable} ${instrument.variable} font-[family-name:var(--font-instrument)]`}>
+      <Navbar transparent />
+      <main>
+        <AboutHero />
+        <AboutSolutions />
+        <AIEmployees />
+        <AboutProcess />
+        <AboutWho />
+        <AboutFAQ />
+        <AboutContact />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
