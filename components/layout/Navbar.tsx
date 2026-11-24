@@ -60,7 +60,6 @@ export function Navbar({ transparent = false }: NavbarProps) {
   }, [mobileOpen]);
 
   const isWhiteHeader =
-    pathname === "/" ||
     pathname === "/contact" ||
     pathname?.startsWith("/ai-agents") ||
     pathname?.startsWith("/ai-solutions") ||
