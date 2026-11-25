@@ -11,6 +11,7 @@
 - [Blog](https://comptech.in/blog): Insights, guides, and practical playbooks on enterprise AI adoption, GEO, and tech infrastructure.
 - [Case Studies](https://comptech.in/case-studies): Real-world client transformations and enterprise IT implementations.
 - [FAQ](https://comptech.in/faq): Frequently asked questions on pricing, data privacy, security, deployment, and onboarding.
+- [AI Training](https://comptech.in/ai-training): Book a corporate AI training workshop.
 - [Contact](https://comptech.in/contact): Connect with our engineering and AI consulting team in Janakpuri, New Delhi.
 
 ## Contact & Location

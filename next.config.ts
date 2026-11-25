@@ -22,7 +22,7 @@ const nextConfig: NextConfig = {
   // Static files in /public are not content-hashed, so give them a 30-day cache (not "immutable").
   async headers() {
     const cache = [{ key: "Cache-Control", value: "public, max-age=2592000, stale-while-revalidate=86400" }];
-    const dirs = ["clients", "blog", "images", "logos", "logo's", "carousel"].map((d) => `/${d}/:path*`);
+    const dirs = ["clients", "blog", "images", "logos", "logo's", "carousel", "videos"].map((d) => `/${d}/:path*`);
     const files = [
       "/hero-bg.mp4",
       "/hero-bg-mobile.mp4",

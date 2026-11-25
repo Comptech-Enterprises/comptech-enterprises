@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ChevronRight } from "lucide-react";
 import { Carousel } from "@/components/about/Carousel";
@@ -21,16 +22,22 @@ export function AboutSolutions() {
         </div>
         <div className="mx-auto mt-10 max-w-[1500px]">
           <Carousel label="AI solutions">
-            {SOLUTIONS.map(({ id, title, desc, href, icon: Icon }) => (
+            {SOLUTIONS.map(({ id, title, desc, href, icon: Icon, image }) => (
               <article
                 key={id}
                 className="about-snap group flex w-[280px] shrink-0 flex-col overflow-hidden rounded-2xl border border-[#E5E7EB] bg-white transition-all hover:-translate-y-0.5 hover:border-[#B91C1C] hover:shadow-[0_14px_34px_rgba(107,15,26,0.12)] sm:w-[300px]"
               >
-                <div className="about-grid-bg flex h-[120px] items-center justify-center" aria-hidden="true">
-                  <span className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-[#1A0F12] text-[#F2A7B0]">
-                    <Icon size={26} />
-                  </span>
-                </div>
+                {image ? (
+                  <div className="relative h-[160px]">
+                    <Image src={image} alt="" fill sizes="300px" className="object-cover" />
+                  </div>
+                ) : (
+                  <div className="about-grid-bg flex h-[120px] items-center justify-center" aria-hidden="true">
+                    <span className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-[#1A0F12] text-[#F2A7B0]">
+                      <Icon size={26} />
+                    </span>
+                  </div>
+                )}
                 <div className="flex flex-1 flex-col p-5">
                   <h3 className="text-[15px] font-semibold text-[#12161C]">{title}</h3>
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-gray-600">{desc}</p>
@@ -72,7 +79,7 @@ export function AboutSolutions() {
       <section className="bg-white py-16 lg:py-20" aria-labelledby="about-cases">
         <div className="mx-auto max-w-3xl px-6 text-center">
           <h2 id="about-cases" className={`${HEAD} text-4xl lg:text-5xl`}>
-            How we solve problems like yours.
+            See what AI looks like in your industry
           </h2>
           <p className="mt-3 text-base text-gray-600">Real business problems, solved with AI, by industry.</p>
         </div>
@@ -81,22 +88,22 @@ export function AboutSolutions() {
             {CASE_CARDS.map(({ industry, title, label, body, icon: Icon }) => (
               <article
                 key={industry}
-                className="about-snap flex w-[290px] shrink-0 flex-col rounded-2xl bg-gradient-to-br from-[#5C0F26] to-[#7A1534] p-5 text-white shadow-lg sm:w-[310px]"
+                className="about-snap flex w-[290px] shrink-0 flex-col rounded-2xl border border-[#E5E7EB] bg-white p-5 transition-all hover:-translate-y-0.5 hover:border-[#B91C1C]/50 hover:shadow-[0_14px_34px_rgba(17,8,11,0.08)] sm:w-[310px]"
               >
                 <div className="flex items-center gap-3">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/20 text-[#F2A7B0]">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#FDF4F6] text-[#B91C1C]">
                     <Icon size={18} />
                   </span>
-                  <h3 className="text-[15px] font-semibold">{industry}</h3>
+                  <h3 className="text-[15px] font-semibold text-[#12161C]">{industry}</h3>
                 </div>
-                <p className="mt-3 text-sm leading-snug text-white/90">{title}</p>
-                <div className="mt-4 flex-1 rounded-xl bg-white/10 p-3">
-                  <p className="text-[10px] font-semibold uppercase tracking-wider text-[#F2A7B0]">{label}</p>
-                  <p className="mt-1 text-sm leading-snug text-white/90">{body}</p>
+                <p className="mt-3 text-sm leading-snug text-[#12161C]">{title}</p>
+                <div className="mt-4 flex-1 rounded-xl bg-[#F6F7FA] p-3">
+                  <p className="text-[10px] font-semibold uppercase tracking-wider text-gray-500">{label}</p>
+                  <p className="mt-1 text-sm leading-snug text-gray-700">{body}</p>
                 </div>
                 <Link
                   href="/case-studies"
-                  className="mt-4 inline-flex w-fit items-center gap-1 rounded-full border border-white/30 px-4 py-2 text-sm font-semibold transition-colors hover:bg-white hover:text-[#5C0F26]"
+                  className="mt-4 inline-flex w-fit items-center gap-1 rounded-full border border-[#E5E7EB] px-4 py-2 text-sm font-semibold text-[#12161C] transition-colors hover:border-[#B91C1C] hover:text-[#B91C1C]"
                 >
                   Read the example <ChevronRight size={14} />
                 </Link>

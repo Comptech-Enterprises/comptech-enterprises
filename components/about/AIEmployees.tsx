@@ -75,12 +75,13 @@ export function AIEmployees() {
               ))}
             </ul>
 
-            <div className="relative flex min-h-[220px] items-center justify-center overflow-hidden rounded-2xl bg-[#0B0709]">
+            <div className="relative flex aspect-video w-full items-center justify-center self-center overflow-hidden rounded-2xl bg-[#0B0709]">
               {emp.video ? (
                 <video
                   key={emp.video}
                   src={emp.video}
-                  className="h-full w-full object-cover"
+                  poster={emp.video.replace(".mp4", "-poster.webp")}
+                  className="h-full w-full object-contain"
                   autoPlay
                   muted
                   loop

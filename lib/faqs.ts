@@ -124,7 +124,7 @@ export const AI_EMPLOYEES_FAQS: FAQItem[] = [
 export const CONTACT_FAQS: FAQItem[] = [
   {
     q: "How do I book an AI training workshop for my company?",
-    a: "Fill out the booking form on the contact page with your name, email, company name, team size, and use case. The team reviews every request within 24 hours and schedules a discovery call. Most workshops can be scheduled within two weeks of initial contact.",
+    a: "Fill out the booking form on the AI Training page (comptech.in/ai-training) with your name, email, company name, team size, and use case. The team reviews every request within 24 hours and schedules a discovery call. Most workshops can be scheduled within two weeks of initial contact.",
   },
   {
     q: "Where is Comptech Enterprises located?",

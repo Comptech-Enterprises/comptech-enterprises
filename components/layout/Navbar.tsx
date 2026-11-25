@@ -212,7 +212,7 @@ export function Navbar({ transparent = false }: NavbarProps) {
                     : "border-gray-200 text-gray-700 hover:border-[#5C0F26]/30 hover:text-[#5C0F26] bg-white/50 hover:bg-white",
               )}
             >
-              Contact
+              Contact Us
             </Link>
           </div>
 
@@ -289,7 +289,7 @@ export function Navbar({ transparent = false }: NavbarProps) {
             onClick={() => setMobileOpen(false)}
             className="w-full py-4 rounded-2xl border-2 border-[#5C0F26] text-[#5C0F26] text-[15px] font-bold text-center hover:bg-[#FDF4F6] transition-colors"
           >
-            Contact
+            Contact Us
           </Link>
         </div>
       </div>

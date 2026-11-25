@@ -78,6 +78,8 @@ export interface Solution {
   desc: string;
   href: string;
   icon: LucideIcon;
+  /** Card artwork, e.g. "/solutions/agents.webp". Falls back to the icon tile. */
+  image?: string;
 }
 export const SOLUTIONS: Solution[] = [
   { id: "agents", title: "Custom AI Agents", desc: "Autonomous agents built around your exact workflows. They research, draft, act and hand off to your team.", href: "/ai-solutions", icon: Bot },
@@ -142,7 +144,7 @@ export const EMPLOYEES: Employee[] = [
     icon: Bot,
     cta: "Explore Sales AI Employee",
     href: "/ai-agents",
-    video: "/sales-ai-agent.mp4",
+    video: "/videos/comptech-sales-ai-agent.mp4",
     chips: ["WhatsApp", "Web chat", "HubSpot", "Zoho"],
     steps: [
       { t: "Finds High-Value Prospects", d: "Matches your ideal customer and finds the decision maker", icon: Search },
@@ -164,7 +166,7 @@ export const EMPLOYEES: Employee[] = [
     icon: Megaphone,
     cta: "Explore Social Media AI Employee",
     href: "/social-media-ai-agent",
-    video: "/short-social-media-ai.mp4",
+    video: "/videos/comptech-social-media-ai-agent.mp4",
     chips: ["LinkedIn", "Twitter/X", "Instagram"],
     steps: [
       { t: "Spots Trends & Plans", d: "Watches trends and mentions, plans your month", icon: TrendingUp },
@@ -186,6 +188,7 @@ export const EMPLOYEES: Employee[] = [
     icon: Video,
     cta: "Explore Meeting AI Employee",
     href: "/ai-agents",
+    video: "/videos/comptech-meeting-ai-agent.mp4",
     chips: ["Zoom", "Google Meet", "Microsoft Teams", "Slack", "Jira", "CRM"],
     steps: [
       { t: "Joins Every Call", d: "Zoom, Google Meet and Microsoft Teams", icon: Phone },
