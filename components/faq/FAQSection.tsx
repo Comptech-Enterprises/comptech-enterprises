@@ -17,20 +17,25 @@ export function FAQSection({
   groups,
   heading = "Frequently Asked Questions",
   intro,
+  schema = true,
 }: {
   items?: FAQItem[];
   groups?: FAQGroup[];
   heading?: string;
   intro?: string;
+  /** Emit FAQPage JSON-LD. Turn off where the same questions already carry the schema on another URL. */
+  schema?: boolean;
 }) {
   const allItems = groups ? groups.flatMap((g) => g.items) : (items ?? []);
 
   return (
     <section id="faq" className="py-16 lg:py-24">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(allItems)) }}
-      />
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(allItems)) }}
+        />
+      )}
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <RevealWrapper className="mb-10 text-center sm:mb-12">
           <SectionLabel className="justify-center">FAQs</SectionLabel>

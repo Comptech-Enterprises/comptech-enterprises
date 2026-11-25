@@ -121,6 +121,98 @@ export const AI_EMPLOYEES_FAQS: FAQItem[] = [
   },
 ];
 
+export const CONTACT_FAQS: FAQItem[] = [
+  {
+    q: "How do I book an AI training workshop for my company?",
+    a: "Fill out the booking form on the contact page with your name, email, company name, team size, and use case. The team reviews every request within 24 hours and schedules a discovery call. Most workshops can be scheduled within two weeks of initial contact.",
+  },
+  {
+    q: "Where is Comptech Enterprises located?",
+    a: "Comptech Enterprises is headquartered at 207, DDA-1, District Center, Janakpuri, New Delhi, India. Office hours are Monday through Saturday, 9:00 AM to 7:00 PM IST. Training and AI agent deployments are delivered across India, the UAE, Europe, and the US.",
+  },
+  {
+    q: "How quickly does the Comptech team respond to inquiries?",
+    a: "Most inquiries receive a response within 24 hours during business days. For AI agent deployment projects, the average support response time is 12 hours. Inquiries go directly to the AI solutions team, not a generic support queue.",
+  },
+  {
+    q: "Can Comptech deliver AI training outside of Delhi or remotely?",
+    a: "Yes. Comptech delivers AI training onsite anywhere in India and through live virtual workshops for distributed teams, with sessions delivered in Delhi, Mumbai, Bangalore, the UAE, Europe, and the US. Over 40% of training engagements are fully remote.",
+  },
+  {
+    q: "What information should I prepare before contacting Comptech about an AI project?",
+    a: "For AI training: team size, technical background, and learning goals. For AI agent deployment: tasks to automate and current tools used. For GEO: target keywords or topics. None of this is required to reach out.",
+  },
+];
+
+export const CAREERS_FAQS: FAQItem[] = [
+  {
+    q: "What types of roles are available at Comptech Enterprises?",
+    a: "Comptech Enterprises hires across multiple domains including AI solutions engineering, enterprise IT infrastructure, networking and cybersecurity, cloud architecture, sales and marketing, accounting, HR, and technical support. We work on projects ranging from deploying custom AI agents for businesses to managing IT infrastructure for large enterprises across India.",
+  },
+  {
+    q: "Does Comptech Enterprises hire freshers or entry-level candidates?",
+    a: "Yes. Comptech actively hires freshers and entry-level candidates across engineering, sales, and support roles. Fresh graduates get hands-on exposure to enterprise AI projects, IT infrastructure deployments, and real client work from their first month.",
+  },
+  {
+    q: "What is the work culture like at Comptech Enterprises?",
+    a: "Comptech is a stable, 30-year-old enterprise technology company based in New Delhi that combines the reliability of an established business with the energy of working on modern AI and cloud projects. Teams are small enough that your work has visible impact, but the company handles large-scale enterprise clients across India.",
+  },
+  {
+    q: "How do I apply for a job at Comptech Enterprises?",
+    a: "You can apply directly on the careers page by filling out the application form with your full name, email, preferred domain, and uploading your resume in PDF or Word format. Once submitted, the team reviews your application and reaches out when there is a matching opening.",
+  },
+  {
+    q: "What skills are most in demand at Comptech Enterprises right now?",
+    a: "As of 2026, the highest-demand skills include AI agent development, prompt engineering, cloud infrastructure (AWS, Azure, Google Cloud), enterprise networking, cybersecurity, and B2B sales for technology services. India's AI workforce demand is projected to grow by 45% through 2027 according to a NASSCOM and BCG joint report.",
+  },
+];
+
+export const SOCIAL_MEDIA_FAQS: FAQItem[] = [
+  {
+    q: "Which AI agent is best for social media content creation in 2026?",
+    a: "Custom AI agents outperform generic tools like Jasper and HubSpot. Companies using custom-trained AI agents see 3x higher engagement rates than those using generic tools. Comptech Enterprises builds custom Social Media AI Agents trained on your brand voice that generate platform-specific content for Instagram, LinkedIn, Facebook, and X.",
+  },
+  {
+    q: "Can an AI agent automate Instagram DMs and act as a chatbot for my business?",
+    a: "Yes. An AI-powered Instagram chatbot responds to story replies, product inquiries, and FAQs within seconds, 24/7. It integrates with Instagram's Messaging API and your CRM, logging and scoring every conversation. Businesses responding within 5 minutes are 10x more likely to convert leads, and AI agents achieve sub-minute response times.",
+  },
+  {
+    q: "How do AI agents help run social media on autopilot without losing brand voice?",
+    a: "An autopilot AI agent handles trend monitoring, content generation, scheduling, posting, and engagement without human intervention. It trains on your existing content and brand guidelines to maintain 100% on-brand voice consistency. Unlike scheduling tools like Hootsuite or Buffer, it handles the entire workflow from ideation to analytics with 5x faster publishing.",
+  },
+  {
+    q: "What is the difference between free AI social media tools and a custom AI social media agent?",
+    a: "Free tools like ChatGPT and Canva handle one task at a time and still require manual work. A custom AI agent connects to your social accounts and autonomously monitors trends, generates content, schedules, publishes, and responds to engagement. Custom agents from Comptech start at INR 25,000/month, cheaper than a full-time social media manager.",
+  },
+  {
+    q: "Can an AI agent create Instagram Reels, LinkedIn posts, and manage multiple platforms at the same time?",
+    a: "Yes. A multi-platform AI agent creates platform-optimized content for Instagram Reels, LinkedIn articles, Facebook, X, and more simultaneously. Instagram Reels get 2x more reach than static posts, and LinkedIn document posts get 3x more engagement than text-only. Comptech's agent manages all platforms with distinct strategies and multilingual support.",
+  },
+];
+
+export const SALES_AGENT_FAQS: FAQItem[] = [
+  {
+    q: "How does an AI sales agent work for B2B lead qualification?",
+    a: "A B2B AI sales agent automates the entire top-of-funnel process. It engages inbound leads instantly through WhatsApp and web chat, qualifies them in multi-turn conversations, scores against your ideal customer profile, enriches data, and syncs to your CRM. It responds in under 10 seconds, runs 24/7, and handles unlimited concurrent conversations.",
+  },
+  {
+    q: "Can an AI sales agent handle outbound prospecting and follow-ups?",
+    a: "Yes. An AI sales agent handles multi-channel outbound across WhatsApp, email, and web chat. It sends personalized outreach, handles replies and objections, and runs unlimited multi-touch follow-up sequences. Companies using AI outbound report an 85% lift in reply rates compared to manual outreach.",
+  },
+  {
+    q: "Can an AI sales agent replace cold calling with conversational selling?",
+    a: "An AI sales agent replaces cold calling's goal with conversational engagement over WhatsApp and web chat. Cold calling averages 2-3% connection rate. Conversational AI achieves 10x higher engagement by reaching prospects on platforms they already use, qualifying them, and booking meetings directly.",
+  },
+  {
+    q: "How is a sales AI agent different from sales automation software like a CRM?",
+    a: "A CRM organizes data and runs automation rules. A sales AI agent actively thinks, decides, and acts. It reads prospect messages, qualifies leads through real conversations, handles objections, and takes actions like booking meetings autonomously. Businesses using AI agents see 3x more qualified leads than automation software alone.",
+  },
+  {
+    q: "What is a conversational AI agent and how does it help with sales and marketing?",
+    a: "A conversational AI agent engages leads through natural multi-turn conversations across WhatsApp, web chat, and social media. It understands context, handles objections, and adapts responses. Businesses using conversational AI convert 3.5x more website visitors into qualified leads compared to traditional form capture.",
+  },
+];
+
 export function faqJsonLd(items: FAQItem[]) {
   return {
     "@context": "https://schema.org",

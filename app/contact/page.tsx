@@ -8,6 +8,8 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Phone, Mail, MessageCircle, MapPin, ArrowRight, Calendar, Sparkles, Users, Cpu } from "lucide-react";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { trackEvent } from "@/lib/analytics";
+import { FAQSection } from "@/components/faq/FAQSection";
+import { CONTACT_FAQS } from "@/lib/faqs";
 
 const TRAINING_CLIENTS = [
   "Anthem",
@@ -355,6 +357,12 @@ export default function ContactPage() {
           </div>
         </section>
       </main>
+      <div className="glass-mesh-page">
+        <FAQSection
+          items={CONTACT_FAQS}
+          intro="Booking a workshop, where we are, how fast we reply, and what to prepare before you get in touch."
+        />
+      </div>
       <Footer />
     </>
   );

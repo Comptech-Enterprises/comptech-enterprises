@@ -8,6 +8,8 @@ import { RevealWrapper } from "@/components/ui/RevealWrapper";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { ArrowRight, Upload, HeartHandshake, TrendingUp, Users } from "lucide-react";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
+import { FAQSection } from "@/components/faq/FAQSection";
+import { CAREERS_FAQS } from "@/lib/faqs";
 
 const inputClass =
   "w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10 outline-none transition-all bg-white";
@@ -179,6 +181,12 @@ export default function CareersPage() {
           </div>
         </section>
       </main>
+      <div className="glass-mesh-page">
+        <FAQSection
+          items={CAREERS_FAQS}
+          intro="Open roles, hiring freshers, our culture, how to apply, and the skills we hire for."
+        />
+      </div>
       <Footer />
     </>
   );
