@@ -29,7 +29,7 @@ export function AboutSolutions() {
               >
                 {image ? (
                   <div className="relative h-[160px]">
-                    <Image src={image} alt="" fill sizes="300px" className="object-cover" />
+                    <Image src={image} alt={`${title} illustration`} fill sizes="300px" className="object-cover" />
                   </div>
                 ) : (
                   <div className="about-grid-bg flex h-[120px] items-center justify-center" aria-hidden="true">

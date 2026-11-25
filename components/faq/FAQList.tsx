@@ -53,12 +53,13 @@ export function FAQList({
                   onClick={() => setOpenIndex(expanded ? null : i)}
                   className="flex w-full cursor-pointer items-center gap-3 text-left sm:gap-6"
                 >
+                  {/* Decorative number, drawn by CSS so it never joins the heading text ("01What is..."). */}
                   <span
-                    className="w-9 shrink-0 font-display text-2xl font-extrabold leading-none text-transparent bg-clip-text sm:w-12 sm:text-3xl"
+                    aria-hidden
+                    data-number={String(i + 1).padStart(2, "0")}
+                    className="w-9 shrink-0 font-display text-2xl font-extrabold leading-none text-transparent bg-clip-text before:content-[attr(data-number)] sm:w-12 sm:text-3xl"
                     style={{ backgroundImage: GRADIENT }}
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
+                  />
                   <span className="flex-1 font-display text-base font-extrabold leading-snug tracking-tight text-gray-900 sm:text-xl">
                     {q}
                   </span>

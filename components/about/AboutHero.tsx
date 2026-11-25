@@ -50,7 +50,7 @@ export function AboutHero() {
           </svg>
           <div className="absolute left-[14px] top-1/2 flex -translate-y-1/2 flex-col items-center gap-2">
             <div className="flex h-[72px] w-[72px] items-center justify-center rounded-2xl border border-white/15 bg-[#1A0F12]">
-              <Image src="/images/logo.webp" alt="" width={44} height={26} className="h-7 w-auto" />
+              <Image src="/images/logo.webp" alt="Comptech Enterprises logo, your one AI partner" width={44} height={26} className="h-7 w-auto" />
             </div>
             <span className="text-[11px] font-medium text-[#C9CCD3]">One AI partner</span>
           </div>
@@ -84,7 +84,7 @@ export function AboutHero() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={`/clients/${c.file}.webp`}
-                  alt={i >= ABOUT_CLIENTS.length ? "" : c.name}
+                  alt={`${c.name} logo`}
                   width={c.tall ? 90 : 120}
                   height={c.tall ? 40 : 30}
                   loading="lazy"

@@ -75,7 +75,7 @@ export function AboutProcess() {
                 key={c.name}
                 className="flex flex-col items-center gap-2 rounded-xl border border-[#F0C9D0] bg-white px-3 py-4 transition-all hover:-translate-y-0.5 hover:border-[#B91C1C] hover:shadow-[0_12px_28px_rgba(107,15,26,0.14)]"
               >
-                <Image src={c.logo} alt="" width={26} height={26} className="h-6 w-6" unoptimized />
+                <Image src={c.logo} alt={`${c.name} logo`} width={26} height={26} className="h-6 w-6" unoptimized />
                 <span className="text-xs font-medium text-[#12161C]">{c.name}</span>
               </li>
             ))}
