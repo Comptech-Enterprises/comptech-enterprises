@@ -1,7 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { Plus } from "lucide-react";
+import { FAQAnswerBlocks } from "@/components/faq/FAQAnswerBlocks";
+import type { FAQItem } from "@/lib/faqs";
 import { RevealWrapper } from "@/components/ui/RevealWrapper";
 
 const GRADIENT = "linear-gradient(135deg, #5C0F26, #E8435A)";
@@ -15,7 +18,7 @@ export function FAQList({
   headingLevel = 2,
   idPrefix = "faq",
 }: {
-  items: { q: string; a: string }[];
+  items: FAQItem[];
   /** Heading level for each question, so the page outline stays in order. */
   headingLevel?: 2 | 3 | 4;
   /** Prefix for element ids, to keep ids unique when a page has several lists. */
@@ -40,7 +43,7 @@ export function FAQList({
 
   return (
     <div className="space-y-3 sm:space-y-6">
-      {items.map(({ q, a }, i) => {
+      {items.map(({ q, a, blocks, links }, i) => {
         const expanded = openIndex === i;
         return (
           <RevealWrapper key={q} delay={i * 60}>
@@ -80,9 +83,17 @@ export function FAQList({
                 hidden={!expanded}
                 className="pt-4 sm:pl-[4.5rem]"
               >
-                <p className="border-t border-gray-200/70 pt-4 text-[15px] leading-relaxed text-gray-600 sm:text-base">
-                  {a}
-                </p>
+                <div className="space-y-3 border-t border-gray-200/70 pt-4 text-[15px] leading-relaxed text-gray-600 sm:text-base">
+                  <p>{a}</p>
+                  {blocks && <FAQAnswerBlocks blocks={blocks} />}
+                  {links?.map((l) => (
+                    <p key={l.label}>
+                      <Link href={l.href} className="font-semibold text-[#5C0F26] underline underline-offset-4">
+                        {l.label}
+                      </Link>
+                    </p>
+                  ))}
+                </div>
               </div>
             </article>
           </RevealWrapper>

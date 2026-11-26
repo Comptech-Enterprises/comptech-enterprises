@@ -5,16 +5,16 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { PageHero } from "@/components/sections/PageHero";
 import { FAQList } from "@/components/faq/FAQList";
-import { HOME_FAQS, faqJsonLd } from "@/lib/faqs";
+import { FAQ_PAGE_GROUPS, faqJsonLd } from "@/lib/faqs";
 import { FreeAuditButton } from "@/components/ui/FreeAuditButton";
 import { RevealWrapper } from "@/components/ui/RevealWrapper";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { pageAlternates } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 
-const TITLE = "FAQs: AI Agents, GEO & AI Adoption for Business";
+const TITLE = "FAQs: AI Consulting, GEO & White-Label AI";
 const DESCRIPTION =
-  "Answers to common questions about custom AI agents, Generative Engine Optimization (GEO), AI adoption for mid-size businesses, and the free AI audit from Comptech Enterprises.";
+  "Answers about Comptech's AI services for international businesses, Generative Engine Optimization (GEO), AI consulting and white-label AI agents.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -32,12 +32,15 @@ export const metadata: Metadata = {
 
 const GRADIENT = "linear-gradient(135deg, #5C0F26, #E8435A)";
 
+/** Only groups that should carry FAQPage markup. */
+const SCHEMA_FAQS = FAQ_PAGE_GROUPS.filter((g) => g.schema !== false).flatMap((g) => g.items);
+
 export default function FAQPage() {
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(HOME_FAQS)) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(SCHEMA_FAQS)) }}
       />
       <Navbar />
       <Breadcrumbs path="/faq" />
@@ -56,7 +59,7 @@ export default function FAQPage() {
               </span>
             </>
           }
-          subtitle="Straight answers about custom AI agents, GEO, adopting AI without a technical team, and how to get started."
+          subtitle="Straight answers about working with us internationally, GEO, AI consulting and white-label AI agents."
         />
 
         <section className="py-16 lg:py-24">
@@ -67,16 +70,16 @@ export default function FAQPage() {
                 <RevealWrapper className="hidden lg:block">
                   <SectionLabel>Quick Links</SectionLabel>
                   <nav className="glass-card mt-4 hidden divide-y divide-gray-200/60 overflow-hidden p-2 lg:block">
-                    {HOME_FAQS.map(({ q }, i) => (
+                    {FAQ_PAGE_GROUPS.map(({ id, title }, i) => (
                       <a
-                        key={q}
-                        href={`#faq-${i + 1}`}
+                        key={id}
+                        href={`#${id}`}
                         className="group flex items-start gap-3 rounded-xl px-3 py-3 text-sm font-semibold text-gray-700 transition-colors hover:bg-white/70 hover:text-[#5C0F26]"
                       >
                         <span className="mt-0.5 text-xs font-extrabold text-[#E8435A]">
                           {String(i + 1).padStart(2, "0")}
                         </span>
-                        <span className="leading-snug">{q}</span>
+                        <span className="leading-snug">{title}</span>
                       </a>
                     ))}
                   </nav>
@@ -115,8 +118,15 @@ export default function FAQPage() {
             </aside>
 
             {/* Q&A: cards on desktop, accordion on mobile */}
-            <div className="lg:col-span-8">
-              <FAQList items={HOME_FAQS} />
+            <div className="min-w-0 space-y-12 lg:col-span-8">
+              {FAQ_PAGE_GROUPS.map(({ id, title, items }) => (
+                <div key={id} id={id} className="scroll-mt-28">
+                  <h2 className="mb-5 font-display text-xl font-extrabold tracking-tight text-[#5C0F26] sm:text-2xl">
+                    {title}
+                  </h2>
+                  <FAQList items={items} headingLevel={3} idPrefix={`faq-${id}`} />
+                </div>
+              ))}
             </div>
           </div>
         </section>
