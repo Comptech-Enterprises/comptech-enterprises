@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Mail, MapPin, Linkedin, Instagram, ShieldCheck } from "lucide-react";
+import { Mail, MapPin, Phone, Clock, Linkedin, Instagram, ShieldCheck } from "lucide-react";
 import { COMPANY } from "@/lib/constants";
 import { Logo } from "@/components/ui/Logo";
 
@@ -166,6 +166,17 @@ export function Footer() {
                 <Mail size={13} className="text-[#E8435A]" />
                 <span>{COMPANY.email}</span>
               </a>
+              <a
+                href={COMPANY.phoneHref}
+                className="flex items-center gap-2 text-xs text-gray-400 hover:text-white transition-colors mb-2"
+              >
+                <Phone size={13} className="text-[#E8435A]" />
+                <span>{COMPANY.phone}</span>
+              </a>
+              <p className="flex items-center gap-2 text-xs text-gray-400">
+                <Clock size={13} className="shrink-0 text-[#E8435A]" />
+                <span>{COMPANY.hours}</span>
+              </p>
             </div>
 
             <div>

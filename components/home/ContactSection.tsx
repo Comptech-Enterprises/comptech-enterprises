@@ -11,9 +11,9 @@ const inputClass =
   + " bg-white/40 backdrop-blur-md border border-white/50 focus:border-blue-400 focus:bg-white/60";
 
 const CONTACT_METHODS = [
-  { Icon: Phone,         label: "Call Us",   value: COMPANY.phone,        sub: "Mon–Sat, 9am–7pm"  },
+  { Icon: Phone,         label: "Call Us",   value: COMPANY.phone,        sub: "Open 24/7"         },
   { Icon: Mail,          label: "Email",     value: COMPANY.email,        sub: "Response in 2 hrs" },
-  { Icon: MessageCircle, label: "WhatsApp",  value: "+91 8595073837",    sub: "Quick queries"     },
+  { Icon: MessageCircle, label: "WhatsApp",  value: COMPANY.phone,        sub: "Quick queries"     },
   { Icon: MapPin,        label: "Office",    value: COMPANY.address,      sub: "Schedule a visit"  },
 ];
 

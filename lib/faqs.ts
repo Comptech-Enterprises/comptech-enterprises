@@ -47,7 +47,7 @@ export const HOME_FAQS: FAQItem[] = [
   },
   {
     q: "What does a free AI audit include and how do I get started?",
-    a: "The free AI audit is a detailed assessment of your current workflows to identify where AI can save time, cut costs, and improve output. We analyze your sales process, customer support, content operations, and internal tools to recommend specific AI agents or automations that fit your business. The audit takes one consultation call and you receive a clear action plan with estimated timelines and results. To get started, simply fill out the contact form on our website or message us on WhatsApp at +91 8595073837.",
+    a: "The free AI audit is a detailed assessment of your current workflows to identify where AI can save time, cut costs, and improve output. We analyze your sales process, customer support, content operations, and internal tools to recommend specific AI agents or automations that fit your business. The audit takes one consultation call and you receive a clear action plan with estimated timelines and results. To get started, simply fill out the contact form on our website or message us on WhatsApp at +91 98110 10102.",
   },
 ];
 
@@ -357,7 +357,7 @@ export const CONTACT_FAQS: FAQItem[] = [
   },
   {
     q: "Where is Comptech Enterprises located?",
-    a: "Comptech Enterprises is headquartered at 207, DDA-1, District Center, Janakpuri, New Delhi, India. Office hours are Monday through Saturday, 9:00 AM to 7:00 PM IST. Training and AI agent deployments are delivered across India, the UAE, Europe, and the US.",
+    a: "Comptech Enterprises is headquartered at 207, DDA Building-1, District Centre, Janakpuri, New Delhi, Delhi 110058, India. We are open 24 hours, 7 days a week. Training and AI agent deployments are delivered across India, the UAE, Europe, and the US.",
   },
   {
     q: "How quickly does the Comptech team respond to inquiries?",

@@ -56,18 +56,24 @@ const jsonLd = {
   "image": "https://comptech.in/images/logo.webp",
   "@id": "https://comptech.in/#localbusiness",
   "url": "https://comptech.in",
-  "telephone": "+91-8595073837",
+  "telephone": "+91-9811010102",
   "sameAs": [
     "https://www.linkedin.com/company/comptech-enterprises1",
     "https://www.instagram.com/comptechenterprises"
   ],
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "207, DDA-1, District Center, JanakPuri",
+    "streetAddress": "207, DDA Building-1, District Centre, Janakpuri",
     "addressLocality": "New Delhi",
     "addressRegion": "Delhi",
     "postalCode": "110058",
     "addressCountry": "IN"
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    "opens": "00:00",
+    "closes": "23:59"
   },
   "geo": {
     "@type": "GeoCoordinates",
@@ -144,10 +150,10 @@ const organizationJsonLd = {
     "Custom AI agents, Generative Engine Optimization (GEO), AI training, and enterprise IT infrastructure for businesses in India and worldwide.",
   foundingDate: "1996",
   email: "mohit@comptech.in",
-  telephone: "+91-8595073837",
+  telephone: "+91-9811010102",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "207, DDA-1, District Center, JanakPuri",
+    streetAddress: "207, DDA Building-1, District Centre, Janakpuri",
     addressLocality: "New Delhi",
     addressRegion: "Delhi",
     postalCode: "110058",
@@ -157,7 +163,7 @@ const organizationJsonLd = {
     {
       "@type": "ContactPoint",
       contactType: "sales",
-      telephone: "+91-8595073837",
+      telephone: "+91-9811010102",
       email: "mohit@comptech.in",
       areaServed: ["IN", "AE", "CA", "GB", "AU", "DE"],
       availableLanguage: ["English", "Hindi"],

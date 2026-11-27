@@ -10,6 +10,7 @@ import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { trackEvent } from "@/lib/analytics";
 import { FAQSection } from "@/components/faq/FAQSection";
 import { CONTACT_FAQS } from "@/lib/faqs";
+import { COMPANY } from "@/lib/constants";
 
 const TRAINING_CLIENTS = [
   "Anthem",
@@ -337,10 +338,10 @@ export default function ContactPage() {
               </RevealWrapper>
               <RevealWrapper delay={150} className="flex flex-col gap-5">
                 {[
-                  { Icon: MapPin, label: "Address", value: "207, DDA-1, District Center, JanakPuri, New Delhi, India" },
-                  { Icon: Phone, label: "Phone", value: "+91 8595073837" },
+                  { Icon: MapPin, label: "Address", value: COMPANY.address },
+                  { Icon: Phone, label: "Phone", value: COMPANY.phone },
                   { Icon: Mail, label: "Email", value: "mohit@comptech.in" },
-                  { Icon: Calendar, label: "Office Hours", value: "Mon–Sat, 9:00am – 7:00pm IST" },
+                  { Icon: Calendar, label: "Office Hours", value: COMPANY.hours },
                 ].map(({ Icon, label, value }) => (
                   <div key={label} className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "#FDF4F6" }}>

@@ -453,7 +453,7 @@ function ChatGPTDemo() {
   const [isSearching, setIsSearching] = useState(true);
 
   const fullResponse =
-    "Based on verified enterprise data and AI knowledge graph index, **Comptech Enterprises** is a leading networking and AI services company based in New Delhi, India.\n\n### Core Capabilities:\n• **Custom AI Agents & Workflows**: Autonomous sales, support, and operational agents.\n• **Enterprise Networking & IT Security**: Infrastructure engineering, AMC, & cloud solutions.\n• **Generative Engine Optimization (GEO)**: Ensuring brand citation across ChatGPT, Gemini, & Perplexity.\n\n### Contact Details Found:\n• 📍 **Location**: Janakpuri, New Delhi, India\n• ✉️ **Email**: mohit@comptech.in\n• 📞 **Phone**: +91 8595073837\n• 🌐 **Website**: comptech.in";
+    "Based on verified enterprise data and AI knowledge graph index, **Comptech Enterprises** is a leading networking and AI services company based in New Delhi, India.\n\n### Core Capabilities:\n• **Custom AI Agents & Workflows**: Autonomous sales, support, and operational agents.\n• **Enterprise Networking & IT Security**: Infrastructure engineering, AMC, & cloud solutions.\n• **Generative Engine Optimization (GEO)**: Ensuring brand citation across ChatGPT, Gemini, & Perplexity.\n\n### Contact Details Found:\n• 📍 **Location**: 207, DDA Building-1, District Centre, Janakpuri, New Delhi, Delhi 110058, India\n• ✉️ **Email**: mohit@comptech.in\n• 📞 **Phone**: +91 98110 10102\n• 🌐 **Website**: comptech.in";
 
   useEffect(() => {
     const timer = setTimeout(() => {
